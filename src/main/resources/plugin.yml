@@ -1,0 +1,404 @@
+name: TrailGUI
+main: Main
+version: 3.1
+author: Coder_M
+
+commands:
+   Trail:
+      description: Give yourself or another player the specified trail.
+   Trails:
+      description: Opens the TrailGUI.
+   TrailGUI:
+      description: Basic information about the plugin.
+      
+permissions:
+   trailgui.inventory.angryvillager:
+      description: Allows the player to select the angryvillager trail in the GUI.
+      default: op
+   trailgui.inventory.cloud:
+      description: Allows the player to select the cloud trail in the GUI.
+      default: op
+   trailgui.inventory.criticals:
+      description: Allows the player to select the criticals trail in the GUI.
+      default: op
+   trailgui.inventory.driplava:
+      description: Allows the player to select the driplava trail in the GUI.
+      default: op
+   trailgui.inventory.dripwater:
+      description: Allows the player to select the dripwater trail in the GUI.
+      default: op
+   trailgui.inventory.enchantment:
+      description: Allows the player to select the enchantment trail in the GUI.
+      default: op
+   trailgui.inventory.spark:
+      description: Allows the player to select the spark trail in the GUI.
+      default: op
+   trailgui.inventory.flame:
+      description: Allows the player to select the flame trail in the GUI.
+      default: op
+   trailgui.inventory.happyvillager:
+      description: Allows the player to select the happyvillager trail in the GUI.
+      default: op
+   trailgui.inventory.instantspell:
+      description: Allows the player to select the instantspell trail in the GUI.
+      default: op
+   trailgui.inventory.largesmoke:
+      description: Allows the player to select the largesmoke trail in the GUI.
+      default: op
+   trailgui.inventory.lava:
+      description: Allows the player to select the lava trail in the GUI.
+      default: op
+   trailgui.inventory.magiccrit:
+      description: Allows the player to select the magiccrit trail in the GUI.
+      default: op
+   trailgui.inventory.mobspell:
+      description: Allows the player to select the mobspell trail in the GUI.
+      default: op
+   trailgui.inventory.mobspellambient:
+      description: Allows the player to select the mobspellambient trail in the GUI.
+      default: op
+   trailgui.inventory.note:
+      description: Allows the player to select the note trail in the GUI.
+      default: op
+   trailgui.inventory.portal:
+      description: Allows the player to select the portal trail in the GUI.
+      default: op
+   trailgui.inventory.reddust:
+      description: Allows the player to select the reddust trail in the GUI.
+      default: op
+   trailgui.inventory.coloredreddust:
+      description: Allows the player to select the coloredreddust trail in the GUI.
+      default: op
+   trailgui.inventory.slime:
+      description: Allows the player to select the slime trail in the GUI.
+      default: op
+   trailgui.inventory.snowshovel:
+      description: Allows the player to select the snowshovel trail in the GUI.
+      default: op
+   trailgui.inventory.snowballpoof:
+      description: Allows the player to select the snowballpoof trail in the GUI.
+      default: op
+   trailgui.inventory.spell:
+      description: Allows the player to select the spell trail in the GUI.
+      default: op
+   trailgui.inventory.splash:
+      description: Allows the player to select the splash trail in the GUI.
+      default: op
+   trailgui.inventory.townaura:
+      description: Allows the player to select the townaura trail in the GUI.
+      default: op
+   trailgui.inventory.wake:
+      description: Allows the player to select the wake trail in the GUI.
+      default: op
+   trailgui.inventory.witchmagic:
+      description: Allows the player to select the witchmagic trail in the GUI.
+      default: op
+   trailgui.inventory.hearts:
+      description: Allows the player to select the hearts trail in the GUI.
+      default: op
+   trailgui.inventory.endersignal:
+      description: Allows the player to select the endersignal trail in the GUI.
+      default: op
+   trailgui.inventory.clearall:
+      description: Allows the player to clear all their current trails when selecting the item in the GUI.
+      default: op
+   trailgui.inventory.nextpage:
+      description: Allows the player to select the nextpage item in the GUI.
+      default: op
+   trailgui.inventory.nextpage:
+      description: Allows the player to select the previouspage item in the GUI.
+      default: op
+   trailgui.commands.angryvillager:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.cloud:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.criticals:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.driplava:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.dripwater:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.enchantment:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.spark:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.flame:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.happyvillager:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.instantspell:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.largesmoke:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.lava:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.magiccrit:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.mobspell:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.mobspellambient:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.note:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.portal:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.reddust:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.coloredreddust:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.slime:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.snowshovel:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.snowballpoof:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.spell:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.splash:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.townaura:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.wake:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.witchmagic:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.hearts:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.endersignal:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.clearall:
+      description: Allows the player to use the clearall trails command.
+      default: op
+   trailgui.commands.version:
+      description: Allows the player to view the plugins version.
+      default: op
+   trailgui.commands.reloadconfigs:
+      description: Allows the player to reload all configuration files.
+      default: op
+   trailgui.commands.other.angryvillager:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.cloud:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.criticals:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.driplava:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.dripwater:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.enchantment:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.spark:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.flame:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.happyvillager:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.instantspell:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.largesmoke:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.lava:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.magiccrit:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.mobspell:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.mobspellambient:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.note:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.portal:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.reddust:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.coloredreddust:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.slime:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.snowshovel:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.snowballpoof:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.spell:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.splash:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.townaura:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.wake:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.witchmagic:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.hearts:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.endersignal:
+      description: Allows the player to give another player the specified trail.
+      default: op
+   trailgui.commands.other.clearall:
+      description: Allows the player to clear all of the specified players trails.
+      default: op      
+   trailgui.commands.*:
+      description: Allows the player to use all the commands
+      default: op
+      children:
+            trailgui.commands.angryvillager: true
+            trailgui.commands.cloud: true
+            trailgui.commands.criticals: true
+            trailgui.commands.driplava: true
+            trailgui.commands.dripwater: true
+            trailgui.commands.enchantment: true
+            trailgui.commands.spark: true
+            trailgui.commands.flame: true
+            trailgui.commands.happyvillager: true
+            trailgui.commands.instantspell: true
+            trailgui.commands.largesmoke: true
+            trailgui.commands.lava: true
+            trailgui.commands.magiccrit: true
+            trailgui.commands.mobspell: true
+            trailgui.commands.mobspellambient: true
+            trailgui.commands.note: true
+            trailgui.commands.portal: true
+            trailgui.commands.reddust: true
+            trailgui.commands.coloredreddust: true
+            trailgui.commands.slime: true
+            trailgui.commands.snowshovel: true
+            trailgui.commands.snowballpoof: true
+            trailgui.commands.spell: true
+            trailgui.commands.splash: true
+            trailgui.commands.townaura: true
+            trailgui.commands.wake: true
+            trailgui.commands.witchmagic: true
+            trailgui.commands.hearts: true
+            trailgui.commands.endersignal: true
+            trailgui.commands.clearall: true
+            trailgui.commands.version: true
+            trailgui.commands.trails: true
+            trailgui.commands.reloadconfigs: true
+            trailgui.commands.other.*: true
+   trailgui.commands.other.*:
+      description: Allows the player to give other players all the trails.
+      default: op
+      children:
+            trailgui.commands.other.angryvillager: true
+            trailgui.commands.other.cloud: true
+            trailgui.commands.other.criticals: true
+            trailgui.commands.other.driplava: true
+            trailgui.commands.other.dripwater: true
+            trailgui.commands.other.enchantment: true
+            trailgui.commands.other.spark: true
+            trailgui.commands.other.flame: true
+            trailgui.commands.other.happyvillager: true
+            trailgui.commands.other.instantspell: true
+            trailgui.commands.other.largesmoke: true
+            trailgui.commands.other.lava: true
+            trailgui.commands.other.magiccrit: true
+            trailgui.commands.other.mobspell: true
+            trailgui.commands.other.mobspellambient: true
+            trailgui.commands.other.note: true
+            trailgui.commands.other.portal: true
+            trailgui.commands.other.reddust: true
+            trailgui.commands.other.coloredreddust: true
+            trailgui.commands.other.slime: true
+            trailgui.commands.other.snowshovel: true
+            trailgui.commands.other.snowballpoof: true
+            trailgui.commands.other.spell: true
+            trailgui.commands.other.splash: true
+            trailgui.commands.other.townaura: true
+            trailgui.commands.other.wake: true
+            trailgui.commands.other.witchmagic: true
+            trailgui.commands.other.hearts: true
+            trailgui.commands.other.endersignal: true
+            trailgui.commands.other.clearall: true
+   trailgui.inventory.*:
+      description: Allows the player to select all the trails in the GUI.
+      default: op
+      children:
+            trailgui.inventory.angryvillager: true
+            trailgui.inventory.cloud: true
+            trailgui.inventory.criticals: true
+            trailgui.inventory.driplava: true
+            trailgui.inventory.dripwater: true
+            trailgui.inventory.enchantment: true
+            trailgui.inventory.spark: true
+            trailgui.inventory.flame: true
+            trailgui.inventory.happyvillager: true
+            trailgui.inventory.instantspell: true
+            trailgui.inventory.largesmoke: true
+            trailgui.inventory.lava: true
+            trailgui.inventory.magiccrit: true
+            trailgui.inventory.mobspell: true
+            trailgui.inventory.mobspellambient: true
+            trailgui.inventory.note: true
+            trailgui.inventory.portal: true
+            trailgui.inventory.reddust: true
+            trailgui.inventory.coloredreddust: true
+            trailgui.inventory.slime: true
+            trailgui.inventory.snowshovel: true
+            trailgui.inventory.snowballpoof: true
+            trailgui.inventory.spell: true
+            trailgui.inventory.splash: true
+            trailgui.inventory.townaura: true
+            trailgui.inventory.wake: true
+            trailgui.inventory.witchmagic: true
+            trailgui.inventory.hearts: true
+            trailgui.inventory.endersignal: true
+            trailgui.inventory.clearall: true
+            trailgui.inventory.nextpage: true
+            trailgui.inventory.previouspage: true                                                                                                                                                                                               

@@ -1,9 +1,12 @@
 *.class
+TrailsGUI.iml
+.idea
+target
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Package Files #
+# Package files #
 *.jar
 *.war
 *.ear
@@ -12,7 +15,7 @@
 hs_err_pid*
 
 # =========================
-# Operating System Files
+# Operating System files
 # =========================
 
 # OSX
@@ -25,7 +28,7 @@ hs_err_pid*
 # Thumbnails
 ._*
 
-# Files that might appear on external disk
+# files that might appear on external disk
 .Spotlight-V100
 .Trashes
 
