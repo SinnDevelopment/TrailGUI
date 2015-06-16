@@ -844,6 +844,24 @@ EnderSignal-loreLineTwo: "Example"
 #The text written on lore line three.
 EnderSignal-loreLineThree: "Example"
 
+#### @IconCrack
+
+#The location the particle effect is displayed.
+IconCrack-displayLocation: 0.2
+#The speed at which the particles are displayed
+IconCrack: 0
+#The distance before unrendering the particle effect.
+IconCrack-range: 20
+#The cooldown time before the particle effect is displayed again. (20 ticks = 1 second)
+IconCrack-cooldown: 18
+
+#The inventory slot the item is put in.
+IconCrack-inventorySlot: 1
+#The items type. This is also the item which will be "cracked"
+IconCrack-itemType: potato
+#The items name.
+IconCrack-itemName: "&6IconCrack"
+
 #### @ClearAll
 
 #The message sent when you clear all of your own trails. (When typing /Trail ClearAll)

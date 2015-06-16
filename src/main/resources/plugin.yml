@@ -99,6 +99,9 @@ permissions:
    trailgui.inventory.endersignal:
       description: Allows the player to select the endersignal trail in the GUI.
       default: op
+   trailgui.inventory.iconcrack:
+      description: Allows the player to select the iconcrack trail in the GUI.
+      default: op
    trailgui.inventory.clearall:
       description: Allows the player to clear all their current trails when selecting the item in the GUI.
       default: op
@@ -195,6 +198,10 @@ permissions:
    trailgui.trails.endersignal:
       description: Allows the player to select the specified trail.
       default: op
+   trailgui.trails.iconcrack:
+      description: Allows the player to select the specified trail.
+      default: op
+
    trailgui.commands.clearall:
       description: Allows the player to use the clearall trails command.
       default: op
@@ -204,6 +211,7 @@ permissions:
    trailgui.commands.reloadconfigs:
       description: Allows the player to reload all configuration files.
       default: op
+
    trailgui.trails.angryvillager.other:
       description: Allows the player to give another player the specified trail.
       default: op
@@ -288,12 +296,15 @@ permissions:
    trailgui.trails.hearts.other:
       description: Allows the player to give another player the specified trail.
       default: op
+   trailgui.trails.iconcrack.other:
+      description: Allows the player to give another player the specified trail.
+      default: op
    trailgui.trails.endersignal.other:
       description: Allows the player to give another player the specified trail.
       default: op
    trailgui.commands.clearall.other:
       description: Allows the player to clear all of the specified players trails.
-      default: op      
+      default: op
    trailgui.commands.*:
       description: Allows the player to use all commands
       default: op
@@ -334,6 +345,7 @@ permissions:
                trailgui.trails.townaura: true
                trailgui.trails.wake: true
                trailgui.trails.witchmagic: true
+               trailgui.trails.iconcrack: true
                trailgui.trails.hearts: true
                trailgui.trails.endersignal: true
                trailgui.trails.clearall: true
@@ -369,6 +381,7 @@ permissions:
             trailgui.inventory.wake: true
             trailgui.inventory.witchmagic: true
             trailgui.inventory.hearts: true
+            trailgui.inventory.iconcrack: true
             trailgui.inventory.endersignal: true
             trailgui.inventory.clearall: true
             trailgui.inventory.nextpage: true

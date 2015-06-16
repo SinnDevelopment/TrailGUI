@@ -4,8 +4,6 @@ import ca.jamiesinn.trailsgui.commands.Trail;
 import ca.jamiesinn.trailsgui.commands.TrailGUI;
 import ca.jamiesinn.trailsgui.commands.Trails;
 import ca.jamiesinn.trailsgui.files.TrailData;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -45,15 +43,15 @@ public class Main
     public static List<String> trailWitchMagic = new ArrayList();
     public static List<String> trailHearts = new ArrayList();
     public static List<String> trailEnderSignal = new ArrayList();
-
+    public static List<String> trailIconCrack = new ArrayList<String>();
     public static Main getPlugin()
     {
         return plugin;
     }
 
+    @Override
     public void onEnable()
     {
-        Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.DARK_GREEN + "[TrailGUI] Is Now Enabled.");
         getServer().getPluginManager().registerEvents(new Listeners(this), this);
 
         getCommand("Trail").setExecutor(new Trail(this));
@@ -69,10 +67,9 @@ public class Main
         Methodes.restoreTrails();
     }
 
+    @Override
     public void onDisable()
     {
-        Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.DARK_RED + "[TrailGUI] Is Now Disabled.");
-
         Methodes.saveTrails();
     }
 }

@@ -1367,6 +1367,11 @@ public class Listeners
                 }
             }, this.main.getConfig().getInt("EnderSignal-cooldown") * 1);
         }
+        if(Main.trailIconCrack.contains(player.getUniqueId().toString()))
+        {
+            ParticleEffect.ItemData data = new ParticleEffect.ItemData(Material.valueOf(this.main.getConfig().getString("IconCrack-itemType").toUpperCase()), (byte)0);
+            ParticleEffect.ITEM_CRACK.display(data, 0.0F, 0.0F, 0.0F, this.main.getConfig().getInt("IconCrack-speed"), this.main.getConfig().getInt("IconCrack-amount"), player.getLocation().add(0.0D, this.main.getConfig().getDouble("IconCrack-displayLocation"), 0.0D), this.main.getConfig().getInt("IconCrack-range"));
+        }
     }
 }
 
