@@ -424,63 +424,63 @@ public class Methodes
         if (checkPerms("magiccrit", player))
             inv1.setItem(Main.getPlugin().getConfig().getInt("MagicCrit-inventorySlot"), itemMagicCrit());
         else
-            inv1.setItem(Main.getPlugin().getConfig().getInt("MagicCrit-inventorySlot"), itemMagicCrit());
+            inv1.setItem(Main.getPlugin().getConfig().getInt("MagicCrit-inventorySlot"), itemNoPerms());
         if (checkPerms("mobspell", player))
             inv1.setItem(Main.getPlugin().getConfig().getInt("MobSpell-inventorySlot"), itemMobSpell());
         else
-            inv1.setItem(Main.getPlugin().getConfig().getInt("MobSpell-inventorySlot"), itemMobSpell());
+            inv1.setItem(Main.getPlugin().getConfig().getInt("MobSpell-inventorySlot"), itemNoPerms());
         if (checkPerms("mobspellambient", player))
             inv1.setItem(Main.getPlugin().getConfig().getInt("MobSpellAmbient-inventorySlot"), itemMobSpellAmbient());
         else
-            inv1.setItem(Main.getPlugin().getConfig().getInt("MobSpellAmbient-inventorySlot"), itemMobSpellAmbient());
+            inv1.setItem(Main.getPlugin().getConfig().getInt("MobSpellAmbient-inventorySlot"), itemNoPerms());
         if (checkPerms("note", player))
             inv1.setItem(Main.getPlugin().getConfig().getInt("Note-inventorySlot"), itemNote());
         else
-            inv1.setItem(Main.getPlugin().getConfig().getInt("Note-inventorySlot"), itemNote());
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Note-inventorySlot"), itemNoPerms());
         if (checkPerms("portal", player))
             inv1.setItem(Main.getPlugin().getConfig().getInt("Portal-inventorySlot"), itemPortal());
         else
-            inv1.setItem(Main.getPlugin().getConfig().getInt("Portal-inventorySlot"), itemPortal());
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Portal-inventorySlot"), itemNoPerms());
         if (checkPerms("reddust", player))
             inv1.setItem(Main.getPlugin().getConfig().getInt("RedDust-inventorySlot"), itemRedDust());
         else
-            inv1.setItem(Main.getPlugin().getConfig().getInt("RedDust-inventorySlot"), itemRedDust());
+            inv1.setItem(Main.getPlugin().getConfig().getInt("RedDust-inventorySlot"), itemNoPerms());
         if (checkPerms("coloredreddust", player))
             inv1.setItem(Main.getPlugin().getConfig().getInt("ColoredRedDust-inventorySlot"), itemColoredRedDust());
         else
-            inv1.setItem(Main.getPlugin().getConfig().getInt("ColoredRedDust-inventorySlot"), itemColoredRedDust());
+            inv1.setItem(Main.getPlugin().getConfig().getInt("ColoredRedDust-inventorySlot"), itemNoPerms());
         if (checkPerms("slime", player))
             inv1.setItem(Main.getPlugin().getConfig().getInt("Slime-inventorySlot"), itemSlime());
         else
-            inv1.setItem(Main.getPlugin().getConfig().getInt("Slime-inventorySlot"), itemSlime());
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Slime-inventorySlot"), itemNoPerms());
         if (checkPerms("snowshovel", player))
             inv1.setItem(Main.getPlugin().getConfig().getInt("SnowShovel-inventorySlot"), itemSnowShovel());
         else
-            inv1.setItem(Main.getPlugin().getConfig().getInt("SnowShovel-inventorySlot"), itemSnowShovel());
+            inv1.setItem(Main.getPlugin().getConfig().getInt("SnowShovel-inventorySlot"), itemNoPerms());
         if (checkPerms("snowballpoof", player))
             inv1.setItem(Main.getPlugin().getConfig().getInt("SnowballPoof-inventorySlot"), itemSnowballPoof());
         else
-            inv1.setItem(Main.getPlugin().getConfig().getInt("SnowballPoof-inventorySlot"), itemSnowballPoof());
+            inv1.setItem(Main.getPlugin().getConfig().getInt("SnowballPoof-inventorySlot"), itemNoPerms());
         if (checkPerms("spell", player))
             inv1.setItem(Main.getPlugin().getConfig().getInt("Spell-inventorySlot"), itemSpell());
         else
-            inv1.setItem(Main.getPlugin().getConfig().getInt("Spell-inventorySlot"), itemSpell());
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Spell-inventorySlot"), itemNoPerms());
         if (checkPerms("splash", player))
             inv1.setItem(Main.getPlugin().getConfig().getInt("Splash-inventorySlot"), itemSplash());
         else
-            inv1.setItem(Main.getPlugin().getConfig().getInt("Splash-inventorySlot"), itemSplash());
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Splash-inventorySlot"), itemNoPerms());
         if (checkPerms("townaura", player))
             inv1.setItem(Main.getPlugin().getConfig().getInt("TownAura-inventorySlot"), itemTownAura());
         else
-            inv1.setItem(Main.getPlugin().getConfig().getInt("TownAura-inventorySlot"), itemTownAura());
+            inv1.setItem(Main.getPlugin().getConfig().getInt("TownAura-inventorySlot"), itemNoPerms());
         if (checkPerms("wake", player))
             inv1.setItem(Main.getPlugin().getConfig().getInt("Wake-inventorySlot"), itemWake());
         else
-            inv1.setItem(Main.getPlugin().getConfig().getInt("Wake-inventorySlot"), itemWake());
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Wake-inventorySlot"), itemNoPerms());
         if (checkPerms("witchmagic", player))
             inv1.setItem(Main.getPlugin().getConfig().getInt("WitchMagic-inventorySlot"), itemWitchMagic());
         else
-            inv1.setItem(Main.getPlugin().getConfig().getInt("WitchMagic-inventorySlot"), itemWitchMagic());
+            inv1.setItem(Main.getPlugin().getConfig().getInt("WitchMagic-inventorySlot"), itemNoPerms());
 
         inv1.setItem(Main.getPlugin().getConfig().getInt("RemoveTrails-inventorySlot"), itemRemoveTrails());
         inv1.setItem(Main.getPlugin().getConfig().getInt("NextPage-inventorySlot"), itemNextPage());
