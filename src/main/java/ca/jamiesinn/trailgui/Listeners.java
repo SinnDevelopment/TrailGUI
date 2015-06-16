@@ -1,6 +1,6 @@
-package ca.jamiesinn.trailsgui;
+package ca.jamiesinn.trailgui;
 
-import ca.jamiesinn.trailsgui.libraries.ParticleEffect;
+import ca.jamiesinn.trailgui.libraries.ParticleEffect;
 import org.bukkit.Bukkit;
 import org.bukkit.Effect;
 import org.bukkit.Material;
