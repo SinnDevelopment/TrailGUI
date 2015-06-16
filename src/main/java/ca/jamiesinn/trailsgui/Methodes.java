@@ -2,6 +2,7 @@ package ca.jamiesinn.trailsgui;
 
 import ca.jamiesinn.trailsgui.files.TrailData;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -347,19 +348,55 @@ public class Methodes
         }
     }
 
+    public static boolean checkPerms(String trail, Player p)
+    {
+        return p.hasPermission("trailgui.trails." + trail);
+    }
+    public static int getItemSlot(String trail)
+    {
+        return Main.getPlugin().getConfig().getInt(trail + "-inventorySlot");
+    }
     public static void openGUI1(Player player)
     {
         Inventory inv1 = Bukkit.createInventory(null, 45, Main.getPlugin().getConfig().getString("pageOneInventoryName").replaceAll("&", "§"));
 
-        inv1.setItem(Main.getPlugin().getConfig().getInt("AngryVillager-inventorySlot"), itemAngryVillager());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("Cloud-inventorySlot"), itemCloud());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("Criticals-inventorySlot"), itemCriticals());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("DripLava-inventorySlot"), itemDripLava());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("DripWater-inventorySlot"), itemDripWater());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("Enchantment-inventorySlot"), itemEnchantment());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("Spark-inventorySlot"), itemSpark());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("Flame-inventorySlot"), itemFlame());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("HappyVillager-inventorySlot"), itemHappyVillager());
+        if(checkPerms("angryvillager", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("AngryVillager-inventorySlot"), itemAngryVillager());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("AngryVillager-inventorySlot"), itemNoPerms());
+        if(checkPerms("cloud", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Cloud-inventorySlot"), itemCloud());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Cloud-inventorySlot"), itemNoPerms());
+        if(checkPerms("criticals", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Criticals-inventorySlot"), itemCriticals());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Criticals-inventorySlot"), itemNoPerms());
+        if(checkPerms("driplava", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("DripLava-inventorySlot"), itemDripLava());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("DripLava-inventorySlot"), itemNoPerms());
+        if(checkPerms("dripwater", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("DripWater-inventorySlot"), itemDripWater());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("DripWater-inventorySlot"), itemNoPerms());
+        if(checkPerms("enchantment", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Enchantment-inventorySlot"), itemEnchantment());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Enchantment-inventorySlot"), itemNoPerms());
+        if(checkPerms("spark", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Spark-inventorySlot"), itemSpark());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Spark-inventorySlot"), itemNoPerms());
+        if(checkPerms("flame", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Flame-inventorySlot"), itemFlame());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Flame-inventorySlot"), itemNoPerms());
+        if(checkPerms("happyvillager", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("HappyVillager-inventorySlot"), itemHappyVillager());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("HappyVillager-inventorySlot"), itemNoPerms());
+
         inv1.setItem(Main.getPlugin().getConfig().getInt("InstantSpell-inventorySlot"), itemInstantSpell());
         inv1.setItem(Main.getPlugin().getConfig().getInt("LargeSmoke-inventorySlot"), itemLargeSmoke());
         inv1.setItem(Main.getPlugin().getConfig().getInt("Lava-inventorySlot"), itemLava());
@@ -394,6 +431,15 @@ public class Methodes
         inv2.setItem(Main.getPlugin().getConfig().getInt("PreviousPage-inventorySlot"), itemPreviousPage());
 
         player.openInventory(inv2);
+    }
+
+    public static ItemStack itemNoPerms()
+    {
+        ItemStack i = new ItemStack(Material.STAINED_GLASS_PANE, 1, (short)14);
+        ItemMeta meta = i.getItemMeta();
+        meta.setDisplayName(ChatColor.RED + "You do not have this trail!");
+        i.setItemMeta(meta);
+        return i;
     }
 
     public static ItemStack itemAngryVillager()

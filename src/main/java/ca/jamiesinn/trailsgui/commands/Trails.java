@@ -20,7 +20,7 @@ public class Trails
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
     {
-        if (cmd.getName().equalsIgnoreCase("Trails"))
+        if (cmd.getName().equalsIgnoreCase("trails"))
         {
             if (!(sender instanceof Player))
             {
