@@ -1146,6 +1146,42 @@ public class Listeners
                     player.closeInventory();
                 }
             }
+            else if (event.getCurrentItem().equals(Methodes.itemIconCrack()))
+            {
+                if (!player.hasPermission("trailgui.inventory.iconcrack"))
+                {
+                    player.sendMessage(Main.getPlugin().getConfig().getString("GUI-denyPermissionMessage").replaceAll("&", "§"));
+                    if (Main.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
+                    {
+                        player.closeInventory();
+                    }
+                    return;
+                }
+                if (Main.trailIconCrack.contains(player.getUniqueId().toString()))
+                {
+                    if (Main.getPlugin().getConfig().getBoolean("oneTrailAtATime"))
+                    {
+                        Methodes.clearTrails(player);
+                    }
+                    Main.trailIconCrack.remove(player.getUniqueId().toString());
+                    player.sendMessage(Main.getPlugin().getConfig().getString("GUI-removeTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "IconCrack"));
+                    if (Main.getPlugin().getConfig().getBoolean("closeInventoryAferSelect"))
+                    {
+                        player.closeInventory();
+                    }
+                    return;
+                }
+                if (Main.getPlugin().getConfig().getBoolean("oneTrailAtATime"))
+                {
+                    Methodes.clearTrails(player);
+                }
+                Main.trailIconCrack.add(player.getUniqueId().toString());
+                player.sendMessage(Main.getPlugin().getConfig().getString("GUI-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "IconCrack"));
+                if (Main.getPlugin().getConfig().getBoolean("closeInventoryAferSelect"))
+                {
+                    player.closeInventory();
+                }
+            }
             else if (event.getCurrentItem().equals(Methodes.itemRemoveTrails()))
             {
                 if (!player.hasPermission("trailgui.inventory.removetrails"))
@@ -1370,7 +1406,7 @@ public class Listeners
         if(Main.trailIconCrack.contains(player.getUniqueId().toString()))
         {
             ParticleEffect.ItemData data = new ParticleEffect.ItemData(Material.valueOf(this.main.getConfig().getString("IconCrack-itemType").toUpperCase()), (byte)0);
-            ParticleEffect.ITEM_CRACK.display(data, 0.0F, 0.0F, 0.0F, this.main.getConfig().getInt("IconCrack-speed"), this.main.getConfig().getInt("IconCrack-amount"), player.getLocation().add(0.0D, this.main.getConfig().getDouble("IconCrack-displayLocation"), 0.0D), this.main.getConfig().getInt("IconCrack-range"));
+            ParticleEffect.ITEM_CRACK.display(data, player.getLocation().getDirection(), this.main.getConfig().getInt("IconCrack-speed"), player.getLocation().add(0.0D, this.main.getConfig().getDouble("IconCrack-displayLocation"), 0.0D), this.main.getConfig().getInt("IconCrack-range"));
         }
     }
 }

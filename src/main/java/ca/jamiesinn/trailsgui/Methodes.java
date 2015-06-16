@@ -47,6 +47,7 @@ public class Methodes
         Main.trailWitchMagic.remove(player.getUniqueId().toString());
         Main.trailHearts.remove(player.getUniqueId().toString());
         Main.trailEnderSignal.remove(player.getUniqueId().toString());
+        Main.trailIconCrack.remove(player.getUniqueId().toString());
     }
 
     public static void saveTrails()
@@ -80,6 +81,7 @@ public class Methodes
         TrailData.getConfig().set("WitchMagic", Main.trailWitchMagic);
         TrailData.getConfig().set("Hearts", Main.trailHearts);
         TrailData.getConfig().set("EnderSignal", Main.trailEnderSignal);
+        TrailData.getConfig().set("IconCrack", Main.trailIconCrack);
         TrailData.saveConfig();
     }
 
@@ -346,6 +348,15 @@ public class Methodes
             }
             Main.trailEnderSignal.add(player.getUniqueId().toString());
         }
+        for (String uuids : TrailData.getConfig().getStringList("IconCrack"))
+        {
+            Player player = Bukkit.getServer().getPlayer(UUID.fromString(uuids));
+            if (player == null)
+            {
+                return;
+            }
+            Main.trailIconCrack.add(player.getUniqueId().toString());
+        }
     }
 
     public static boolean checkPerms(String trail, Player p)
@@ -506,6 +517,7 @@ public class Methodes
         meta.setDisplayName(ChatColor.RED + "You do not have this trail!");
         i.setItemMeta(meta);
         return i;
+
     }
 
     public static ItemStack itemAngryVillager()
@@ -1345,7 +1357,7 @@ public class Methodes
 
     public static ItemStack itemIconCrack()
     {
-        ItemStack i = new ItemStack(Material.valueOf(Main.getPlugin().getConfig().getString("IconCrack-itemType").toUpperCase()), 0);
+        ItemStack i = new ItemStack(Material.valueOf(Main.getPlugin().getConfig().getString("IconCrack-itemType").toUpperCase()), 1);
         ItemMeta meta = i.getItemMeta();
         meta.setDisplayName(Main.getPlugin().getConfig().getString("IconCrack-itemName"));
         i.setItemMeta(meta);

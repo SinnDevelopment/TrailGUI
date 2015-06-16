@@ -1776,13 +1776,13 @@ public class Trail
                         if (Main.getPlugin().getConfig().getBoolean("oneTrailAtATime"))
                             Methodes.clearTrails(player);
                         Main.trailIconCrack.remove(player.getUniqueId().toString());
-                        player.sendMessage(this.main.getConfig().getString("Commands-removeTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "EnderSignal"));
+                        player.sendMessage(this.main.getConfig().getString("Commands-removeTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "IconCrack"));
                         return false;
                     }
                     if (Main.getPlugin().getConfig().getBoolean("oneTrailAtATime"))
                         Methodes.clearTrails(player);
                     Main.trailIconCrack.add(player.getUniqueId().toString());
-                    player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "EnderSignal"));
+                    player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "IconCrack"));
                     return true;
                 }
                 if (!player.hasPermission("trailgui.trails.iconcrack.other"))
@@ -1798,7 +1798,7 @@ public class Trail
                 }
                 if (player.getName().equals(args[1]))
                 {
-                    player.sendMessage(this.main.getConfig().getString("targetSelfMessage").replaceAll("&", "§").replaceAll("%TrailName%", "EnderSignal"));
+                    player.sendMessage(this.main.getConfig().getString("targetSelfMessage").replaceAll("&", "§").replaceAll("%TrailName%", "IconCrack"));
                     return false;
                 }
                 if (Main.trailIconCrack.contains(target.getUniqueId().toString()))
@@ -1807,15 +1807,15 @@ public class Trail
                         Methodes.clearTrails(target);
                     Main.trailIconCrack.remove(target.getUniqueId().toString());
 
-                    player.sendMessage(this.main.getConfig().getString("Commands-removeTrailSenderMessage").replaceAll("&", "§").replaceAll("%Target%", args[1]).replaceAll("%TrailName%", "EnderSignal"));
-                    target.sendMessage(this.main.getConfig().getString("Commands-removeTrailTargetMessage").replaceAll("&", "§").replaceAll("%TrailName%", "EnderSignal"));
+                    player.sendMessage(this.main.getConfig().getString("Commands-removeTrailSenderMessage").replaceAll("&", "§").replaceAll("%Target%", args[1]).replaceAll("%TrailName%", "IconCrack"));
+                    target.sendMessage(this.main.getConfig().getString("Commands-removeTrailTargetMessage").replaceAll("&", "§").replaceAll("%TrailName%", "IconCrack"));
                     return false;
                 }
                 if (Main.getPlugin().getConfig().getBoolean("oneTrailAtATime"))
                     Methodes.clearTrails(target);
                 Main.trailIconCrack.add(target.getUniqueId().toString());
-                player.sendMessage(this.main.getConfig().getString("Commands-selectTrailSenderMessage").replaceAll("&", "§").replaceAll("%TrailName%", "EnderSignal").replaceAll("%Target%", args[1]));
-                target.sendMessage(this.main.getConfig().getString("Commands-selectTrailTargetMessage").replaceAll("&", "§").replaceAll("%TrailName%", "EnderSignal"));
+                player.sendMessage(this.main.getConfig().getString("Commands-selectTrailSenderMessage").replaceAll("&", "§").replaceAll("%TrailName%", "IconCrack").replaceAll("%Target%", args[1]));
+                target.sendMessage(this.main.getConfig().getString("Commands-selectTrailTargetMessage").replaceAll("&", "§").replaceAll("%TrailName%", "IconCrack"));
                 return false;
             }
             if (args[0].equalsIgnoreCase("clearall"))
