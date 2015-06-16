@@ -1,7 +1,7 @@
 name: TrailGUI
 main: Main
-version: 3.1
-author: Coder_M
+version: 3.3
+author: JamieSinn
 
 commands:
    Trail:
