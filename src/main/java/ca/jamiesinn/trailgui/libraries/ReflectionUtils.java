@@ -1,4 +1,4 @@
-package ca.jamiesinn.trailsgui.libraries;
+package ca.jamiesinn.trailgui.libraries;
 
 import org.bukkit.Bukkit;
 

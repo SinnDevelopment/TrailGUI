@@ -1,6 +1,6 @@
-package ca.jamiesinn.trailsgui.files;
+package ca.jamiesinn.trailgui.files;
 
-import ca.jamiesinn.trailsgui.Main;
+import ca.jamiesinn.trailgui.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;

@@ -1,9 +1,9 @@
-package ca.jamiesinn.trailsgui;
+package ca.jamiesinn.trailgui;
 
-import ca.jamiesinn.trailsgui.commands.Trail;
-import ca.jamiesinn.trailsgui.commands.TrailGUI;
-import ca.jamiesinn.trailsgui.commands.Trails;
-import ca.jamiesinn.trailsgui.files.TrailData;
+import ca.jamiesinn.trailgui.commands.Trail;
+import ca.jamiesinn.trailgui.commands.TrailGUI;
+import ca.jamiesinn.trailgui.commands.Trails;
+import ca.jamiesinn.trailgui.files.TrailData;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
