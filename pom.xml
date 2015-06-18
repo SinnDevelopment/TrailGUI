@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ca.jamiesinn</groupId>
-    <artifactId>TrailsGUI</artifactId>
-    <version>3.3-SNAPSHOT</version>
+    <artifactId>TrailGUI</artifactId>
+    <version>3.4-SNAPSHOT-BREAKSPERMISSIONS</version>
     <repositories>
         <repository>
             <id>spigot-repo</id>

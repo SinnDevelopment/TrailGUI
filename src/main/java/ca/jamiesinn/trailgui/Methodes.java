@@ -2,6 +2,7 @@ package ca.jamiesinn.trailgui;
 
 import ca.jamiesinn.trailgui.files.TrailData;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -46,6 +47,7 @@ public class Methodes
         Main.trailWitchMagic.remove(player.getUniqueId().toString());
         Main.trailHearts.remove(player.getUniqueId().toString());
         Main.trailEnderSignal.remove(player.getUniqueId().toString());
+        Main.trailIconCrack.remove(player.getUniqueId().toString());
     }
 
     public static void saveTrails()
@@ -79,6 +81,7 @@ public class Methodes
         TrailData.getConfig().set("WitchMagic", Main.trailWitchMagic);
         TrailData.getConfig().set("Hearts", Main.trailHearts);
         TrailData.getConfig().set("EnderSignal", Main.trailEnderSignal);
+        TrailData.getConfig().set("IconCrack", Main.trailIconCrack);
         TrailData.saveConfig();
     }
 
@@ -345,39 +348,140 @@ public class Methodes
             }
             Main.trailEnderSignal.add(player.getUniqueId().toString());
         }
+        for (String uuids : TrailData.getConfig().getStringList("IconCrack"))
+        {
+            Player player = Bukkit.getServer().getPlayer(UUID.fromString(uuids));
+            if (player == null)
+            {
+                return;
+            }
+            Main.trailIconCrack.add(player.getUniqueId().toString());
+        }
+    }
+
+    public static boolean checkPerms(String trail, Player p)
+    {
+        return p.hasPermission("trailgui.inventory." + trail);
+    }
+
+    public static int getItemSlot(String trail)
+    {
+        return Main.getPlugin().getConfig().getInt(trail + "-inventorySlot");
     }
 
     public static void openGUI1(Player player)
     {
         Inventory inv1 = Bukkit.createInventory(null, 45, Main.getPlugin().getConfig().getString("pageOneInventoryName").replaceAll("&", "§"));
 
-        inv1.setItem(Main.getPlugin().getConfig().getInt("AngryVillager-inventorySlot"), itemAngryVillager());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("Cloud-inventorySlot"), itemCloud());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("Criticals-inventorySlot"), itemCriticals());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("DripLava-inventorySlot"), itemDripLava());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("DripWater-inventorySlot"), itemDripWater());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("Enchantment-inventorySlot"), itemEnchantment());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("Spark-inventorySlot"), itemSpark());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("Flame-inventorySlot"), itemFlame());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("HappyVillager-inventorySlot"), itemHappyVillager());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("InstantSpell-inventorySlot"), itemInstantSpell());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("LargeSmoke-inventorySlot"), itemLargeSmoke());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("Lava-inventorySlot"), itemLava());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("MagicCrit-inventorySlot"), itemMagicCrit());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("MobSpell-inventorySlot"), itemMobSpell());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("MobSpellAmbient-inventorySlot"), itemMobSpellAmbient());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("Note-inventorySlot"), itemNote());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("Portal-inventorySlot"), itemPortal());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("RedDust-inventorySlot"), itemRedDust());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("ColoredRedDust-inventorySlot"), itemColoredRedDust());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("Slime-inventorySlot"), itemSlime());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("SnowShovel-inventorySlot"), itemSnowShovel());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("SnowballPoof-inventorySlot"), itemSnowballPoof());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("Spell-inventorySlot"), itemSpell());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("Splash-inventorySlot"), itemSplash());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("TownAura-inventorySlot"), itemTownAura());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("Wake-inventorySlot"), itemWake());
-        inv1.setItem(Main.getPlugin().getConfig().getInt("WitchMagic-inventorySlot"), itemWitchMagic());
+        if (checkPerms("angryvillager", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("AngryVillager-inventorySlot"), itemAngryVillager());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("AngryVillager-inventorySlot"), itemNoPerms());
+        if (checkPerms("cloud", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Cloud-inventorySlot"), itemCloud());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Cloud-inventorySlot"), itemNoPerms());
+        if (checkPerms("criticals", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Criticals-inventorySlot"), itemCriticals());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Criticals-inventorySlot"), itemNoPerms());
+        if (checkPerms("driplava", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("DripLava-inventorySlot"), itemDripLava());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("DripLava-inventorySlot"), itemNoPerms());
+        if (checkPerms("dripwater", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("DripWater-inventorySlot"), itemDripWater());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("DripWater-inventorySlot"), itemNoPerms());
+        if (checkPerms("enchantment", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Enchantment-inventorySlot"), itemEnchantment());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Enchantment-inventorySlot"), itemNoPerms());
+        if (checkPerms("spark", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Spark-inventorySlot"), itemSpark());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Spark-inventorySlot"), itemNoPerms());
+        if (checkPerms("flame", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Flame-inventorySlot"), itemFlame());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Flame-inventorySlot"), itemNoPerms());
+        if (checkPerms("happyvillager", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("HappyVillager-inventorySlot"), itemHappyVillager());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("HappyVillager-inventorySlot"), itemNoPerms());
+        if (checkPerms("instantspell", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("InstantSpell-inventorySlot"), itemInstantSpell());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("InstantSpell-inventorySlot"), itemNoPerms());
+        if (checkPerms("largesmoke", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("LargeSmoke-inventorySlot"), itemLargeSmoke());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("LargeSmoke-inventorySlot"), itemNoPerms());
+        if (checkPerms("lava", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Lava-inventorySlot"), itemLava());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Lava-inventorySlot"), itemNoPerms());
+        if (checkPerms("magiccrit", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("MagicCrit-inventorySlot"), itemMagicCrit());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("MagicCrit-inventorySlot"), itemNoPerms());
+        if (checkPerms("mobspell", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("MobSpell-inventorySlot"), itemMobSpell());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("MobSpell-inventorySlot"), itemNoPerms());
+        if (checkPerms("mobspellambient", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("MobSpellAmbient-inventorySlot"), itemMobSpellAmbient());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("MobSpellAmbient-inventorySlot"), itemNoPerms());
+        if (checkPerms("note", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Note-inventorySlot"), itemNote());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Note-inventorySlot"), itemNoPerms());
+        if (checkPerms("portal", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Portal-inventorySlot"), itemPortal());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Portal-inventorySlot"), itemNoPerms());
+        if (checkPerms("reddust", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("RedDust-inventorySlot"), itemRedDust());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("RedDust-inventorySlot"), itemNoPerms());
+        if (checkPerms("coloredreddust", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("ColoredRedDust-inventorySlot"), itemColoredRedDust());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("ColoredRedDust-inventorySlot"), itemNoPerms());
+        if (checkPerms("slime", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Slime-inventorySlot"), itemSlime());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Slime-inventorySlot"), itemNoPerms());
+        if (checkPerms("snowshovel", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("SnowShovel-inventorySlot"), itemSnowShovel());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("SnowShovel-inventorySlot"), itemNoPerms());
+        if (checkPerms("snowballpoof", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("SnowballPoof-inventorySlot"), itemSnowballPoof());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("SnowballPoof-inventorySlot"), itemNoPerms());
+        if (checkPerms("spell", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Spell-inventorySlot"), itemSpell());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Spell-inventorySlot"), itemNoPerms());
+        if (checkPerms("splash", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Splash-inventorySlot"), itemSplash());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Splash-inventorySlot"), itemNoPerms());
+        if (checkPerms("townaura", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("TownAura-inventorySlot"), itemTownAura());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("TownAura-inventorySlot"), itemNoPerms());
+        if (checkPerms("wake", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Wake-inventorySlot"), itemWake());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("Wake-inventorySlot"), itemNoPerms());
+        if (checkPerms("witchmagic", player))
+            inv1.setItem(Main.getPlugin().getConfig().getInt("WitchMagic-inventorySlot"), itemWitchMagic());
+        else
+            inv1.setItem(Main.getPlugin().getConfig().getInt("WitchMagic-inventorySlot"), itemNoPerms());
+
         inv1.setItem(Main.getPlugin().getConfig().getInt("RemoveTrails-inventorySlot"), itemRemoveTrails());
         inv1.setItem(Main.getPlugin().getConfig().getInt("NextPage-inventorySlot"), itemNextPage());
 
@@ -387,13 +491,33 @@ public class Methodes
     public static void openGUI2(Player player)
     {
         Inventory inv2 = Bukkit.createInventory(null, 45, Main.getPlugin().getConfig().getString("pageTwoInventoryName").replaceAll("&", "§"));
+        if (checkPerms("hearts", player))
+            inv2.setItem(Main.getPlugin().getConfig().getInt("Hearts-inventorySlot"), itemHearts());
+        else
+            inv2.setItem(Main.getPlugin().getConfig().getInt("Hearts-inventorySlot"), itemHearts());
+        if (checkPerms("endersignal", player))
+            inv2.setItem(Main.getPlugin().getConfig().getInt("EnderSignal-inventorySlot"), itemEnderSignal());
+        else
+            inv2.setItem(Main.getPlugin().getConfig().getInt("EnderSignal-inventorySlot"), itemEnderSignal());
+        if (checkPerms("iconcrack", player))
+            inv2.setItem(Main.getPlugin().getConfig().getInt("IconCrack-inventorySlot"), itemIconCrack());
+        else
+            inv2.setItem(Main.getPlugin().getConfig().getInt("IconCrack-inventorySlot"), itemNoPerms());
 
-        inv2.setItem(Main.getPlugin().getConfig().getInt("Hearts-inventorySlot"), itemHearts());
-        inv2.setItem(Main.getPlugin().getConfig().getInt("EnderSignal-inventorySlot"), itemEnderSignal());
         inv2.setItem(Main.getPlugin().getConfig().getInt("RemoveTrails-inventorySlot"), itemRemoveTrails());
         inv2.setItem(Main.getPlugin().getConfig().getInt("PreviousPage-inventorySlot"), itemPreviousPage());
 
         player.openInventory(inv2);
+    }
+
+    public static ItemStack itemNoPerms()
+    {
+        ItemStack i = new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 14);
+        ItemMeta meta = i.getItemMeta();
+        meta.setDisplayName(ChatColor.RED + "You do not have this trail!");
+        i.setItemMeta(meta);
+        return i;
+
     }
 
     public static ItemStack itemAngryVillager()
@@ -407,7 +531,7 @@ public class Methodes
         metaAngryVillager.setDisplayName(name2);
         if (Main.getPlugin().getConfig().getBoolean("AngryVillager-loreEnabled"))
         {
-            List<String> loreAngryVillager = new ArrayList();
+            List<String> loreAngryVillager = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("AngryVillager-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("AngryVillager-loreLineTwo").replaceAll("&", "§");
@@ -432,7 +556,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("Cloud-loreEnabled"))
         {
-            List<String> loreCloud = new ArrayList();
+            List<String> loreCloud = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("Cloud-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("Cloud-loreLineTwo").replaceAll("&", "§");
@@ -458,7 +582,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("Criticals-loreEnabled"))
         {
-            List<String> loreCriticals = new ArrayList();
+            List<String> loreCriticals = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("Criticals-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("Criticals-loreLineTwo").replaceAll("&", "§");
@@ -484,7 +608,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("DripLava-loreEnabled"))
         {
-            List<String> loreDripLava = new ArrayList();
+            List<String> loreDripLava = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("DripLava-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("DripLava-loreLineTwo").replaceAll("&", "§");
@@ -510,7 +634,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("DripWater-loreEnabled"))
         {
-            List<String> loreDripWater = new ArrayList();
+            List<String> loreDripWater = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("DripWater-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("DripWater-loreLineTwo").replaceAll("&", "§");
@@ -536,7 +660,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("Enchantment-loreEnabled"))
         {
-            List<String> loreEnchantment = new ArrayList();
+            List<String> loreEnchantment = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("Enchantment-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("Enchantment-loreLineTwo").replaceAll("&", "§");
@@ -562,7 +686,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("Spark-loreEnabled"))
         {
-            List<String> loreSpark = new ArrayList();
+            List<String> loreSpark = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("Spark-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("Spark-loreLineTwo").replaceAll("&", "§");
@@ -588,7 +712,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("Flame-loreEnabled"))
         {
-            List<String> loreFlame = new ArrayList();
+            List<String> loreFlame = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("Flame-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("Flame-loreLineTwo").replaceAll("&", "§");
@@ -614,7 +738,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("HappyVillager-loreEnabled"))
         {
-            List<String> loreHappyVillager = new ArrayList();
+            List<String> loreHappyVillager = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("HappyVillager-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("HappyVillager-loreLineTwo").replaceAll("&", "§");
@@ -640,7 +764,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("InstantSpell-loreEnabled"))
         {
-            List<String> loreInstantSpell = new ArrayList();
+            List<String> loreInstantSpell = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("InstantSpell-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("InstantSpell-loreLineTwo").replaceAll("&", "§");
@@ -666,7 +790,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("LargeSmoke-loreEnabled"))
         {
-            List<String> loreLargeSmoke = new ArrayList();
+            List<String> loreLargeSmoke = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("LargeSmoke-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("LargeSmoke-loreLineTwo").replaceAll("&", "§");
@@ -692,7 +816,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("Lava-loreEnabled"))
         {
-            List<String> loreLava = new ArrayList();
+            List<String> loreLava = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("Lava-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("Lava-loreLineTwo").replaceAll("&", "§");
@@ -719,7 +843,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("MagicCrit-loreEnabled"))
         {
-            List<String> loreMagicCrit = new ArrayList();
+            List<String> loreMagicCrit = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("MagicCrit-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("MagicCrit-loreLineTwo").replaceAll("&", "§");
@@ -745,7 +869,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("MobSpell-loreEnabled"))
         {
-            List<String> loreMobSpell = new ArrayList();
+            List<String> loreMobSpell = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("MobSpell-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("MobSpell-loreLineTwo").replaceAll("&", "§");
@@ -772,7 +896,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("MobSpellAmbient-loreEnabled"))
         {
-            List<String> loreMobSpellAmbient = new ArrayList();
+            List<String> loreMobSpellAmbient = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("MobSpellAmbient-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("MobSpellAmbient-loreLineTwo").replaceAll("&", "§");
@@ -798,7 +922,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("Note-loreEnabled"))
         {
-            List<String> loreNote = new ArrayList();
+            List<String> loreNote = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("Note-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("Note-loreLineTwo").replaceAll("&", "§");
@@ -824,7 +948,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("Portal-loreEnabled"))
         {
-            List<String> lorePortal = new ArrayList();
+            List<String> lorePortal = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("Portal-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("Portal-loreLineTwo").replaceAll("&", "§");
@@ -850,7 +974,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("RedDust-loreEnabled"))
         {
-            List<String> loreRedDust = new ArrayList();
+            List<String> loreRedDust = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("RedDust-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("RedDust-loreLineTwo").replaceAll("&", "§");
@@ -876,7 +1000,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("ColoredRedDust-loreEnabled"))
         {
-            List<String> loreColoredRedDust = new ArrayList();
+            List<String> loreColoredRedDust = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("ColoredRedDust-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("ColoredRedDust-loreLineTwo").replaceAll("&", "§");
@@ -902,7 +1026,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("Slime-loreEnabled"))
         {
-            List<String> loreSlime = new ArrayList();
+            List<String> loreSlime = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("Slime-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("Slime-loreLineTwo").replaceAll("&", "§");
@@ -928,7 +1052,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("SnowShovel-loreEnabled"))
         {
-            List<String> loreSnowShovel = new ArrayList();
+            List<String> loreSnowShovel = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("SnowShovel-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("SnowShovel-loreLineTwo").replaceAll("&", "§");
@@ -954,7 +1078,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("SnowballPoof-loreEnabled"))
         {
-            List<String> loreSnowballPoof = new ArrayList();
+            List<String> loreSnowballPoof = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("SnowballPoof-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("SnowballPoof-loreLineTwo").replaceAll("&", "§");
@@ -980,7 +1104,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("Spell-loreEnabled"))
         {
-            List<String> loreSpell = new ArrayList();
+            List<String> loreSpell = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("Spell-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("Spell-loreLineTwo").replaceAll("&", "§");
@@ -1006,7 +1130,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("Splash-loreEnabled"))
         {
-            List<String> loreSplash = new ArrayList();
+            List<String> loreSplash = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("Splash-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("Splash-loreLineTwo").replaceAll("&", "§");
@@ -1032,7 +1156,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("TownAura-loreEnabled"))
         {
-            List<String> loreTownAura = new ArrayList();
+            List<String> loreTownAura = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("TownAura-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("TownAura-loreLineTwo").replaceAll("&", "§");
@@ -1084,7 +1208,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("WitchMagic-loreEnabled"))
         {
-            List<String> loreWitchMagic = new ArrayList();
+            List<String> loreWitchMagic = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("WitchMagic-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("WitchMagic-loreLineTwo").replaceAll("&", "§");
@@ -1110,7 +1234,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("Hearts-loreEnabled"))
         {
-            List<String> loreHearts = new ArrayList();
+            List<String> loreHearts = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("Hearts-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("Hearts-loreLineTwo").replaceAll("&", "§");
@@ -1136,7 +1260,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("NextPage-loreEnabled"))
         {
-            List<String> loreNextPage = new ArrayList();
+            List<String> loreNextPage = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("NextPage-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("NextPage-loreLineTwo").replaceAll("&", "§");
@@ -1162,7 +1286,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("PreviousPage-loreEnabled"))
         {
-            List<String> lorePreviousPage = new ArrayList();
+            List<String> lorePreviousPage = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("PreviousPage-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("PreviousPage-loreLineTwo").replaceAll("&", "§");
@@ -1188,7 +1312,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("RemoveTrails-loreEnabled"))
         {
-            List<String> loreRemoveTrail = new ArrayList();
+            List<String> loreRemoveTrail = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("RemoveTrails-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("RemoveTrails-loreLineTwo").replaceAll("&", "§");
@@ -1214,7 +1338,7 @@ public class Methodes
         String name2 = name1.replaceAll("&", "§");
         if (Main.getPlugin().getConfig().getBoolean("EnderSignal-loreEnabled"))
         {
-            List<String> loreEnderSignal = new ArrayList();
+            List<String> loreEnderSignal = new ArrayList<String>();
 
             String loreLine1 = Main.getPlugin().getConfig().getString("EnderSignal-loreLineOne").replaceAll("&", "§");
             String loreLine2 = Main.getPlugin().getConfig().getString("EnderSignal-loreLineTwo").replaceAll("&", "§");
@@ -1229,5 +1353,14 @@ public class Methodes
         metaEnderSignal.setDisplayName(name2);
         itemEnderSignal.setItemMeta(metaEnderSignal);
         return itemEnderSignal;
+    }
+
+    public static ItemStack itemIconCrack()
+    {
+        ItemStack i = new ItemStack(Material.valueOf(Main.getPlugin().getConfig().getString("IconCrack-itemType").toUpperCase()), 1);
+        ItemMeta meta = i.getItemMeta();
+        meta.setDisplayName(Main.getPlugin().getConfig().getString("IconCrack-itemName"));
+        i.setItemMeta(meta);
+        return i;
     }
 }

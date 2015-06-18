@@ -55,6 +55,7 @@ public class TrailData
             config.createSection("WitchMagic");
             config.createSection("Hearts");
             config.createSection("EnderSignal");
+            config.createSection("ItemCrack");
             saveConfig();
         }
     }
