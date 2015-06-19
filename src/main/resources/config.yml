@@ -853,7 +853,7 @@ IconCrack-speed: 0
 #The distance before unrendering the particle effect.
 IconCrack-range: 10
 #The inventory slot the item is put in.
-IconCrack-inventorySlot: 1
+IconCrack-inventorySlot: 2
 #The items type. This is also the item which will be "cracked"
 IconCrack-itemType: baked_potato
 #The items name.

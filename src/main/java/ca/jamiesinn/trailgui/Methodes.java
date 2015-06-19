@@ -1359,7 +1359,7 @@ public class Methodes
     {
         ItemStack i = new ItemStack(Material.valueOf(Main.getPlugin().getConfig().getString("IconCrack-itemType").toUpperCase()), 1);
         ItemMeta meta = i.getItemMeta();
-        meta.setDisplayName(Main.getPlugin().getConfig().getString("IconCrack-itemName"));
+        meta.setDisplayName(Main.getPlugin().getConfig().getString("IconCrack-itemName").replaceAll("&", "§"));
         i.setItemMeta(meta);
         return i;
     }
