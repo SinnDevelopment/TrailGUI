@@ -108,7 +108,7 @@ permissions:
    trailgui.inventory.nextpage:
       description: Allows the player to select the nextpage item in the GUI.
       default: op
-   trailgui.inventory.nextpage:
+   trailgui.inventory.prevpage:
       description: Allows the player to select the previouspage item in the GUI.
       default: op
    trailgui.trails.angryvillager:
@@ -204,6 +204,12 @@ permissions:
 
    trailgui.commands.clearall:
       description: Allows the player to use the clearall trails command.
+      default: op
+   trailgui.commands.trails:
+      description: Allows the player to use the trail command.
+      default: op
+   trailgui.commands.inventory:
+      description: Allows the player to use the trails command.
       default: op
    trailgui.commands.version:
       description: Allows the player to view the plugins version.
