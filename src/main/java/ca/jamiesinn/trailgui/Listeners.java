@@ -1029,7 +1029,7 @@ public class Listeners
             }
             else if (event.getCurrentItem().equals(Methodes.itemRemoveTrails()))
             {
-                if (!player.hasPermission("trailgui.inventory.removetrails"))
+                if (!player.hasPermission("trailgui.inventory.clearall"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("GUI-denyPermissionMessage").replaceAll("&", "§"));
                     if (Main.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
@@ -1184,7 +1184,7 @@ public class Listeners
             }
             else if (event.getCurrentItem().equals(Methodes.itemRemoveTrails()))
             {
-                if (!player.hasPermission("trailgui.inventory.removetrails"))
+                if (!player.hasPermission("trailgui.inventory.clearall"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("GUI-denyPermissionMessage").replaceAll("&", "§"));
                     if (Main.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))

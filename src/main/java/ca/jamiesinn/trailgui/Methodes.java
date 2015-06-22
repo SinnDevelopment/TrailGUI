@@ -494,11 +494,11 @@ public class Methodes
         if (checkPerms("hearts", player))
             inv2.setItem(Main.getPlugin().getConfig().getInt("Hearts-inventorySlot"), itemHearts());
         else
-            inv2.setItem(Main.getPlugin().getConfig().getInt("Hearts-inventorySlot"), itemHearts());
+            inv2.setItem(Main.getPlugin().getConfig().getInt("Hearts-inventorySlot"), itemNoPerms());
         if (checkPerms("endersignal", player))
             inv2.setItem(Main.getPlugin().getConfig().getInt("EnderSignal-inventorySlot"), itemEnderSignal());
         else
-            inv2.setItem(Main.getPlugin().getConfig().getInt("EnderSignal-inventorySlot"), itemEnderSignal());
+            inv2.setItem(Main.getPlugin().getConfig().getInt("EnderSignal-inventorySlot"), itemNoPerms());
         if (checkPerms("iconcrack", player))
             inv2.setItem(Main.getPlugin().getConfig().getInt("IconCrack-inventorySlot"), itemIconCrack());
         else
