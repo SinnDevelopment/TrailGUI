@@ -1182,6 +1182,42 @@ public class Listeners
                     player.closeInventory();
                 }
             }
+            else if (event.getCurrentItem().equals(Methodes.itemBlockBreak()))
+            {
+                if (!player.hasPermission("trailgui.inventory.blockbreak"))
+                {
+                    player.sendMessage(Main.getPlugin().getConfig().getString("GUI-denyPermissionMessage").replaceAll("&", "§"));
+                    if (Main.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
+                    {
+                        player.closeInventory();
+                    }
+                    return;
+                }
+                if (Main.trailBlockBreak.contains(player.getUniqueId().toString()))
+                {
+                    if (Main.getPlugin().getConfig().getBoolean("oneTrailAtATime"))
+                    {
+                        Methodes.clearTrails(player);
+                    }
+                    Main.trailBlockBreak.remove(player.getUniqueId().toString());
+                    player.sendMessage(Main.getPlugin().getConfig().getString("GUI-removeTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "BlockBreak"));
+                    if (Main.getPlugin().getConfig().getBoolean("closeInventoryAferSelect"))
+                    {
+                        player.closeInventory();
+                    }
+                    return;
+                }
+                if (Main.getPlugin().getConfig().getBoolean("oneTrailAtATime"))
+                {
+                    Methodes.clearTrails(player);
+                }
+                Main.trailBlockBreak.add(player.getUniqueId().toString());
+                player.sendMessage(Main.getPlugin().getConfig().getString("GUI-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "BlockBreak"));
+                if (Main.getPlugin().getConfig().getBoolean("closeInventoryAferSelect"))
+                {
+                    player.closeInventory();
+                }
+            }
             else if (event.getCurrentItem().equals(Methodes.itemRemoveTrails()))
             {
                 if (!player.hasPermission("trailgui.inventory.clearall"))
