@@ -55,7 +55,6 @@ public class Main
     public void onEnable()
     {
         getServer().getPluginManager().registerEvents(new Listeners(this), this);
-
         getCommand("Trail").setExecutor(new Trail(this));
         getCommand("Trails").setExecutor(new Trails(this));
         getCommand("TrailGUI").setExecutor(new TrailGUI(this));

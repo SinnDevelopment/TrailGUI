@@ -1,6 +1,6 @@
 package ca.jamiesinn.trailgui;
 
-import ca.jamiesinn.trailgui.libraries.ParticleEffect;
+import com.darkblade12.particleeffect.ParticleEffect;
 import org.bukkit.Bukkit;
 import org.bukkit.Effect;
 import org.bukkit.Material;

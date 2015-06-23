@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>ca.jamiesinn</groupId>
     <artifactId>TrailGUI</artifactId>
-    <version>3.9-SNAPSHOT</version>
+    <version>3.9.1-SNAPSHOT</version>
     <repositories>
         <repository>
             <id>spigot-repo</id>
