@@ -44,6 +44,8 @@ public class Main
     public static List<String> trailHearts = new ArrayList<String>();
     public static List<String> trailEnderSignal = new ArrayList<String>();
     public static List<String> trailIconCrack = new ArrayList<String>();
+    public static List<String> trailBlockBreak = new ArrayList<String>();
+
     public static Main getPlugin()
     {
         return plugin;

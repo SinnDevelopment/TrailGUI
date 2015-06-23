@@ -1406,7 +1406,15 @@ public class Listeners
         if(Main.trailIconCrack.contains(player.getUniqueId().toString()))
         {
             ParticleEffect.ItemData data = new ParticleEffect.ItemData(Material.valueOf(this.main.getConfig().getString("IconCrack-itemType").toUpperCase()), (byte)0);
-            ParticleEffect.ITEM_CRACK.display(data, player.getLocation().getDirection(), this.main.getConfig().getInt("IconCrack-speed"), player.getLocation().add(0.0D, this.main.getConfig().getDouble("IconCrack-displayLocation"), 0.0D), this.main.getConfig().getInt("IconCrack-range"));
+            ParticleEffect.ITEM_CRACK.display(data, player.getLocation().getDirection(), this.main.getConfig().getInt("IconCrack-speed"),
+                    player.getLocation().add(0.0D, this.main.getConfig().getDouble("IconCrack-displayLocation"), 0.0D), this.main.getConfig().getInt("IconCrack-range"));
+        }
+
+        if(Main.trailBlockBreak.contains(player.getUniqueId().toString()))
+        {
+            ParticleEffect.BlockData data = new ParticleEffect.BlockData(Material.valueOf(this.main.getConfig().getString("BlockBreak-itemType").toUpperCase()), (byte)0);
+            ParticleEffect.BLOCK_CRACK.display(data, player.getLocation().getDirection(), this.main.getConfig().getInt("BlockBreak-speed"), player.getLocation().add(0.0D, this.main.getConfig().getDouble("BlockBreak-displayLocation"), 0.0D),
+                    this.main.getConfig().getInt("BlockBreak-range"));
         }
     }
 }

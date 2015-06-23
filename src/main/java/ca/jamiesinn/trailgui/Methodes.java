@@ -48,6 +48,7 @@ public class Methodes
         Main.trailHearts.remove(player.getUniqueId().toString());
         Main.trailEnderSignal.remove(player.getUniqueId().toString());
         Main.trailIconCrack.remove(player.getUniqueId().toString());
+        Main.trailBlockBreak.remove(player.getUniqueId().toString());
     }
 
     public static void saveTrails()
@@ -82,6 +83,7 @@ public class Methodes
         TrailData.getConfig().set("Hearts", Main.trailHearts);
         TrailData.getConfig().set("EnderSignal", Main.trailEnderSignal);
         TrailData.getConfig().set("IconCrack", Main.trailIconCrack);
+        TrailData.getConfig().set("BlockBreak", Main.trailBlockBreak);
         TrailData.saveConfig();
     }
 
@@ -357,6 +359,15 @@ public class Methodes
             }
             Main.trailIconCrack.add(player.getUniqueId().toString());
         }
+        for (String uuids : TrailData.getConfig().getStringList("BlockBreak"))
+        {
+            Player player = Bukkit.getServer().getPlayer(UUID.fromString(uuids));
+            if (player == null)
+            {
+                return;
+            }
+            Main.trailBlockBreak.add(player.getUniqueId().toString());
+        }
     }
 
     public static boolean checkPerms(String trail, Player p)
@@ -503,13 +514,17 @@ public class Methodes
             inv2.setItem(Main.getPlugin().getConfig().getInt("IconCrack-inventorySlot"), itemIconCrack());
         else
             inv2.setItem(Main.getPlugin().getConfig().getInt("IconCrack-inventorySlot"), itemNoPerms());
+        if (checkPerms("blockbreak", player))
+            inv2.setItem(Main.getPlugin().getConfig().getInt("BlockBreak-inventorySlot"), itemBlockBreak());
+        else
+            inv2.setItem(Main.getPlugin().getConfig().getInt("BlockBreak-inventorySlot"), itemNoPerms());
 
         inv2.setItem(Main.getPlugin().getConfig().getInt("RemoveTrails-inventorySlot"), itemRemoveTrails());
         inv2.setItem(Main.getPlugin().getConfig().getInt("PreviousPage-inventorySlot"), itemPreviousPage());
 
         player.openInventory(inv2);
     }
-
+//region Item's for Inventory Slots
     public static ItemStack itemNoPerms()
     {
         ItemStack i = new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 14);
@@ -1363,4 +1378,14 @@ public class Methodes
         i.setItemMeta(meta);
         return i;
     }
+
+    public static ItemStack itemBlockBreak()
+    {
+        ItemStack i = new ItemStack(Material.valueOf(Main.getPlugin().getConfig().getString("BlockBreak-itemType").toUpperCase()), 1);
+        ItemMeta meta = i.getItemMeta();
+        meta.setDisplayName(Main.getPlugin().getConfig().getString("BlockBreak-itemName").replaceAll("&", "§"));
+        i.setItemMeta(meta);
+        return i;
+    }
+    //endregion
 }

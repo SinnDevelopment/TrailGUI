@@ -1,6 +1,6 @@
 name: TrailGUI
 main: ca.jamiesinn.trailgui.Main
-version: 3.8
+version: 3.9
 author: JamieSinn
 
 commands:
@@ -102,6 +102,9 @@ permissions:
    trailgui.inventory.iconcrack:
       description: Allows the player to select the iconcrack trail in the GUI.
       default: op
+   trailgui.inventory.blockbreak:
+      description: Allows the player to select the blockbreak trail in the GUI.
+      default: op
    trailgui.inventory.clearall:
       description: Allows the player to clear all their current trails when selecting the item in the GUI.
       default: op
@@ -199,6 +202,9 @@ permissions:
       description: Allows the player to select the specified trail.
       default: op
    trailgui.trails.iconcrack:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.blockbreak:
       description: Allows the player to select the specified trail.
       default: op
 

@@ -1818,6 +1818,62 @@ public class Trail
                 target.sendMessage(this.main.getConfig().getString("Commands-selectTrailTargetMessage").replaceAll("&", "§").replaceAll("%TrailName%", "IconCrack"));
                 return false;
             }
+            if (args[0].equalsIgnoreCase("blockbreak"))
+            {
+                if (!player.hasPermission("trailgui.trails.blockbreak"))
+                {
+                    player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
+                    return false;
+                }
+                if (args.length == 1)
+                {
+                    if (Main.trailBlockBreak.contains(player.getUniqueId().toString()))
+                    {
+                        if (Main.getPlugin().getConfig().getBoolean("oneTrailAtATime"))
+                            Methodes.clearTrails(player);
+                        Main.trailBlockBreak.remove(player.getUniqueId().toString());
+                        player.sendMessage(this.main.getConfig().getString("Commands-removeTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "BlockBreak"));
+                        return false;
+                    }
+                    if (Main.getPlugin().getConfig().getBoolean("oneTrailAtATime"))
+                        Methodes.clearTrails(player);
+                    Main.trailBlockBreak.add(player.getUniqueId().toString());
+                    player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "BlockBreak"));
+                    return true;
+                }
+                if (!player.hasPermission("trailgui.trails.blockbreak.other"))
+                {
+                    player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
+                    return false;
+                }
+                Player target = Bukkit.getServer().getPlayer(args[1]);
+                if (target == null)
+                {
+                    player.sendMessage(this.main.getConfig().getString("noTargetMessage").replaceAll("&", "§").replaceAll("%Target%", args[1]));
+                    return false;
+                }
+                if (player.getName().equals(args[1]))
+                {
+                    player.sendMessage(this.main.getConfig().getString("targetSelfMessage").replaceAll("&", "§").replaceAll("%TrailName%", "BlockBreak"));
+                    return false;
+                }
+                if (Main.trailBlockBreak.contains(target.getUniqueId().toString()))
+                {
+                    if (Main.getPlugin().getConfig().getBoolean("oneTrailAtATime"))
+                        Methodes.clearTrails(target);
+                    Main.trailBlockBreak.remove(target.getUniqueId().toString());
+
+                    player.sendMessage(this.main.getConfig().getString("Commands-removeTrailSenderMessage").replaceAll("&", "§").replaceAll("%Target%", args[1]).replaceAll("%TrailName%", "BlockBreak"));
+                    target.sendMessage(this.main.getConfig().getString("Commands-removeTrailTargetMessage").replaceAll("&", "§").replaceAll("%TrailName%", "BlockBreak"));
+                    return false;
+                }
+                if (Main.getPlugin().getConfig().getBoolean("oneTrailAtATime"))
+                    Methodes.clearTrails(target);
+                Main.trailBlockBreak.add(target.getUniqueId().toString());
+                player.sendMessage(this.main.getConfig().getString("Commands-selectTrailSenderMessage").replaceAll("&", "§").replaceAll("%TrailName%", "BlockBreak").replaceAll("%Target%", args[1]));
+                target.sendMessage(this.main.getConfig().getString("Commands-selectTrailTargetMessage").replaceAll("&", "§").replaceAll("%TrailName%", "BlockBreak"));
+                return false;
+            }
             if (args[0].equalsIgnoreCase("clearall"))
             {
                 if (!player.hasPermission("trailgui.commands.clearall"))
