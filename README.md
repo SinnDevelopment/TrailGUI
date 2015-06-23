@@ -6,3 +6,5 @@ Updated and maintained version of TrailGUI on the Spigot Forums
 ## [Documentation](http://ci.sinndevelopment.com/job/ParticleEffect%20Library/ws/target/site/apidocs/index.html)
 
 ## [Jenkins](http://ci.sinndevelopment.com/job/ParticleEffect%20Library/)
+
+## [Sonatype Nexus](http://repo.sinndev.com/content/repositories/snapshots/ca/jamiesinn/TrailGUI/)
