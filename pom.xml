@@ -29,17 +29,40 @@
             <version>1.7</version>
         </dependency>
     </dependencies>
-<distributionManagement>
-  <repository>
-     <id>sinndev-repo</id>
-     <name>Releases</name>
-     <url>http://repo.sinndev.com/content/repositories/releases/</url>
-  </repository>
-  <snapshotRepository>
-     <id>sinndev-repo</id>
-     <name>Snapshots</name>
-     <url>http://repo.sinndev.com/content/repositories/snapshots/</url>
-  </snapshotRepository>
-</distributionManagement>
-
+    <distributionManagement>
+      <repository>
+         <id>sinndev-repo</id>
+         <name>Releases</name>
+         <url>http://repo.sinndev.com/content/repositories/releases/</url>
+      </repository>
+      <snapshotRepository>
+         <id>sinndev-repo</id>
+         <name>Snapshots</name>
+         <url>http://repo.sinndev.com/content/repositories/snapshots/</url>
+      </snapshotRepository>
+    </distributionManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>1.5</version>
+                <configuration>
+                    <artifactSet>
+                        <excludes>
+                            <exclude>org.bukkit:*</exclude>
+                        </excludes>
+                    </artifactSet>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
