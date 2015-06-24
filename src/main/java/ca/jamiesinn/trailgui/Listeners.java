@@ -14,13 +14,12 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 
-public class Listeners
-        implements Listener
+public class Listeners implements Listener
 {
-    public static ArrayList<String> cooldownAngryVillager = new ArrayList();
-    public static ArrayList<String> cooldownEnderSignal = new ArrayList();
-    public static ArrayList<String> cooldownHearts = new ArrayList();
-    public static ArrayList<String> cooldownNote = new ArrayList();
+    public static ArrayList<String> cooldownAngryVillager = new ArrayList<String>();
+    public static ArrayList<String> cooldownEnderSignal = new ArrayList<String>();
+    public static ArrayList<String> cooldownHearts = new ArrayList<String>();
+    public static ArrayList<String> cooldownNote = new ArrayList<String>();
     Main main;
 
     public Listeners(Main main)
@@ -1253,6 +1252,7 @@ public class Listeners
         }
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     @EventHandler
     public void onPlayerMove1(PlayerMoveEvent event)
     {
@@ -1290,7 +1290,7 @@ public class Listeners
                 {
                     Listeners.cooldownAngryVillager.remove(player.getUniqueId().toString());
                 }
-            }, this.main.getConfig().getInt("AngryVillager-cooldown") * 1);
+            }, this.main.getConfig().getInt("AngryVillager-cooldown"));
         }
         if (Main.trailCriticals.contains(player.getUniqueId().toString()))
         {
@@ -1359,7 +1359,7 @@ public class Listeners
                 {
                     Listeners.cooldownNote.remove(player.getUniqueId().toString());
                 }
-            }, this.main.getConfig().getInt("Note-cooldown") * 1);
+            }, this.main.getConfig().getInt("Note-cooldown"));
         }
         if (Main.trailPortal.contains(player.getUniqueId().toString()))
         {
@@ -1420,7 +1420,7 @@ public class Listeners
                 {
                     Listeners.cooldownHearts.remove(player.getUniqueId().toString());
                 }
-            }, this.main.getConfig().getInt("Hearts-cooldown") * 1);
+            }, this.main.getConfig().getInt("Hearts-cooldown"));
         }
         if (Main.trailEnderSignal.contains(player.getUniqueId().toString()))
         {
@@ -1437,7 +1437,7 @@ public class Listeners
                 {
                     Listeners.cooldownEnderSignal.remove(player.getUniqueId().toString());
                 }
-            }, this.main.getConfig().getInt("EnderSignal-cooldown") * 1);
+            }, this.main.getConfig().getInt("EnderSignal-cooldown"));
         }
         if(Main.trailIconCrack.contains(player.getUniqueId().toString()))
         {

@@ -18,6 +18,7 @@ public class Trails
         this.main = main;
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
     {
         if (cmd.getName().equalsIgnoreCase("Trails"))

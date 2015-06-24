@@ -375,11 +375,6 @@ public class Methodes
         return p.hasPermission("trailgui.inventory." + trail);
     }
 
-    public static int getItemSlot(String trail)
-    {
-        return Main.getPlugin().getConfig().getInt(trail + "-inventorySlot");
-    }
-
     public static void openGUI1(Player player)
     {
         Inventory inv1 = Bukkit.createInventory(null, 45, Main.getPlugin().getConfig().getString("pageOneInventoryName").replaceAll("&", "§"));

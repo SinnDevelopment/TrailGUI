@@ -18,6 +18,7 @@ public class TrailGUI
         this.main = main;
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
     {
         if (cmd.getName().equalsIgnoreCase("TrailGUI"))

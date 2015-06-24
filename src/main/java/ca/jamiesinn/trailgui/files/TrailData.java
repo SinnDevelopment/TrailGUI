@@ -14,6 +14,7 @@ public class TrailData
     public static FileConfiguration config;
     public static File file = new File(Main.getPlugin().getDataFolder(), "TrailData");
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     public static void createFile()
     {
         if (!file.exists())
