@@ -50,7 +50,14 @@
                 <configuration>
                     <artifactSet>
                         <excludes>
-                            <exclude>org.bukkit:*</exclude>
+                           <exclude>org.bukkit:*</exclude>
+			<exclude>org.*:*</exclude>
+			<exclude>junit:junit</exclude>
+			<exclude>javax:*</exclude>
+			<exclude>com.avaje:*</exclude>
+			<exclude>com.google:*</exclude>
+			<exclude>org.apache:*</exclude>
+			<exclude>org.yaml:*</exclude>
                         </excludes>
                     </artifactSet>
                 </configuration>
