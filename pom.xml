@@ -49,18 +49,9 @@
                 <version>1.5</version>
                 <configuration>
                     <artifactSet>
-                        <excludes>
-                           <exclude>org.bukkit:*</exclude>
-			<exclude>org.*:*</exclude>
-			<exclude>junit:junit</exclude>
-			<exclude>javax:*</exclude>
-			<exclude>com.avaje:*</exclude>
-			<exclude>com.google.common:*</exclude>
-			<exclude>com.google.gson:*</exclude>
-			<exclude>com.google.thirdparty:*</exclude>
-			<exclude>org.apache.commons:*</exclude>
-			<exclude>org.yaml:*</exclude>
-                        </excludes>
+                        <includes>
+                            <include>com.darkblade12:*</include>
+                        </includes>
                     </artifactSet>
                 </configuration>
                 <executions>
