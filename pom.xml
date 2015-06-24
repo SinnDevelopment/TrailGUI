@@ -55,8 +55,10 @@
 			<exclude>junit:junit</exclude>
 			<exclude>javax:*</exclude>
 			<exclude>com.avaje:*</exclude>
-			<exclude>com.google:*</exclude>
-			<exclude>org.apache:*</exclude>
+			<exclude>com.google.common:*</exclude>
+			<exclude>com.google.gson:*</exclude>
+			<exclude>com.google.thirdparty:*</exclude>
+			<exclude>org.apache.commons:*</exclude>
 			<exclude>org.yaml:*</exclude>
                         </excludes>
                     </artifactSet>
