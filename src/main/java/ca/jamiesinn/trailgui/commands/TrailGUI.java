@@ -68,7 +68,9 @@ public class TrailGUI
                         player.sendMessage(this.main.getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                         return false;
                     }
-                    player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.RED + "TrailGUI" + ChatColor.DARK_GRAY + "]: " + ChatColor.GREEN + "Version 3.1" + ChatColor.GREEN + " created by " + ChatColor.BOLD + "Coder_M, and JamieSinn" + ChatColor.GREEN + ".");
+                    player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.RED + "TrailGUI" + ChatColor.DARK_GRAY + "]: " + ChatColor.GREEN + "Version"
+                            + this.main.getDescription().getVersion()
+                            +  ChatColor.GREEN + " created by " + ChatColor.BOLD + "Coder_M, and JamieSinn" + ChatColor.GREEN + ".");
                     return true;
                 }
             }

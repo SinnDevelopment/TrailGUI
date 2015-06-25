@@ -14,11 +14,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Trail
+@SuppressWarnings("deprecation") public class Trail
         implements CommandExecutor, TabCompleter
 {
-    List<String> trailList1 = new ArrayList();
-    List<String> trailList2 = new ArrayList();
+    List<String> trailList1 = new ArrayList<String>();
+    List<String> trailList2 = new ArrayList<String>();
     Main main;
 
     public Trail(Main main)
@@ -141,7 +141,7 @@ public class Trail
             //region ARG 0 PARSING
             if (args[0].equalsIgnoreCase("AngryVillager") || args[0].equalsIgnoreCase("angry"))
             {
-                if (!player.hasPermission("trailgui.trails.angryvillager"))
+                if (!player.hasPermission("trailgui.trails.angryvillager") || !player.hasPermission("trailgui.commands.angryvillager"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -162,7 +162,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "AngryVillager"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.angryvillager.other"))
+                if (!player.hasPermission("trailgui.trails.angryvillager.other") || !player.hasPermission("trailgui.commands.other.angryvillager"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -197,7 +197,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("Cloud"))
             {
-                if (!player.hasPermission("trailgui.trails.cloud"))
+                if (!player.hasPermission("trailgui.trails.cloud") || !player.hasPermission("trailgui.commands.cloud"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -218,7 +218,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "Cloud"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.cloud.other"))
+                if (!player.hasPermission("trailgui.trails.cloud.other") || !player.hasPermission("trailgui.commands.other.cloud"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -253,7 +253,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("Criticals"))
             {
-                if (!player.hasPermission("trailgui.trails.criticals"))
+                if (!player.hasPermission("trailgui.trails.criticals") || !player.hasPermission("trailgui.commands.criticals"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -274,7 +274,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "Criticals"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.criticals.other"))
+                if (!player.hasPermission("trailgui.trails.criticals.other") || !player.hasPermission("trailgui.commands.other.criticals"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -309,7 +309,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("DripLava"))
             {
-                if (!player.hasPermission("trailgui.trails.driplava"))
+                if (!player.hasPermission("trailgui.trails.driplava") || !player.hasPermission("trailgui.commands.driplava"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -330,7 +330,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "DripLava"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.driplava.other"))
+                if (!player.hasPermission("trailgui.trails.driplava.other") || !player.hasPermission("trailgui.commands.other.driplava"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -365,7 +365,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("DripWater"))
             {
-                if (!player.hasPermission("trailgui.trails.dripwater"))
+                if (!player.hasPermission("trailgui.trails.dripwater") || !player.hasPermission("trailgui.commands.dripwater"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -386,7 +386,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "DripWater"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.dripwater.other"))
+                if (!player.hasPermission("trailgui.trails.dripwater.other") || !player.hasPermission("trailgui.commands.other.dripwater"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -421,7 +421,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("Enchantment"))
             {
-                if (!player.hasPermission("trailgui.trails.enchantment"))
+                if (!player.hasPermission("trailgui.trails.enchantment")|| !player.hasPermission("trailgui.commands.enchantment"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -442,7 +442,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "Enchantment"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.enchantment.other"))
+                if (!player.hasPermission("trailgui.trails.enchantment.other") || !player.hasPermission("trailgui.commands.other.enchantment"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -477,7 +477,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("Spark"))
             {
-                if (!player.hasPermission("trailgui.trails.spark"))
+                if (!player.hasPermission("trailgui.trails.spark") || !player.hasPermission("trailgui.commands.spark"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -498,7 +498,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "Spark"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.spark.other"))
+                if (!player.hasPermission("trailgui.trails.spark.other") || !player.hasPermission("trailgui.commands.other.spark"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -533,7 +533,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("Flame"))
             {
-                if (!player.hasPermission("trailgui.trails.flame"))
+                if (!player.hasPermission("trailgui.trails.flame") || !player.hasPermission("trailgui.commands.flame"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -552,7 +552,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "Flame"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.flame.other"))
+                if (!player.hasPermission("trailgui.trails.flame.other") || !player.hasPermission("trailgui.commands.other.flame"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -587,7 +587,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("HappyVillager") || args[0].equalsIgnoreCase("happy"))
             {
-                if (!player.hasPermission("trailgui.trails.happyvillager"))
+                if (!player.hasPermission("trailgui.trails.happyvillager") || !player.hasPermission("trailgui.commands.happyvillager"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -608,7 +608,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "HappyVillager"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.happyvillager.other"))
+                if (!player.hasPermission("trailgui.trails.happyvillager.other") || !player.hasPermission("trailgui.commands.other.happyvillager"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -643,7 +643,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("InstantSpell"))
             {
-                if (!player.hasPermission("trailgui.trails.instantspell"))
+                if (!player.hasPermission("trailgui.trails.instantspell") || !player.hasPermission("trailgui.commands.instantspell"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -664,7 +664,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "InstantSpell"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.instantspell.other"))
+                if (!player.hasPermission("trailgui.trails.instantspell.other") || !player.hasPermission("trailgui.commands.other.instantspell"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -699,7 +699,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("LargeSmoke"))
             {
-                if (!player.hasPermission("trailgui.trails.largesmoke"))
+                if (!player.hasPermission("trailgui.trails.largesmoke") || !player.hasPermission("trailgui.commands.largesmoke"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -720,7 +720,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "LargeSmoke"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.largesmoke.other"))
+                if (!player.hasPermission("trailgui.trails.largesmoke.other") || !player.hasPermission("trailgui.commands.other.largesmoke"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -755,7 +755,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("Lava") || args[0].equalsIgnoreCase("erupt"))
             {
-                if (!player.hasPermission("trailgui.trails.lava"))
+                if (!player.hasPermission("trailgui.trails.lava") || !player.hasPermission("trailgui.commands.lava"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -776,7 +776,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "Lava"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.lava.other"))
+                if (!player.hasPermission("trailgui.trails.lava.other") || !player.hasPermission("trailgui.commands.other.lava"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -811,7 +811,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("MagicCrit"))
             {
-                if (!player.hasPermission("trailgui.trails.magiccrit"))
+                if (!player.hasPermission("trailgui.trails.magiccrit") || !player.hasPermission("trailgui.commands.magiccrit"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -832,7 +832,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "MagicCrit"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.magiccrit.other"))
+                if (!player.hasPermission("trailgui.trails.magiccrit.other") || !player.hasPermission("trailgui.commands.other.magiccrit"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -867,7 +867,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("MobSpell") || args[0].equalsIgnoreCase("rainbowpotion"))
             {
-                if (!player.hasPermission("trailgui.trails.mobspell"))
+                if (!player.hasPermission("trailgui.trails.mobspell") || !player.hasPermission("trailgui.commands.mobspell"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -889,7 +889,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "MobSpell"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.mobspell.other"))
+                if (!player.hasPermission("trailgui.trails.mobspell.other") || !player.hasPermission("trailgui.commands.other.mobspell"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -924,7 +924,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("MobSpellAmbient") || args[0].equalsIgnoreCase("fadedrainbowpotion"))
             {
-                if (!player.hasPermission("trailgui.trails.mobspellambient"))
+                if (!player.hasPermission("trailgui.trails.mobspellambient") || !player.hasPermission("trailgui.commands.mobspellambient"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -945,7 +945,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "MobSpellAmbient"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.mobspellambient.other"))
+                if (!player.hasPermission("trailgui.trails.mobspellambient.other") || !player.hasPermission("trailgui.commands.other.mobspellambient"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -980,7 +980,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("Note"))
             {
-                if (!player.hasPermission("trailgui.trails.note"))
+                if (!player.hasPermission("trailgui.trails.note") || !player.hasPermission("trailgui.commands.note"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1001,7 +1001,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "Note"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.note.other"))
+                if (!player.hasPermission("trailgui.trails.note.other") || !player.hasPermission("trailgui.commands.other.note"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1036,7 +1036,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("Portal"))
             {
-                if (!player.hasPermission("trailgui.trails.portal"))
+                if (!player.hasPermission("trailgui.trails.portal") || !player.hasPermission("trailgui.commands.portal"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1057,7 +1057,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "Portal"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.portal.other"))
+                if (!player.hasPermission("trailgui.trails.portal.other") || !player.hasPermission("trailgui.commands.other.portal"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1092,7 +1092,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("RedDust"))
             {
-                if (!player.hasPermission("trailgui.trails.reddust"))
+                if (!player.hasPermission("trailgui.trails.reddust") || !player.hasPermission("trailgui.commands.reddust"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1113,7 +1113,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "RedDust"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.reddust.other"))
+                if (!player.hasPermission("trailgui.trails.reddust.other") || !player.hasPermission("trailgui.commands.other.reddust"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1148,7 +1148,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("ColoredRedDust") || args[0].equalsIgnoreCase("rainbowdust"))
             {
-                if (!player.hasPermission("trailgui.trails.coloredreddust"))
+                if (!player.hasPermission("trailgui.trails.coloredreddust") || !player.hasPermission("trailgui.commands.coloredreddust"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1169,7 +1169,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "ColoredRedDust"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.coloredreddust.other"))
+                if (!player.hasPermission("trailgui.trails.coloredreddust.other") || !player.hasPermission("trailgui.commands.other.coloredreddust"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1204,7 +1204,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("Slime"))
             {
-                if (!player.hasPermission("trailgui.trails.slime"))
+                if (!player.hasPermission("trailgui.trails.slime")|| !player.hasPermission("trailgui.commands.slime"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1225,7 +1225,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "Slime"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.slime.other"))
+                if (!player.hasPermission("trailgui.trails.slime.other") || !player.hasPermission("trailgui.commands.other.slime"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1260,7 +1260,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("SnowShovel"))
             {
-                if (!player.hasPermission("trailgui.trails.snowshovel"))
+                if (!player.hasPermission("trailgui.trails.snowshovel") || !player.hasPermission("trailgui.commands.snowshovel"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1281,7 +1281,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "SnowShovel"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.snowshovel.other"))
+                if (!player.hasPermission("trailgui.trails.snowshovel.other") || !player.hasPermission("trailgui.commands.other.snowshovel"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1316,7 +1316,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("SnowballPoof"))
             {
-                if (!player.hasPermission("trailgui.trails.snowballpoof"))
+                if (!player.hasPermission("trailgui.trails.snowballpoof") || !player.hasPermission("trailgui.commands.snowballpoof"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1337,7 +1337,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "SnowballPoof"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.snowballpoof.other"))
+                if (!player.hasPermission("trailgui.trails.snowballpoof.other") || !player.hasPermission("trailgui.commands.other.snowballpoof"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1372,7 +1372,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("Spell"))
             {
-                if (!player.hasPermission("trailgui.trails.spell"))
+                if (!player.hasPermission("trailgui.trails.spell") || !player.hasPermission("trailgui.commands.spell"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1393,7 +1393,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "Spell"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.spell.other"))
+                if (!player.hasPermission("trailgui.trails.spell.other") || !player.hasPermission("trailgui.commands.other.spell"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1428,7 +1428,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("Splash"))
             {
-                if (!player.hasPermission("trailgui.trails.splash"))
+                if (!player.hasPermission("trailgui.trails.splash")|| !player.hasPermission("trailgui.commands.splash"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1449,7 +1449,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "Splash"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.splash.other"))
+                if (!player.hasPermission("trailgui.trails.splash.other") || !player.hasPermission("trailgui.commands.other.splash"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1484,7 +1484,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("townaura"))
             {
-                if (!player.hasPermission("trailgui.trails.townaura"))
+                if (!player.hasPermission("trailgui.trails.townaura") || !player.hasPermission("trailgui.commands.townaura"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1505,7 +1505,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "TownAura"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.townaura.other"))
+                if (!player.hasPermission("trailgui.trails.townaura.other") || !player.hasPermission("trailgui.commands.other.townaura"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1540,7 +1540,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("Wake"))
             {
-                if (!player.hasPermission("trailgui.trails.wake"))
+                if (!player.hasPermission("trailgui.trails.wake") || !player.hasPermission("trailgui.commands.wake"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1561,7 +1561,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "Wake"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.wake.other"))
+                if (!player.hasPermission("trailgui.trails.wake.other") || !player.hasPermission("trailgui.commands.other.wake"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1596,7 +1596,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("witchmagic") || args[0].equalsIgnoreCase("purplesparkle"))
             {
-                if (!player.hasPermission("trailgui.trails.witchmagic"))
+                if (!player.hasPermission("trailgui.trails.witchmagic") || !player.hasPermission("trailgui.commands.witchmagic"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1617,7 +1617,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "WitchMagic"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.witchmagic.other"))
+                if (!player.hasPermission("trailgui.trails.witchmagic.other") || !player.hasPermission("trailgui.commands.other.witchmagic"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1652,7 +1652,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("hearts") || args[0].equalsIgnoreCase("heart"))
             {
-                if (!player.hasPermission("trailgui.trails.hearts"))
+                if (!player.hasPermission("trailgui.trails.hearts") || !player.hasPermission("trailgui.commands.hearts"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1673,7 +1673,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "Hearts"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.hearts.other"))
+                if (!player.hasPermission("trailgui.trails.hearts.other") || player.hasPermission("trailgui.commands.other.hearts"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1708,7 +1708,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("endersignal"))
             {
-                if (!player.hasPermission("trailgui.trails.endersignal"))
+                if (!player.hasPermission("trailgui.trails.endersignal") || !player.hasPermission("trailgui.commands.endersignal"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1729,7 +1729,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "EnderSignal"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.endersignal.other"))
+                if (!player.hasPermission("trailgui.trails.endersignal.other") || !player.hasPermission("trailgui.commands.other.endersignal"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1764,7 +1764,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("iconcrack"))
             {
-                if (!player.hasPermission("trailgui.trails.iconcrack"))
+                if (!player.hasPermission("trailgui.trails.iconcrack") || !player.hasPermission("trailgui.commands.iconcrack"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1785,7 +1785,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "IconCrack"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.iconcrack.other"))
+                if (!player.hasPermission("trailgui.trails.iconcrack.other") || !player.hasPermission("trailgui.commands.other.iconcrack"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1820,7 +1820,7 @@ public class Trail
             }
             if (args[0].equalsIgnoreCase("blockbreak"))
             {
-                if (!player.hasPermission("trailgui.trails.blockbreak"))
+                if (!player.hasPermission("trailgui.trails.blockbreak") || !player.hasPermission("trailgui.commands.blockbreak"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
@@ -1841,7 +1841,7 @@ public class Trail
                     player.sendMessage(this.main.getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "§").replaceAll("%TrailName%", "BlockBreak"));
                     return true;
                 }
-                if (!player.hasPermission("trailgui.trails.blockbreak.other"))
+                if (!player.hasPermission("trailgui.trails.blockbreak.other") || !player.hasPermission("trailgui.commands.other.blockbreak"))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "§"));
                     return false;
