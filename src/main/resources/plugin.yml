@@ -1,6 +1,6 @@
 name: TrailGUI
 main: ca.jamiesinn.trailgui.Main
-version: 3.10
+version: 3.11
 author: JamieSinn
 
 commands:

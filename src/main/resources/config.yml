@@ -3,15 +3,12 @@
 
 ############################################################
 # +------------------------------------------------------+ #
-# |            Configuration: TrailGUI                   | #
+# |          Configuration: TrailGUI                | #
 # +------------------------------------------------------+ #
 ############################################################
 
 #The name of the GUI on page one.
-pageOneInventoryName: "TrailGUI (1/2)"
-
-#The name of the GUI on page two.
-pageTwoInventoryName: "TrailGUI (2/2)"
+inventoryName: "TrailGUI"
 
 #Whether or not the inventory will close if the player doesn't have permission.
 closeInventoryOnDenyPermission: true
@@ -31,7 +28,7 @@ oneTrailAtATime: false
 
 ############################################################
 # +------------------------------------------------------+ #
-# |            Configuration: GUI                        | #
+# |          Configuration: GUI                    | #
 # +------------------------------------------------------+ #
 ############################################################
 
@@ -49,7 +46,7 @@ GUI-removeTrailMessage: "&8[&CTrailGUI&8]: &ARemoved the &L%TrailName% &Atrail."
 
 ############################################################
 # +------------------------------------------------------+ #
-# |            Configuration: commands                   | #
+# |          Configuration: commands                | #
 # +------------------------------------------------------+ #
 ############################################################
 
@@ -82,801 +79,819 @@ Commands-removeTrailTargetMessage: "&8[&CTrailGUI&8]: &AYou no longer have the %
 
 ############################################################
 # +------------------------------------------------------+ #
-# |            Configuration: Trails                     | #
+# |          Configuration: Trails                 | #
 # +------------------------------------------------------+ #
 ############################################################
+trails:
+  AngryVillager:
+    type: VILLAGER_ANGRY
+    #The location the particle effect is displayed.
+    displayLocation: 1.5
+    #The amount of particles displayed.
+    amount: 1
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The cooldown time before the particle effect is displayed again. (20 ticks = 1 second)
+    cooldown: 250
+    #The inventory slot the item is put in.
+    order: 0
+    #The items type.
+    itemType: emerald
+    #The items name.
+    itemName: "&6AngryVillager"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  Cloud:
+    type: CLOUD
+    #The location the particle effect is displayed.
+    displayLocation: 0.5
+    #The amount of particles displayed.
+    amount: 4
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 1
+    #The items type.
+    itemType: web
+    #The items name.
+    itemName: "&6Cloud"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  Criticals:
+    type: CRIT
+    #The location the particle effect is displayed.
+    displayLocation: 0.5
+    #The amount of particles displayed.
+    amount: 2
+    #The speed the particles are displayed.
+    speed: 1
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 2
+    #The items type.
+    itemType: iron_sword
+    #The items name.
+    itemName: "&6Criticals"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  DripLava:
+    type: DRIP_LAVA
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 5
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 3
+    #The items type.
+    itemType: lava_bucket
+    #The items name.
+    itemName: "&6DripLava"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  DripWater:
+    type: DRIP_WATER
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 5
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 4
+    #The items type.
+    itemType: water_bucket
+    #The items name.
+    itemName: "&6DripWater"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  Enchantment:
+    type: ENCHANTMENT_TABLE
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 10
+    #The speed the particles are displayed.
+    speed: 0.5
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 5
+    #The items type.
+    itemType: enchantment_table
+    #The items name.
+    itemName: "&6Enchantment"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  Spark:
+    type: FIREWORKS_SPARK
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 5
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 6
+    #The items type.
+    itemType: firework_charge
+    #The items name.
+    itemName: "&6Spark"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  Flame:
+    type: FLAME
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 5
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 7
+    #The items type.
+    itemType: fireball
+    #The items name.
+    itemName: "&6Flame"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  HappyVillager:
+    type: VILLAGER_HAPPY
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 5
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 8
+    #The items type.
+    itemType: book
+    #The items name.
+    itemName: "&6HappyVillager"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  InstantSpell:
+    type: SPELL_INSTANT
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 5
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 9
+    #The items type.
+    itemType: glass_bottle
+    #The items name.
+    itemName: "&6InstantSpell"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  LargeSmoke:
+    type: SMOKE_LARGE
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 3
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 10
+    #The items type.
+    itemType: furnace
+    #The items name.
+    itemName: "&6LargeSmoke"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  Lava:
+    type: LAVA
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 2
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 11
+    #The items type.
+    itemType: flint_and_steel
+    #The items name.
+    itemName: "&6Lava"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  MagicCrit:
+    type: CRIT_MAGIC
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 2
+    #The speed the particles are displayed.
+    speed: 1
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 12
+    #The items type.
+    itemType: POTION
+    #The items name.
+    itemName: "&6MagicCrit"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  MobSpell:
+    type: SPELL_MOB
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 3
+    #The speed the particles are displayed.
+    speed: 1
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 13
+    #The items type.
+    itemType: blaze_rod
+    #The items name.
+    itemName: "&6MobSpell"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  MobSpellAmbient:
+    type: SPELL_MOB_AMBIENT
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 3
+    #The speed the particles are displayed.
+    speed: 1
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 14
+    #The items type.
+    itemType: blaze_rod
+    #The items name.
+    itemName: "&6MobSpellAmbient"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  Note:
+    type: NOTE
+    #The location the particle effect is displayed.
+    displayLocation: 2.0
+    #The amount of particles displayed.
+    amount: 1
+    #The speed the particles are displayed.
+    speed: 1
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The cooldown time before the particle effect is displayed again. (20 ticks = 1 second)
+    cooldown: 100
+    #The inventory slot the item is put in.
+    order: 15
+    #The items type.
+    itemType: note_block
+    #The items name.
+    itemName: "&6Note"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  Portal:
+    type: PORTAL
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 25
+    #The speed the particles are displayed.
+    speed: 0.2
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 16
+    #The items type.
+    itemType: obsidian
+    #The items name.
+    itemName: "&6Portal"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  RedDust:
+    type: REDSTONE
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 5
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 17
+    #The items type.
+    itemType: redstone
+    #The items name.
+    itemName: "&6RedDust"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  ColoredRedDust:
+    type: REDSTONE
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 5
+    #The speed the particles are displayed.
+    speed: 1
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 18
+    #The items type.
+    itemType: glowstone_dust
+    #The items name.
+    itemName: "&6ColoredRedDust"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  Slime:
+    type: SLIME
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 5
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 19
+    #The items type.
+    itemType: slime_ball
+    #The items name.
+    itemName: "&6Slime"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  SnowShovel:
+    type: SNOW_SHOVEL
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 5
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 20
+    #The items type.
+    itemType: diamond_spade
+    #The items name.
+    itemName: "&6SnowShovel"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  SnowballPoof:
+    type: SNOWBALL
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 5
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 21
+    #The items type.
+    itemType: snow_ball
+    #The items name.
+    itemName: "&6SnowballPoof"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  Spell:
+    type: SPELL
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 5
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 22
+    #The items type.
+    itemType: milk_bucket
+    #The items name.
+    itemName: "&6Spell"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  Splash:
+    type: WATER_SPLASH
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 5
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 23
+    #The items type.
+    itemType: stick
+    #The items name.
+    itemName: "&6Splash"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  TownAura:
+    type: TOWN_AURA
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 50
+    #The speed the particles are displayed.
+    speed: 0.1
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 24
+    #The items type.
+    itemType: mycel
+    #The items name.
+    itemName: "&6TownAura"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  Wake:
+    type: WATER_WAKE
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 5
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 25
+    #The items type.
+    itemType: raw_fish
+    #The items name.
+    itemName: "&6Wake"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  WitchMagic:
+    type: SPELL_WITCH
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 5
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 26
+    #The items type.
+    itemType: spider_eye
+    #The items name.
+    itemName: "&6WitchMagic"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  Hearts:
+    type: HEART
+    #The location the particle effect is displayed.
+    displayLocation: 2.0
+    #The amount of particles displayed.
+    amount: 27
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The cooldown time before the particle effect is displayed again. (20 ticks = 1 second)
+    cooldown: 250
+    #The inventory slot the item is put in.
+    order: 0
+    #The items type.
+    itemType: red_rose
+    #The items name.
+    itemName: "&6Hearts"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  EnderSignal:
+    is_effect: true
+    type: ENDER_SIGNAL
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The cooldown time before the particle effect is displayed again. (20 ticks = 1 second)
+    cooldown: 900
+    #The inventory slot the item is put in.
+    order: 28
+    #The items type.
+    itemType: eye_of_ender
+    #The items name.
+    itemName: "&6EnderSignal"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  potato:
+    type: ITEM_CRACK
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The speed at which the particles are displayed
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 10
+    #The inventory slot the item is put in.
+    order: 29
+    #The items type. This is also the item which will be "cracked"
+    itemType: baked_potato
+    #The items name.
+    itemName: "&6Potato"
+    #The items amount.
+    amount: 1
+  melon:
+    type: BLOCK_CRACK
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The speed at which the particles are displayed
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 10
+    #The inventory slot the item is put in.
+    order: 30
+    #The items type. This is also the item which will be "cracked"
+    itemType: melon_block
+    #The items name.
+    itemName: "&6Melon"
+    #The items amount.
+    amount: 1
+
+  blackdust:
+    type: REDSTONE
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 7
+    #The speed the particles are displayed.
+    speed: 0.01
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 31
+    #The items type.
+    itemType: coal
+    #The items name.
+    itemName: "&6blackdust"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+
+  footstep:
+    type: FOOTSTEP
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 1
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 32
+    #The items type.
+    itemType: iron_boots
+    #The items name.
+    itemName: "&6footsteps"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+
+  blackpotion:
+    type: SPELL_MOB
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 5
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 33
+    #The items type.
+    itemType: POTION
+    #The items name.
+    itemName: "&6blackpotion"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
 
-#### @AngryVillager
-
-#The location the particle effect is displayed.
-AngryVillager-displayLocation: 1.5
-#The amount of particles displayed.
-AngryVillager-amount: 1
-#The speed the particles are displayed.
-AngryVillager-speed: 0
-#The distance before unrendering the particle effect.
-AngryVillager-range: 20
-#The cooldown time before the particle effect is displayed again. (20 ticks = 1 second)
-AngryVillager-cooldown: 5
-
-#The inventory slot the item is put in.
-AngryVillager-inventorySlot: 0
-#The items type.
-AngryVillager-itemType: emerald
-#The items name.
-AngryVillager-itemName: "&6AngryVillager"
-#Whether or not the lore is enabled.
-AngryVillager-loreEnabled: false
-#The text written on lore line one.
-AngryVillager-loreLineOne: "Example"
-#The text written on lore line two.
-AngryVillager-loreLineTwo: "Example"
-#The text written on lore line three.
-AngryVillager-loreLineThree: "Example"
-
-#### @Cloud
-
-#The location the particle effect is displayed.
-Cloud-displayLocation: 0.5
-#The amount of particles displayed.
-Cloud-amount: 4
-#The distance before unrendering the particle effect.
-Cloud-range: 20
-
-#The inventory slot the item is put in.
-Cloud-inventorySlot: 1
-#The items type.
-Cloud-itemType: web
-#The items name.
-Cloud-itemName: "&6Cloud"
-#Whether or not the lore is enabled.
-Cloud-loreEnabled: false
-#The text written on lore line one.
-Cloud-loreLineOne: "Example"
-#The text written on lore line two.
-Cloud-loreLineTwo: "Example"
-#The text written on lore line three.
-Cloud-loreLineThree: "Example"
-
-#### @Criticals
-
-#The location the particle effect is displayed.
-Criticals-displayLocation: 0.5
-#The amount of particles displayed.
-Criticals-amount: 2
-#The speed the particles are displayed.
-Criticals-speed: 1
-#The distance before unrendering the particle effect.
-Criticals-range: 20
-
-#The inventory slot the item is put in.
-Criticals-inventorySlot: 2
-#The items type.
-Criticals-itemType: iron_sword
-#The items name.
-Criticals-itemName: "&6Criticals"
-#Whether or not the lore is enabled.
-Criticals-loreEnabled: false
-#The text written on lore line one.
-Criticals-loreLineOne: "Example"
-#The text written on lore line two.
-Criticals-loreLineTwo: "Example"
-#The text written on lore line three.
-Criticals-loreLineThree: "Example"
-
-#### @DripLava
-
-#The location the particle effect is displayed.
-DripLava-displayLocation: 0.2
-#The amount of particles displayed.
-DripLava-amount: 5
-#The speed the particles are displayed.
-DripLava-speed: 0
-#The distance before unrendering the particle effect.
-DripLava-range: 20
-
-#The inventory slot the item is put in.
-DripLava-inventorySlot: 3
-#The items type.
-DripLava-itemType: lava_bucket
-#The items name.
-DripLava-itemName: "&6DripLava"
-#Whether or not the lore is enabled.
-DripLava-loreEnabled: false
-#The text written on lore line one.
-DripLava-loreLineOne: "Example"
-#The text written on lore line two.
-DripLava-loreLineTwo: "Example"
-#The text written on lore line three.
-DripLava-loreLineThree: "Example"
-
-#### @DripWater
-
-#The location the particle effect is displayed.
-DripWater-displayLocation: 0.2
-#The amount of particles displayed.
-DripWater-amount: 5
-#The speed the particles are displayed.
-DripWater-speed: 0
-#The distance before unrendering the particle effect.
-DripWater-range: 20
-
-#The inventory slot the item is put in.
-DripWater-inventorySlot: 4
-#The items type.
-DripWater-itemType: water_bucket
-#The items name.
-DripWater-itemName: "&6DripWater"
-#Whether or not the lore is enabled.
-DripWater-loreEnabled: false
-#The text written on lore line one.
-DripWater-loreLineOne: "Example"
-#The text written on lore line two.
-DripWater-loreLineTwo: "Example"
-#The text written on lore line three.
-DripWater-loreLineThree: "Example"
-
-#### @Enchantment
-
-#The location the particle effect is displayed.
-Enchantment-displayLocation: 0.2
-#The amount of particles displayed.
-Enchantment-amount: 5
-#The speed the particles are displayed.
-Enchantment-speed: 1
-#The distance before unrendering the particle effect.
-Enchantment-range: 20
-
-#The inventory slot the item is put in.
-Enchantment-inventorySlot: 5
-#The items type.
-Enchantment-itemType: enchantment_table
-#The items name.
-Enchantment-itemName: "&6Enchantment"
-#Whether or not the lore is enabled.
-Enchantment-loreEnabled: false
-#The text written on lore line one.
-Enchantment-loreLineOne: "Example"
-#The text written on lore line two.
-Enchantment-loreLineTwo: "Example"
-#The text written on lore line three.
-Enchantment-loreLineThree: "Example"
-
-#### @Spark
-
-#The location the particle effect is displayed.
-Spark-displayLocation: 0.2
-#The amount of particles displayed.
-Spark-amount: 5
-#The speed the particles are displayed.
-Spark-speed: 0
-#The distance before unrendering the particle effect.
-Spark-range: 20
-
-#The inventory slot the item is put in.
-Spark-inventorySlot: 6
-#The items type.
-Spark-itemType: firework_charge
-#The items name.
-Spark-itemName: "&6Spark"
-#Whether or not the lore is enabled.
-Spark-loreEnabled: false
-#The text written on lore line one.
-Spark-loreLineOne: "Example"
-#The text written on lore line two.
-Spark-loreLineTwo: "Example"
-#The text written on lore line three.
-Spark-loreLineThree: "Example"
-
-#### @Flame
-
-#The location the particle effect is displayed.
-Flame-displayLocation: 0.2
-#The amount of particles displayed.
-Flame-amount: 5
-#The speed the particles are displayed.
-Flame-speed: 0
-#The distance before unrendering the particle effect.
-Flame-range: 20
-
-#The inventory slot the item is put in.
-Flame-inventorySlot: 7
-#The items type.
-Flame-itemType: fireball
-#The items name.
-Flame-itemName: "&6Flame"
-#Whether or not the lore is enabled.
-Flame-loreEnabled: false
-#The text written on lore line one.
-Flame-loreLineOne: "Example"
-#The text written on lore line two.
-Flame-loreLineTwo: "Example"
-#The text written on lore line three.
-Flame-loreLineThree: "Example"
-
-#### @HappyVillager
-
-#The location the particle effect is displayed.
-HappyVillager-displayLocation: 0.2
-#The amount of particles displayed.
-HappyVillager-amount: 5
-#The speed the particles are displayed.
-HappyVillager-speed: 0
-#The distance before unrendering the particle effect.
-HappyVillager-range: 20
-
-#The inventory slot the item is put in.
-HappyVillager-inventorySlot: 8
-#The items type.
-HappyVillager-itemType: book
-#The items name.
-HappyVillager-itemName: "&6HappyVillager"
-#Whether or not the lore is enabled.
-HappyVillager-loreEnabled: false
-#The text written on lore line one.
-HappyVillager-loreLineOne: "Example"
-#The text written on lore line two.
-HappyVillager-loreLineTwo: "Example"
-#The text written on lore line three.
-HappyVillager-loreLineThree: "Example"
-
-#### @InstantSpell
-
-#The location the particle effect is displayed.
-InstantSpell-displayLocation: 0.2
-#The amount of particles displayed.
-InstantSpell-amount: 5
-#The speed the particles are displayed.
-InstantSpell-speed: 0
-#The distance before unrendering the particle effect.
-InstantSpell-range: 20
-
-#The inventory slot the item is put in.
-InstantSpell-inventorySlot: 9
-#The items type.
-InstantSpell-itemType: glass_bottle
-#The items name.
-InstantSpell-itemName: "&6InstantSpell"
-#Whether or not the lore is enabled.
-InstantSpell-loreEnabled: false
-#The text written on lore line one.
-InstantSpell-loreLineOne: "Example"
-#The text written on lore line two.
-InstantSpell-loreLineTwo: "Example"
-#The text written on lore line three.
-InstantSpell-loreLineThree: "Example"
-
-#### @LargeSmoke
-
-#The location the particle effect is displayed.
-LargeSmoke-displayLocation: 0.2
-#The amount of particles displayed.
-LargeSmoke-amount: 3
-#The speed the particles are displayed.
-LargeSmoke-speed: 0
-#The distance before unrendering the particle effect.
-LargeSmoke-range: 20
-
-#The inventory slot the item is put in.
-LargeSmoke-inventorySlot: 10
-#The items type.
-LargeSmoke-itemType: furnace
-#The items name.
-LargeSmoke-itemName: "&6LargeSmoke"
-#Whether or not the lore is enabled.
-LargeSmoke-loreEnabled: false
-#The text written on lore line one.
-LargeSmoke-loreLineOne: "Example"
-#The text written on lore line two.
-LargeSmoke-loreLineTwo: "Example"
-#The text written on lore line three.
-LargeSmoke-loreLineThree: "Example"
-
-#### @Lava
-
-#The location the particle effect is displayed.
-Lava-displayLocation: 0.2
-#The amount of particles displayed.
-Lava-amount: 2
-#The speed the particles are displayed.
-Lava-speed: 0
-#The distance before unrendering the particle effect.
-Lava-range: 20
-
-#The inventory slot the item is put in.
-Lava-inventorySlot: 11
-#The items type.
-Lava-itemType: flint_and_steel
-#The items name.
-Lava-itemName: "&6Lava"
-#Whether or not the lore is enabled.
-Lava-loreEnabled: false
-#The text written on lore line one.
-Lava-loreLineOne: "Example"
-#The text written on lore line two.
-Lava-loreLineTwo: "Example"
-#The text written on lore line three.
-Lava-loreLineThree: "Example"
-
-#### @MagicCrit
-
-#The location the particle effect is displayed.
-MagicCrit-displayLocation: 0.2
-#The amount of particles displayed.
-MagicCrit-amount: 2
-#The speed the particles are displayed.
-MagicCrit-speed: 1
-#The distance before unrendering the particle effect.
-MagicCrit-range: 20
-
-#The inventory slot the item is put in.
-MagicCrit-inventorySlot: 12
-#The items type.
-MagicCrit-itemType: water_bottle
-#The items name.
-MagicCrit-itemName: "&6MagicCrit"
-#Whether or not the lore is enabled.
-MagicCrit-loreEnabled: false
-#The text written on lore line one.
-MagicCrit-loreLineOne: "Example"
-#The text written on lore line two.
-MagicCrit-loreLineTwo: "Example"
-#The text written on lore line three.
-MagicCrit-loreLineThree: "Example"
-
-#### @MobSpell
-
-#The location the particle effect is displayed.
-MobSpell-displayLocation: 0.2
-#The amount of particles displayed.
-MobSpell-amount: 3
-#The speed the particles are displayed.
-MobSpell-speed: 1
-#The distance before unrendering the particle effect.
-MobSpell-range: 20
-
-#The inventory slot the item is put in.
-MobSpell-inventorySlot: 13
-#The items type.
-MobSpell-itemType: blaze_rod
-#The items name.
-MobSpell-itemName: "&6MobSpell"
-#Whether or not the lore is enabled.
-MobSpell-loreEnabled: false
-#The text written on lore line one.
-MobSpell-loreLineOne: "Example"
-#The text written on lore line two.
-MobSpell-loreLineTwo: "Example"
-#The text written on lore line three.
-MobSpell-loreLineThree: "Example"
-
-#### @MobSpellAmbient
-
-#The location the particle effect is displayed.
-MobSpellAmbient-displayLocation: 0.2
-#The amount of particles displayed.
-MobSpellAmbient-amount: 3
-#The speed the particles are displayed.
-MobSpellAmbient-speed: 1
-#The distance before unrendering the particle effect.
-MobSpellAmbient-range: 20
-
-#The inventory slot the item is put in.
-MobSpellAmbient-inventorySlot: 14
-#The items type.
-MobSpellAmbient-itemType: blaze_rod
-#The items name.
-MobSpellAmbient-itemName: "&6MobSpellAmbient"
-#Whether or not the lore is enabled.
-MobSpellAmbient-loreEnabled: false
-#The text written on lore line one.
-MobSpellAmbient-loreLineOne: "Example"
-#The text written on lore line two.
-MobSpellAmbient-loreLineTwo: "Example"
-#The text written on lore line three.
-MobSpellAmbient-loreLineThree: "Example"
-
-#### @Note
-
-#The location the particle effect is displayed.
-Note-displayLocation: 2.0
-#The amount of particles displayed.
-Note-amount: 1
-#The speed the particles are displayed.
-Note-speed: 1
-#The distance before unrendering the particle effect.
-Note-range: 20
-#The cooldown time before the particle effect is displayed again. (20 ticks = 1 second)
-Note-cooldown: 2
-
-#The inventory slot the item is put in.
-Note-inventorySlot: 15
-#The items type.
-Note-itemType: note_block
-#The items name.
-Note-itemName: "&6Note"
-#Whether or not the lore is enabled.
-Note-loreEnabled: false
-#The text written on lore line one.
-Note-loreLineOne: "Example"
-#The text written on lore line two.
-Note-loreLineTwo: "Example"
-#The text written on lore line three.
-Note-loreLineThree: "Example"
-
-#### @Portal
-
-#The location the particle effect is displayed.
-Portal-displayLocation: 0.2
-#The amount of particles displayed.
-Portal-amount: 5
-#The speed the particles are displayed.
-Portal-speed: 0
-#The distance before unrendering the particle effect.
-Portal-range: 20
-
-#The inventory slot the item is put in.
-Portal-inventorySlot: 16
-#The items type.
-Portal-itemType: obsidian
-#The items name.
-Portal-itemName: "&6Portal"
-#Whether or not the lore is enabled.
-Portal-loreEnabled: false
-#The text written on lore line one.
-Portal-loreLineOne: "Example"
-#The text written on lore line two.
-Portal-loreLineTwo: "Example"
-#The text written on lore line three.
-Portal-loreLineThree: "Example"
-
-#### @RedDust
-
-#The location the particle effect is displayed.
-RedDust-displayLocation: 0.2
-#The amount of particles displayed.
-RedDust-amount: 5
-#The speed the particles are displayed.
-RedDust-speed: 0
-#The distance before unrendering the particle effect.
-RedDust-range: 20
-
-#The inventory slot the item is put in.
-RedDust-inventorySlot: 17
-#The items type.
-RedDust-itemType: redstone
-#The items name.
-RedDust-itemName: "&6RedDust"
-#Whether or not the lore is enabled.
-RedDust-loreEnabled: false
-#The text written on lore line one.
-RedDust-loreLineOne: "Example"
-#The text written on lore line two.
-RedDust-loreLineTwo: "Example"
-#The text written on lore line three.
-RedDust-loreLineThree: "Example"
-
-#### @ColoredRedDust
-
-#The location the particle effect is displayed.
-ColoredRedDust-displayLocation: 0.2
-#The amount of particles displayed.
-ColoredRedDust-amount: 5
-#The speed the particles are displayed.
-ColoredRedDust-speed: 1
-#The distance before unrendering the particle effect.
-ColoredRedDust-range: 20
-
-#The inventory slot the item is put in.
-ColoredRedDust-inventorySlot: 18
-#The items type.
-ColoredRedDust-itemType: glowstone_dust
-#The items name.
-ColoredRedDust-itemName: "&6ColoredRedDust"
-#Whether or not the lore is enabled.
-ColoredRedDust-loreEnabled: false
-#The text written on lore line one.
-ColoredRedDust-loreLineOne: "Example"
-#The text written on lore line two.
-ColoredRedDust-loreLineTwo: "Example"
-#The text written on lore line three.
-ColoredRedDust-loreLineThree: "Example"
-
-#### @Slime
-
-#The location the particle effect is displayed.
-Slime-displayLocation: 0.2
-#The amount of particles displayed.
-Slime-amount: 5
-#The speed the particles are displayed.
-Slime-speed: 0
-#The distance before unrendering the particle effect.
-Slime-range: 20
-
-#The inventory slot the item is put in.
-Slime-inventorySlot: 19
-#The items type.
-Slime-itemType: slime_ball
-#The items name.
-Slime-itemName: "&6Slime"
-#Whether or not the lore is enabled.
-Slime-loreEnabled: false
-#The text written on lore line one.
-Slime-loreLineOne: "Example"
-#The text written on lore line two.
-Slime-loreLineTwo: "Example"
-#The text written on lore line three.
-Slime-loreLineThree: "Example"
-
-#### @SnowShovel
-
-#The location the particle effect is displayed.
-SnowShovel-displayLocation: 0.2
-#The amount of particles displayed.
-SnowShovel-amount: 5
-#The speed the particles are displayed.
-SnowShovel-speed: 0
-#The distance before unrendering the particle effect.
-SnowShovel-range: 20
-
-#The inventory slot the item is put in.
-SnowShovel-inventorySlot: 20
-#The items type.
-SnowShovel-itemType: diamond_spade
-#The items name.
-SnowShovel-itemName: "&6SnowShovel"
-#Whether or not the lore is enabled.
-SnowShovel-loreEnabled: false
-#The text written on lore line one.
-SnowShovel-loreLineOne: "Example"
-#The text written on lore line two.
-SnowShovel-loreLineTwo: "Example"
-#The text written on lore line three.
-SnowShovel-loreLineThree: "Example"
-
-#### @SnowballPoof
-
-#The location the particle effect is displayed.
-SnowballPoof-displayLocation: 0.2
-#The amount of particles displayed.
-SnowballPoof-amount: 5
-#The speed the particles are displayed.
-SnowballPoof-speed: 0
-#The distance before unrendering the particle effect.
-SnowballPoof-range: 20
-
-#The inventory slot the item is put in.
-SnowballPoof-inventorySlot: 21
-#The items type.
-SnowballPoof-itemType: snow_ball
-#The items name.
-SnowballPoof-itemName: "&6SnowballPoof"
-#Whether or not the lore is enabled.
-SnowballPoof-loreEnabled: false
-#The text written on lore line one.
-SnowballPoof-loreLineOne: "Example"
-#The text written on lore line two.
-SnowballPoof-loreLineTwo: "Example"
-#The text written on lore line three.
-SnowballPoof-loreLineThree: "Example"
-
-#### @Spell
-
-#The location the particle effect is displayed.
-Spell-displayLocation: 0.2
-#The amount of particles displayed.
-Spell-amount: 5
-#The speed the particles are displayed.
-Spell-speed: 0
-#The distance before unrendering the particle effect.
-Spell-range: 20
-
-#The inventory slot the item is put in.
-Spell-inventorySlot: 22
-#The items type.
-Spell-itemType: milk_bucket
-#The items name.
-Spell-itemName: "&6Spell"
-#Whether or not the lore is enabled.
-Spell-loreEnabled: false
-#The text written on lore line one.
-Spell-loreLineOne: "Example"
-#The text written on lore line two.
-Spell-loreLineTwo: "Example"
-#The text written on lore line three.
-Spell-loreLineThree: "Example"
-
-#### @Splash
-
-#The location the particle effect is displayed.
-Splash-displayLocation: 0.2
-#The amount of particles displayed.
-Splash-amount: 5
-#The speed the particles are displayed.
-Splash-speed: 0
-#The distance before unrendering the particle effect.
-Splash-range: 20
-
-#The inventory slot the item is put in.
-Splash-inventorySlot: 23
-#The items type.
-Splash-itemType: stick
-#The items name.
-Splash-itemName: "&6Splash"
-#Whether or not the lore is enabled.
-Splash-loreEnabled: false
-#The text written on lore line one.
-Splash-loreLineOne: "Example"
-#The text written on lore line two.
-Splash-loreLineTwo: "Example"
-#The text written on lore line three.
-Splash-loreLineThree: "Example"
-
-#### @TownAura
-
-#The location the particle effect is displayed.
-TownAura-displayLocation: 0.2
-#The amount of particles displayed.
-TownAura-amount: 10
-#The speed the particles are displayed.
-TownAura-speed: 0
-#The distance before unrendering the particle effect.
-TownAura-range: 20
-
-#The inventory slot the item is put in.
-TownAura-inventorySlot: 24
-#The items type.
-TownAura-itemType: mycel
-#The items name.
-TownAura-itemName: "&6TownAura"
-#Whether or not the lore is enabled.
-TownAura-loreEnabled: false
-#The text written on lore line one.
-TownAura-loreLineOne: "Example"
-#The text written on lore line two.
-TownAura-loreLineTwo: "Example"
-#The text written on lore line three.
-TownAura-loreLineThree: "Example"
-
-#### @Wake
-
-#The location the particle effect is displayed.
-Wake-displayLocation: 0.2
-#The amount of particles displayed.
-Wake-amount: 5
-#The speed the particles are displayed.
-Wake-speed: 0
-#The distance before unrendering the particle effect.
-Wake-range: 20
-
-#The inventory slot the item is put in.
-Wake-inventorySlot: 25
-#The items type.
-Wake-itemType: raw_fish
-#The items name.
-Wake-itemName: "&6Wake"
-#Whether or not the lore is enabled.
-Wake-loreEnabled: false
-#The text written on lore line one.
-Wake-loreLineOne: "Example"
-#The text written on lore line two.
-Wake-loreLineTwo: "Example"
-#The text written on lore line three.
-Wake-loreLineThree: "Example"
-
-#### @WitchMagic
-
-#The location the particle effect is displayed.
-WitchMagic-displayLocation: 0.2
-#The amount of particles displayed.
-WitchMagic-amount: 5
-#The speed the particles are displayed.
-WitchMagic-speed: 0
-#The distance before unrendering the particle effect.
-WitchMagic-range: 20
-
-#The inventory slot the item is put in.
-WitchMagic-inventorySlot: 26
-#The items type.
-WitchMagic-itemType: spider_eye
-#The items name.
-WitchMagic-itemName: "&6WitchMagic"
-#Whether or not the lore is enabled.
-WitchMagic-loreEnabled: false
-#The text written on lore line one.
-WitchMagic-loreLineOne: "Example"
-#The text written on lore line two.
-WitchMagic-loreLineTwo: "Example"
-#The text written on lore line three.
-WitchMagic-loreLineThree: "Example"
-
-#### @Hearts
-
-#The location the particle effect is displayed.
-Hearts-displayLocation: 2.0
-#The amount of particles displayed.
-Hearts-amount: 1
-#The speed the particles are displayed.
-Hearts-speed: 0
-#The distance before unrendering the particle effect.
-Hearts-range: 20
-#The cooldown time before the particle effect is displayed again. (20 ticks = 1 second)
-Hearts-cooldown: 5
-
-#The inventory slot the item is put in.
-Hearts-inventorySlot: 0
-#The items type.
-Hearts-itemType: red_rose
-#The items name.
-Hearts-itemName: "&6Hearts"
-#Whether or not the lore is enabled.
-Hearts-loreEnabled: false
-#The text written on lore line one.
-Hearts-loreLineOne: "Example"
-#The text written on lore line two.
-Hearts-loreLineTwo: "Example"
-#The text written on lore line three.
-Hearts-loreLineThree: "Example"
-
-#### @EnderSignal
-
-#The location the particle effect is displayed.
-EnderSignal-displayLocation: 0.2
-#The speed the particles are displayed.
-EnderSignal-speed: 0
-#The distance before unrendering the particle effect.
-EnderSignal-range: 20
-#The cooldown time before the particle effect is displayed again. (20 ticks = 1 second)
-EnderSignal-cooldown: 18
-
-#The inventory slot the item is put in.
-EnderSignal-inventorySlot: 1
-#The items type.
-EnderSignal-itemType: eye_of_ender
-#The items name.
-EnderSignal-itemName: "&6EnderSignal"
-#Whether or not the lore is enabled.
-EnderSignal-loreEnabled: false
-#The text written on lore line one.
-EnderSignal-loreLineOne: "Example"
-#The text written on lore line two.
-EnderSignal-loreLineTwo: "Example"
-#The text written on lore line three.
-EnderSignal-loreLineThree: "Example"
-
-#### @IconCrack
-
-#The location the particle effect is displayed.
-IconCrack-displayLocation: 0.2
-#The speed at which the particles are displayed
-IconCrack-speed: 0
-#The distance before unrendering the particle effect.
-IconCrack-range: 10
-#The inventory slot the item is put in.
-IconCrack-inventorySlot: 2
-#The items type. This is also the item which will be "cracked"
-IconCrack-itemType: baked_potato
-#The items name.
-IconCrack-itemName: "&6IconCrack"
-#The items amount.
-IconCrack-amount: 1
-
-#### @BlockBreak
-
-#The location the particle effect is displayed.
-BlockBreak-displayLocation: 0.2
-#The speed at which the particles are displayed
-BlockBreak-speed: 0
-#The distance before unrendering the particle effect.
-BlockBreak-range: 10
-#The inventory slot the item is put in.
-BlockBreak-inventorySlot: 3
-#The items type. This is also the item which will be "cracked"
-BlockBreak-itemType: melon_block
-#The items name.
-BlockBreak-itemName: "&6BlockBreak"
-#The items amount.
-BlockBreak-amount: 1
 
 #### @ClearAll
 
