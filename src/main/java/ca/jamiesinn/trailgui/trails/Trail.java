@@ -241,6 +241,11 @@ public abstract class Trail
                     {
                         Methods.clearTrails(player);
                     }
+                    if(Main.maxTrails < currentTrails.size() && Main.maxTrails != 0)
+                    {
+                        player.sendMessage(Main.getPlugin().getConfig().getString("Commands-tooManyTrailsMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
+                        return true;
+                    }
                     currentTrails.add(this);
                     Main.enabledTrails.put(player.getUniqueId(), currentTrails);
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
@@ -286,6 +291,11 @@ public abstract class Trail
                     if(Main.oneTrailAtATime)
                     {
                         Methods.clearTrails(target);
+                    }
+                    if(Main.maxTrails < currentTrails.size() && Main.maxTrails != 0)
+                    {
+                        player.sendMessage(Main.getPlugin().getConfig().getString("Commands-tooManyTrailsMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
+                        return true;
                     }
                     currentTrails.add(this);
                     Main.enabledTrails.put(target.getUniqueId(), currentTrails);

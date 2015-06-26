@@ -21,6 +21,7 @@ public class Main
     public static String prefix;
     public static boolean removeTrailOnPlayerHit;
     public static boolean oneTrailAtATime;
+    public static int maxTrails;
     public static List<String> disabledWorlds;
     public static Map<UUID, List<Trail>> enabledTrails = new HashMap<UUID, List<Trail>>();
     public static Map<String, Trail> trailTypes = new HashMap<String, Trail>();
@@ -46,6 +47,7 @@ public class Main
 
     private void load()
     {
+        maxTrails = getConfig().getInt("maxActiveTrails");
         oneTrailAtATime = getConfig().getBoolean("oneTrailAtATime", false);
         prefix = getConfig().getString("prefix").replaceAll("&", "\u00A7");
         if(prefix == null)

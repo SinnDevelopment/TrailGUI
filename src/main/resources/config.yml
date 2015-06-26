@@ -10,8 +10,8 @@
 #The name of the GUI on page one.
 inventoryName: "TrailGUI"
 
-#The prefix in game.
-prefix: '&8[&cTrailGUI&8] '
+#The prefix in game. Make sure to edit the messages too
+prefix: "&8[&cTrailGUI&8] "
 
 #Whether or not the inventory will close if the player doesn't have permission.
 closeInventoryOnDenyPermission: true
@@ -28,6 +28,9 @@ disabledWhenSpinning: true
 
 #Whether or not the player can only have one trail at a time.
 oneTrailAtATime: false
+
+#Max number of concurrently equipped trails - Only used if the above is false - use 0 for no limit
+maxActiveTrails: 0
 
 ############################################################
 # +------------------------------------------------------+ #
@@ -57,28 +60,31 @@ GUI-removeTrailMessage: "&8[&CTrailGUI&8]: &ARemoved the &L%TrailName% &Atrail."
 Commands-denyPermissionMessage: "&4You do not have permission to use this command."
 
 #The message sent when selecting a trail.
-Commands-selectTrailMessage: "&8[&CTrailGUI&8]: &ASelected the &L%TrailName% &Atrail."
+Commands-selectTrailMessage: "&8[&CTrailGUI&8] &ASelected the &L%TrailName% &Atrail."
 
 #The message sent when removing your own trail.
-Commands-removeTrailMessage: "&8[&CTrailGUI&8]: &ARemoved the &L%TrailName% &Atrail."
+Commands-removeTrailMessage: "&8[&CTrailGUI&8] &ARemoved the &L%TrailName% &Atrail."
 
 #The message sent when the target is offline. (Use %Target% to specify the target player)
-noTargetMessage: "&8[&CTrailGUI&8]: &AThe player &L%Target% &Acould not be found."
+noTargetMessage: "&8[&CTrailGUI&8] &AThe player &L%Target% &Acould not be found."
 
 #The message sent when the target is the player himself.
-targetSelfMessage: "&8[&CTrailGUI&8]: &APlease use /Trail %TrailName% instead."
+targetSelfMessage: "&8[&CTrailGUI&8] &APlease use /Trail %TrailName% instead."
 
 #The message sent to the sender when giving another player a trail. (Use %Target% to specify the target player)
-Commands-selectTrailSenderMessage: "&8[&CTrailGUI&8]: &A&L%Target% &Anow has the %TrailName% trail."
+Commands-selectTrailSenderMessage: "&8[&CTrailGUI&8] &A&L%Target% &Anow has the %TrailName% trail."
 
 #The message sent to the target when receiving a trail. (Use %Sender% to specify the sender)
-Commands-selectTrailTargetMessage: "&8[&CTrailGUI&8]: &AYou now have the &L%TrailName% &Atrail."
+Commands-selectTrailTargetMessage: "&8[&CTrailGUI&8] &AYou now have the &L%TrailName% &Atrail."
 
 #The mesage sent to the sender when getting their trail removed. (Use %Target% to specify the target player)
-Commands-removeTrailSenderMessage: "&8[&CTrailGUI&8]: &A&L%Target% &Ano longer has the %TrailName% trail."
+Commands-removeTrailSenderMessage: "&8[&CTrailGUI&8] &A&L%Target% &Ano longer has the %TrailName% trail."
 
 #The mesage sent to the target when removing a players trail. (Use %Target% to specify the target player)
-Commands-removeTrailTargetMessage: "&8[&CTrailGUI&8]: &AYou no longer have the %TrailName% trail."
+Commands-removeTrailTargetMessage: "&8[&CTrailGUI&8] &AYou no longer have the %TrailName% trail."
+
+#The message sent to the sender when they try to equip too many trails
+Commands-tooManyTrailsMessage: "&8[&CTrailGUI&8] Too many trails active. Cannot activate trail."
 
 ############################################################
 # +------------------------------------------------------+ #
