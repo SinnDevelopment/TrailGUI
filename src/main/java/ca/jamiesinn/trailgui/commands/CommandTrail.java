@@ -54,10 +54,16 @@ public class CommandTrail implements CommandExecutor, TabCompleter
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
     {
+        List<Trail> trails = new ArrayList<Trail>(Main.trailTypes.values());
         if (!(sender instanceof Player))
         {
-            sender.sendMessage(Main.prefix + ChatColor.RED + "Only players can perform this command.");
-            return true;
+            for(Trail trail : trails)
+            {
+                if(trail.onCommand(sender, args))
+                {
+                    return true;
+                }
+            }
         }
         Player player = (Player) sender;
         for(String string : Main.disabledWorlds)
@@ -77,7 +83,7 @@ public class CommandTrail implements CommandExecutor, TabCompleter
                 showList(player);
                 return true;
             }
-            List<Trail> trails = new ArrayList<Trail>(Main.trailTypes.values());
+
 
             for(Trail trail : trails)
             {

@@ -5,6 +5,7 @@ import ca.jamiesinn.trailgui.Methods;
 import com.darkblade12.particleeffect.ParticleEffect;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -346,6 +347,63 @@ public abstract class Trail
                 return true;
             }
 
+        }
+        return false;
+    }
+
+    public boolean onCommand(CommandSender sender, String[] args)
+    {
+        if(args[0].equalsIgnoreCase(getName()))
+        {
+            if(args.length == 2)
+            {
+                Player target = Bukkit.getServer().getPlayerExact(args[1]);
+                if(target == null)
+                {
+                    sender.sendMessage(Main.getPlugin().getConfig().getString("noTargetMessage").replaceAll("&", "\u00A7").replaceAll("%Target%", args[1]));
+                    return true;
+                }
+
+                List<Trail> currentTrails = new ArrayList<Trail>();
+                if(Main.enabledTrails.containsKey(target.getUniqueId()))
+                {
+                    currentTrails = Main.enabledTrails.get(target.getUniqueId());
+                }
+                if(currentTrails.contains(this))
+                {
+                    if(Main.oneTrailAtATime)
+                    {
+                        Methods.clearTrails(target);
+                    }
+                    currentTrails.remove(this);
+                    Main.enabledTrails.put(target.getUniqueId(), currentTrails);
+
+                    sender.sendMessage(Main.getPlugin().getConfig().getString("Commands-removeTrailSenderMessage").replaceAll("&", "\u00A7").replaceAll("%Target%", args[1]));
+                    target.sendMessage(Main.getPlugin().getConfig().getString("Commands-removeTrailTargetMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
+                    return true;
+                }
+                else
+                {
+                    if(Main.oneTrailAtATime)
+                    {
+                        Methods.clearTrails(target);
+                    }
+                    if((Main.maxTrails < currentTrails.size() && Main.maxTrails != 0) || getPermLimit(target))
+                    {
+                        sender.sendMessage(Main.getPlugin().getConfig().getString("Commands-tooManyTrailsMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
+                        return true;
+                    }
+                    currentTrails.add(this);
+                    Main.enabledTrails.put(target.getUniqueId(), currentTrails);
+                    sender.sendMessage(Main.getPlugin().getConfig().getString("Commands-selectTrailSenderMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name).replaceAll("%Target%", args[1]));
+                    target.sendMessage(Main.getPlugin().getConfig().getString("Commands-selectTrailTargetMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
+                    return true;
+                }
+            }
+            else
+            {
+                sender.sendMessage("Invalid Args - Please check syntax.");
+            }
         }
         return false;
     }

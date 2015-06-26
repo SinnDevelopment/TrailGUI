@@ -21,11 +21,6 @@ public class CommandTrailGUI
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
     {
-        if (!(sender instanceof Player))
-        {
-            sender.sendMessage(Main.prefix + ChatColor.RED + "Only players can perform this command");
-            return true;
-        }
         Player player = (Player) sender;
         for (String string : Main.disabledWorlds)
         {
