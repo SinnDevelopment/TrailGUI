@@ -39,7 +39,7 @@ public class CommandTrail implements CommandExecutor, TabCompleter
 
     private void showList(Player player)
     {
-        player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.RED + "TrailGUI" + ChatColor.DARK_GRAY + "]: " + ChatColor.GREEN + "Available trails:");
+        player.sendMessage(Main.prefix + ChatColor.GREEN + "Available trails:");
         String list = ChatColor.RED + "values: " + ChatColor.GREEN;
         for(Trail type : Main.trailTypes.values())
         {
@@ -56,7 +56,7 @@ public class CommandTrail implements CommandExecutor, TabCompleter
     {
         if (!(sender instanceof Player))
         {
-            sender.sendMessage(ChatColor.DARK_RED + "[TrailGUI] Only players can perform this command.");
+            sender.sendMessage(Main.prefix + ChatColor.RED + "Only players can perform this command.");
             return true;
         }
         Player player = (Player) sender;
@@ -66,12 +66,12 @@ public class CommandTrail implements CommandExecutor, TabCompleter
             string = string.replace("]", "");
             if (string.equals(player.getWorld().getName()))
             {
-                player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.RED + "TrailGUI" + ChatColor.DARK_GRAY + "] " + ChatColor.GREEN + "You cannot use this command in this world.");
+                player.sendMessage(Main.prefix + ChatColor.GREEN + "You cannot use this command in this world.");
                 return false;
             }
             if (args.length == 0)
             {
-                player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.RED + "TrailGUI" + ChatColor.DARK_GRAY + "]: " + ChatColor.GREEN + "Available commands:");
+                player.sendMessage(Main.prefix + ChatColor.GREEN + "Available commands:");
                 player.sendMessage(ChatColor.GREEN + "/trail <TrailName>");
                 player.sendMessage(ChatColor.GREEN + "/trail <TrailName> <PlayerName>");
                 showList(player);
@@ -123,7 +123,7 @@ public class CommandTrail implements CommandExecutor, TabCompleter
             }
             else
             {
-                player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.RED + "TrailGUI" + ChatColor.DARK_GRAY + "]: " + ChatColor.DARK_RED + "That's not a valid trail.");
+                player.sendMessage(Main.prefix + ChatColor.DARK_RED + "That's not a valid trail.");
                 showList(player);
             }
             //endregion

@@ -111,12 +111,17 @@ public class Listeners implements Listener
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event)
     {
+        final Player player = event.getPlayer();
+        if(!Main.enabledTrails.containsKey(player.getUniqueId()))
+        {
+            return;
+        }
         if((Main.getPlugin().getConfig().getBoolean("disabledWhenSpinning")) &&
                 (event.getFrom().getX() == event.getTo().getX()) && (event.getFrom().getY() == event.getTo().getY()) && (event.getFrom().getZ() == event.getTo().getZ()))
         {
             return;
         }
-        final Player player = event.getPlayer();
+
         for(String string : Main.disabledWorlds)
         {
             string = string.replace("[", "");
@@ -126,13 +131,10 @@ public class Listeners implements Listener
                 return;
             }
         }
-        if(Main.enabledTrails.containsKey(player.getUniqueId()))
+        List<Trail> trails = Main.enabledTrails.get(player.getUniqueId());
+        for(Trail trail : trails)
         {
-            List<Trail> trails = Main.enabledTrails.get(player.getUniqueId());
-            for(Trail trail : trails)
-            {
-                trail.display(player);
-            }
+            trail.display(player);
         }
     }
 }

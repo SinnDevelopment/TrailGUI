@@ -10,6 +10,9 @@
 #The name of the GUI on page one.
 inventoryName: "TrailGUI"
 
+#The prefix in game.
+prefix: '&8[&cTrailGUI&8] '
+
 #Whether or not the inventory will close if the player doesn't have permission.
 closeInventoryOnDenyPermission: true
 
@@ -20,7 +23,7 @@ disabledWorlds:
 #Whether or not the trail of the player hit will get removed. (Only when getting attacked by another player)
 removeTrailOnPlayerHit: false
 
-#Whether or not the trail will be displayed when spinning (The cursor). 
+#Whether or not the trail will be displayed when spinning (The cursor). This is recommended strongly to decrease lag.
 disabledWhenSpinning: true
 
 #Whether or not the player can only have one trail at a time.

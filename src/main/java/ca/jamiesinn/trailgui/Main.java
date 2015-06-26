@@ -5,6 +5,7 @@ import ca.jamiesinn.trailgui.commands.CommandTrailGUI;
 import ca.jamiesinn.trailgui.commands.CommandTrails;
 import ca.jamiesinn.trailgui.files.Userdata;
 import ca.jamiesinn.trailgui.trails.*;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -17,6 +18,7 @@ public class Main
         extends JavaPlugin
 {
     public static Main plugin;
+    public static String prefix;
     public static boolean removeTrailOnPlayerHit;
     public static boolean oneTrailAtATime;
     public static List<String> disabledWorlds;
@@ -32,9 +34,9 @@ public class Main
     public void onEnable()
     {
         getServer().getPluginManager().registerEvents(new Listeners(this), this);
-        getCommand("Trail").setExecutor(new CommandTrail(this));
-        getCommand("Trails").setExecutor(new CommandTrails(this));
-        getCommand("TrailGUI").setExecutor(new CommandTrailGUI(this));
+        getCommand("trail").setExecutor(new CommandTrail(this));
+        getCommand("trails").setExecutor(new CommandTrails(this));
+        getCommand("trailgui").setExecutor(new CommandTrailGUI(this));
         getConfig().options().copyDefaults(true);
         saveDefaultConfig();
 
@@ -45,10 +47,17 @@ public class Main
     private void load()
     {
         oneTrailAtATime = getConfig().getBoolean("oneTrailAtATime", false);
+        prefix = getConfig().getString("prefix").replaceAll("&", "\u00A7");
+        if(prefix == null)
+        {
+            getLogger().info(ChatColor.RED + "Warning - You have either no value for the prefix - or you have an outdated config. Please update it.");
+            prefix = ChatColor.DARK_GRAY + "[" + ChatColor.RED + "TrailGUI" + ChatColor.DARK_GRAY + "] ";
+        }
         removeTrailOnPlayerHit = getConfig().getBoolean("removeTrailOnPlayerHit", false);
         disabledWorlds = getConfig().getStringList("disabledWorlds");
         new Userdata().loadConfig();
         loadTrails();
+        Methods.restoreTrails();
     }
 
     public void reload()

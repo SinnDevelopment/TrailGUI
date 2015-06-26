@@ -21,34 +21,31 @@ public class CommandTrails
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
     {
-        if (cmd.getName().equalsIgnoreCase("Trails"))
+        if (!(sender instanceof Player))
         {
-            if (!(sender instanceof Player))
+            sender.sendMessage(Main.prefix + ChatColor.RED + "Only players can perform this command.");
+            return true;
+        }
+        Player player = (Player) sender;
+        for (String string : Main.disabledWorlds)
+        {
+            string = string.replace("[", "");
+            string = string.replace("]", "");
+            if (string.equals(player.getWorld().getName()))
             {
-                sender.sendMessage(ChatColor.DARK_RED + "[TrailGUI] Only players can perform this command.");
-                return true;
+                player.sendMessage(Main.prefix + ChatColor.GREEN + "You cannot use this command in this world.");
+                return false;
             }
-            Player player = (Player) sender;
-            for(String string : Main.disabledWorlds)
+            if (!player.hasPermission("trailgui.commands.trails"))
             {
-                string = string.replace("[", "");
-                string = string.replace("]", "");
-                if (string.equals(player.getWorld().getName()))
+                player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "\u00A7"));
+                if (Main.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
                 {
-                    player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.RED + "TrailGUI" + ChatColor.DARK_GRAY + "] " + ChatColor.GREEN + "You cannot use this command in this world.");
-                    return false;
+                    player.closeInventory();
                 }
-                if (!player.hasPermission("trailgui.commands.trails"))
-                {
-                    player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "\u00A7"));
-                    if (Main.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
-                    {
-                        player.closeInventory();
-                    }
-                    return false;
-                }
-                Methods.openGUI(player);
+                return false;
             }
+            Methods.openGUI(player);
         }
         return false;
     }

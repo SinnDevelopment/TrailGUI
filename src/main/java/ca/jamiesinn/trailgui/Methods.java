@@ -110,7 +110,7 @@ public class Methods
 
     }
 
-    //region Item's for Inventory Slots
+    //region Items for Inventory Slots
     public static ItemStack itemNoPerms()
     {
         ItemStack i = new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 14);
