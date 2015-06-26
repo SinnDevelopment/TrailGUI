@@ -117,6 +117,37 @@ public abstract class Trail
         return player.hasPermission("trailgui.trails." + getName() + ".other") || player.hasPermission("trailgui.commands.other." + getName());
     }
 
+
+    // Returns true if you are at your limit via permissions
+    public boolean getPermLimit(Player player)
+    {
+        List<Trail> currentTrails = new ArrayList<Trail>();
+        int max = 0;
+        for(int i = 0; i <= Main.trailTypes.size(); i++)
+        {
+            if(player.hasPermission("trailgui.trailmax." + i))
+            {
+                max = i;
+            }
+        }
+        if(max == 0)
+        {
+            return false;
+        }
+
+        if(Main.enabledTrails.containsKey(player.getUniqueId()))
+        {
+            currentTrails = Main.enabledTrails.get(player.getUniqueId());
+        }
+        if(currentTrails.size() <= max)
+        {
+            return false;
+        }
+        else
+            return true;
+    }
+
+
     public ItemStack getItem()
     {
         ItemStack item = new ItemStack(itemType, 1);
@@ -194,7 +225,7 @@ public abstract class Trail
                 {
                     Methods.clearTrails(player);
                 }
-                if(Main.maxTrails < currentTrails.size() && Main.maxTrails != 0)
+                if((Main.maxTrails < currentTrails.size() && Main.maxTrails != 0) || getPermLimit(player))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-tooManyTrailsMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
                     return true;
@@ -246,7 +277,7 @@ public abstract class Trail
                     {
                         Methods.clearTrails(player);
                     }
-                    if(Main.maxTrails < currentTrails.size() && Main.maxTrails != 0)
+                    if((Main.maxTrails < currentTrails.size() && Main.maxTrails != 0) || getPermLimit(player))
                     {
                         player.sendMessage(Main.getPlugin().getConfig().getString("Commands-tooManyTrailsMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
                         return true;
@@ -297,7 +328,7 @@ public abstract class Trail
                     {
                         Methods.clearTrails(target);
                     }
-                    if(Main.maxTrails < currentTrails.size() && Main.maxTrails != 0)
+                    if((Main.maxTrails < currentTrails.size() && Main.maxTrails != 0) || getPermLimit(target))
                     {
                         player.sendMessage(Main.getPlugin().getConfig().getString("Commands-tooManyTrailsMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
                         return true;
