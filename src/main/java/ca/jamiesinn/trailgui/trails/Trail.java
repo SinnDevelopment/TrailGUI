@@ -3,6 +3,10 @@ package ca.jamiesinn.trailgui.trails;
 import ca.jamiesinn.trailgui.Main;
 import ca.jamiesinn.trailgui.Methods;
 import com.darkblade12.particleeffect.ParticleEffect;
+import nl.arfie.bukkit.attributes.Attribute;
+import nl.arfie.bukkit.attributes.AttributeType;
+import nl.arfie.bukkit.attributes.Attributes;
+import nl.arfie.bukkit.attributes.Operation;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
@@ -38,7 +42,7 @@ public abstract class Trail
         this.cooldown = config.getInt("cooldown", 0);
         this.order = config.getInt("order");
         this.itemType = Material.valueOf(config.getString("itemType").toUpperCase());
-        this.itemName = config.getString("itemName", "").replaceAll("&([0-9a-fA-Fk-oK-OrR])", "\u00A7$1");
+        this.itemName = config.getString("itemName", "").replaceAll("&([0-9a-fA-Fk-oK-OrR])", "\u00A7");
         this.loreEnabled = config.getBoolean("loreEnabled", false);
         this.lore = new ArrayList<String>();
         lore.add(config.getString("loreLineOne"));
@@ -153,7 +157,9 @@ public abstract class Trail
     {
         ItemStack item = new ItemStack(itemType, 1);
         ItemMeta meta = item.getItemMeta();
+        Attribute attribute = new Attribute(AttributeType.ATTACK_DAMAGE, Operation.valueOf(""), 0);
         meta.setDisplayName(name);
+        Attributes.apply(item, attribute, true);
         if(loreEnabled)
         {
             meta.setLore(lore);
@@ -191,6 +197,10 @@ public abstract class Trail
     {
         if(currentItem.equals(this.getItem()))
         {
+            if(Main.oneTrailAtATime)
+            {
+                Methods.clearTrails(player);
+            }
             List<Trail> currentTrails = new ArrayList<Trail>();
             if(Main.enabledTrails.containsKey(player.getUniqueId()))
             {
@@ -207,10 +217,7 @@ public abstract class Trail
             }
             if(currentTrails.contains(this))
             {
-                if(Main.oneTrailAtATime)
-                {
-                    Methods.clearTrails(player);
-                }
+
                 currentTrails.remove(this);
                 Main.enabledTrails.put(player.getUniqueId(), currentTrails);
                 player.sendMessage(Main.getPlugin().getConfig().getString("GUI-removeTrailMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.getName()));
@@ -222,10 +229,6 @@ public abstract class Trail
             }
             else
             {
-                if(Main.oneTrailAtATime)
-                {
-                    Methods.clearTrails(player);
-                }
                 if((Main.maxTrails < currentTrails.size() && Main.maxTrails != 0) || getPermLimit(player))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-tooManyTrailsMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
