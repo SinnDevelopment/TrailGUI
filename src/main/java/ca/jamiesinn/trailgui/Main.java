@@ -47,6 +47,8 @@ public class Main
 
     private void load()
     {
+        reloadConfig();
+        saveConfig();
         maxTrails = getConfig().getInt("maxActiveTrails");
         oneTrailAtATime = getConfig().getBoolean("oneTrailAtATime", false);
         prefix = getConfig().getString("prefix").replaceAll("&", "\u00A7");
