@@ -114,6 +114,15 @@ permissions:
    trailgui.inventory.previouspage:
       description: Allows the player to select the previouspage item in the GUI.
       default: op
+   trailgui.inventory.blackdust:
+      description: Allows the player to select the blackdust item in the GUI.
+      default: op
+   trailgui.inventory.footsteps:
+      description: Allows the player to select the footsteps item in the GUI.
+      default: op
+   trailgui.inventory.blackpotion:
+      description: Allows the player to select the blackpotion item in the GUI.
+      default: op
    trailgui.trails.angryvillager:
       description: Allows the player to select the specified trail.
       default: op
@@ -205,6 +214,15 @@ permissions:
       description: Allows the player to select the specified trail.
       default: op
    trailgui.trails.blockbreak:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.blackdust:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.footstep:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.blackpotion:
       description: Allows the player to select the specified trail.
       default: op
 
@@ -315,6 +333,15 @@ permissions:
       description: Allows the player to give another player the specified trail.
       default: op
    trailgui.commands.clearall.other:
+      description: Allows the player to clear all of the specified players trails.
+      default: op
+   trailgui.trails.blackdust.other:
+      description: Allows the player to clear all of the specified players trails.
+      default: op
+   trailgui.trails.footstep.other:
+      description: Allows the player to clear all of the specified players trails.
+      default: op
+   trailgui.trails.blackpotion.other:
       description: Allows the player to clear all of the specified players trails.
       default: op
       
@@ -625,6 +652,9 @@ permissions:
                trailgui.trails.hearts: true
                trailgui.trails.endersignal: true
                trailgui.trails.clearall: true
+               trailgui.trails.footstep: true
+               trailgui.trails.blackpotion: true
+               trailgui.trails.blackdust: true
    trailgui.inventory.*:
       description: Allows the player to select all the trails in the GUI.
       default: op
@@ -662,3 +692,6 @@ permissions:
             trailgui.inventory.clearall: true
             trailgui.inventory.nextpage: true
             trailgui.inventory.previouspage: true
+            trailgui.inventory.blackdust: true
+            trailgui.inventory.blackpotion: true
+            trailgui.inventory.footstep: true

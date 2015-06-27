@@ -796,7 +796,7 @@ trails:
     loreLineTwo: "Example"
     #The text written on lore line three.
     loreLineThree: "Example"
-  potato:
+  IconCrack:
     type: ITEM_CRACK
     #The location the particle effect is displayed.
     displayLocation: 0.2
@@ -812,7 +812,7 @@ trails:
     itemName: "&6Potato"
     #The items amount.
     amount: 1
-  melon:
+  BlockCrack:
     type: BLOCK_CRACK
     #The location the particle effect is displayed.
     displayLocation: 0.2
@@ -829,7 +829,7 @@ trails:
     #The items amount.
     amount: 1
 
-  blackdust:
+  BlackDust:
     type: REDSTONE
     #The location the particle effect is displayed.
     displayLocation: 0.2
@@ -844,7 +844,7 @@ trails:
     #The items type.
     itemType: coal
     #The items name.
-    itemName: "&6blackdust"
+    itemName: "&6BlackDust"
     #Whether or not the lore is enabled.
     loreEnabled: false
     #The text written on lore line one.
@@ -854,7 +854,7 @@ trails:
     #The text written on lore line three.
     loreLineThree: "Example"
 
-  footstep:
+  Footstep:
     type: FOOTSTEP
     #The location the particle effect is displayed.
     displayLocation: 0.2
@@ -879,7 +879,7 @@ trails:
     #The text written on lore line three.
     loreLineThree: "Example"
 
-  blackpotion:
+  BlackPotion:
     type: SPELL_MOB
     #The location the particle effect is displayed.
     displayLocation: 0.2
