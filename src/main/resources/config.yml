@@ -45,10 +45,10 @@ closeInventoryAferSelect: true
 GUI-denyPermissionMessage: "&4You do not have permission to do this."
 
 #The message sent when selecting a trail.
-GUI-selectTrailMessage: "&8[&CTrailGUI&8]: &ASelected the &L%TrailName% &Atrail."
+GUI-selectTrailMessage: "&8[&CTrailGUI&8] &ASelected the &L%TrailName% &Atrail."
 
 #The message sent when removing your own trail.
-GUI-removeTrailMessage: "&8[&CTrailGUI&8]: &ARemoved the &L%TrailName% &Atrail."
+GUI-removeTrailMessage: "&8[&CTrailGUI&8] &ARemoved the &L%TrailName% &Atrail."
 
 ############################################################
 # +------------------------------------------------------+ #
@@ -793,7 +793,7 @@ trails:
     loreLineTwo: "Example"
     #The text written on lore line three.
     loreLineThree: "Example"
-  potato:
+  IconCrack:
     type: ITEM_CRACK
     #The location the particle effect is displayed.
     displayLocation: 0.2
@@ -806,10 +806,10 @@ trails:
     #The items type. This is also the item which will be "cracked"
     itemType: baked_potato
     #The items name.
-    itemName: "&6Potato"
+    itemName: "&6IconCrack"
     #The items amount.
     amount: 1
-  melon:
+  BlockCrack:
     type: BLOCK_CRACK
     #The location the particle effect is displayed.
     displayLocation: 0.2
@@ -822,11 +822,10 @@ trails:
     #The items type. This is also the item which will be "cracked"
     itemType: melon_block
     #The items name.
-    itemName: "&6Melon"
+    itemName: "&6BlockCrack"
     #The items amount.
     amount: 1
-
-  blackdust:
+  BlackDust:
     type: REDSTONE
     #The location the particle effect is displayed.
     displayLocation: 0.2
@@ -841,7 +840,7 @@ trails:
     #The items type.
     itemType: coal
     #The items name.
-    itemName: "&6blackdust"
+    itemName: "&6BlackDust"
     #Whether or not the lore is enabled.
     loreEnabled: false
     #The text written on lore line one.
@@ -850,8 +849,7 @@ trails:
     loreLineTwo: "Example"
     #The text written on lore line three.
     loreLineThree: "Example"
-
-  footstep:
+  Footsteps:
     type: FOOTSTEP
     #The location the particle effect is displayed.
     displayLocation: 0.2
@@ -866,7 +864,7 @@ trails:
     #The items type.
     itemType: iron_boots
     #The items name.
-    itemName: "&6footsteps"
+    itemName: "&6Footsteps"
     #Whether or not the lore is enabled.
     loreEnabled: false
     #The text written on lore line one.
@@ -875,8 +873,7 @@ trails:
     loreLineTwo: "Example"
     #The text written on lore line three.
     loreLineThree: "Example"
-
-  blackpotion:
+  BlackPotion:
     type: SPELL_MOB
     #The location the particle effect is displayed.
     displayLocation: 0.2
@@ -891,7 +888,7 @@ trails:
     #The items type.
     itemType: POTION
     #The items name.
-    itemName: "&6blackpotion"
+    itemName: "&6BlackPotion"
     #Whether or not the lore is enabled.
     loreEnabled: false
     #The text written on lore line one.
@@ -900,7 +897,6 @@ trails:
     loreLineTwo: "Example"
     #The text written on lore line three.
     loreLineThree: "Example"
-
 
 #### @ClearAll
 
