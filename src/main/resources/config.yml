@@ -50,6 +50,9 @@ GUI-selectTrailMessage: "&8[&CTrailGUI&8]: &ASelected the &L%TrailName% &Atrail.
 #The message sent when removing your own trail.
 GUI-removeTrailMessage: "&8[&CTrailGUI&8]: &ARemoved the &L%TrailName% &Atrail."
 
+#The item display name for no permissions.
+GUI-noPermMessage: "&4No Permissions"
+
 ############################################################
 # +------------------------------------------------------+ #
 # |          Configuration: commands                | #
@@ -905,16 +908,16 @@ trails:
 #### @ClearAll
 
 #The message sent when you clear all of your own trails. (When typing /Trail ClearAll)
-ClearAll-message: "&8[&CTrailGUI&8]: &AYou cleared all your current trails."
+ClearAll-message: "&8[&CTrailGUI&8] &AYou cleared all your current trails."
 #The message sent to the target player getting their trails removed.
-ClearAll-targetMessage: "&8[&CTrailGUI&8]: &A&L%Sender% &Ahas removed your trails."
+ClearAll-targetMessage: "&8[&CTrailGUI&8] &A&L%Sender% &Ahas removed your trails."
 #The message sent to the sender.
-ClearAll-senderMessage: "&8[&CTrailGUI&8]: &A&L%Target% &Ano longer has any trail."
+ClearAll-senderMessage: "&8[&CTrailGUI&8] &A&L%Target% &Ano longer has any trail."
 
 #### @RemoveTrails
 
 #The message sent when you clear all of your own trails. (Inside the GUI)
-RemoveTrails-message: "&8[&CTrailGUI&8]: &AYou cleared all your current trails."
+RemoveTrails-message: "&8[&CTrailGUI&8] &AYou cleared all your current trails."
 
 #The inventory slot the item is put in.
 RemoveTrails-inventorySlot: 40

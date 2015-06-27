@@ -3,7 +3,6 @@ package ca.jamiesinn.trailgui;
 import ca.jamiesinn.trailgui.files.Userdata;
 import ca.jamiesinn.trailgui.trails.Trail;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -115,7 +114,7 @@ public class Methods
     {
         ItemStack i = new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 14);
         ItemMeta meta = i.getItemMeta();
-        meta.setDisplayName(ChatColor.RED + "You do not have this trail!");
+        meta.setDisplayName(Main.getPlugin().getConfig().getString("GUI-noPermMessage").replaceAll("&", "\u00A7"));
         i.setItemMeta(meta);
         return i;
 
