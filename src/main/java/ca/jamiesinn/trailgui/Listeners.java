@@ -59,6 +59,13 @@ public class Listeners implements Listener
                 }
             }
 
+            if(event.getCurrentItem().equals(Methods.itemNoPerms()) && Main.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
+            {
+                player.sendMessage(Main.getPlugin().getConfig().getString("GUI-denyPermissionMessage").replaceAll("&", "\u00A7"));
+                player.closeInventory();
+                return;
+            }
+
             if(event.getCurrentItem().equals(Methods.getItemPreviousPage()))
             {
                 if(!player.hasPermission("trailgui.inventory.previouspage"))
