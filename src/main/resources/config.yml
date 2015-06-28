@@ -45,10 +45,10 @@ closeInventoryAferSelect: true
 GUI-denyPermissionMessage: "&4You do not have permission to do this."
 
 #The message sent when selecting a trail.
-GUI-selectTrailMessage: "&8[&CTrailGUI&8]: &ASelected the &L%TrailName% &Atrail."
+GUI-selectTrailMessage: "&8[&CTrailGUI&8] &ASelected the &L%TrailName% &Atrail."
 
 #The message sent when removing your own trail.
-GUI-removeTrailMessage: "&8[&CTrailGUI&8]: &ARemoved the &L%TrailName% &Atrail."
+GUI-removeTrailMessage: "&8[&CTrailGUI&8] &ARemoved the &L%TrailName% &Atrail."
 
 #The item display name for no permissions.
 GUI-noPermMessage: "&4No Permissions"

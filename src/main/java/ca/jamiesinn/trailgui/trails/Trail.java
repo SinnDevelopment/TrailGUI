@@ -197,15 +197,13 @@ public abstract class Trail
     {
         if(currentItem.equals(this.getItem()))
         {
-            if(Main.oneTrailAtATime)
-            {
-                Methods.clearTrails(player);
-            }
             List<Trail> currentTrails = new ArrayList<Trail>();
+
             if(Main.enabledTrails.containsKey(player.getUniqueId()))
             {
                 currentTrails = Main.enabledTrails.get(player.getUniqueId());
             }
+
             if(!canUseInventory(player))
             {
                 player.sendMessage(Main.getPlugin().getConfig().getString("GUI-denyPermissionMessage").replaceAll("&", "\u00A7"));
@@ -217,6 +215,10 @@ public abstract class Trail
             }
             if(currentTrails.contains(this))
             {
+                if(Main.oneTrailAtATime)
+                {
+                    Methods.clearTrails(player);
+                }
 
                 currentTrails.remove(this);
                 Main.enabledTrails.put(player.getUniqueId(), currentTrails);
@@ -229,6 +231,10 @@ public abstract class Trail
             }
             else
             {
+                if(Main.oneTrailAtATime)
+                {
+                    Methods.clearTrails(player);
+                }
                 if((Main.maxTrails < currentTrails.size() && Main.maxTrails != 0) || getPermLimit(player))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-tooManyTrailsMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
