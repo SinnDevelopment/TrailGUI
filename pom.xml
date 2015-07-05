@@ -17,7 +17,6 @@
         </repository>
     </repositories>
     <dependencies>
-        <!--Bukkit API-->
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
@@ -47,6 +46,7 @@
       </snapshotRepository>
     </distributionManagement>
     <build>
+        <defaultGoal>clean install</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

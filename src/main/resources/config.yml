@@ -828,7 +828,6 @@ trails:
     itemName: "&6Melon"
     #The items amount.
     amount: 1
-
   BlackDust:
     type: REDSTONE
     #The location the particle effect is displayed.
@@ -853,7 +852,6 @@ trails:
     loreLineTwo: "Example"
     #The text written on lore line three.
     loreLineThree: "Example"
-
   Footstep:
     type: FOOTSTEP
     #The location the particle effect is displayed.
@@ -869,7 +867,7 @@ trails:
     #The items type.
     itemType: iron_boots
     #The items name.
-    itemName: "&6footsteps"
+    itemName: "&6Footsteps"
     #Whether or not the lore is enabled.
     loreEnabled: false
     #The text written on lore line one.
@@ -878,7 +876,6 @@ trails:
     loreLineTwo: "Example"
     #The text written on lore line three.
     loreLineThree: "Example"
-
   BlackPotion:
     type: SPELL_MOB
     #The location the particle effect is displayed.
@@ -894,7 +891,7 @@ trails:
     #The items type.
     itemType: POTION
     #The items name.
-    itemName: "&6blackpotion"
+    itemName: "&6BlackPotion"
     #Whether or not the lore is enabled.
     loreEnabled: false
     #The text written on lore line one.
@@ -903,7 +900,30 @@ trails:
     loreLineTwo: "Example"
     #The text written on lore line three.
     loreLineThree: "Example"
-
+  Bubbles:
+    type: WATER_BUBBLE
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 5
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 33
+    #The items type.
+    itemType: WATER_BUCKET
+    #The items name.
+    itemName: "&6Bubbles"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
 
 #### @ClearAll
 

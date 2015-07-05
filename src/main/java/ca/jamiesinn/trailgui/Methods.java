@@ -16,9 +16,12 @@ public class Methods
 {
     public static void clearTrails(Player player)
     {
+        List<Trail> currentTrails;
         if(Main.enabledTrails.containsKey(player.getUniqueId()))
         {
-            Main.enabledTrails.remove(player.getUniqueId());
+            currentTrails = Main.enabledTrails.get(player.getUniqueId());
+            currentTrails.clear();
+            Main.enabledTrails.put(player.getUniqueId(), currentTrails);
         }
     }
 
