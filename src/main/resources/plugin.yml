@@ -225,6 +225,9 @@ permissions:
    trailgui.trails.iconcrack:
       description: Allows the player to select the specified trail.
       default: op
+   trailgui.trails.bubbles:
+      description: Allows the player to select the specified trail.
+      default: op
 
    trailgui.commands.clearall:
       description: Allows the player to use the clearall trails command.
@@ -344,6 +347,9 @@ permissions:
    trailgui.trails.blackpotion.other:
       description: Allows the player to select the specified trail.
       default: op
+   trailgui.trails.bubbles.other:
+      description: Allows the player to select the specified trail.
+      default: op
    trailgui.commands.clearall.other:
       description: Allows the player to clear all of the specified players trails.
       default: op
@@ -453,6 +459,9 @@ permissions:
    trailgui.commands.blackpotion:
       description: Allows the player to select the specified trail.
       default: op
+   trailgui.commands.bubbles:
+      description: Allows the player to select the specified trail.
+      default: op
    trailgui.commands.angryvillager.other:
       description: Allows the player to give another player the specified trail.
       default: op
@@ -547,6 +556,9 @@ permissions:
       description: Allows the player to select the specified trail.
       default: op
    trailgui.commands.blackdust.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.commands.bubbles.other:
       description: Allows the player to select the specified trail.
       default: op
    trailgui.commands.footstep.other:
@@ -650,6 +662,9 @@ permissions:
             trailgui.commands.version: true
             trailgui.commands.reloadconfigs: true
             trailgui.commands.clearall.other: true
+            trailgui.commands.trails: true
+            trailgui.commands.trail: true
+            trailgui.commands.trailgui: true
 
    trailgui.trails.*:
          description: Allows the player to use all the trails.
@@ -688,6 +703,7 @@ permissions:
                trailgui.trails.blockbreak: true
                trailgui.trails.blackdust: true
                trailgui.trails.footstep: true
+               trailgui.trails.bubbles: true
                trailgui.trails.blackpotion: true
                trailgui.trails.clearall: true
    trailgui.inventory.*:
@@ -727,6 +743,7 @@ permissions:
             trailgui.inventory.blockbreak: true
             trailgui.inventory.blackdust: true
             trailgui.inventory.footstep: true
+            trailgui.inventory.bubbles: true
             trailgui.inventory.blackpotion: true
             trailgui.inventory.clearall: true
             trailgui.inventory.nextpage: true
