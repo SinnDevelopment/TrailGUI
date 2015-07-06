@@ -3,10 +3,6 @@ package ca.jamiesinn.trailgui.trails;
 import ca.jamiesinn.trailgui.Main;
 import ca.jamiesinn.trailgui.Methods;
 import com.darkblade12.particleeffect.ParticleEffect;
-import nl.arfie.bukkit.attributes.Attribute;
-import nl.arfie.bukkit.attributes.AttributeType;
-import nl.arfie.bukkit.attributes.Attributes;
-import nl.arfie.bukkit.attributes.Operation;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
@@ -157,9 +153,7 @@ public abstract class Trail
     {
         ItemStack item = new ItemStack(itemType, 1);
         ItemMeta meta = item.getItemMeta();
-        Attribute attribute = new Attribute(AttributeType.ATTACK_DAMAGE, Operation.valueOf(""), 0);
         meta.setDisplayName(name);
-        Attributes.apply(item, attribute, true);
         if(loreEnabled)
         {
             meta.setLore(lore);
