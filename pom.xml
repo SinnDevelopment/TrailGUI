@@ -27,11 +27,6 @@
             <artifactId>particleeffect</artifactId>
             <version>1.7</version>
         </dependency>
-        <dependency>
-            <groupId>nl.arfie.bukkit.attributes</groupId>
-            <artifactId>AttributesAPI</artifactId>
-            <version>1.2</version>
-        </dependency>
     </dependencies>
     <distributionManagement>
       <repository>
@@ -56,7 +51,6 @@
                     <artifactSet>
                         <includes>
                             <include>com.darkblade12:*</include>
-                            <include>nl.arfie.bukkit.attributes:*</include>
                         </includes>
                     </artifactSet>
                 </configuration>
