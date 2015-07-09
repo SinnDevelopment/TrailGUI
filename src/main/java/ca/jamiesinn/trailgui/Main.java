@@ -34,13 +34,11 @@ public class Main
     @Override
     public void onEnable()
     {
+        saveDefaultConfig();
         getServer().getPluginManager().registerEvents(new Listeners(this), this);
         getCommand("trail").setExecutor(new CommandTrail(this));
         getCommand("trails").setExecutor(new CommandTrails(this));
         getCommand("trailgui").setExecutor(new CommandTrailGUI(this));
-        getConfig().options().copyDefaults(true);
-        saveDefaultConfig();
-
         plugin = this;
         load();
     }
@@ -48,7 +46,6 @@ public class Main
     private void load()
     {
         reloadConfig();
-        saveConfig();
         maxTrails = getConfig().getInt("maxActiveTrails");
         oneTrailAtATime = getConfig().getBoolean("oneTrailAtATime", false);
         prefix = getConfig().getString("prefix").replaceAll("&", "\u00A7");
