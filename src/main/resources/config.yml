@@ -14,7 +14,7 @@ inventoryName: "TrailGUI"
 prefix: "&8[&cTrailGUI&8] "
 
 #Whether or not the inventory will close if the player doesn't have permission.
-closeInventoryOnDenyPermission: true
+closeInventoryOnDenyPermission: false
 
 #The worlds this plugin is disabled in. (You can add as many worlds as you want)
 disabledWorlds:
@@ -39,7 +39,7 @@ maxActiveTrails: 0
 ############################################################
 
 #Whether or not the inventory will close after a trail has been selected.
-closeInventoryAferSelect: true
+closeInventoryAferSelect: false
 
 #The message sent if the player does not have permission.
 GUI-denyPermissionMessage: "&4You do not have permission to do this."
