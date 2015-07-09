@@ -6,3 +6,6 @@ Updated and maintained version of TrailGUI on the Spigot Forums
 ## [Jenkins](http://ci.ecocitycraft.com/job/TrailGUI/)
 
 ## [Sonatype Nexus](http://repo.sinndev.com/content/repositories/snapshots/ca/jamiesinn/TrailGUI/)
+
+Please report all bugs as issues.
+
