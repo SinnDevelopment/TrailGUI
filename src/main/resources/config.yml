@@ -832,7 +832,7 @@ trails:
     #The amount of particles displayed.
     amount: 7
     #The speed the particles are displayed.
-    speed: 0
+    speed: 0.00000000001
     #The distance before unrendering the particle effect.
     range: 20
     #The inventory slot the item is put in.
