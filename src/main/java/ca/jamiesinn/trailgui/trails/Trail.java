@@ -166,6 +166,9 @@ public abstract class Trail
 
     public void display(Player player)
     {
+        if(Bukkit.getPluginManager().isPluginEnabled("SuperVanish") || Bukkit.getPluginManager().isPluginEnabled("PremiumVanish"))
+            if(de.myzelyam.api.vanish.VanishAPI.isInvisible(player))
+                return;
         if(cooldown <= 0)
         {
             justDisplay(player);
