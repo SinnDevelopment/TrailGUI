@@ -26,7 +26,7 @@ public class ItemTrail extends Trail
     @Override
     public void justDisplay(Player player)
     {
-        if(type == null)
+        if (type == null)
         {
             return;
         }

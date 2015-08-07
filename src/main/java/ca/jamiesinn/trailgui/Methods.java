@@ -14,10 +14,14 @@ import java.util.*;
 
 public class Methods
 {
+    private static ItemStack itemNextPage;
+    private static ItemStack itemPreviousPage;
+    private static ItemStack itemRemoveTrails;
+
     public static void clearTrails(Player player)
     {
         List<Trail> currentTrails;
-        if(Main.enabledTrails.containsKey(player.getUniqueId()))
+        if (Main.enabledTrails.containsKey(player.getUniqueId()))
         {
             currentTrails = Main.enabledTrails.get(player.getUniqueId());
             currentTrails.clear();
@@ -28,15 +32,15 @@ public class Methods
     public static void saveTrails()
     {
         FileConfiguration config = Userdata.getInstance().getConfig();
-        for(String key : config.getKeys(false))
+        for (String key : config.getKeys(false))
         {
             config.set(key, null);
         }
 
-        for(UUID key : Main.enabledTrails.keySet())
+        for (UUID key : Main.enabledTrails.keySet())
         {
             List<String> trailNames = new ArrayList<String>();
-            for(Trail trail : Main.enabledTrails.get(key))
+            for (Trail trail : Main.enabledTrails.get(key))
             {
                 trailNames.add(trail.getName());
             }
@@ -48,13 +52,13 @@ public class Methods
     public static void restoreTrails()
     {
         FileConfiguration config = Userdata.getInstance().getConfig();
-        for(String key : config.getKeys(false))
+        for (String key : config.getKeys(false))
         {
             List<String> trails = config.getStringList(key);
-            if(!trails.isEmpty())
+            if (!trails.isEmpty())
             {
                 List<Trail> trailTypes = new ArrayList<Trail>();
-                for(String trail : trails)
+                for (String trail : trails)
                 {
                     trailTypes.add(Main.trailTypes.get(trail));
                 }
@@ -78,7 +82,7 @@ public class Methods
         currentPage = currentPage > maxPages ? 1 : currentPage;
         int begin = (pageSize * currentPage) - pageSize;
         int end = begin + pageSize;
-        if(end > sortedList.size())
+        if (end > sortedList.size())
         {
             end = sortedList.size();
         }
@@ -86,9 +90,9 @@ public class Methods
 
         Inventory inv = Bukkit.createInventory(null, 45, Main.getPlugin().getConfig().getString("inventoryName").replaceAll("&", "\u00A7") + " " + currentPage + " / " + maxPages);
         int i = 0;
-        for(Trail trail : subList)
+        for (Trail trail : subList)
         {
-            if(trail.canUseInventory(player))
+            if (trail.canUseInventory(player))
             {
                 inv.setItem(i, trail.getItem());
             }
@@ -99,12 +103,12 @@ public class Methods
             i++;
         }
 
-        if(currentPage > 1)
+        if (currentPage > 1)
         {
             inv.setItem(Main.getPlugin().getConfig().getInt("PreviousPage-inventorySlot"), getItemPreviousPage());
         }
         inv.setItem(Main.getPlugin().getConfig().getInt("RemoveTrails-inventorySlot"), getItemRemoveTrails());
-        if(currentPage < maxPages)
+        if (currentPage < maxPages)
         {
             inv.setItem(Main.getPlugin().getConfig().getInt("NextPage-inventorySlot"), getItemNextPage());
         }
@@ -123,11 +127,9 @@ public class Methods
 
     }
 
-    private static ItemStack itemNextPage;
-
     public static ItemStack getItemNextPage()
     {
-        if(itemNextPage == null)
+        if (itemNextPage == null)
         {
             itemNextPage = createItemNextPage();
         }
@@ -141,7 +143,7 @@ public class Methods
 
         String name1 = Main.getPlugin().getConfig().getString("NextPage-itemName");
         String name2 = name1.replaceAll("&", "\u00A7");
-        if(Main.getPlugin().getConfig().getBoolean("NextPage-loreEnabled"))
+        if (Main.getPlugin().getConfig().getBoolean("NextPage-loreEnabled"))
         {
             List<String> loreNextPage = new ArrayList<String>();
 
@@ -160,11 +162,9 @@ public class Methods
         return itemNextPage;
     }
 
-    private static ItemStack itemPreviousPage;
-
     public static ItemStack getItemPreviousPage()
     {
-        if(itemPreviousPage == null)
+        if (itemPreviousPage == null)
         {
             itemPreviousPage = createItemPreviousPage();
         }
@@ -178,7 +178,7 @@ public class Methods
 
         String name1 = Main.getPlugin().getConfig().getString("PreviousPage-itemName");
         String name2 = name1.replaceAll("&", "\u00A7");
-        if(Main.getPlugin().getConfig().getBoolean("PreviousPage-loreEnabled"))
+        if (Main.getPlugin().getConfig().getBoolean("PreviousPage-loreEnabled"))
         {
             List<String> lorePreviousPage = new ArrayList<String>();
 
@@ -197,11 +197,9 @@ public class Methods
         return itemPreviousPage;
     }
 
-    private static ItemStack itemRemoveTrails;
-
     public static ItemStack getItemRemoveTrails()
     {
-        if(itemRemoveTrails == null)
+        if (itemRemoveTrails == null)
         {
             itemRemoveTrails = createItemRemoveTrails();
         }
@@ -215,7 +213,7 @@ public class Methods
 
         String name1 = Main.getPlugin().getConfig().getString("RemoveTrails-itemName");
         String name2 = name1.replaceAll("&", "\u00A7");
-        if(Main.getPlugin().getConfig().getBoolean("RemoveTrails-loreEnabled"))
+        if (Main.getPlugin().getConfig().getBoolean("RemoveTrails-loreEnabled"))
         {
             List<String> loreRemoveTrail = new ArrayList<String>();
 
@@ -243,7 +241,7 @@ public class Methods
         currentPage = currentPage > maxPages ? 1 : currentPage;
         int begin = (pageSize * currentPage) - pageSize;
         int end = begin + pageSize;
-        if(end > sortedList.size())
+        if (end > sortedList.size())
         {
             end = sortedList.size();
         }

@@ -10,10 +10,10 @@ import java.io.IOException;
 
 public class Userdata
 {
+    private static Userdata instance;
     private FileConfiguration config;
     private String FILENAME = "Userdata.yml";
     private File file;
-    private static Userdata instance;
 
 
     public Userdata()
@@ -22,14 +22,18 @@ public class Userdata
         file = new File(Main.getPlugin().getDataFolder(), FILENAME);
     }
 
+    public static Userdata getInstance()
+    {
+        return instance;
+    }
+
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public void createFile()
     {
         try
         {
             file.createNewFile();
-        }
-        catch(Exception ex)
+        } catch (Exception ex)
         {
             Main.getPlugin().getLogger().warning(ChatColor.DARK_RED + "Failed to generate the file: " + FILENAME);
         }
@@ -37,7 +41,7 @@ public class Userdata
 
     public void loadConfig()
     {
-        if(!file.exists())
+        if (!file.exists())
         {
             createFile();
         }
@@ -59,15 +63,9 @@ public class Userdata
         try
         {
             config.save(file);
-        }
-        catch(IOException ex)
+        } catch (IOException ex)
         {
             Main.getPlugin().getLogger().warning(ChatColor.DARK_RED + "Could not save the file: " + FILENAME);
         }
-    }
-
-    public static Userdata getInstance()
-    {
-        return instance;
     }
 }

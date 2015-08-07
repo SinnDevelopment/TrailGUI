@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>ca.jamiesinn</groupId>
     <artifactId>TrailGUI</artifactId>
-    <version>4.2.1-SNAPSHOT</version>
+    <version>4.2.2-SNAPSHOT</version>
     <repositories>
         <repository>
             <id>spigot-repo</id>
@@ -14,6 +14,10 @@
         <repository>
             <id>sinndev-repo</id>
             <url>http://repo.sinndev.com/content/groups/public/</url>
+        </repository>
+        <repository>
+            <id>kitteh-repo</id>
+            <url>http://repo.kitteh.org/content/groups/public</url>
         </repository>
     </repositories>
     <dependencies>
@@ -26,6 +30,11 @@
             <groupId>com.darkblade12</groupId>
             <artifactId>particleeffect</artifactId>
             <version>1.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.kitteh</groupId>
+            <artifactId>VanishNoPacket</artifactId>
+            <version>3.19.2-SNAPSHOT</version>
         </dependency>
     </dependencies>
     <distributionManagement>

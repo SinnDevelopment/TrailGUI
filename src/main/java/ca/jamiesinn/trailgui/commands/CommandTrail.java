@@ -41,9 +41,9 @@ public class CommandTrail implements CommandExecutor, TabCompleter
     {
         player.sendMessage(Main.prefix + ChatColor.GREEN + "Available trails:");
         String list = ChatColor.RED + "values: " + ChatColor.GREEN;
-        for(Trail type : Main.trailTypes.values())
+        for (Trail type : Main.trailTypes.values())
         {
-            if(type.canUse(player))
+            if (type.canUse(player))
             {
                 list += type.getName() + ", ";
             }
@@ -57,16 +57,16 @@ public class CommandTrail implements CommandExecutor, TabCompleter
         List<Trail> trails = new ArrayList<Trail>(Main.trailTypes.values());
         if (!(sender instanceof Player))
         {
-            for(Trail trail : trails)
+            for (Trail trail : trails)
             {
-                if(trail.onCommand(sender, args))
+                if (trail.onCommand(sender, args))
                 {
                     return true;
                 }
             }
         }
         Player player = (Player) sender;
-        for(String string : Main.disabledWorlds)
+        for (String string : Main.disabledWorlds)
         {
             string = string.replace("[", "");
             string = string.replace("]", "");
@@ -85,9 +85,9 @@ public class CommandTrail implements CommandExecutor, TabCompleter
             }
 
 
-            for(Trail trail : trails)
+            for (Trail trail : trails)
             {
-                if(trail.onCommand(player, args))
+                if (trail.onCommand(player, args))
                 {
                     return true;
                 }

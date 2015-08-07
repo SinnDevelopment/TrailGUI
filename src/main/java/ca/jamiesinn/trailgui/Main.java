@@ -7,7 +7,10 @@ import ca.jamiesinn.trailgui.files.Userdata;
 import ca.jamiesinn.trailgui.trails.*;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.kitteh.vanish.VanishPlugin;
 
 import java.util.HashMap;
 import java.util.List;
@@ -25,6 +28,7 @@ public class Main
     public static List<String> disabledWorlds;
     public static Map<UUID, List<Trail>> enabledTrails = new HashMap<UUID, List<Trail>>();
     public static Map<String, Trail> trailTypes = new HashMap<String, Trail>();
+    public static VanishPlugin vnp;
 
     public static Main getPlugin()
     {
@@ -43,13 +47,25 @@ public class Main
         load();
     }
 
+    public void hookVNP()
+    {
+        final PluginManager pm = this.getServer().getPluginManager();
+        final Plugin pl = pm.getPlugin("VanishNoPacket");
+        if (plugin == null || !plugin.isEnabled())
+        {
+            getLogger().warning("Couldn't hook VNP");
+            return;
+        }
+        vnp = (VanishPlugin) pl;
+    }
+
     private void load()
     {
         reloadConfig();
         maxTrails = getConfig().getInt("maxActiveTrails");
         oneTrailAtATime = getConfig().getBoolean("oneTrailAtATime", false);
         prefix = getConfig().getString("prefix").replaceAll("&", "\u00A7");
-        if(prefix == null)
+        if (prefix == null)
         {
             getLogger().info(ChatColor.RED + "Warning - You have either no value for the prefix - or you have an outdated config. Please update it.");
             prefix = ChatColor.DARK_GRAY + "[" + ChatColor.RED + "TrailGUI" + ChatColor.DARK_GRAY + "] ";
@@ -59,6 +75,7 @@ public class Main
         new Userdata().loadConfig();
         loadTrails();
         Methods.restoreTrails();
+        hookVNP();
     }
 
     public void reload()
@@ -70,25 +87,25 @@ public class Main
 
     private void loadTrails()
     {
-        if(getConfig().isConfigurationSection("trails"))
+        if (getConfig().isConfigurationSection("trails"))
         {
             ConfigurationSection section = getConfig().getConfigurationSection("trails");
-            for(String key : section.getKeys(false))
+            for (String key : section.getKeys(false))
             {
-                if(section.isConfigurationSection(key))
+                if (section.isConfigurationSection(key))
                 {
                     ConfigurationSection trailTypeSection = section.getConfigurationSection(key);
                     try
                     {
-                        if(trailTypeSection.getString("type").equalsIgnoreCase("ITEM_CRACK"))
+                        if (trailTypeSection.getString("type").equalsIgnoreCase("ITEM_CRACK"))
                         {
                             trailTypes.put(trailTypeSection.getName(), new ItemTrail(trailTypeSection));
                         }
-                        else if(trailTypeSection.getString("type").equalsIgnoreCase("BLOCK_CRACK"))
+                        else if (trailTypeSection.getString("type").equalsIgnoreCase("BLOCK_CRACK"))
                         {
                             trailTypes.put(trailTypeSection.getName(), new BlockTrail(trailTypeSection));
                         }
-                        else if(trailTypeSection.getBoolean("is_effect", false))
+                        else if (trailTypeSection.getBoolean("is_effect", false))
                         {
                             trailTypes.put(trailTypeSection.getName(), new EffectTrail(trailTypeSection));
                         }
@@ -96,8 +113,7 @@ public class Main
                         {
                             trailTypes.put(trailTypeSection.getName(), new NormalTrail(trailTypeSection));
                         }
-                    }
-                    catch(Exception ex)
+                    } catch (Exception ex)
                     {
                         getLogger().warning("Failed to load '" + trailTypeSection.getName() + "'. Error: " + ex.getMessage());
                     }
@@ -112,4 +128,5 @@ public class Main
     {
         Methods.saveTrails();
     }
+
 }

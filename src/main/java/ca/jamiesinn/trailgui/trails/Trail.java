@@ -27,6 +27,7 @@ public abstract class Trail
     protected boolean loreEnabled;
     protected List<String> lore;
     protected ParticleEffect type;
+    Map<UUID, Long> cooldownMap = new HashMap<UUID, Long>();
 
     public Trail(ConfigurationSection config)
     {
@@ -118,29 +119,28 @@ public abstract class Trail
         return player.hasPermission("trailgui.trails." + getName() + ".other") || player.hasPermission("trailgui.commands.other." + getName());
     }
 
-
     // Returns true if you are at your limit via permissions
     public boolean getPermLimit(Player player)
     {
         List<Trail> currentTrails = new ArrayList<Trail>();
         int max = 0;
-        for(int i = 0; i <= Main.trailTypes.size(); i++)
+        for (int i = 0; i <= Main.trailTypes.size(); i++)
         {
-            if(player.hasPermission("trailgui.trailmax." + i))
+            if (player.hasPermission("trailgui.trailmax." + i))
             {
                 max = i;
             }
         }
-        if(max == 0)
+        if (max == 0)
         {
             return false;
         }
 
-        if(Main.enabledTrails.containsKey(player.getUniqueId()))
+        if (Main.enabledTrails.containsKey(player.getUniqueId()))
         {
             currentTrails = Main.enabledTrails.get(player.getUniqueId());
         }
-        if(currentTrails.size() <= max)
+        if (currentTrails.size() <= max)
         {
             return false;
         }
@@ -148,13 +148,12 @@ public abstract class Trail
             return true;
     }
 
-
     public ItemStack getItem()
     {
         ItemStack item = new ItemStack(itemType, 1);
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(name);
-        if(loreEnabled)
+        if (loreEnabled)
         {
             meta.setLore(lore);
         }
@@ -162,22 +161,24 @@ public abstract class Trail
         return item;
     }
 
-    Map<UUID, Long> cooldownMap = new HashMap<UUID, Long>();
-
     public void display(Player player)
     {
-        if(cooldown <= 0)
+        if(Main.vnp != null)
+            if (Main.vnp.getManager().isVanished(player))
+                return;
+
+        if (cooldown <= 0)
         {
             justDisplay(player);
         }
         else
         {
-            if(!cooldownMap.containsKey(player.getUniqueId()))
+            if (!cooldownMap.containsKey(player.getUniqueId()))
             {
                 justDisplay(player);
                 cooldownMap.put(player.getUniqueId(), System.currentTimeMillis());
             }
-            else if(System.currentTimeMillis() - cooldownMap.get(player.getUniqueId()) > cooldown)
+            else if (System.currentTimeMillis() - cooldownMap.get(player.getUniqueId()) > cooldown)
             {
                 justDisplay(player);
                 cooldownMap.put(player.getUniqueId(), System.currentTimeMillis());
@@ -189,27 +190,27 @@ public abstract class Trail
 
     public boolean onInventoryClick(Player player, ItemStack currentItem)
     {
-        if(currentItem.equals(this.getItem()))
+        if (currentItem.equals(this.getItem()))
         {
             List<Trail> currentTrails = new ArrayList<Trail>();
 
-            if(Main.enabledTrails.containsKey(player.getUniqueId()))
+            if (Main.enabledTrails.containsKey(player.getUniqueId()))
             {
                 currentTrails = Main.enabledTrails.get(player.getUniqueId());
             }
 
-            if(!canUseInventory(player))
+            if (!canUseInventory(player))
             {
                 player.sendMessage(Main.getPlugin().getConfig().getString("GUI-denyPermissionMessage").replaceAll("&", "\u00A7"));
-                if(Main.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
+                if (Main.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
                 {
                     player.closeInventory();
                 }
                 return true;
             }
-            if(currentTrails.contains(this))
+            if (currentTrails.contains(this))
             {
-                if(Main.oneTrailAtATime)
+                if (Main.oneTrailAtATime)
                 {
                     Methods.clearTrails(player);
                 }
@@ -217,7 +218,7 @@ public abstract class Trail
                 currentTrails.remove(this);
                 Main.enabledTrails.put(player.getUniqueId(), currentTrails);
                 player.sendMessage(Main.getPlugin().getConfig().getString("GUI-removeTrailMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.getName()));
-                if(Main.getPlugin().getConfig().getBoolean("closeInventoryAferSelect"))
+                if (Main.getPlugin().getConfig().getBoolean("closeInventoryAferSelect"))
                 {
                     player.closeInventory();
                 }
@@ -225,11 +226,11 @@ public abstract class Trail
             }
             else
             {
-                if(Main.oneTrailAtATime)
+                if (Main.oneTrailAtATime)
                 {
                     Methods.clearTrails(player);
                 }
-                if((Main.maxTrails < currentTrails.size() && Main.maxTrails != 0) || getPermLimit(player))
+                if ((Main.maxTrails < currentTrails.size() && Main.maxTrails != 0) || getPermLimit(player))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("Commands-tooManyTrailsMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
                     return true;
@@ -237,7 +238,7 @@ public abstract class Trail
                 currentTrails.add(this);
                 Main.enabledTrails.put(player.getUniqueId(), currentTrails);
                 player.sendMessage(Main.getPlugin().getConfig().getString("GUI-selectTrailMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.getName()));
-                if(Main.getPlugin().getConfig().getBoolean("closeInventoryAferSelect"))
+                if (Main.getPlugin().getConfig().getBoolean("closeInventoryAferSelect"))
                 {
                     player.closeInventory();
                 }
@@ -249,24 +250,24 @@ public abstract class Trail
 
     public boolean onCommand(Player player, String[] args)
     {
-        if(args[0].equalsIgnoreCase(getName()))
+        if (args[0].equalsIgnoreCase(getName()))
         {
-            if(!canUseCommand(player))
+            if (!canUseCommand(player))
             {
                 player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "\u00A7"));
                 return false;
             }
 
-            if(args.length == 1)
+            if (args.length == 1)
             {
                 List<Trail> currentTrails = new ArrayList<Trail>();
-                if(Main.enabledTrails.containsKey(player.getUniqueId()))
+                if (Main.enabledTrails.containsKey(player.getUniqueId()))
                 {
                     currentTrails = Main.enabledTrails.get(player.getUniqueId());
                 }
-                if(currentTrails.contains(this))
+                if (currentTrails.contains(this))
                 {
-                    if(Main.oneTrailAtATime)
+                    if (Main.oneTrailAtATime)
                     {
                         Methods.clearTrails(player);
                     }
@@ -277,11 +278,11 @@ public abstract class Trail
                 }
                 else
                 {
-                    if(Main.oneTrailAtATime)
+                    if (Main.oneTrailAtATime)
                     {
                         Methods.clearTrails(player);
                     }
-                    if((Main.maxTrails < currentTrails.size() && Main.maxTrails != 0) || getPermLimit(player))
+                    if ((Main.maxTrails < currentTrails.size() && Main.maxTrails != 0) || getPermLimit(player))
                     {
                         player.sendMessage(Main.getPlugin().getConfig().getString("Commands-tooManyTrailsMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
                         return true;
@@ -294,28 +295,28 @@ public abstract class Trail
             }
 
 
-            if(canUseOnOthers(player))
+            if (canUseOnOthers(player))
             {
                 Player target = Bukkit.getServer().getPlayerExact(args[1]);
-                if(target == null)
+                if (target == null)
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("noTargetMessage").replaceAll("&", "\u00A7").replaceAll("%Target%", args[1]));
                     return true;
                 }
-                if(player.getName().equals(args[1]))
+                if (player.getName().equals(args[1]))
                 {
                     player.sendMessage(Main.getPlugin().getConfig().getString("targetSelfMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
                     return true;
                 }
 
                 List<Trail> currentTrails = new ArrayList<Trail>();
-                if(Main.enabledTrails.containsKey(target.getUniqueId()))
+                if (Main.enabledTrails.containsKey(target.getUniqueId()))
                 {
                     currentTrails = Main.enabledTrails.get(target.getUniqueId());
                 }
-                if(currentTrails.contains(this))
+                if (currentTrails.contains(this))
                 {
-                    if(Main.oneTrailAtATime)
+                    if (Main.oneTrailAtATime)
                     {
                         Methods.clearTrails(target);
                     }
@@ -328,11 +329,11 @@ public abstract class Trail
                 }
                 else
                 {
-                    if(Main.oneTrailAtATime)
+                    if (Main.oneTrailAtATime)
                     {
                         Methods.clearTrails(target);
                     }
-                    if((Main.maxTrails < currentTrails.size() && Main.maxTrails != 0) || getPermLimit(target))
+                    if ((Main.maxTrails < currentTrails.size() && Main.maxTrails != 0) || getPermLimit(target))
                     {
                         player.sendMessage(Main.getPlugin().getConfig().getString("Commands-tooManyTrailsMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
                         return true;
@@ -356,25 +357,25 @@ public abstract class Trail
 
     public boolean onCommand(CommandSender sender, String[] args)
     {
-        if(args[0].equalsIgnoreCase(getName()))
+        if (args[0].equalsIgnoreCase(getName()))
         {
-            if(args.length == 2)
+            if (args.length == 2)
             {
                 Player target = Bukkit.getServer().getPlayerExact(args[1]);
-                if(target == null)
+                if (target == null)
                 {
                     sender.sendMessage(Main.getPlugin().getConfig().getString("noTargetMessage").replaceAll("&", "\u00A7").replaceAll("%Target%", args[1]));
                     return true;
                 }
 
                 List<Trail> currentTrails = new ArrayList<Trail>();
-                if(Main.enabledTrails.containsKey(target.getUniqueId()))
+                if (Main.enabledTrails.containsKey(target.getUniqueId()))
                 {
                     currentTrails = Main.enabledTrails.get(target.getUniqueId());
                 }
-                if(currentTrails.contains(this))
+                if (currentTrails.contains(this))
                 {
-                    if(Main.oneTrailAtATime)
+                    if (Main.oneTrailAtATime)
                     {
                         Methods.clearTrails(target);
                     }
@@ -387,11 +388,11 @@ public abstract class Trail
                 }
                 else
                 {
-                    if(Main.oneTrailAtATime)
+                    if (Main.oneTrailAtATime)
                     {
                         Methods.clearTrails(target);
                     }
-                    if((Main.maxTrails < currentTrails.size() && Main.maxTrails != 0) || getPermLimit(target))
+                    if ((Main.maxTrails < currentTrails.size() && Main.maxTrails != 0) || getPermLimit(target))
                     {
                         sender.sendMessage(Main.getPlugin().getConfig().getString("Commands-tooManyTrailsMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
                         return true;

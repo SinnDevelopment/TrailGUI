@@ -2,6 +2,7 @@ name: TrailGUI
 main: ca.jamiesinn.trailgui.Main
 version: 4.2
 author: JamieSinn
+softdepend: [VanishNoPacket]
 
 commands:
    trail:
