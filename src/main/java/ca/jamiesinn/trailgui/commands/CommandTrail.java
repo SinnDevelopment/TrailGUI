@@ -57,13 +57,8 @@ public class CommandTrail implements CommandExecutor, TabCompleter
         List<Trail> trails = new ArrayList<Trail>(Main.trailTypes.values());
         if (!(sender instanceof Player))
         {
-            for (Trail trail : trails)
-            {
-                if (trail.onCommand(sender, args))
-                {
-                    return true;
-                }
-            }
+            sender.sendMessage("You must be a player.");
+            return true;
         }
         Player player = (Player) sender;
         for (String string : Main.disabledWorlds)

@@ -4,6 +4,7 @@ import ca.jamiesinn.trailgui.Main;
 import ca.jamiesinn.trailgui.Methods;
 import com.darkblade12.particleeffect.ParticleEffect;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
@@ -39,7 +40,7 @@ public abstract class Trail
         this.cooldown = config.getInt("cooldown", 0);
         this.order = config.getInt("order");
         this.itemType = Material.valueOf(config.getString("itemType").toUpperCase());
-        this.itemName = config.getString("itemName", "").replaceAll("&([0-9a-fA-Fk-oK-OrR])", "\u00A7");
+        this.itemName = ChatColor.translateAlternateColorCodes('&', config.getString("itemName", ""));
         this.loreEnabled = config.getBoolean("loreEnabled", false);
         this.lore = new ArrayList<String>();
         lore.add(config.getString("loreLineOne"));
@@ -140,12 +141,7 @@ public abstract class Trail
         {
             currentTrails = Main.enabledTrails.get(player.getUniqueId());
         }
-        if (currentTrails.size() <= max)
-        {
-            return false;
-        }
-        else
-            return true;
+        return currentTrails.size() > max;
     }
 
     public ItemStack getItem()
