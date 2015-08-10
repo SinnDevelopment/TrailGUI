@@ -1,5 +1,7 @@
 package ca.jamiesinn.trailgui.trails;
 
+import ca.jamiesinn.trailgui.Main;
+import ca.jamiesinn.trailgui.api.TrailDisplayEvent;
 import com.darkblade12.particleeffect.ParticleEffect;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -32,6 +34,10 @@ public class WaterTrail extends Trail
         {
             return;
         }
-        type.display(player.getVelocity(), speed, player.getLocation().add(0.0D, displayLocation, 0.0D), range);
+        TrailDisplayEvent event = new TrailDisplayEvent(getName(),
+                getDisplayLocation(), getAmount(), cooldown, speed, range, type);
+        Main.getPlugin().getServer().getPluginManager().callEvent(event);
+        if(!event.isCancelled())
+            type.display(player.getVelocity(), speed, player.getLocation().add(0.0D, displayLocation, 0.0D), range);
     }
 }
