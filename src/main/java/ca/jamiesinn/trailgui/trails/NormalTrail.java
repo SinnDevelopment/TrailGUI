@@ -1,7 +1,5 @@
 package ca.jamiesinn.trailgui.trails;
 
-import ca.jamiesinn.trailgui.Main;
-import ca.jamiesinn.trailgui.api.TrailDisplayEvent;
 import com.darkblade12.particleeffect.ParticleEffect;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
@@ -27,10 +25,7 @@ public class NormalTrail extends Trail
         {
             return;
         }
-        TrailDisplayEvent event = new TrailDisplayEvent(this.getName(),
-                this.getDisplayLocation(), this.getAmount(), this.cooldown, this.speed, this.range, this.type);
-        Main.getPlugin().getServer().getPluginManager().callEvent(event);
-        if(!event.isCancelled())
+        if(!displayEvent(getName(), getDisplayLocation(), getAmount(), cooldown, getSpeed(), getRange(), type).isCancelled())
             type.display(0.0F, 0.0F, 0.0F, speed, amount, player.getLocation().add(0.0D, displayLocation, 0.0D), range);
     }
 }

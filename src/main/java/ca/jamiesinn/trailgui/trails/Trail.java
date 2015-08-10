@@ -2,6 +2,7 @@ package ca.jamiesinn.trailgui.trails;
 
 import ca.jamiesinn.trailgui.Main;
 import ca.jamiesinn.trailgui.Methods;
+import ca.jamiesinn.trailgui.api.TrailDisplayEvent;
 import com.darkblade12.particleeffect.ParticleEffect;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -406,5 +407,12 @@ public abstract class Trail
             }
         }
         return false;
+    }
+    public TrailDisplayEvent displayEvent(String name, double location, int amount, int cooldown, float speed, int range, ParticleEffect type)
+    {
+        TrailDisplayEvent event = new TrailDisplayEvent(name,
+                location, amount, cooldown, speed, range, type);
+        Main.getPlugin().getServer().getPluginManager().callEvent(event);
+        return event;
     }
 }
