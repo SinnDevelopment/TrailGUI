@@ -21,28 +21,32 @@ public class CommandTrailGUI
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
     {
-        Player player = (Player) sender;
         for (String string : Main.disabledWorlds)
         {
+
             string = string.replace("[", "");
             string = string.replace("]", "");
-            if (string.equals(player.getWorld().getName()))
+            if (sender instanceof Player)
             {
-                player.sendMessage(Main.prefix + ChatColor.RED + "You cannot use this command in this world.");
-                return false;
+                Player player = (Player) sender;
+                if (string.equals(player.getWorld().getName()))
+                {
+                    player.sendMessage(Main.prefix + ChatColor.RED + "You cannot use this command in this world.");
+                    return false;
+                }
             }
             if (args.length == 0)
             {
-                player.sendMessage(Main.prefix + ChatColor.GREEN + "Available commands:");
-                player.sendMessage(ChatColor.GREEN + "/trailgui reload");
-                player.sendMessage(ChatColor.GREEN + "/trailgui version");
+                sender.sendMessage(Main.prefix + ChatColor.GREEN + "Available commands:");
+                sender.sendMessage(ChatColor.GREEN + "/trailgui reload");
+                sender.sendMessage(ChatColor.GREEN + "/trailgui version");
                 return true;
             }
             if (args[0].equalsIgnoreCase("reload"))
             {
-                if (!player.hasPermission("trailgui.commands.reloadconfigs"))
+                if (!sender.hasPermission("trailgui.commands.reloadconfigs"))
                 {
-                    player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "\u00A7"));
+                    sender.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "\u00A7"));
                     return false;
                 }
                 Userdata.getInstance().reloadConfig();
@@ -50,22 +54,23 @@ public class CommandTrailGUI
 
                 Main.getPlugin().reload();
 
-                player.sendMessage(Main.prefix + ChatColor.GREEN + "Successfully reloaded all config files.");
+                sender.sendMessage(Main.prefix + ChatColor.GREEN + "Successfully reloaded all config files.");
                 return true;
             }
             if (args[0].equalsIgnoreCase("version"))
             {
-                if (!player.hasPermission("trailgui.commands.version"))
+                if (!sender.hasPermission("trailgui.commands.version"))
                 {
-                    player.sendMessage(this.main.getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "\u00A7"));
+                    sender.sendMessage(this.main.getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "\u00A7"));
                     return false;
                 }
-                player.sendMessage(Main.prefix + ChatColor.GREEN + "Version"
+                sender.sendMessage(Main.prefix + ChatColor.GREEN + "Version"
                         + this.main.getDescription().getVersion()
                         + ChatColor.GREEN + " created by " + ChatColor.BOLD + "Coder_M, JamieSinn, and kukelekuuk00" + ChatColor.GREEN + ".");
                 return true;
             }
         }
+
         return false;
     }
 }
