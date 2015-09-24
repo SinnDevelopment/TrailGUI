@@ -34,7 +34,7 @@ public class CommandTrails
             if (string.equals(player.getWorld().getName()))
             {
                 player.sendMessage(Main.prefix + ChatColor.GREEN + "You cannot use this command in this world.");
-                return false;
+                return true;
             }
             if (!player.hasPermission("trailgui.commands.trails"))
             {
@@ -43,7 +43,7 @@ public class CommandTrails
                 {
                     player.closeInventory();
                 }
-                return false;
+                return true;
             }
             Methods.openGUI(player);
         }
