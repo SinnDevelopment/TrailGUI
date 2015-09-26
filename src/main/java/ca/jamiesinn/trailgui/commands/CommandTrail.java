@@ -40,7 +40,7 @@ public class CommandTrail implements CommandExecutor, TabCompleter
     private void showList(Player player)
     {
         player.sendMessage(Main.prefix + ChatColor.GREEN + "Available trails:");
-        String list = ChatColor.RED + "values: " + ChatColor.GREEN;
+        String list = ChatColor.RED + "Trails: " + ChatColor.GREEN;
         for (Trail type : Main.trailTypes.values())
         {
             if (type.canUse(player))
@@ -126,6 +126,7 @@ public class CommandTrail implements CommandExecutor, TabCompleter
             {
                 player.sendMessage(Main.prefix + ChatColor.DARK_RED + "That's not a valid trail.");
                 showList(player);
+                return true;
             }
             //endregion
         }
