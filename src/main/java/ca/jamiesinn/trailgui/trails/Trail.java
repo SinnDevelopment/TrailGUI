@@ -159,8 +159,8 @@ public abstract class Trail
 
     public void display(Player player)
     {
-        if(Main.vnp != null)
-            if (Main.vnp.getManager().isVanished(player))
+        if(Main.ess != null)
+            if (Main.ess.getUser(player).isVanished())
                 return;
 
         if (cooldown <= 0)

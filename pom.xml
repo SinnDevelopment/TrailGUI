@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>ca.jamiesinn</groupId>
     <artifactId>TrailGUI</artifactId>
-    <version>4.2.5-SNAPSHOT</version>
+    <version>4.3-SNAPSHOT</version>
     <repositories>
         <repository>
             <id>spigot-repo</id>
@@ -16,8 +16,8 @@
             <url>http://repo.sinndev.com/content/groups/public/</url>
         </repository>
         <repository>
-            <id>kitteh-repo</id>
-            <url>http://repo.kitteh.org/content/groups/public</url>
+            <id>ess-repo</id>
+            <url>http://repo.ess3.net/content/groups/essentials</url>
         </repository>
     </repositories>
     <dependencies>
@@ -32,22 +32,22 @@
             <version>1.7</version>
         </dependency>
         <dependency>
-            <groupId>org.kitteh</groupId>
-            <artifactId>VanishNoPacket</artifactId>
-            <version>3.19.2-SNAPSHOT</version>
+            <groupId>net.ess3</groupId>
+            <artifactId>Essentials</artifactId>
+            <version>2.14-SNAPSHOT</version>
         </dependency>
     </dependencies>
     <distributionManagement>
-      <repository>
-         <id>sinndev-repo</id>
-         <name>Releases</name>
-         <url>http://repo.sinndev.com/content/repositories/releases/</url>
-      </repository>
-      <snapshotRepository>
-         <id>sinndev-repo</id>
-         <name>Snapshots</name>
-         <url>http://repo.sinndev.com/content/repositories/snapshots/</url>
-      </snapshotRepository>
+        <repository>
+            <id>sinndev-repo</id>
+            <name>Releases</name>
+            <url>http://repo.sinndev.com/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>sinndev-repo</id>
+            <name>Snapshots</name>
+            <url>http://repo.sinndev.com/content/repositories/snapshots/</url>
+        </snapshotRepository>
     </distributionManagement>
     <build>
         <defaultGoal>clean install</defaultGoal>

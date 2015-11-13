@@ -5,12 +5,12 @@ import ca.jamiesinn.trailgui.commands.CommandTrailGUI;
 import ca.jamiesinn.trailgui.commands.CommandTrails;
 import ca.jamiesinn.trailgui.files.Userdata;
 import ca.jamiesinn.trailgui.trails.*;
+import com.earth2me.essentials.IEssentials;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.kitteh.vanish.VanishPlugin;
 
 import java.util.HashMap;
 import java.util.List;
@@ -28,7 +28,7 @@ public class Main
     public static List<String> disabledWorlds;
     public static Map<UUID, List<Trail>> enabledTrails = new HashMap<UUID, List<Trail>>();
     public static Map<String, Trail> trailTypes = new HashMap<String, Trail>();
-    public static VanishPlugin vnp;
+    public static IEssentials ess;
 
     public static Main getPlugin()
     {
@@ -47,16 +47,17 @@ public class Main
         load();
     }
 
-    public void hookVNP()
+    public void hookEss()
     {
         final PluginManager pm = this.getServer().getPluginManager();
-        final Plugin pl = pm.getPlugin("VanishNoPacket");
+        final Plugin pl = pm.getPlugin("Essentials");
         if (plugin == null || !plugin.isEnabled())
         {
-            getLogger().warning("Couldn't hook VNP");
+            getLogger().warning("Couldn't hook Ess - Not using vanish hooks");
             return;
         }
-        vnp = (VanishPlugin) pl;
+        ess = (IEssentials) pl;
+        getLogger().info("Hooked Essentials Successfully");
     }
 
     private void load()
@@ -75,7 +76,7 @@ public class Main
         new Userdata().loadConfig();
         loadTrails();
         Methods.restoreTrails();
-        hookVNP();
+        hookEss();
     }
 
     public void reload()
