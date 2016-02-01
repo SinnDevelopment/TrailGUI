@@ -11,6 +11,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.PotionEffectType;
 
 import java.util.*;
 
@@ -40,7 +41,7 @@ public abstract class Trail
         this.cooldown = config.getInt("cooldown", 0);
         this.order = config.getInt("order");
         this.itemType = Material.valueOf(config.getString("itemType").toUpperCase());
-        this.itemName = config.getString("itemName", "").replace("&","\u00a7");
+        this.itemName = config.getString("itemName", "").replace("&", "\u00a7");
         this.loreEnabled = config.getBoolean("loreEnabled", false);
         this.lore = new ArrayList<String>();
         lore.add(config.getString("loreLineOne"));
@@ -159,9 +160,10 @@ public abstract class Trail
 
     public void display(Player player)
     {
-        if(Main.ess != null)
-            if (Main.ess.getUser(player).isVanished())
-                return;
+
+        if ((Main.ess != null && Main.ess.getUser(player).isVanished())
+                || player.hasPotionEffect(PotionEffectType.INVISIBILITY))
+            return;
 
         if (cooldown <= 0)
         {
@@ -407,6 +409,7 @@ public abstract class Trail
         }
         return false;
     }
+
     public TrailDisplayEvent displayEvent(String name, double location, int amount, int cooldown, float speed, int range, ParticleEffect type)
     {
         TrailDisplayEvent event = new TrailDisplayEvent(name,
