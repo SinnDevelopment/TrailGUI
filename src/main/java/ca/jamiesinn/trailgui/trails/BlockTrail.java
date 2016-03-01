@@ -1,32 +1,33 @@
 package ca.jamiesinn.trailgui.trails;
 
-import com.darkblade12.particleeffect.ParticleEffect;
+import org.bukkit.Particle;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
+import org.bukkit.material.MaterialData;
 
 public class BlockTrail extends Trail
 {
-    ParticleEffect.BlockData blockData;
-    int itemData;
+    MaterialData blockData;
+    byte itemData;
 
     public BlockTrail(ConfigurationSection config)
     {
         super(config);
-        itemData = config.getInt("data", 0);
-        blockData = new ParticleEffect.BlockData(itemType, (byte) itemData);
+        itemData = (byte)config.getInt("data", 0);
+        blockData = new MaterialData(itemType, itemData);
         loadType(config.getString("type"));
     }
 
     @Override
     protected void loadType(String sType)
     {
-        this.type = ParticleEffect.valueOf(sType);
+        this.type = Particle.valueOf(sType);
     }
 
     @Override
     public void justDisplay(Player player)
     {
         if(!displayEvent(getName(), getDisplayLocation(), getAmount(), cooldown, getSpeed(), getRange(), type).isCancelled())
-            type.display(blockData, player.getLocation().getDirection(), speed, player.getLocation().add(0.0D, displayLocation, 0.0D), range);
+            player.spawnParticle(type, player.getLocation().add(0.0D, displayLocation, 0.0D), amount, 0,0,0, speed, blockData);
     }
 }

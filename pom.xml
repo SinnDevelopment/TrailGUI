@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>ca.jamiesinn</groupId>
     <artifactId>TrailGUI</artifactId>
-    <version>4.3-SNAPSHOT</version>
+    <version>5.0-SNAPSHOT</version>
     <repositories>
         <repository>
             <id>spigot-repo</id>
@@ -24,12 +24,7 @@
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>1.8.7-R0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.darkblade12</groupId>
-            <artifactId>particleeffect</artifactId>
-            <version>1.7</version>
+            <version>1.9-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>net.ess3</groupId>
@@ -51,27 +46,5 @@
     </distributionManagement>
     <build>
         <defaultGoal>clean install</defaultGoal>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>1.5</version>
-                <configuration>
-                    <artifactSet>
-                        <includes>
-                            <include>com.darkblade12:*</include>
-                        </includes>
-                    </artifactSet>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
     </build>
 </project>

@@ -1,6 +1,6 @@
 package ca.jamiesinn.trailgui.trails;
 
-import com.darkblade12.particleeffect.ParticleEffect;
+import org.bukkit.Particle;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 
@@ -15,7 +15,7 @@ public class NormalTrail extends Trail
     @Override
     protected void loadType(String sType)
     {
-        this.type = ParticleEffect.valueOf(sType);
+        this.type = Particle.valueOf(sType);
     }
 
     @Override
@@ -26,6 +26,6 @@ public class NormalTrail extends Trail
             return;
         }
         if(!displayEvent(getName(), getDisplayLocation(), getAmount(), cooldown, getSpeed(), getRange(), type).isCancelled())
-            type.display(0.0F, 0.0F, 0.0F, speed, amount, player.getLocation().add(0.0D, displayLocation, 0.0D), range);
+            player.spawnParticle(type, player.getLocation().add(0.0D, displayLocation, 0.0D), amount, 0, 0, 0, speed);
     }
 }

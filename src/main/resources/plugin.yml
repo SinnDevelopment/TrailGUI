@@ -1,6 +1,6 @@
 name: TrailGUI
 main: ca.jamiesinn.trailgui.Main
-version: 4.3
+version: 5.0
 author: JamieSinn
 softdepend: [Essentials]
 

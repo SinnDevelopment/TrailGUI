@@ -1,6 +1,6 @@
 package ca.jamiesinn.trailgui.api;
 
-import com.darkblade12.particleeffect.ParticleEffect;
+import org.bukkit.Particle;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -14,10 +14,10 @@ public class TrailDisplayEvent extends Event implements Cancellable
     private int cooldown;
     private float speed;
     private int range;
-    private ParticleEffect type;
+    private Particle type;
     private boolean cancelled;
 
-    public TrailDisplayEvent(String name, double displayLocation, int amount, int cooldown, float speed, int range, ParticleEffect type)
+    public TrailDisplayEvent(String name, double displayLocation, int amount, int cooldown, float speed, int range, Particle type)
     {
         this.name = name;
         this.displayLocation = displayLocation;
@@ -65,7 +65,7 @@ public class TrailDisplayEvent extends Event implements Cancellable
         return name;
     }
 
-    public ParticleEffect getType()
+    public Particle getType()
     {
         return type;
     }
