@@ -1,12 +1,13 @@
 package ca.jamiesinn.trailgui.trails;
 
-import ca.jamiesinn.trailgui.TrailGUI;
 import ca.jamiesinn.trailgui.Methods;
+import ca.jamiesinn.trailgui.TrailGUI;
+import ca.jamiesinn.trailgui.api.TrailDisableEvent;
 import ca.jamiesinn.trailgui.api.TrailDisplayEvent;
+import ca.jamiesinn.trailgui.api.TrailEnableEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Particle;
-import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -214,6 +215,7 @@ public abstract class Trail
                 }
 
                 currentTrails.remove(this);
+                disableEvent(player, this);
                 TrailGUI.enabledTrails.put(player.getUniqueId(), currentTrails);
                 player.sendMessage(TrailGUI.getPlugin().getConfig().getString("GUI-removeTrailMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.getName()));
                 if (TrailGUI.getPlugin().getConfig().getBoolean("closeInventoryAferSelect"))
@@ -234,6 +236,7 @@ public abstract class Trail
                     return true;
                 }
                 currentTrails.add(this);
+                enableEvent(player, this);
                 TrailGUI.enabledTrails.put(player.getUniqueId(), currentTrails);
                 player.sendMessage(TrailGUI.getPlugin().getConfig().getString("GUI-selectTrailMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.getName()));
                 if (TrailGUI.getPlugin().getConfig().getBoolean("closeInventoryAferSelect"))
@@ -286,6 +289,7 @@ public abstract class Trail
                         return true;
                     }
                     currentTrails.add(this);
+                    enableEvent(player, this);
                     TrailGUI.enabledTrails.put(player.getUniqueId(), currentTrails);
                     player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
                     return true;
@@ -353,68 +357,32 @@ public abstract class Trail
         return false;
     }
 
-    public boolean onCommand(CommandSender sender, String[] args)
-    {
-        if (args[0].equalsIgnoreCase(getName()))
-        {
-            if (args.length == 2)
-            {
-                Player target = Bukkit.getServer().getPlayerExact(args[1]);
-                if (target == null)
-                {
-                    sender.sendMessage(TrailGUI.getPlugin().getConfig().getString("noTargetMessage").replaceAll("&", "\u00A7").replaceAll("%Target%", args[1]));
-                    return true;
-                }
-
-                List<Trail> currentTrails = new ArrayList<Trail>();
-                if (TrailGUI.enabledTrails.containsKey(target.getUniqueId()))
-                {
-                    currentTrails = TrailGUI.enabledTrails.get(target.getUniqueId());
-                }
-                if (currentTrails.contains(this))
-                {
-                    if (TrailGUI.oneTrailAtATime)
-                    {
-                        Methods.clearTrails(target);
-                    }
-                    currentTrails.remove(this);
-                    TrailGUI.enabledTrails.put(target.getUniqueId(), currentTrails);
-
-                    sender.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-removeTrailSenderMessage").replaceAll("&", "\u00A7").replaceAll("%Target%", args[1]));
-                    target.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-removeTrailTargetMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
-                    return true;
-                }
-                else
-                {
-                    if (TrailGUI.oneTrailAtATime)
-                    {
-                        Methods.clearTrails(target);
-                    }
-                    if ((TrailGUI.maxTrails < currentTrails.size() && TrailGUI.maxTrails != 0) || getPermLimit(target))
-                    {
-                        sender.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-tooManyTrailsMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
-                        return true;
-                    }
-                    currentTrails.add(this);
-                    TrailGUI.enabledTrails.put(target.getUniqueId(), currentTrails);
-                    sender.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-selectTrailSenderMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name).replaceAll("%Target%", args[1]));
-                    target.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-selectTrailTargetMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
-                    return true;
-                }
-            }
-            else
-            {
-                sender.sendMessage("Invalid Args - Please check syntax.");
-            }
-        }
-        return false;
-    }
-
     public TrailDisplayEvent displayEvent(String name, double location, int amount, int cooldown, float speed, int range, Particle type)
     {
         TrailDisplayEvent event = new TrailDisplayEvent(name,
                 location, amount, cooldown, speed, range, type);
         TrailGUI.getPlugin().getServer().getPluginManager().callEvent(event);
         return event;
+    }
+
+    public static void enableEvent(Player player, Trail trail)
+    {
+        TrailEnableEvent event = new TrailEnableEvent(player, trail);
+        TrailGUI.getPlugin().getServer().getPluginManager().callEvent(event);
+    }
+    public static void enableEvent(Player player, List<Trail> trails)
+    {
+        TrailEnableEvent event = new TrailEnableEvent(player, trails);
+        TrailGUI.getPlugin().getServer().getPluginManager().callEvent(event);
+    }
+    public static void disableEvent(Player player, Trail trail)
+    {
+        TrailDisableEvent event = new TrailDisableEvent(player, trail);
+        TrailGUI.getPlugin().getServer().getPluginManager().callEvent(event);
+    }
+    public static void disableEvent(Player player, List<Trail> trails)
+    {
+        TrailDisableEvent event = new TrailDisableEvent(player, trails);
+        TrailGUI.getPlugin().getServer().getPluginManager().callEvent(event);
     }
 }

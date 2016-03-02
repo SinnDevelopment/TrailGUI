@@ -24,6 +24,7 @@ public class Methods
         if (TrailGUI.enabledTrails.containsKey(player.getUniqueId()))
         {
             currentTrails = TrailGUI.enabledTrails.get(player.getUniqueId());
+            Trail.disableEvent(player, currentTrails);
             currentTrails.clear();
             TrailGUI.enabledTrails.put(player.getUniqueId(), currentTrails);
         }
@@ -62,6 +63,7 @@ public class Methods
                 {
                     trailTypes.add(TrailGUI.trailTypes.get(trail));
                 }
+                Trail.enableEvent(Bukkit.getPlayer(UUID.fromString(key)), trailTypes);
                 TrailGUI.enabledTrails.put(UUID.fromString(key), trailTypes);
             }
         }
