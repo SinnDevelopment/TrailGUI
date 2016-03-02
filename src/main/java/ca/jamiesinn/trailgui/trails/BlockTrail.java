@@ -28,6 +28,7 @@ public class BlockTrail extends Trail
     public void justDisplay(Player player)
     {
         if(!displayEvent(getName(), getDisplayLocation(), getAmount(), cooldown, getSpeed(), getRange(), type).isCancelled())
-            player.spawnParticle(type, player.getLocation().add(0.0D, displayLocation, 0.0D), amount, 0,0,0, speed, blockData);
+            player.getWorld().spawnParticle(type, player.getLocation().add(0.0D, displayLocation, 0.0D), amount, 0,0,0, speed, blockData);
+
     }
 }

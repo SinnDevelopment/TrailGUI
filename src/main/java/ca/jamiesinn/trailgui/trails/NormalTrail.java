@@ -26,6 +26,6 @@ public class NormalTrail extends Trail
             return;
         }
         if(!displayEvent(getName(), getDisplayLocation(), getAmount(), cooldown, getSpeed(), getRange(), type).isCancelled())
-            player.spawnParticle(type, player.getLocation().add(0.0D, displayLocation, 0.0D), amount, 0, 0, 0, speed);
+            player.getWorld().spawnParticle(type, player.getLocation().add(0.0D, displayLocation, 0.0D), amount, 0, 0, 0, speed);
     }
 }
