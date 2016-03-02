@@ -58,7 +58,7 @@ public class CommandTrailGUI
             }
             if (args[0].equalsIgnoreCase("version"))
             {
-                sender.sendMessage(TrailGUI.prefix + ChatColor.GREEN + "Version"
+                sender.sendMessage(TrailGUI.prefix + ChatColor.GREEN + "Version: "
                         + this.trailGUI.getDescription().getVersion());
                 return true;
             }
