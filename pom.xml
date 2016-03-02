@@ -5,7 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>ca.jamiesinn</groupId>
     <artifactId>TrailGUI</artifactId>
-    <version>5.0-b${BUILD_NUMBER}-SNAPSHOT</version>
+    <version>${primaryVersion}-b${BUILD_NUMBER}-${releaseType}</version>
+    <properties>
+        <primaryVersion>5.0</primaryVersion>
+        <releaseType>SNAPSHOT</releaseType>
+    </properties>
     <repositories>
         <repository>
             <id>spigot-repo</id>
@@ -46,6 +50,7 @@
     </distributionManagement>
     <build>
         <defaultGoal>clean install</defaultGoal>
+        <finalName>${project.artifactId}-${primaryVersion}-${releaseType}</finalName>
         <plugins>
             <plugin>
                 <groupId>com.google.code.maven-replacer-plugin</groupId>
