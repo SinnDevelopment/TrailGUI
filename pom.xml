@@ -64,7 +64,11 @@
                     <replacements>
                         <replacement>
                             <token>{mavenVersion}</token>
-                            <value>${project.version}-b${BUILD_NUMBER}</value>
+                            <value>${project.version}</value>
+                        </replacement>
+                        <replacement>
+                            <token>{BUILD}</token>
+                            <value>${BUILD_NUMBER}</value>
                         </replacement>
                     </replacements>
                 </configuration>
