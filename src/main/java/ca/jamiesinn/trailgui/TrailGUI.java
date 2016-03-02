@@ -17,10 +17,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-public class Main
+public class TrailGUI
         extends JavaPlugin
 {
-    public static Main plugin;
+    public static TrailGUI plugin;
     public static String prefix;
     public static boolean removeTrailOnPlayerHit;
     public static boolean oneTrailAtATime;
@@ -30,7 +30,7 @@ public class Main
     public static Map<String, Trail> trailTypes = new HashMap<String, Trail>();
     public static IEssentials ess;
 
-    public static Main getPlugin()
+    public static TrailGUI getPlugin()
     {
         return plugin;
     }
@@ -53,7 +53,7 @@ public class Main
         final Plugin pl = pm.getPlugin("Essentials");
         if (plugin == null || !plugin.isEnabled())
         {
-            getLogger().warning("Couldn't hook Ess - Not using vanish hooks");
+            getLogger().warning("Couldn't hook Essentials - Not using vanish hooks");
             return;
         }
         ess = (IEssentials) pl;

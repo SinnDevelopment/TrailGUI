@@ -1,6 +1,6 @@
 package ca.jamiesinn.trailgui.commands;
 
-import ca.jamiesinn.trailgui.Main;
+import ca.jamiesinn.trailgui.TrailGUI;
 import ca.jamiesinn.trailgui.Methods;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -11,11 +11,11 @@ import org.bukkit.entity.Player;
 public class CommandTrails
         implements CommandExecutor
 {
-    Main main;
+    TrailGUI trailGUI;
 
-    public CommandTrails(Main main)
+    public CommandTrails(TrailGUI trailGUI)
     {
-        this.main = main;
+        this.trailGUI = trailGUI;
     }
 
 
@@ -23,23 +23,23 @@ public class CommandTrails
     {
         if (!(sender instanceof Player))
         {
-            sender.sendMessage(Main.prefix + ChatColor.RED + "Only players can perform this command.");
+            sender.sendMessage(TrailGUI.prefix + ChatColor.RED + "Only players can perform this command.");
             return true;
         }
         Player player = (Player) sender;
-        for (String string : Main.disabledWorlds)
+        for (String string : TrailGUI.disabledWorlds)
         {
             string = string.replace("[", "");
             string = string.replace("]", "");
             if (string.equals(player.getWorld().getName()))
             {
-                player.sendMessage(Main.prefix + ChatColor.GREEN + "You cannot use this command in this world.");
+                player.sendMessage(TrailGUI.prefix + ChatColor.GREEN + "You cannot use this command in this world.");
                 return true;
             }
             if (!player.hasPermission("trailgui.commands.trails"))
             {
-                player.sendMessage(Main.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "\u00A7"));
-                if (Main.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
+                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "\u00A7"));
+                if (TrailGUI.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
                 {
                     player.closeInventory();
                 }

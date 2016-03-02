@@ -14,17 +14,17 @@ import java.util.List;
 
 public class Listeners implements Listener
 {
-    Main main;
+    TrailGUI trailGUI;
 
-    public Listeners(Main main)
+    public Listeners(TrailGUI trailGUI)
     {
-        this.main = main;
+        this.trailGUI = trailGUI;
     }
 
     @EventHandler
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event)
     {
-        if (Main.removeTrailOnPlayerHit)
+        if (TrailGUI.removeTrailOnPlayerHit)
         {
             if (((event.getDamager() instanceof Player)) &&
                     ((event.getEntity() instanceof Player)))
@@ -39,7 +39,7 @@ public class Listeners implements Listener
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event)
     {
-        if (event.getInventory().getTitle().contains(Main.getPlugin().getConfig().getString("inventoryName")))
+        if (event.getInventory().getTitle().contains(TrailGUI.getPlugin().getConfig().getString("inventoryName")))
         {
             event.setCancelled(true);
 
@@ -59,9 +59,9 @@ public class Listeners implements Listener
                 }
             }
 
-            if (event.getCurrentItem().equals(Methods.itemNoPerms()) && Main.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
+            if (event.getCurrentItem().equals(Methods.itemNoPerms()) && TrailGUI.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
             {
-                player.sendMessage(Main.getPlugin().getConfig().getString("GUI-denyPermissionMessage").replaceAll("&", "\u00A7"));
+                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("GUI-denyPermissionMessage").replaceAll("&", "\u00A7"));
                 player.closeInventory();
                 return;
             }
@@ -70,8 +70,8 @@ public class Listeners implements Listener
             {
                 if (!player.hasPermission("trailgui.inventory.previouspage"))
                 {
-                    player.sendMessage(Main.getPlugin().getConfig().getString("GUI-denyPermissionMessage").replaceAll("&", "\u00A7"));
-                    if (Main.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
+                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("GUI-denyPermissionMessage").replaceAll("&", "\u00A7"));
+                    if (TrailGUI.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
                     {
                         player.closeInventory();
                     }
@@ -83,8 +83,8 @@ public class Listeners implements Listener
             {
                 if (!player.hasPermission("trailgui.inventory.clearall"))
                 {
-                    player.sendMessage(Main.getPlugin().getConfig().getString("GUI-denyPermissionMessage").replaceAll("&", "\u00A7"));
-                    if (Main.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
+                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("GUI-denyPermissionMessage").replaceAll("&", "\u00A7"));
+                    if (TrailGUI.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
                     {
                         player.closeInventory();
                     }
@@ -92,8 +92,8 @@ public class Listeners implements Listener
                 }
                 Methods.clearTrails(player);
 
-                player.sendMessage(Main.getPlugin().getConfig().getString("RemoveTrails-message").replaceAll("&", "\u00A7"));
-                if (Main.getPlugin().getConfig().getBoolean("closeInventoryAferSelect"))
+                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("RemoveTrails-message").replaceAll("&", "\u00A7"));
+                if (TrailGUI.getPlugin().getConfig().getBoolean("closeInventoryAferSelect"))
                 {
                     player.closeInventory();
                 }
@@ -102,8 +102,8 @@ public class Listeners implements Listener
             {
                 if (!player.hasPermission("trailgui.inventory.nextpage"))
                 {
-                    player.sendMessage(Main.getPlugin().getConfig().getString("GUI-denyPermissionMessage").replaceAll("&", "\u00A7"));
-                    if (Main.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
+                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("GUI-denyPermissionMessage").replaceAll("&", "\u00A7"));
+                    if (TrailGUI.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
                     {
                         player.closeInventory();
                     }
@@ -119,17 +119,17 @@ public class Listeners implements Listener
     public void onPlayerMove(PlayerMoveEvent event)
     {
         final Player player = event.getPlayer();
-        if (!Main.enabledTrails.containsKey(player.getUniqueId()))
+        if (!TrailGUI.enabledTrails.containsKey(player.getUniqueId()))
         {
             return;
         }
-        if ((Main.getPlugin().getConfig().getBoolean("disabledWhenSpinning")) &&
+        if ((TrailGUI.getPlugin().getConfig().getBoolean("disabledWhenSpinning")) &&
                 (event.getFrom().getX() == event.getTo().getX()) && (event.getFrom().getY() == event.getTo().getY()) && (event.getFrom().getZ() == event.getTo().getZ()))
         {
             return;
         }
 
-        for (String string : Main.disabledWorlds)
+        for (String string : TrailGUI.disabledWorlds)
         {
             string = string.replace("[", "");
             string = string.replace("]", "");
@@ -138,7 +138,7 @@ public class Listeners implements Listener
                 return;
             }
         }
-        List<Trail> trails = Main.enabledTrails.get(player.getUniqueId());
+        List<Trail> trails = TrailGUI.enabledTrails.get(player.getUniqueId());
         for (Trail trail : trails)
         {
             trail.display(player);

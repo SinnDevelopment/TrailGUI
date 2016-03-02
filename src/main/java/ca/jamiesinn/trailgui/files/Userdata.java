@@ -1,6 +1,6 @@
 package ca.jamiesinn.trailgui.files;
 
-import ca.jamiesinn.trailgui.Main;
+import ca.jamiesinn.trailgui.TrailGUI;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -19,7 +19,7 @@ public class Userdata
     public Userdata()
     {
         instance = this;
-        file = new File(Main.getPlugin().getDataFolder(), FILENAME);
+        file = new File(TrailGUI.getPlugin().getDataFolder(), FILENAME);
     }
 
     public static Userdata getInstance()
@@ -35,7 +35,7 @@ public class Userdata
             file.createNewFile();
         } catch (Exception ex)
         {
-            Main.getPlugin().getLogger().warning(ChatColor.DARK_RED + "Failed to generate the file: " + FILENAME);
+            TrailGUI.getPlugin().getLogger().warning(ChatColor.DARK_RED + "Failed to generate the file: " + FILENAME);
         }
     }
 
@@ -65,7 +65,7 @@ public class Userdata
             config.save(file);
         } catch (IOException ex)
         {
-            Main.getPlugin().getLogger().warning(ChatColor.DARK_RED + "Could not save the file: " + FILENAME);
+            TrailGUI.getPlugin().getLogger().warning(ChatColor.DARK_RED + "Could not save the file: " + FILENAME);
         }
     }
 }
