@@ -1,6 +1,6 @@
 name: TrailGUI
 main: ca.jamiesinn.trailgui.TrailGUI
-version: {mavenVersion}-b{BUILD}
+version: ${project.version}
 author: JamieSinn
 softdepend: [Essentials]
 
