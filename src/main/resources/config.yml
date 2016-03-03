@@ -902,11 +902,11 @@ trails:
     #The location the particle effect is displayed.
     displayLocation: 0.2
     #The amount of particles displayed.
-    amount: 3
+    amount: 10
     #The speed the particles are displayed.
     speed: 0
     #The distance before unrendering the particle effect.
-    range: 20
+    range: 10
     #The inventory slot the item is put in.
     order: 34
     #The items type.
@@ -948,7 +948,7 @@ trails:
   DamageIndicator:
     type: DAMAGE_INDICATOR
     #The location the particle effect is displayed.
-    displayLocation: 0.2
+    displayLocation: 2
     #The amount of particles displayed.
     amount: 5
     #The speed the particles are displayed.
@@ -961,6 +961,30 @@ trails:
     itemType: DIAMOND_SWORD
     #The items name.
     itemName: "&6DamageIndicator"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    #The text written on lore line one.
+    loreLineOne: "Example"
+    #The text written on lore line two.
+    loreLineTwo: "Example"
+    #The text written on lore line three.
+    loreLineThree: "Example"
+  SweepAttack:
+    type: SWEEP_ATTACK
+    #The location the particle effect is displayed.
+    displayLocation: 2
+    #The amount of particles displayed.
+    amount: 3
+    #The speed the particles are displayed.
+    speed: 1
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 37
+    #The items type.
+    itemType: GOLD_SWORD
+    #The items name.
+    itemName: "&6SweepAttack"
     #Whether or not the lore is enabled.
     loreEnabled: false
     #The text written on lore line one.
