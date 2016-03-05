@@ -104,22 +104,25 @@ public abstract class Trail
 
     public boolean canUse(Player player)
     {
-        return player.hasPermission("trailgui.trails." + getName()) || player.hasPermission("trailgui.trail." + getName());
+        return player.hasPermission("trailgui.trails." + getName()) || player.hasPermission("trailgui.trail." + getName())
+                || player.hasPermission("trailgui.trail.*") || player.hasPermission("trailgui.*");
     }
 
     public boolean canUseCommand(Player player)
     {
-        return player.hasPermission("trailgui.trails." + getName()) || player.hasPermission("trailgui.commands." + getName());
+        return player.hasPermission("trailgui.trails." + getName()) || player.hasPermission("trailgui.commands." + getName())
+                || player.hasPermission("trailgui.*");
     }
 
     public boolean canUseInventory(Player player)
     {
-        return player.hasPermission("trailgui.inventory." + getName());
+        return player.hasPermission("trailgui.inventory." + getName()) || player.hasPermission("trailgui.trail.*") || player.hasPermission("trailgui.*");
     }
 
     public boolean canUseOnOthers(Player player)
     {
-        return player.hasPermission("trailgui.trails." + getName() + ".other") || player.hasPermission("trailgui.commands.other." + getName());
+        return player.hasPermission("trailgui.trails." + getName() + ".other") || player.hasPermission("trailgui.commands.other." + getName())
+                || player.hasPermission("trailgui.*");
     }
 
     // Returns true if you are at your limit via permissions
@@ -128,21 +131,13 @@ public abstract class Trail
         List<Trail> currentTrails = new ArrayList<Trail>();
         int max = 0;
         for (int i = 0; i <= TrailGUI.trailTypes.size(); i++)
-        {
             if (player.hasPermission("trailgui.trailmax." + i))
-            {
                 max = i;
-            }
-        }
         if (max == 0)
-        {
             return false;
-        }
 
         if (TrailGUI.enabledTrails.containsKey(player.getUniqueId()))
-        {
             currentTrails = TrailGUI.enabledTrails.get(player.getUniqueId());
-        }
         return currentTrails.size() > max;
     }
 
