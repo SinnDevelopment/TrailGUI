@@ -43,7 +43,7 @@ public class CommandTrailGUI
             }
             if (args[0].equalsIgnoreCase("reload"))
             {
-                if (!sender.hasPermission("trailgui.commands.reloadconfigs"))
+                if (!sender.hasPermission("trailgui.commands.reloadconfigs") && !sender.hasPermission("trailgui.*"))
                 {
                     sender.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "\u00A7"));
                     return false;

@@ -36,7 +36,7 @@ public class CommandTrails
                 player.sendMessage(TrailGUI.prefix + ChatColor.GREEN + "You cannot use this command in this world.");
                 return true;
             }
-            if (!player.hasPermission("trailgui.commands.trails"))
+            if (!player.hasPermission("trailgui.commands.trails") && !player.hasPermission("trailgui.*"))
             {
                 player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "\u00A7"));
                 if (TrailGUI.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))

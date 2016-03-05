@@ -1,7 +1,7 @@
 package ca.jamiesinn.trailgui.commands;
 
-import ca.jamiesinn.trailgui.TrailGUI;
 import ca.jamiesinn.trailgui.Methods;
+import ca.jamiesinn.trailgui.TrailGUI;
 import ca.jamiesinn.trailgui.trails.Trail;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -54,7 +54,7 @@ public class CommandTrail implements CommandExecutor, TabCompleter
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
     {
-        List<Trail> trails = new ArrayList<Trail>(TrailGUI.trailTypes.values());
+        List<Trail> trails = new ArrayList<>(TrailGUI.trailTypes.values());
         if (!(sender instanceof Player))
         {
             sender.sendMessage("You must be a player.");
@@ -68,69 +68,67 @@ public class CommandTrail implements CommandExecutor, TabCompleter
             if (string.equals(player.getWorld().getName()))
             {
                 player.sendMessage(TrailGUI.prefix + ChatColor.GREEN + "You cannot use this command in this world.");
-                return false;
-            }
-            if (args.length == 0)
-            {
-                player.sendMessage(TrailGUI.prefix + ChatColor.GREEN + "Available commands:");
-                player.sendMessage(ChatColor.GREEN + "/trail <TrailName>");
-                player.sendMessage(ChatColor.GREEN + "/trail <TrailName> <PlayerName>");
-                showList(player);
                 return true;
             }
-
-
-            for (Trail trail : trails)
-            {
-                if (trail.onCommand(player, args))
-                {
-                    return true;
-                }
-            }
-
-            if (args[0].equalsIgnoreCase("clearall"))
-            {
-                if (!player.hasPermission("trailgui.commands.clearall"))
-                {
-                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "\u00A7"));
-                    return false;
-                }
-                if (args.length == 1)
-                {
-                    Methods.clearTrails(player);
-                    player.sendMessage(this.trailGUI.getConfig().getString("ClearAll-message").replaceAll("&", "\u00A7").replaceAll("%TrailName%", "ClearAll"));
-                    return true;
-                }
-                if (!player.hasPermission("trailgui.commands.clearall.other"))
-                {
-                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "\u00A7"));
-                    return false;
-                }
-                Player target = Bukkit.getServer().getPlayerExact(args[1]);
-                if (target == null)
-                {
-                    player.sendMessage(this.trailGUI.getConfig().getString("noTargetMessage").replaceAll("&", "\u00A7").replaceAll("%Target%", args[1]));
-                    return false;
-                }
-                if (player.getName().equals(args[1]))
-                {
-                    player.sendMessage(this.trailGUI.getConfig().getString("targetSelfMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", "ClearAll"));
-                    return false;
-                }
-                Methods.clearTrails(target);
-                target.sendMessage(this.trailGUI.getConfig().getString("ClearAll-targetMessage").replaceAll("&", "\u00A7").replaceAll("%Sender%", player.getName()));
-                player.sendMessage(this.trailGUI.getConfig().getString("ClearAll-senderMessage").replaceAll("&", "\u00A7").replaceAll("%Target%", args[1]));
-                return false;
-            }
-            else
-            {
-                player.sendMessage(TrailGUI.prefix + ChatColor.DARK_RED + "That's not a valid trail.");
-                showList(player);
-                return true;
-            }
-            //endregion
         }
 
-        return false;
+        if (args.length == 0)
+        {
+            player.sendMessage(TrailGUI.prefix + ChatColor.GREEN + "Available commands:");
+            player.sendMessage(ChatColor.GREEN + "/trail <TrailName>");
+            player.sendMessage(ChatColor.GREEN + "/trail <TrailName> <PlayerName>");
+            showList(player);
+            return true;
+        }
+
+
+        for (Trail trail : trails)
+        {
+            if (trail.onCommand(player, args))
+            {
+                return true;
+            }
+        }
+
+        if (args[0].equalsIgnoreCase("clearall"))
+        {
+            if (!player.hasPermission("trailgui.commands.clearall") || !player.hasPermission("trailgui.*"))
+            {
+                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "\u00A7"));
+                return false;
+            }
+            if (args.length == 1)
+            {
+                Methods.clearTrails(player);
+                player.sendMessage(this.trailGUI.getConfig().getString("ClearAll-message").replaceAll("&", "\u00A7").replaceAll("%TrailName%", "ClearAll"));
+                return true;
+            }
+            if (!player.hasPermission("trailgui.commands.clearall.other") || !player.hasPermission("trailgui.*"))
+            {
+                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "\u00A7"));
+                return true;
+            }
+            Player target = Bukkit.getServer().getPlayerExact(args[1]);
+            if (target == null)
+            {
+                player.sendMessage(this.trailGUI.getConfig().getString("noTargetMessage").replaceAll("&", "\u00A7").replaceAll("%Target%", args[1]));
+                return true;
+            }
+            if (player.getName().equals(args[1]))
+            {
+                player.sendMessage(this.trailGUI.getConfig().getString("targetSelfMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", "ClearAll"));
+                return true;
+            }
+            Methods.clearTrails(target);
+            target.sendMessage(this.trailGUI.getConfig().getString("ClearAll-targetMessage").replaceAll("&", "\u00A7").replaceAll("%Sender%", player.getName()));
+            player.sendMessage(this.trailGUI.getConfig().getString("ClearAll-senderMessage").replaceAll("&", "\u00A7").replaceAll("%Target%", args[1]));
+            return true;
+        }
+        else
+        {
+            player.sendMessage(TrailGUI.prefix + ChatColor.DARK_RED + "That's not a valid trail.");
+            showList(player);
+            return true;
+        }
     }
 }
