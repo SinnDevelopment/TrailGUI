@@ -156,7 +156,6 @@ public abstract class Trail
 
     public void display(Player player)
     {
-
         if ((TrailGUI.ess != null && TrailGUI.ess.getUser(player).isVanished())
                 || player.hasPotionEffect(PotionEffectType.INVISIBILITY))
             return;
@@ -184,7 +183,7 @@ public abstract class Trail
 
     public boolean onInventoryClick(Player player, ItemStack currentItem)
     {
-        if (currentItem.equals(this.getItem()))
+        if(currentItem.equals(this.getItem()))
         {
             List<Trail> currentTrails = new ArrayList<Trail>();
 

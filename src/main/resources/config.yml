@@ -393,7 +393,7 @@ trails:
     #The inventory slot the item is put in.
     order: 12
     #The items type.
-    itemType: POTION
+    itemType: GLASS_BOTTLE
     #The items name.
     itemName: "&6MagicCrit"
     #Whether or not the lore is enabled.
@@ -886,7 +886,7 @@ trails:
     #The inventory slot the item is put in.
     order: 33
     #The items type.
-    itemType: POTION
+    itemType: GLASS_BOTTLE
     #The items name.
     itemName: "&6BlackPotion"
     #Whether or not the lore is enabled.
