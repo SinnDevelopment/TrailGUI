@@ -92,7 +92,7 @@ public class CommandTrail implements CommandExecutor, TabCompleter
 
         if (args[0].equalsIgnoreCase("clearall"))
         {
-            if (!player.hasPermission("trailgui.commands.clearall") || !player.hasPermission("trailgui.*"))
+            if (!player.hasPermission("trailgui.commands.clearall") && !player.hasPermission("trailgui.*"))
             {
                 player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "\u00A7"));
                 return false;
@@ -103,7 +103,7 @@ public class CommandTrail implements CommandExecutor, TabCompleter
                 player.sendMessage(this.trailGUI.getConfig().getString("ClearAll-message").replaceAll("&", "\u00A7").replaceAll("%TrailName%", "ClearAll"));
                 return true;
             }
-            if (!player.hasPermission("trailgui.commands.clearall.other") || !player.hasPermission("trailgui.*"))
+            if (!player.hasPermission("trailgui.commands.clearall.other") && !player.hasPermission("trailgui.*"))
             {
                 player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "\u00A7"));
                 return true;
