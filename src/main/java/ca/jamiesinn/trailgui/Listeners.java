@@ -1,6 +1,7 @@
 package ca.jamiesinn.trailgui;
 
 import ca.jamiesinn.trailgui.trails.Trail;
+import ca.jamiesinn.trailgui.util.Methods;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

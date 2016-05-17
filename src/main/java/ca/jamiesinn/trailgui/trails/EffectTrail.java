@@ -23,7 +23,6 @@ public class EffectTrail extends Trail
     @Override
     public void justDisplay(Player player)
     {
-        if(!displayEvent(getName(), getDisplayLocation(), getAmount(), cooldown, getSpeed(), getRange(), type).isCancelled())
-            player.getWorld().playEffect(player.getLocation(), this.effect, 1);
+        player.getWorld().playEffect(player.getLocation(), this.effect, 1);
     }
 }

@@ -35,6 +35,11 @@
             <artifactId>Essentials</artifactId>
             <version>2.14-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.darkblade12</groupId>
+            <artifactId>particleeffect</artifactId>
+            <version>1.7.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <distributionManagement>
         <repository>
@@ -60,6 +65,26 @@
                     <source>1.7</source>
                     <target>1.7</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>1.5</version>
+                <configuration>
+                    <artifactSet>
+                        <includes>
+                            <include>com.darkblade12:*</include>
+                        </includes>
+                    </artifactSet>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
         <resources>

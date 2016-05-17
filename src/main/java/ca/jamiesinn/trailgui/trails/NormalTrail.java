@@ -1,6 +1,6 @@
 package ca.jamiesinn.trailgui.trails;
 
-import org.bukkit.Particle;
+import ca.jamiesinn.trailgui.ParticleManager;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 
@@ -15,7 +15,7 @@ public class NormalTrail extends Trail
     @Override
     protected void loadType(String sType)
     {
-        this.type = Particle.valueOf(sType);
+        this.type = sType;
     }
 
     @Override
@@ -25,7 +25,6 @@ public class NormalTrail extends Trail
         {
             return;
         }
-        if(!displayEvent(getName(), getDisplayLocation(), getAmount(), cooldown, getSpeed(), getRange(), type).isCancelled())
-            player.getWorld().spawnParticle(type, player.getLocation().add(0.0D, displayLocation, 0.0D), amount, 0, 0, 0, speed);
+        ParticleManager.spawnParticle(player, displayLocation, amount, cooldown, speed, range, type);
     }
 }

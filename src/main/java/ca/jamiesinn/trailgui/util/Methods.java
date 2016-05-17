@@ -1,5 +1,6 @@
-package ca.jamiesinn.trailgui;
+package ca.jamiesinn.trailgui.util;
 
+import ca.jamiesinn.trailgui.TrailGUI;
 import ca.jamiesinn.trailgui.files.Userdata;
 import ca.jamiesinn.trailgui.trails.Trail;
 import org.bukkit.Bukkit;
