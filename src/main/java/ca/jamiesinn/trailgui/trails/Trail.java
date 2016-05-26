@@ -1,12 +1,13 @@
 package ca.jamiesinn.trailgui.trails;
 
+import ca.jamiesinn.trailgui.Methods;
 import ca.jamiesinn.trailgui.TrailGUI;
 import ca.jamiesinn.trailgui.api.TrailDisableEvent;
+import ca.jamiesinn.trailgui.api.TrailDisplayEvent;
 import ca.jamiesinn.trailgui.api.TrailEnableEvent;
-import ca.jamiesinn.trailgui.util.ITrailManager;
-import ca.jamiesinn.trailgui.util.Methods;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -28,8 +29,7 @@ public abstract class Trail
     protected String itemName;
     protected boolean loreEnabled;
     protected List<String> lore;
-    protected String type;
-    protected ITrailManager trailManager;
+    protected Particle type;
     Map<UUID, Long> cooldownMap = new HashMap<UUID, Long>();
 
     public Trail(ConfigurationSection config)
@@ -44,7 +44,7 @@ public abstract class Trail
         this.itemType = Material.valueOf(config.getString("itemType").toUpperCase());
         this.itemName = config.getString("itemName", "").replace("&", "\u00a7");
         this.loreEnabled = config.getBoolean("loreEnabled", false);
-        this.lore = new ArrayList<>();
+        this.lore = new ArrayList<String>();
         lore.add(config.getString("loreLineOne"));
         lore.add(config.getString("loreLineTwo"));
         lore.add(config.getString("loreLineThree"));
@@ -349,6 +349,14 @@ public abstract class Trail
 
         }
         return false;
+    }
+
+    public TrailDisplayEvent displayEvent(String name, double location, int amount, int cooldown, float speed, int range, Particle type)
+    {
+        TrailDisplayEvent event = new TrailDisplayEvent(name,
+                location, amount, cooldown, speed, range, type);
+        TrailGUI.getPlugin().getServer().getPluginManager().callEvent(event);
+        return event;
     }
 
     public static void enableEvent(Player player, Trail trail)

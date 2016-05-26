@@ -1,7 +1,7 @@
 package ca.jamiesinn.trailgui.commands;
 
 import ca.jamiesinn.trailgui.TrailGUI;
-import ca.jamiesinn.trailgui.util.Methods;
+import ca.jamiesinn.trailgui.Methods;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
