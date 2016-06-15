@@ -11,7 +11,9 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.mcstats.Metrics;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +47,14 @@ public class TrailGUI
         getCommand("trailgui").setExecutor(new CommandTrailGUI(this));
         plugin = this;
         load();
+        try
+        {
+            Metrics metrics = new Metrics(this);
+            metrics.start();
+        }
+        catch (IOException ignored)
+        {
+        }
     }
 
     public void hookEss()
@@ -114,7 +124,8 @@ public class TrailGUI
                         {
                             trailTypes.put(trailTypeSection.getName(), new NormalTrail(trailTypeSection));
                         }
-                    } catch (Exception ex)
+                    }
+                    catch (Exception ex)
                     {
                         getLogger().warning("Failed to load '" + trailTypeSection.getName() + "'. Error: " + ex.getMessage());
                     }
