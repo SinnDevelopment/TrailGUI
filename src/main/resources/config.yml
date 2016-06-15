@@ -4,7 +4,7 @@
 # +------------------------------------------------------+ #
 ############################################################
 
-#The name of the GUI on page one.
+#The name of the GUI on page one. Do not use colour codes as it will break the inventory system
 inventoryName: "TrailGUI"
 
 #The prefix in game. Make sure to edit the messages too
