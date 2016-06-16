@@ -47,14 +47,16 @@ public class TrailGUI
         getCommand("trailgui").setExecutor(new CommandTrailGUI(this));
         plugin = this;
         load();
-        try
-        {
-            Metrics metrics = new Metrics(this);
-            metrics.start();
-        }
-        catch (IOException ignored)
-        {
-        }
+
+        if (getConfig().getBoolean("metrics"))
+            try
+            {
+                Metrics metrics = new Metrics(this);
+                metrics.start();
+            }
+            catch (IOException ignored)
+            {
+            }
     }
 
     public void hookEss()
