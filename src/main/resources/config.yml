@@ -10,6 +10,9 @@ inventoryName: "TrailGUI"
 #The prefix in game. Make sure to edit the messages too
 prefix: "&8[&cTrailGUI&8] "
 
+#Use metrics or not - I'd appreciate if this was left at true so I can get some info on the usage of the plugin.
+metrics: true
+
 #Whether or not the inventory will close if the player doesn't have permission.
 closeInventoryOnDenyPermission: false
 
@@ -1004,11 +1007,11 @@ trails:
     #The distance before unrendering the particle effect.
     range: 20
     #The inventory slot the item is put in.
-    order: 37
+    order: 38
     #The items type.
-    itemType: GOLD_SWORD
+    itemType: GHAST_TEAR
     #The items name.
-    itemName: "&6SweepAttack"
+    itemName: "&6FallingDust"
     #Whether or not the lore is enabled.
     loreEnabled: false
     #The text written on lore line one.
