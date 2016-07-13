@@ -1,38 +1,45 @@
 package ca.jamiesinn.trailgui.files;
 
 import ca.jamiesinn.trailgui.TrailGUI;
-import com.offbytwo.jenkins.JenkinsServer;
-import com.offbytwo.jenkins.model.Artifact;
-import com.offbytwo.jenkins.model.JobWithDetails;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 
 public class Updater
 {
-    private JenkinsServer jenkins = new JenkinsServer(new URI("http://ci.md-5.net"));
-    private JobWithDetails job;
     private TrailGUI trailGUI;
 
-    public Updater(TrailGUI trailGUI) throws URISyntaxException, IOException
+    public Updater(TrailGUI trailGUI)
     {
         this.trailGUI = trailGUI;
-        getTrailGUIJob();
-    }
 
-    private void getTrailGUIJob() throws IOException
-    {
-        this.job = jenkins.getJobs().get("TrailGUI").details();
     }
 
     private int getLatestBuildNumber() throws IOException
     {
-        return job.getLastStableBuild().getNumber();
+        URL url = new URL("http://wat.sinnpi.com/api.php?api=latestjenkins&server=http://ci.md-5.net&job=TrailGUI");
+        URLConnection conn = url.openConnection();
+        String output = "";
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(conn.getInputStream())))
+        {
+
+            String inputLine;
+
+            while ((inputLine = br.readLine()) != null)
+            {
+                output += inputLine;
+            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        return Integer.parseInt(output);
     }
 
     private int getCurrentBuildNumber()
@@ -49,33 +56,13 @@ public class Updater
         return getLatestBuildNumber() <= getCurrentBuildNumber();
     }
 
-    private boolean downloadLatest() throws IOException, URISyntaxException
-    {
-        if (isItUpToDate()) return false;
 
-        Artifact latest = job.getLastStableBuild().details().getArtifacts().get(0);
-        ReadableByteChannel rbc = Channels.newChannel(job.getLastStableBuild().details().downloadArtifact(latest));
-        File outputFile = new File(trailGUI.getDataFolder() + File.pathSeparator +latest.getFileName());
-        FileOutputStream outputStream = new FileOutputStream(outputFile);
-        if(outputFile.exists()) return false;
-        outputStream.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-        return true;
-    }
-
-    public void check() throws IOException, URISyntaxException
+    public void check() throws IOException
     {
         if (isItUpToDate()) return;
 
         trailGUI.getLogger().info("You are not running the latest build of TrailGUI. The latest build is "
                 + getLatestBuildNumber()
-        +" and your build is " + getCurrentBuildNumber() + ".");
-        if(!trailGUI.getConfig().getBoolean("auto-dl-latest"))
-            trailGUI.getLogger().info("To download the latest version please use this URL: " + job.getLastStableBuild().getUrl());
-        else
-        {
-            trailGUI.getLogger().info("Downloading the latest file");
-            if (!downloadLatest())
-                trailGUI.getLogger().info("File with the name of " + job.getLastStableBuild().details().getArtifacts().get(0).getFileName() + " already exists, not downloading");
-        }
+                + " and your build is " + getCurrentBuildNumber() + ". Please update");
     }
 }

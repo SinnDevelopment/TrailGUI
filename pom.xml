@@ -45,11 +45,6 @@
             <version>R8-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>com.offbytwo.jenkins</groupId>
-            <artifactId>jenkins-client</artifactId>
-            <version>0.3.5</version>
-        </dependency>
     </dependencies>
     <distributionManagement>
         <repository>
@@ -84,17 +79,12 @@
                     <artifactSet>
                         <includes>
                             <include>org.mcstats.*:*</include>
-                            <include>com.offbytwo.jenkins:jenkins-client</include>
                         </includes>
                     </artifactSet>
                     <relocations>
                         <relocation>
                             <pattern>org.mcstats</pattern>
                             <shadedPattern>ca.jamiesinn.trailgui.metrics</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>com.offbytwo.jenkins</pattern>
-                            <shadedPattern>ca.jamiesinn.trailgui.jenkins</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>
