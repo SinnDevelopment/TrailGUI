@@ -1,6 +1,6 @@
 package ca.jamiesinn.trailgui.commands;
 
-import ca.jamiesinn.trailgui.Methods;
+import ca.jamiesinn.trailgui.Util;
 import ca.jamiesinn.trailgui.TrailGUI;
 import ca.jamiesinn.trailgui.trails.Trail;
 import org.bukkit.Bukkit;
@@ -99,7 +99,7 @@ public class CommandTrail implements CommandExecutor, TabCompleter
             }
             if (args.length == 1)
             {
-                Methods.clearTrails(player);
+                Util.clearTrails(player);
                 player.sendMessage(this.trailGUI.getConfig().getString("ClearAll-message").replaceAll("&", "\u00A7").replaceAll("%TrailName%", "ClearAll"));
                 return true;
             }
@@ -119,7 +119,7 @@ public class CommandTrail implements CommandExecutor, TabCompleter
                 player.sendMessage(this.trailGUI.getConfig().getString("targetSelfMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", "ClearAll"));
                 return true;
             }
-            Methods.clearTrails(target);
+            Util.clearTrails(target);
             target.sendMessage(this.trailGUI.getConfig().getString("ClearAll-targetMessage").replaceAll("&", "\u00A7").replaceAll("%Sender%", player.getName()));
             player.sendMessage(this.trailGUI.getConfig().getString("ClearAll-senderMessage").replaceAll("&", "\u00A7").replaceAll("%Target%", args[1]));
             return true;

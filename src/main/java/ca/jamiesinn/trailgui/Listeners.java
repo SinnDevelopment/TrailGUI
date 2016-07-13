@@ -31,7 +31,7 @@ public class Listeners implements Listener
             {
                 Player hit = (Player) event.getEntity();
 
-                Methods.clearTrails(hit);
+                Util.clearTrails(hit);
             }
         }
     }
@@ -49,7 +49,7 @@ public class Listeners implements Listener
                 return;
             }
             int currentPage = Integer.parseInt(event.getInventory().getTitle().replaceFirst(".+? ([0-9]+) / [0-9]+", "$1"));
-            List<Trail> trails = Methods.getSubList(currentPage);
+            List<Trail> trails = Util.getSubList(currentPage);
 
             for (Trail trail : trails)
             {
@@ -59,14 +59,14 @@ public class Listeners implements Listener
                 }
             }
 
-            if (event.getCurrentItem().equals(Methods.itemNoPerms()) && TrailGUI.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
+            if (event.getCurrentItem().equals(Util.itemNoPerms()) && TrailGUI.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
             {
                 player.sendMessage(TrailGUI.getPlugin().getConfig().getString("GUI-denyPermissionMessage").replaceAll("&", "\u00A7"));
                 player.closeInventory();
                 return;
             }
 
-            if (event.getCurrentItem().equals(Methods.getItemPreviousPage()))
+            if (event.getCurrentItem().equals(Util.getItemPreviousPage()))
             {
                 if (!player.hasPermission("trailgui.inventory.previouspage"))
                 {
@@ -77,9 +77,9 @@ public class Listeners implements Listener
                     }
                     return;
                 }
-                Methods.openGUI(player, currentPage - 1);
+                Util.openGUI(player, currentPage - 1);
             }
-            else if (event.getCurrentItem().equals(Methods.getItemRemoveTrails()))
+            else if (event.getCurrentItem().equals(Util.getItemRemoveTrails()))
             {
                 if (!player.hasPermission("trailgui.inventory.clearall"))
                 {
@@ -90,7 +90,7 @@ public class Listeners implements Listener
                     }
                     return;
                 }
-                Methods.clearTrails(player);
+                Util.clearTrails(player);
 
                 player.sendMessage(TrailGUI.getPlugin().getConfig().getString("RemoveTrails-message").replaceAll("&", "\u00A7"));
                 if (TrailGUI.getPlugin().getConfig().getBoolean("closeInventoryAferSelect"))
@@ -98,7 +98,7 @@ public class Listeners implements Listener
                     player.closeInventory();
                 }
             }
-            else if (event.getCurrentItem().equals(Methods.getItemNextPage()))
+            else if (event.getCurrentItem().equals(Util.getItemNextPage()))
             {
                 if (!player.hasPermission("trailgui.inventory.nextpage"))
                 {
@@ -109,7 +109,7 @@ public class Listeners implements Listener
                     }
                     return;
                 }
-                Methods.openGUI(player, currentPage + 1);
+                Util.openGUI(player, currentPage + 1);
             }
         }
     }

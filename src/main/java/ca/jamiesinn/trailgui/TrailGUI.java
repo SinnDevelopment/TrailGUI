@@ -3,6 +3,7 @@ package ca.jamiesinn.trailgui;
 import ca.jamiesinn.trailgui.commands.CommandTrail;
 import ca.jamiesinn.trailgui.commands.CommandTrailGUI;
 import ca.jamiesinn.trailgui.commands.CommandTrails;
+import ca.jamiesinn.trailgui.files.Updater;
 import ca.jamiesinn.trailgui.files.Userdata;
 import ca.jamiesinn.trailgui.trails.*;
 import com.earth2me.essentials.IEssentials;
@@ -14,6 +15,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.mcstats.Metrics;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,6 +51,7 @@ public class TrailGUI
         load();
 
         if (getConfig().getBoolean("metrics"))
+        {
             try
             {
                 Metrics metrics = new Metrics(this);
@@ -57,9 +60,23 @@ public class TrailGUI
             catch (IOException ignored)
             {
             }
+        }
+
+        if (getConfig().getBoolean("updater"))
+        {
+            try
+            {
+                Updater updater = new Updater(plugin);
+                updater.check();
+            }
+            catch (URISyntaxException | IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
     }
 
-    public void hookEss()
+    private void hookEss()
     {
         final PluginManager pm = this.getServer().getPluginManager();
         final Plugin pl = pm.getPlugin("Essentials");
@@ -87,7 +104,7 @@ public class TrailGUI
         disabledWorlds = getConfig().getStringList("disabledWorlds");
         new Userdata().loadConfig();
         loadTrails();
-        Methods.restoreTrails();
+        Util.restoreTrails();
         hookEss();
     }
 
@@ -140,7 +157,7 @@ public class TrailGUI
     @Override
     public void onDisable()
     {
-        Methods.saveTrails();
+        Util.saveTrails();
     }
 
 }

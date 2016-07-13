@@ -13,6 +13,12 @@ prefix: "&8[&cTrailGUI&8] "
 #Use metrics or not - I'd appreciate if this was left at true so I can get some info on the usage of the plugin.
 metrics: true
 
+#Use Updater for checking latest build.
+updater: false
+
+#Automatically download the latest build to the plugin's config directory or not.
+auto-dl-latest: false
+
 #Whether or not the inventory will close if the player doesn't have permission.
 closeInventoryOnDenyPermission: false
 

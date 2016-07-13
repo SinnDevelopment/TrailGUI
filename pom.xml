@@ -7,7 +7,7 @@
     <artifactId>TrailGUI</artifactId>
     <version>${primaryVersion}-b${BUILD_NUMBER}-${releaseType}</version>
     <properties>
-        <primaryVersion>5.0</primaryVersion>
+        <primaryVersion>5.0.1</primaryVersion>
         <releaseType>SNAPSHOT</releaseType>
     </properties>
     <repositories>
@@ -45,22 +45,27 @@
             <version>R8-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.offbytwo.jenkins</groupId>
+            <artifactId>jenkins-client</artifactId>
+            <version>0.3.5</version>
+        </dependency>
     </dependencies>
     <distributionManagement>
         <repository>
             <id>sinndev-repo</id>
             <name>Releases</name>
-            <url>http://repo.sinndev.com/content/repositories/releases/</url>
+            <url>https://repo.sinndev.com/content/repositories/releases/</url>
         </repository>
         <snapshotRepository>
             <id>sinndev-repo</id>
             <name>Snapshots</name>
-            <url>http://repo.sinndev.com/content/repositories/snapshots/</url>
+            <url>https://repo.sinndev.com/content/repositories/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
     <build>
-        <defaultGoal>clean install</defaultGoal>
+        <defaultGoal>clean install package</defaultGoal>
         <finalName>${project.artifactId}-${primaryVersion}-${releaseType}</finalName>
         <plugins>
             <plugin>
@@ -79,12 +84,17 @@
                     <artifactSet>
                         <includes>
                             <include>org.mcstats.*:*</include>
+                            <include>com.offbytwo.jenkins:jenkins-client</include>
                         </includes>
                     </artifactSet>
                     <relocations>
                         <relocation>
                             <pattern>org.mcstats</pattern>
                             <shadedPattern>ca.jamiesinn.trailgui.metrics</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>com.offbytwo.jenkins</pattern>
+                            <shadedPattern>ca.jamiesinn.trailgui.jenkins</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>

@@ -12,7 +12,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.*;
 
-public class Methods
+public class Util
 {
     private static ItemStack itemNextPage;
     private static ItemStack itemPreviousPage;

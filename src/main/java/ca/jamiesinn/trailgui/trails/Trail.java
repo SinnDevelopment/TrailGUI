@@ -1,6 +1,6 @@
 package ca.jamiesinn.trailgui.trails;
 
-import ca.jamiesinn.trailgui.Methods;
+import ca.jamiesinn.trailgui.Util;
 import ca.jamiesinn.trailgui.TrailGUI;
 import ca.jamiesinn.trailgui.api.TrailDisableEvent;
 import ca.jamiesinn.trailgui.api.TrailDisplayEvent;
@@ -205,7 +205,7 @@ public abstract class Trail
             {
                 if (TrailGUI.oneTrailAtATime)
                 {
-                    Methods.clearTrails(player);
+                    Util.clearTrails(player);
                 }
 
                 currentTrails.remove(this);
@@ -222,7 +222,7 @@ public abstract class Trail
             {
                 if (TrailGUI.oneTrailAtATime)
                 {
-                    Methods.clearTrails(player);
+                    Util.clearTrails(player);
                 }
                 if ((TrailGUI.maxTrails < currentTrails.size() && TrailGUI.maxTrails != 0) || getPermLimit(player))
                 {
@@ -264,7 +264,7 @@ public abstract class Trail
                 {
                     if (TrailGUI.oneTrailAtATime)
                     {
-                        Methods.clearTrails(player);
+                        Util.clearTrails(player);
                     }
                     currentTrails.remove(this);
                     TrailGUI.enabledTrails.put(player.getUniqueId(), currentTrails);
@@ -275,7 +275,7 @@ public abstract class Trail
                 {
                     if (TrailGUI.oneTrailAtATime)
                     {
-                        Methods.clearTrails(player);
+                        Util.clearTrails(player);
                     }
                     if ((TrailGUI.maxTrails < currentTrails.size() && TrailGUI.maxTrails != 0) || getPermLimit(player))
                     {
@@ -314,7 +314,7 @@ public abstract class Trail
                 {
                     if (TrailGUI.oneTrailAtATime)
                     {
-                        Methods.clearTrails(target);
+                        Util.clearTrails(target);
                     }
                     currentTrails.remove(this);
                     TrailGUI.enabledTrails.put(target.getUniqueId(), currentTrails);
@@ -327,7 +327,7 @@ public abstract class Trail
                 {
                     if (TrailGUI.oneTrailAtATime)
                     {
-                        Methods.clearTrails(target);
+                        Util.clearTrails(target);
                     }
                     if ((TrailGUI.maxTrails < currentTrails.size() && TrailGUI.maxTrails != 0) || getPermLimit(target))
                     {
