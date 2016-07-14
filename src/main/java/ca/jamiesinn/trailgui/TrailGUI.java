@@ -69,7 +69,7 @@ public class TrailGUI
                 Updater updater = new Updater(plugin);
                 updater.check();
             }
-            catch (URISyntaxException | IOException e)
+            catch (IOException e)
             {
                 e.printStackTrace();
             }
