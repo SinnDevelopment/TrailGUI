@@ -16,6 +16,17 @@ metrics: true
 #Use Updater for checking latest build.
 updater: true
 
+#Use MySQL for a common databse instead of a local userdata. Primarily used for networks.
+mysql: false
+
+# Connection details to database if above is true
+mysql-conn:
+  host: localhost
+  user: user
+  pass: pass
+  database: database
+  port: 3306
+
 #Whether or not the inventory will close if the player doesn't have permission.
 closeInventoryOnDenyPermission: false
 

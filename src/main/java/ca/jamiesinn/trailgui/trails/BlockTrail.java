@@ -7,8 +7,8 @@ import org.bukkit.material.MaterialData;
 
 public class BlockTrail extends Trail
 {
-    MaterialData blockData;
-    byte itemData;
+    private MaterialData blockData;
+    private byte itemData;
 
     public BlockTrail(ConfigurationSection config)
     {

@@ -1,15 +1,18 @@
 package ca.jamiesinn.trailgui;
 
 import ca.jamiesinn.trailgui.files.Userdata;
+import ca.jamiesinn.trailgui.sql.SQLManager;
 import ca.jamiesinn.trailgui.trails.Trail;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.sql.SQLException;
 import java.util.*;
 
 public class Util
@@ -18,53 +21,98 @@ public class Util
     private static ItemStack itemPreviousPage;
     private static ItemStack itemRemoveTrails;
 
-    public static void clearTrails(Player player)
+    public static void clearTrails(OfflinePlayer player)
     {
         List<Trail> currentTrails;
         if (TrailGUI.enabledTrails.containsKey(player.getUniqueId()))
         {
             currentTrails = TrailGUI.enabledTrails.get(player.getUniqueId());
-            Trail.disableEvent(player, currentTrails);
+            Trail.disableEvent(player.getPlayer(), currentTrails);
             currentTrails.clear();
             TrailGUI.enabledTrails.put(player.getUniqueId(), currentTrails);
         }
     }
 
-    public static void saveTrails()
+    static void saveTrails()
     {
-        FileConfiguration config = Userdata.getInstance().getConfig();
-        for (String key : config.getKeys(false))
+        if(TrailGUI.getPlugin().getConfig().getBoolean("mysql"))
         {
-            config.set(key, null);
-        }
-
-        for (UUID key : TrailGUI.enabledTrails.keySet())
-        {
-            List<String> trailNames = new ArrayList<String>();
-            for (Trail trail : TrailGUI.enabledTrails.get(key))
+            SQLManager sql = TrailGUI.getSqlManager();
+            for(UUID player : TrailGUI.enabledTrails.keySet())
             {
-                trailNames.add(trail.getName());
+                List<Trail> trailNames= new ArrayList<>();
+                try
+                {
+                    sql.insertUser(player, trailNames);
+                }
+                catch (SQLException e)
+                {
+                    e.printStackTrace();
+                }
             }
-            config.set(key.toString(), trailNames);
         }
-        Userdata.getInstance().saveConfig();
+        else
+        {
+            FileConfiguration config = Userdata.getInstance().getConfig();
+            for (String key : config.getKeys(false))
+            {
+                config.set(key, null);
+            }
+
+
+            for (UUID key : TrailGUI.enabledTrails.keySet())
+            {
+                List<String> trailNames = new ArrayList<String>();
+                for (Trail trail : TrailGUI.enabledTrails.get(key))
+                {
+                    trailNames.add(trail.getName());
+                }
+                config.set(key.toString(), trailNames);
+            }
+            Userdata.getInstance().saveConfig();
+        }
     }
 
-    public static void restoreTrails()
+    static void restoreTrails()
     {
-        FileConfiguration config = Userdata.getInstance().getConfig();
-        for (String key : config.getKeys(false))
+        if(TrailGUI.getPlugin().getConfig().getBoolean("mysql"))
         {
-            List<String> trails = config.getStringList(key);
-            if (!trails.isEmpty())
+            try
             {
-                List<Trail> trailTypes = new ArrayList<Trail>();
-                for (String trail : trails)
+                HashMap<UUID, List<Trail>> trails = TrailGUI.getSqlManager().getTrails();
+                for(UUID uuid : trails.keySet())
                 {
-                    trailTypes.add(TrailGUI.trailTypes.get(trail));
+                    List<Trail> trailTypes = new ArrayList<>();
+                    for (Trail t: trails.get(uuid))
+                    {
+                        trailTypes.add(t);
+                    }
+                    Trail.enableEvent(Bukkit.getPlayer(uuid), trailTypes);
+                    TrailGUI.enabledTrails.put(uuid, trailTypes);
                 }
-                Trail.enableEvent(Bukkit.getPlayer(UUID.fromString(key)), trailTypes);
-                TrailGUI.enabledTrails.put(UUID.fromString(key), trailTypes);
+
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            FileConfiguration config = Userdata.getInstance().getConfig();
+            for (String key : config.getKeys(false))
+            {
+                List<String> trails = config.getStringList(key);
+                if (!trails.isEmpty())
+                {
+                    List<Trail> trailTypes = new ArrayList<Trail>();
+                    for (String trail : trails)
+                    {
+                        trailTypes.add(TrailGUI.trailTypes.get(trail));
+                    }
+                    Trail.enableEvent(Bukkit.getPlayer(UUID.fromString(key)), trailTypes);
+                    TrailGUI.enabledTrails.put(UUID.fromString(key), trailTypes);
+                }
             }
         }
     }
@@ -74,7 +122,7 @@ public class Util
         openGUI(player, 1);
     }
 
-    public static void openGUI(Player player, int currentPage)
+    static void openGUI(Player player, int currentPage)
     {
 
         int pageSize = 27;
@@ -119,7 +167,7 @@ public class Util
     }
 
     //region Items for Inventory Slots
-    public static ItemStack itemNoPerms()
+    static ItemStack itemNoPerms()
     {
         ItemStack i = new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 14);
         ItemMeta meta = i.getItemMeta();
@@ -129,7 +177,7 @@ public class Util
 
     }
 
-    public static ItemStack getItemNextPage()
+    static ItemStack getItemNextPage()
     {
         if (itemNextPage == null)
         {
@@ -138,7 +186,7 @@ public class Util
         return itemNextPage;
     }
 
-    public static ItemStack createItemNextPage()
+    private static ItemStack createItemNextPage()
     {
         ItemStack itemNextPage = new ItemStack(Material.valueOf(TrailGUI.getPlugin().getConfig().getString("NextPage-itemType").toUpperCase()), 1);
         ItemMeta metaNextPage = itemNextPage.getItemMeta();
@@ -164,7 +212,7 @@ public class Util
         return itemNextPage;
     }
 
-    public static ItemStack getItemPreviousPage()
+    static ItemStack getItemPreviousPage()
     {
         if (itemPreviousPage == null)
         {
@@ -173,7 +221,7 @@ public class Util
         return itemPreviousPage;
     }
 
-    public static ItemStack createItemPreviousPage()
+    private static ItemStack createItemPreviousPage()
     {
         ItemStack itemPreviousPage = new ItemStack(Material.valueOf(TrailGUI.getPlugin().getConfig().getString("PreviousPage-itemType").toUpperCase()), 1);
         ItemMeta metaPreviousPage = itemPreviousPage.getItemMeta();
@@ -199,7 +247,7 @@ public class Util
         return itemPreviousPage;
     }
 
-    public static ItemStack getItemRemoveTrails()
+    static ItemStack getItemRemoveTrails()
     {
         if (itemRemoveTrails == null)
         {
@@ -234,7 +282,7 @@ public class Util
         return itemRemoveTrails;
     }
 
-    public static List<Trail> getSubList(int currentPage)
+    static List<Trail> getSubList(int currentPage)
     {
         int pageSize = 27;
         List<Trail> sortedList = new ArrayList<Trail>(TrailGUI.trailTypes.values());

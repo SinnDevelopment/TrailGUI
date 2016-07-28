@@ -5,6 +5,7 @@ import ca.jamiesinn.trailgui.TrailGUI;
 import ca.jamiesinn.trailgui.trails.Trail;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -17,7 +18,7 @@ import java.util.List;
 
 public class CommandTrail implements CommandExecutor, TabCompleter
 {
-    TrailGUI trailGUI;
+    private TrailGUI trailGUI;
 
     public CommandTrail(TrailGUI trailGUI)
     {
@@ -57,7 +58,13 @@ public class CommandTrail implements CommandExecutor, TabCompleter
         List<Trail> trails = new ArrayList<>(TrailGUI.trailTypes.values());
         if (!(sender instanceof Player))
         {
-            sender.sendMessage("You must be a player.");
+            if(args.length == 2 && args[0].equalsIgnoreCase("clearall"))
+            {
+                OfflinePlayer player = Bukkit.getOfflinePlayer(args[1]);
+                Util.clearTrails(player);
+            }
+            else
+                sender.sendMessage("Syntax: /trail clearall <player>");
             return true;
         }
         Player player = (Player) sender;

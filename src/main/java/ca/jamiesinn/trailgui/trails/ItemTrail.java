@@ -7,8 +7,8 @@ import org.bukkit.inventory.ItemStack;
 
 public class ItemTrail extends Trail
 {
-    ItemStack data;
-    byte itemData;
+    private ItemStack data;
+    private byte itemData;
 
     public ItemTrail(ConfigurationSection config)
     {

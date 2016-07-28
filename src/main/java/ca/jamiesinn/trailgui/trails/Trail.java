@@ -18,18 +18,18 @@ import java.util.*;
 
 public abstract class Trail
 {
-    protected String name;
-    protected double displayLocation;
-    protected int amount;
-    protected int cooldown;
-    protected float speed;
-    protected int range;
-    protected int order;
-    protected Material itemType;
-    protected String itemName;
-    protected boolean loreEnabled;
-    protected List<String> lore;
-    protected Particle type;
+    private String name;
+    double displayLocation;
+    int amount;
+    int cooldown;
+    float speed;
+    private int range;
+    private int order;
+    Material itemType;
+    private String itemName;
+    private boolean loreEnabled;
+    private List<String> lore;
+    Particle type;
     Map<UUID, Long> cooldownMap = new HashMap<UUID, Long>();
 
     public Trail(ConfigurationSection config)
@@ -52,22 +52,22 @@ public abstract class Trail
 
     protected abstract void loadType(String sType);
 
-    public double getDisplayLocation()
+    double getDisplayLocation()
     {
         return displayLocation;
     }
 
-    public int getAmount()
+    int getAmount()
     {
         return amount;
     }
 
-    public float getSpeed()
+    float getSpeed()
     {
         return speed;
     }
 
-    public int getRange()
+    int getRange()
     {
         return range;
     }
@@ -351,7 +351,7 @@ public abstract class Trail
         return false;
     }
 
-    public TrailDisplayEvent displayEvent(String name, double location, int amount, int cooldown, float speed, int range, Particle type)
+    TrailDisplayEvent displayEvent(String name, double location, int amount, int cooldown, float speed, int range, Particle type)
     {
         TrailDisplayEvent event = new TrailDisplayEvent(name,
                 location, amount, cooldown, speed, range, type);
@@ -359,7 +359,7 @@ public abstract class Trail
         return event;
     }
 
-    public static void enableEvent(Player player, Trail trail)
+    private static void enableEvent(Player player, Trail trail)
     {
         TrailEnableEvent event = new TrailEnableEvent(player, trail);
         TrailGUI.getPlugin().getServer().getPluginManager().callEvent(event);

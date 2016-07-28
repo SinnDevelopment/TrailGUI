@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 
 public class EffectTrail extends Trail
 {
-    Effect effect;
+    private Effect effect;
 
     public EffectTrail(ConfigurationSection config)
     {

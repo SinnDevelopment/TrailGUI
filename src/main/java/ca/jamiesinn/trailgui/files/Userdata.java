@@ -27,8 +27,7 @@ public class Userdata
         return instance;
     }
 
-    @SuppressWarnings("ResultOfMethodCallIgnored")
-    public void createFile()
+    private void createFile()
     {
         try
         {

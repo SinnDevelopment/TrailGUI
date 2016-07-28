@@ -5,6 +5,7 @@ import ca.jamiesinn.trailgui.commands.CommandTrailGUI;
 import ca.jamiesinn.trailgui.commands.CommandTrails;
 import ca.jamiesinn.trailgui.files.Updater;
 import ca.jamiesinn.trailgui.files.Userdata;
+import ca.jamiesinn.trailgui.sql.SQLManager;
 import ca.jamiesinn.trailgui.trails.*;
 import com.earth2me.essentials.IEssentials;
 import org.bukkit.ChatColor;
@@ -15,6 +16,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.mcstats.Metrics;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +34,7 @@ public class TrailGUI
     public static Map<UUID, List<Trail>> enabledTrails = new HashMap<UUID, List<Trail>>();
     public static Map<String, Trail> trailTypes = new HashMap<String, Trail>();
     public static IEssentials ess;
+    private static SQLManager sqlManager;
 
     public static TrailGUI getPlugin()
     {
@@ -69,6 +72,22 @@ public class TrailGUI
                 updater.check();
             }
             catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+        if (getConfig().getBoolean("mysql"))
+        {
+            try
+            {
+                SQLManager sql = new SQLManager(plugin, getConfig().getString("mysql-conn.host"),
+                        getConfig().getInt("mysql-conn.port"),
+                        getConfig().getString("mysql-conn.database"),
+                        getConfig().getString("mysql-conn.user"),
+                        getConfig().getString("mysql-conn.pass"));
+                sqlManager = sql;
+            }
+            catch (SQLException e)
             {
                 e.printStackTrace();
             }
@@ -157,6 +176,11 @@ public class TrailGUI
     public void onDisable()
     {
         Util.saveTrails();
+        sqlManager.disconnect();
     }
 
+    public static SQLManager getSqlManager()
+    {
+        return sqlManager;
+    }
 }
