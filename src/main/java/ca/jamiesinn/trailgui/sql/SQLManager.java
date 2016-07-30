@@ -10,26 +10,23 @@ public class SQLManager
 {
     private Connection connection;
 
-    private TrailGUI pl;
+    private TrailGUI pl = TrailGUI.getPlugin();
 
     /**
-     *
-     * @param plugin plugin
-     * @param host host
-     * @param port port
+     * @param host     host
+     * @param port     port
      * @param database database
-     * @param user user
-     * @param pass pass
-     * @throws SQLException
+     * @param user     user
+     * @param pass     pass
+     * @throws SQLException exception
      */
-    public SQLManager(TrailGUI plugin, String host, int port, String database, String user, String pass) throws SQLException
+    public SQLManager(String host, int port, String database, String user, String pass) throws SQLException
     {
         connectToDatabase(host, port, database, user, pass);
         if (connection != null)
         {
             createTables(connection);
         }
-        this.pl = plugin;
     }
 
     public Connection getConnection()
@@ -76,11 +73,11 @@ public class SQLManager
 
     }
 
-    public void insertUser(UUID player, List<Trail> active) throws SQLException
+    public void insertUser(UUID player, List<String> active) throws SQLException
     {
         PreparedStatement statement;
         String insertRowSQL =
-                "INSERT INTO userdata"+
+                "INSERT INTO userdata" +
                         "(uuid, trails) VALUES" +
                         "(?,?)" +
                         "ON DUPLICATE KEY UPDATE trails=?";
@@ -90,17 +87,6 @@ public class SQLManager
         statement.setString(3, active.toString());
         statement.executeUpdate();
         statement.close();
-    }
-
-    private boolean exists(Connection connection, UUID player) throws SQLException
-    {
-        PreparedStatement statement;
-        String existsSQL = "SELECT 1 FROM userdata WHERE uuid = ?";
-
-        statement = connection.prepareStatement(existsSQL);
-        statement.setString(1, player.toString());
-        ResultSet rs = statement.executeQuery();
-        return rs.next();
     }
 
     public HashMap<UUID, List<Trail>> getTrails() throws SQLException
@@ -120,23 +106,27 @@ public class SQLManager
         List<UUID> players = new ArrayList<>();
         List<List<Trail>> trails = new ArrayList<>();
         List<List<String>> rawTrails = new ArrayList<>();
-        while(uuidRS.next() && trailRS.next())
+        while (uuidRS.next() && trailRS.next())
         {
+            List<String> parsed = Arrays.asList(trailRS.getString("trails").replaceAll("\\[|\\]", "").split(", "));
+            if (parsed.isEmpty())
+                continue;
             players.add(UUID.fromString(uuidRS.getString("uuid")));
-            rawTrails.add(Arrays.asList(trailRS.getString("trails").split(",")));
-
+            rawTrails.add(parsed);
         }
-        for(List<String> l: rawTrails)
+
+
+        for (List<String> l : rawTrails)
         {
             List<Trail> tr = new ArrayList<>();
-            for(String s : l)
+            for (String s : l)
             {
                 Trail t = TrailGUI.trailTypes.get(s);
                 tr.add(t);
             }
             trails.add(tr);
         }
-        for(UUID p : players)
+        for (UUID p : players)
         {
             int index = players.indexOf(p);
             result.put(p, trails.get(index));
@@ -148,7 +138,7 @@ public class SQLManager
     {
         try
         {
-            if(connection != null && !connection.isClosed())
+            if (connection != null && !connection.isClosed())
                 connection.close();
         }
         catch (SQLException e)

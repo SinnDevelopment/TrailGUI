@@ -50,7 +50,7 @@ public class TrailGUI
         getCommand("trails").setExecutor(new CommandTrails(this));
         getCommand("trailgui").setExecutor(new CommandTrailGUI(this));
         plugin = this;
-        load();
+
 
         if (getConfig().getBoolean("metrics"))
         {
@@ -80,7 +80,7 @@ public class TrailGUI
         {
             try
             {
-                SQLManager sql = new SQLManager(plugin, getConfig().getString("mysql-conn.host"),
+                SQLManager sql = new SQLManager(getConfig().getString("mysql-conn.host"),
                         getConfig().getInt("mysql-conn.port"),
                         getConfig().getString("mysql-conn.database"),
                         getConfig().getString("mysql-conn.user"),
@@ -92,6 +92,8 @@ public class TrailGUI
                 e.printStackTrace();
             }
         }
+
+        load();
     }
 
     private void hookEss()

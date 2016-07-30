@@ -8,6 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
@@ -139,10 +140,24 @@ public class Listeners implements Listener
             }
         }
         List<Trail> trails = TrailGUI.enabledTrails.get(player.getUniqueId());
-        for (Trail trail : trails)
+        try
         {
-            trail.display(player);
+            for (Trail trail : trails)
+            {
+                trail.display(player);
+            }
         }
+        catch (NullPointerException e)
+        {
+            Util.clearTrails(player);
+        }
+    }
+
+    @EventHandler
+    public void onLogout(PlayerQuitEvent e)
+    {
+        if(TrailGUI.getPlugin().getConfig().getBoolean("clearTrailsOnDisconnect"))
+            Util.clearTrails(e.getPlayer());
     }
 }
 

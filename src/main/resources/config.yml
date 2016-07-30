@@ -30,6 +30,9 @@ mysql-conn:
 #Whether or not the inventory will close if the player doesn't have permission.
 closeInventoryOnDenyPermission: false
 
+#Clear trails on logout.
+clearTrailsOnDisconnect: false
+
 #The worlds this plugin is disabled in. (You can add as many worlds as you want)
 disabledWorlds:
 - ExampleWorld

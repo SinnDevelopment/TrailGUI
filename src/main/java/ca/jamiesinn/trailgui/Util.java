@@ -40,7 +40,9 @@ public class Util
             SQLManager sql = TrailGUI.getSqlManager();
             for(UUID player : TrailGUI.enabledTrails.keySet())
             {
-                List<Trail> trailNames= new ArrayList<>();
+                List<String> trailNames = new ArrayList<>();
+                for(Trail t : TrailGUI.enabledTrails.get(player))
+                    trailNames.add(t.getName());
                 try
                 {
                     sql.insertUser(player, trailNames);
@@ -80,8 +82,10 @@ public class Util
             try
             {
                 HashMap<UUID, List<Trail>> trails = TrailGUI.getSqlManager().getTrails();
+                if(trails == null ) return;
                 for(UUID uuid : trails.keySet())
                 {
+                    if(trails.get(uuid) == null) return;
                     List<Trail> trailTypes = new ArrayList<>();
                     for (Trail t: trails.get(uuid))
                     {
