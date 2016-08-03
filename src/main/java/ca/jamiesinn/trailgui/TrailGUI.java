@@ -178,7 +178,8 @@ public class TrailGUI
     public void onDisable()
     {
         Util.saveTrails();
-        sqlManager.disconnect();
+        if (getConfig().getBoolean("mysql"))
+            sqlManager.disconnect();
     }
 
     public static SQLManager getSqlManager()
