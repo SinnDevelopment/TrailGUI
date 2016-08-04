@@ -20,7 +20,7 @@ public class Updater
 
     private int getLatestBuildNumber() throws IOException
     {
-        URL url = new URL("https://wat.sinnpi.com/api.php?api=latestjenkins&server=http://ci.md-5.net&job=TrailGUI");
+        URL url = new URL("http://wat.sinnpi.com/api.php?api=latestjenkins&server=http://ci.md-5.net&job=TrailGUI");
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.addRequestProperty("User-Agent", "Mozilla/4.76");
         String output = "";
