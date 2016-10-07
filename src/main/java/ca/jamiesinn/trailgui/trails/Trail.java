@@ -138,7 +138,7 @@ public abstract class Trail
 
         if (TrailGUI.enabledTrails.containsKey(player.getUniqueId()))
             currentTrails = TrailGUI.enabledTrails.get(player.getUniqueId());
-        return currentTrails.size() > max;
+        return currentTrails.size() >= max;
     }
 
     public ItemStack getItem()
