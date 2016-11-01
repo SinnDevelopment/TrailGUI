@@ -71,9 +71,14 @@ public class TrailGUI
                 Updater updater = new Updater(plugin);
                 updater.check();
             }
-            catch (IOException e)
+			catch (IOException e)
             {
                 e.printStackTrace();
+            }
+			catch (NumberFormatException nfe)
+			{
+            	getLogger().severe("Updater can't establish connection");
+            	nfe.printStackTrace();
             }
         }
         if (getConfig().getBoolean("mysql"))
