@@ -75,6 +75,11 @@ public class TrailGUI
             {
                 e.printStackTrace();
             }
+			catch (NumberFormatException nfe)
+			{
+            	getLogger().severe("Updater can't establish connection");
+            	nfe.printStackTrace();
+            }
         }
         if (getConfig().getBoolean("mysql"))
         {
