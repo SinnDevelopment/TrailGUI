@@ -71,7 +71,7 @@ public class TrailGUI
                 Updater updater = new Updater(plugin);
                 updater.check();
             }
-            catch (IOException e)
+			catch (IOException e)
             {
                 e.printStackTrace();
             }
