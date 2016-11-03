@@ -25,9 +25,9 @@ import java.util.UUID;
 public class TrailGUI
         extends JavaPlugin
 {
-    public static TrailGUI plugin;
+    private static TrailGUI plugin;
     public static String prefix;
-    public static boolean removeTrailOnPlayerHit;
+    static boolean removeTrailOnPlayerHit;
     public static boolean oneTrailAtATime;
     public static int maxTrails;
     public static List<String> disabledWorlds;
@@ -71,21 +71,20 @@ public class TrailGUI
                 Updater updater = new Updater(plugin);
                 updater.check();
             }
-            catch (IOException e)
+            catch (Exception e)
             {
-                e.printStackTrace();
+                getLogger().info("Couldn't connect to the update server. Not checking for updates.");
             }
         }
         if (getConfig().getBoolean("mysql"))
         {
             try
             {
-                SQLManager sql = new SQLManager(getConfig().getString("mysql-conn.host"),
+                sqlManager = new SQLManager(getConfig().getString("mysql-conn.host"),
                         getConfig().getInt("mysql-conn.port"),
                         getConfig().getString("mysql-conn.database"),
                         getConfig().getString("mysql-conn.user"),
                         getConfig().getString("mysql-conn.pass"));
-                sqlManager = sql;
             }
             catch (SQLException e)
             {
