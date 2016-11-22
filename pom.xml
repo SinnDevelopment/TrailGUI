@@ -7,7 +7,7 @@
     <artifactId>TrailGUI</artifactId>
     <version>${primaryVersion}-b${BUILD_NUMBER}-${releaseType}</version>
     <properties>
-        <primaryVersion>5.0.1</primaryVersion>
+        <primaryVersion>5.11</primaryVersion>
         <releaseType>SNAPSHOT</releaseType>
     </properties>
     <repositories>
@@ -32,7 +32,7 @@
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>1.10-R0.1-SNAPSHOT</version>
+            <version>1.11-R0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>net.ess3</groupId>
