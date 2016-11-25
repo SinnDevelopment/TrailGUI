@@ -1052,7 +1052,7 @@ trails:
     #The items type.
     itemType: GHAST_TEAR
     #The items name.
-    itemName: "&6FallingDust"
+    itemName: "&6Spit"
     #Whether or not the lore is enabled.
     loreEnabled: false
     #The text written on lore line one.
@@ -1072,11 +1072,11 @@ trails:
     #The distance before unrendering the particle effect.
     range: 20
     #The inventory slot the item is put in.
-    order: 39
+    order: 40
     #The items type.
     itemType: GHAST_TEAR
     #The items name.
-    itemName: "&6FallingDust"
+    itemName: "&6Totem"
     #Whether or not the lore is enabled.
     loreEnabled: false
     #The text written on lore line one.
