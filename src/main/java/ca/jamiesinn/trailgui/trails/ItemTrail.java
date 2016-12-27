@@ -1,27 +1,25 @@
 package ca.jamiesinn.trailgui.trails;
 
-import org.bukkit.Particle;
+import com.darkblade12.particleeffect.ParticleEffect;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 public class ItemTrail extends Trail
 {
-    private ItemStack data;
-    private byte itemData;
+    private ParticleEffect.ItemData data;
 
     public ItemTrail(ConfigurationSection config)
     {
         super(config);
-        itemData = (byte)config.getInt("data", 0);
-        data = new ItemStack(itemType, 1, itemData);
+        int itemData = config.getInt("data", 0);
+        data = new ParticleEffect.ItemData(itemType, (byte) itemData);
         loadType(config.getString("type"));
     }
 
     @Override
     protected void loadType(String sType)
     {
-        this.type = Particle.valueOf(sType);
+        this.type = ParticleEffect.valueOf(sType);
     }
 
     @Override
@@ -31,7 +29,7 @@ public class ItemTrail extends Trail
         {
             return;
         }
-        if(!displayEvent(getName(), getDisplayLocation(), getAmount(), cooldown, getSpeed(), getRange(), type).isCancelled())
-            player.getWorld().spawnParticle(type, player.getLocation().add(0.0D, displayLocation, 0.0D), amount, 0,0,0, speed, data);
+        if (!displayEvent(getName(), getDisplayLocation(), getAmount(), cooldown, getSpeed(), getRange(), type).isCancelled())
+            type.display(data, player.getLocation().getDirection(), speed, player.getLocation().add(0.0D, displayLocation, 0.0D), range);
     }
 }

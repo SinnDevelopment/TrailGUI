@@ -5,10 +5,10 @@ import ca.jamiesinn.trailgui.Util;
 import ca.jamiesinn.trailgui.api.TrailDisableEvent;
 import ca.jamiesinn.trailgui.api.TrailDisplayEvent;
 import ca.jamiesinn.trailgui.api.TrailEnableEvent;
+import com.darkblade12.particleeffect.ParticleEffect;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.Particle;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -24,13 +24,13 @@ public abstract class Trail
     int amount;
     int cooldown;
     float speed;
-    private int range;
+    protected int range;
     private int order;
     Material itemType;
     private String itemName;
     private boolean loreEnabled;
     private List<String> lore;
-    Particle type;
+    ParticleEffect type;
     private Map<UUID, Long> cooldownMap = new HashMap<>();
 
     public Trail(ConfigurationSection config)
@@ -355,10 +355,10 @@ public abstract class Trail
         return false;
     }
 
-    TrailDisplayEvent displayEvent(String name, double location, int amount, int cooldown, float speed, int range, Particle type)
+    TrailDisplayEvent displayEvent(String name, double location, int amount, int cooldown, float speed, int range, ParticleEffect type)
     {
         TrailDisplayEvent event = new TrailDisplayEvent(name,
-                location, amount, cooldown, speed, range, type);
+                location, amount, cooldown, speed, range, this);
         TrailGUI.getPlugin().getServer().getPluginManager().callEvent(event);
         return event;
     }
