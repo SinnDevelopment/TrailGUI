@@ -37,7 +37,7 @@ public class Updater
         }
         catch (IOException e)
         {
-            e.printStackTrace();
+            trailGUI.getLogger().info("Could not connect to the updater server. Will check on next enable.");
         }
 
         return Integer.parseInt(output);
@@ -61,13 +61,13 @@ public class Updater
 
     public void check() throws IOException
     {
+        int latestBuildNumber = getLatestBuildNumber();
         if (isItUpToDate()) return;
-        if (getCurrentBuildNumber() == -1)
+        if (latestBuildNumber == -1)
             trailGUI.getLogger().info("You are running a local build of TrailGUI. Updater not run.");
-        else
-
+        else if (latestBuildNumber != -2)
             trailGUI.getLogger().info("You are not running the latest build of TrailGUI. The latest build is "
-                    + getLatestBuildNumber()
+                    + latestBuildNumber
                     + " and your build is " + getCurrentBuildNumber() + ". Please update");
     }
 }

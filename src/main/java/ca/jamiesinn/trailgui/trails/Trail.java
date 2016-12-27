@@ -1,11 +1,12 @@
 package ca.jamiesinn.trailgui.trails;
 
-import ca.jamiesinn.trailgui.Util;
 import ca.jamiesinn.trailgui.TrailGUI;
+import ca.jamiesinn.trailgui.Util;
 import ca.jamiesinn.trailgui.api.TrailDisableEvent;
 import ca.jamiesinn.trailgui.api.TrailDisplayEvent;
 import ca.jamiesinn.trailgui.api.TrailEnableEvent;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.configuration.ConfigurationSection;
@@ -30,7 +31,7 @@ public abstract class Trail
     private boolean loreEnabled;
     private List<String> lore;
     Particle type;
-    Map<UUID, Long> cooldownMap = new HashMap<UUID, Long>();
+    private Map<UUID, Long> cooldownMap = new HashMap<>();
 
     public Trail(ConfigurationSection config)
     {
@@ -44,10 +45,13 @@ public abstract class Trail
         this.itemType = Material.valueOf(config.getString("itemType").toUpperCase());
         this.itemName = config.getString("itemName", "").replace("&", "\u00a7");
         this.loreEnabled = config.getBoolean("loreEnabled", false);
-        this.lore = new ArrayList<String>();
-        lore.add(config.getString("loreLineOne"));
-        lore.add(config.getString("loreLineTwo"));
-        lore.add(config.getString("loreLineThree"));
+        this.lore = new ArrayList<>();
+
+        if (isLoreEnabled())
+            for (String s : config.getStringList("lore"))
+            {
+                lore.add(ChatColor.translateAlternateColorCodes('&', s));
+            }
     }
 
     protected abstract void loadType(String sType);
@@ -183,7 +187,7 @@ public abstract class Trail
 
     public boolean onInventoryClick(Player player, ItemStack currentItem)
     {
-        if(currentItem.equals(this.getItem()))
+        if (currentItem.equals(this.getItem()))
         {
             List<Trail> currentTrails = new ArrayList<Trail>();
 
@@ -194,7 +198,7 @@ public abstract class Trail
 
             if (!canUseInventory(player))
             {
-                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("GUI-denyPermissionMessage").replaceAll("&", "\u00A7"));
+                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("GUI.denyPermissionMessage").replaceAll("&", "\u00A7"));
                 if (TrailGUI.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
                 {
                     player.closeInventory();
@@ -211,8 +215,8 @@ public abstract class Trail
                 currentTrails.remove(this);
                 disableEvent(player, this);
                 TrailGUI.enabledTrails.put(player.getUniqueId(), currentTrails);
-                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("GUI-removeTrailMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.getName()));
-                if (TrailGUI.getPlugin().getConfig().getBoolean("closeInventoryAferSelect"))
+                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("GUI.removeTrailMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.getName()));
+                if (TrailGUI.getPlugin().getConfig().getBoolean("GUI.closeInventoryAferSelect"))
                 {
                     player.closeInventory();
                 }
@@ -226,14 +230,14 @@ public abstract class Trail
                 }
                 if ((TrailGUI.maxTrails < currentTrails.size() && TrailGUI.maxTrails != 0) || getPermLimit(player))
                 {
-                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-tooManyTrailsMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
+                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands.tooManyTrailsMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
                     return true;
                 }
                 currentTrails.add(this);
                 enableEvent(player, this);
                 TrailGUI.enabledTrails.put(player.getUniqueId(), currentTrails);
-                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("GUI-selectTrailMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.getName()));
-                if (TrailGUI.getPlugin().getConfig().getBoolean("closeInventoryAferSelect"))
+                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("GUI.selectTrailMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.getName()));
+                if (TrailGUI.getPlugin().getConfig().getBoolean("GUI.closeInventoryAferSelect"))
                 {
                     player.closeInventory();
                 }
@@ -249,7 +253,7 @@ public abstract class Trail
         {
             if (!canUseCommand(player))
             {
-                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "\u00A7"));
+                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands.denyPermissionMessage").replaceAll("&", "\u00A7"));
                 return false;
             }
 
@@ -268,7 +272,7 @@ public abstract class Trail
                     }
                     currentTrails.remove(this);
                     TrailGUI.enabledTrails.put(player.getUniqueId(), currentTrails);
-                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-removeTrailMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
+                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands.removeTrailMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
                     return true;
                 }
                 else
@@ -279,13 +283,13 @@ public abstract class Trail
                     }
                     if ((TrailGUI.maxTrails < currentTrails.size() && TrailGUI.maxTrails != 0) || getPermLimit(player))
                     {
-                        player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-tooManyTrailsMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
+                        player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands.tooManyTrailsMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
                         return true;
                     }
                     currentTrails.add(this);
                     enableEvent(player, this);
                     TrailGUI.enabledTrails.put(player.getUniqueId(), currentTrails);
-                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-selectTrailMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
+                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands.selectTrailMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
                     return true;
                 }
             }
@@ -296,12 +300,12 @@ public abstract class Trail
                 Player target = Bukkit.getServer().getPlayerExact(args[1]);
                 if (target == null)
                 {
-                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("noTargetMessage").replaceAll("&", "\u00A7").replaceAll("%Target%", args[1]));
+                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands.noTargetMessage").replaceAll("&", "\u00A7").replaceAll("%Target%", args[1]));
                     return true;
                 }
                 if (player.getName().equals(args[1]))
                 {
-                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("targetSelfMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
+                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands.targetSelfMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
                     return true;
                 }
 
@@ -319,8 +323,8 @@ public abstract class Trail
                     currentTrails.remove(this);
                     TrailGUI.enabledTrails.put(target.getUniqueId(), currentTrails);
 
-                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-removeTrailSenderMessage").replaceAll("&", "\u00A7").replaceAll("%Target%", args[1]));
-                    target.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-removeTrailTargetMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
+                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands.removeTrailSenderMessage").replaceAll("&", "\u00A7").replaceAll("%Target%", args[1]));
+                    target.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands.removeTrailTargetMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
                     return true;
                 }
                 else
@@ -331,19 +335,19 @@ public abstract class Trail
                     }
                     if ((TrailGUI.maxTrails < currentTrails.size() && TrailGUI.maxTrails != 0) || getPermLimit(target))
                     {
-                        player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-tooManyTrailsMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
+                        player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands.tooManyTrailsMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
                         return true;
                     }
                     currentTrails.add(this);
                     TrailGUI.enabledTrails.put(target.getUniqueId(), currentTrails);
-                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-selectTrailSenderMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name).replaceAll("%Target%", args[1]));
-                    target.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-selectTrailTargetMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
+                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands.selectTrailSenderMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name).replaceAll("%Target%", args[1]));
+                    target.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands.selectTrailTargetMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", this.name));
                     return true;
                 }
             }
             else
             {
-                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "\u00A7"));
+                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands.denyPermissionMessage").replaceAll("&", "\u00A7"));
                 return true;
             }
 
@@ -364,16 +368,19 @@ public abstract class Trail
         TrailEnableEvent event = new TrailEnableEvent(player, trail);
         TrailGUI.getPlugin().getServer().getPluginManager().callEvent(event);
     }
+
     public static void enableEvent(Player player, List<Trail> trails)
     {
         TrailEnableEvent event = new TrailEnableEvent(player, trails);
         TrailGUI.getPlugin().getServer().getPluginManager().callEvent(event);
     }
+
     public static void disableEvent(Player player, Trail trail)
     {
         TrailDisableEvent event = new TrailDisableEvent(player, trail);
         TrailGUI.getPlugin().getServer().getPluginManager().callEvent(event);
     }
+
     public static void disableEvent(Player player, List<Trail> trails)
     {
         TrailDisableEvent event = new TrailDisableEvent(player, trails);

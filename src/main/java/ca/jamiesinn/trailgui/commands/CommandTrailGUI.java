@@ -31,7 +31,7 @@ public class CommandTrailGUI
                 if (string.equals(player.getWorld().getName()))
                 {
                     player.sendMessage(TrailGUI.prefix + ChatColor.RED + "You cannot use this command in this world.");
-                    return false;
+                    return true;
                 }
             }
             if (args.length == 0)
@@ -45,8 +45,8 @@ public class CommandTrailGUI
             {
                 if (!sender.hasPermission("trailgui.commands.reloadconfigs") && !sender.hasPermission("trailgui.*"))
                 {
-                    sender.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "\u00A7"));
-                    return false;
+                    sender.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands.denyPermissionMessage").replaceAll("&", "\u00A7"));
+                    return true;
                 }
                 Userdata.getInstance().reloadConfig();
                 Userdata.getInstance().saveConfig();

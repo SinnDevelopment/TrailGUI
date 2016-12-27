@@ -101,34 +101,34 @@ public class CommandTrail implements CommandExecutor, TabCompleter
         {
             if (!player.hasPermission("trailgui.commands.clearall") && !player.hasPermission("trailgui.*"))
             {
-                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "\u00A7"));
+                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands.denyPermissionMessage").replaceAll("&", "\u00A7"));
                 return false;
             }
             if (args.length == 1)
             {
                 Util.clearTrails(player);
-                player.sendMessage(this.trailGUI.getConfig().getString("ClearAll-message").replaceAll("&", "\u00A7").replaceAll("%TrailName%", "ClearAll"));
+                player.sendMessage(this.trailGUI.getConfig().getString("ClearAll.message").replaceAll("&", "\u00A7").replaceAll("%TrailName%", "ClearAll"));
                 return true;
             }
             if (!player.hasPermission("trailgui.commands.clearall.other") && !player.hasPermission("trailgui.*"))
             {
-                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "\u00A7"));
+                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands.denyPermissionMessage").replaceAll("&", "\u00A7"));
                 return true;
             }
             Player target = Bukkit.getServer().getPlayerExact(args[1]);
             if (target == null)
             {
-                player.sendMessage(this.trailGUI.getConfig().getString("noTargetMessage").replaceAll("&", "\u00A7").replaceAll("%Target%", args[1]));
+                player.sendMessage(this.trailGUI.getConfig().getString("Commands.noTargetMessage").replaceAll("&", "\u00A7").replaceAll("%Target%", args[1]));
                 return true;
             }
             if (player.getName().equals(args[1]))
             {
-                player.sendMessage(this.trailGUI.getConfig().getString("targetSelfMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", "ClearAll"));
+                player.sendMessage(this.trailGUI.getConfig().getString("Commands.targetSelfMessage").replaceAll("&", "\u00A7").replaceAll("%TrailName%", "ClearAll"));
                 return true;
             }
             Util.clearTrails(target);
-            target.sendMessage(this.trailGUI.getConfig().getString("ClearAll-targetMessage").replaceAll("&", "\u00A7").replaceAll("%Sender%", player.getName()));
-            player.sendMessage(this.trailGUI.getConfig().getString("ClearAll-senderMessage").replaceAll("&", "\u00A7").replaceAll("%Target%", args[1]));
+            target.sendMessage(this.trailGUI.getConfig().getString("ClearAll.targetMessage").replaceAll("&", "\u00A7").replaceAll("%Sender%", player.getName()));
+            player.sendMessage(this.trailGUI.getConfig().getString("ClearAll.senderMessage").replaceAll("&", "\u00A7").replaceAll("%Target%", args[1]));
             return true;
         }
         else

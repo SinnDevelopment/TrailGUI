@@ -62,7 +62,7 @@ public class Listeners implements Listener
 
             if (event.getCurrentItem().equals(Util.itemNoPerms()) && TrailGUI.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
             {
-                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("GUI-denyPermissionMessage").replaceAll("&", "\u00A7"));
+                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("GUI.denyPermissionMessage").replaceAll("&", "\u00A7"));
                 player.closeInventory();
                 return;
             }
@@ -71,7 +71,7 @@ public class Listeners implements Listener
             {
                 if (!player.hasPermission("trailgui.inventory.previouspage"))
                 {
-                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("GUI-denyPermissionMessage").replaceAll("&", "\u00A7"));
+                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("GUI.denyPermissionMessage").replaceAll("&", "\u00A7"));
                     if (TrailGUI.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
                     {
                         player.closeInventory();
@@ -84,7 +84,7 @@ public class Listeners implements Listener
             {
                 if (!player.hasPermission("trailgui.inventory.clearall"))
                 {
-                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("GUI-denyPermissionMessage").replaceAll("&", "\u00A7"));
+                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("GUI.denyPermissionMessage").replaceAll("&", "\u00A7"));
                     if (TrailGUI.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
                     {
                         player.closeInventory();
@@ -93,8 +93,8 @@ public class Listeners implements Listener
                 }
                 Util.clearTrails(player);
 
-                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("RemoveTrails-message").replaceAll("&", "\u00A7"));
-                if (TrailGUI.getPlugin().getConfig().getBoolean("closeInventoryAferSelect"))
+                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("RemoveTrails.message").replaceAll("&", "\u00A7"));
+                if (TrailGUI.getPlugin().getConfig().getBoolean("GUI.closeInventoryAferSelect"))
                 {
                     player.closeInventory();
                 }
@@ -103,7 +103,7 @@ public class Listeners implements Listener
             {
                 if (!player.hasPermission("trailgui.inventory.nextpage"))
                 {
-                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("GUI-denyPermissionMessage").replaceAll("&", "\u00A7"));
+                    player.sendMessage(TrailGUI.getPlugin().getConfig().getString("GUI.denyPermissionMessage").replaceAll("&", "\u00A7"));
                     if (TrailGUI.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
                     {
                         player.closeInventory();

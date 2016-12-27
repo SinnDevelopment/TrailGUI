@@ -38,7 +38,7 @@ public class CommandTrails
             }
             if (!player.hasPermission("trailgui.commands.trails") && !player.hasPermission("trailgui.*"))
             {
-                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands-denyPermissionMessage").replaceAll("&", "\u00A7"));
+                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands.denyPermissionMessage").replaceAll("&", "\u00A7"));
                 if (TrailGUI.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
                 {
                     player.closeInventory();

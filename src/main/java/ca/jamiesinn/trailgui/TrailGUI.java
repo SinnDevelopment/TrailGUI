@@ -35,6 +35,7 @@ public class TrailGUI
     public static Map<String, Trail> trailTypes = new HashMap<String, Trail>();
     public static IEssentials ess;
     private static SQLManager sqlManager;
+    private static int configRevision = 3;
 
     public static TrailGUI getPlugin()
     {
@@ -114,6 +115,12 @@ public class TrailGUI
         maxTrails = getConfig().getInt("maxActiveTrails");
         oneTrailAtATime = getConfig().getBoolean("oneTrailAtATime", false);
         prefix = getConfig().getString("prefix").replaceAll("&", "\u00A7");
+
+        if(getConfig().getInt("configVersion") != configRevision)
+        {
+            getLogger().severe("Your config is out of date with the current one. Plugin will be disabled until it is corrected.");
+            this.setEnabled(false);
+        }
         if (prefix == null)
         {
             getLogger().info(ChatColor.RED + "Warning - You have either no value for the prefix - or you have an outdated config. Please update it.");

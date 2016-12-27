@@ -4,6 +4,7 @@ import ca.jamiesinn.trailgui.files.Userdata;
 import ca.jamiesinn.trailgui.sql.SQLManager;
 import ca.jamiesinn.trailgui.trails.Trail;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -130,7 +131,7 @@ public class Util
     {
 
         int pageSize = 27;
-        List<Trail> sortedList = new ArrayList<Trail>(TrailGUI.trailTypes.values());
+        List<Trail> sortedList = new ArrayList<>(TrailGUI.trailTypes.values());
         Collections.sort(sortedList, new orderComparator());
         int maxPages = (int) Math.ceil((double) sortedList.size() / pageSize);
         currentPage = currentPage > maxPages ? 1 : currentPage;
@@ -141,8 +142,10 @@ public class Util
             end = sortedList.size();
         }
         List<Trail> subList = sortedList.subList(begin, end);
-
-        Inventory inv = Bukkit.createInventory(null, 45, TrailGUI.getPlugin().getConfig().getString("inventoryName").replaceAll("&", "\u00A7") + " " + currentPage + " / " + maxPages);
+        String page = " " + currentPage + " / " + maxPages;
+        Inventory inv = Bukkit.createInventory(null, 45,
+                TrailGUI.getPlugin().getConfig().getString("inventoryName").replaceAll("&", "\u00A7")
+        + (TrailGUI.getPlugin().getConfig().getBoolean("showPages") ? page : ""));
         int i = 0;
         for (Trail trail : subList)
         {
@@ -159,12 +162,12 @@ public class Util
 
         if (currentPage > 1)
         {
-            inv.setItem(TrailGUI.getPlugin().getConfig().getInt("PreviousPage-inventorySlot"), getItemPreviousPage());
+            inv.setItem(TrailGUI.getPlugin().getConfig().getInt("PreviousPage.inventorySlot"), getItemPreviousPage());
         }
-        inv.setItem(TrailGUI.getPlugin().getConfig().getInt("RemoveTrails-inventorySlot"), getItemRemoveTrails());
+        inv.setItem(TrailGUI.getPlugin().getConfig().getInt("RemoveTrails.inventorySlot"), getItemRemoveTrails());
         if (currentPage < maxPages)
         {
-            inv.setItem(TrailGUI.getPlugin().getConfig().getInt("NextPage-inventorySlot"), getItemNextPage());
+            inv.setItem(TrailGUI.getPlugin().getConfig().getInt("NextPage.inventorySlot"), getItemNextPage());
         }
         player.openInventory(inv);
 
@@ -175,7 +178,7 @@ public class Util
     {
         ItemStack i = new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 14);
         ItemMeta meta = i.getItemMeta();
-        meta.setDisplayName(TrailGUI.getPlugin().getConfig().getString("GUI-noPermMessage").replaceAll("&", "\u00A7"));
+        meta.setDisplayName(TrailGUI.getPlugin().getConfig().getString("GUI.noPermMessage").replaceAll("&", "\u00A7"));
         i.setItemMeta(meta);
         return i;
 
@@ -192,23 +195,19 @@ public class Util
 
     private static ItemStack createItemNextPage()
     {
-        ItemStack itemNextPage = new ItemStack(Material.valueOf(TrailGUI.getPlugin().getConfig().getString("NextPage-itemType").toUpperCase()), 1);
+        ItemStack itemNextPage = new ItemStack(Material.valueOf(TrailGUI.getPlugin().getConfig().getString("NextPage.itemType").toUpperCase()), 1);
         ItemMeta metaNextPage = itemNextPage.getItemMeta();
 
-        String name1 = TrailGUI.getPlugin().getConfig().getString("NextPage-itemName");
+        String name1 = TrailGUI.getPlugin().getConfig().getString("NextPage.itemName");
         String name2 = name1.replaceAll("&", "\u00A7");
-        if (TrailGUI.getPlugin().getConfig().getBoolean("NextPage-loreEnabled"))
+        if (TrailGUI.getPlugin().getConfig().getBoolean("NextPage.loreEnabled"))
         {
-            List<String> loreNextPage = new ArrayList<String>();
+            List<String> loreNextPage = new ArrayList<>();
 
-            String loreLine1 = TrailGUI.getPlugin().getConfig().getString("NextPage-loreLineOne").replaceAll("&", "\u00A7");
-            String loreLine2 = TrailGUI.getPlugin().getConfig().getString("NextPage-loreLineTwo").replaceAll("&", "\u00A7");
-            String loreLine3 = TrailGUI.getPlugin().getConfig().getString("NextPage-loreLineThree").replaceAll("&", "\u00A7");
-
-            loreNextPage.add(loreLine1);
-            loreNextPage.add(loreLine2);
-            loreNextPage.add(loreLine3);
-
+            for(String s : TrailGUI.getPlugin().getConfig().getStringList("NextPage.lore"))
+            {
+                loreNextPage.add(ChatColor.translateAlternateColorCodes('&', s));
+            }
             metaNextPage.setLore(loreNextPage);
         }
         metaNextPage.setDisplayName(name2);
@@ -227,22 +226,19 @@ public class Util
 
     private static ItemStack createItemPreviousPage()
     {
-        ItemStack itemPreviousPage = new ItemStack(Material.valueOf(TrailGUI.getPlugin().getConfig().getString("PreviousPage-itemType").toUpperCase()), 1);
+        ItemStack itemPreviousPage = new ItemStack(Material.valueOf(TrailGUI.getPlugin().getConfig().getString("PreviousPage.itemType").toUpperCase()), 1);
         ItemMeta metaPreviousPage = itemPreviousPage.getItemMeta();
 
-        String name1 = TrailGUI.getPlugin().getConfig().getString("PreviousPage-itemName");
+        String name1 = TrailGUI.getPlugin().getConfig().getString("PreviousPage.itemName");
         String name2 = name1.replaceAll("&", "\u00A7");
-        if (TrailGUI.getPlugin().getConfig().getBoolean("PreviousPage-loreEnabled"))
+        if (TrailGUI.getPlugin().getConfig().getBoolean("PreviousPage.loreEnabled"))
         {
-            List<String> lorePreviousPage = new ArrayList<String>();
+            List<String> lorePreviousPage = new ArrayList<>();
 
-            String loreLine1 = TrailGUI.getPlugin().getConfig().getString("PreviousPage-loreLineOne").replaceAll("&", "\u00A7");
-            String loreLine2 = TrailGUI.getPlugin().getConfig().getString("PreviousPage-loreLineTwo").replaceAll("&", "\u00A7");
-            String loreLine3 = TrailGUI.getPlugin().getConfig().getString("PreviousPage-loreLineThree").replaceAll("&", "\u00A7");
-
-            lorePreviousPage.add(loreLine1);
-            lorePreviousPage.add(loreLine2);
-            lorePreviousPage.add(loreLine3);
+            for(String s : TrailGUI.getPlugin().getConfig().getStringList("PreviousPage.lore"))
+            {
+                lorePreviousPage.add(ChatColor.translateAlternateColorCodes('&', s));
+            }
 
             metaPreviousPage.setLore(lorePreviousPage);
         }
@@ -262,22 +258,19 @@ public class Util
 
     private static ItemStack createItemRemoveTrails()
     {
-        ItemStack itemRemoveTrails = new ItemStack(Material.valueOf(TrailGUI.getPlugin().getConfig().getString("RemoveTrails-itemType").toUpperCase()), 1);
+        ItemStack itemRemoveTrails = new ItemStack(Material.valueOf(TrailGUI.getPlugin().getConfig().getString("RemoveTrails.itemType").toUpperCase()), 1);
         ItemMeta metaRemoveTrails = itemRemoveTrails.getItemMeta();
 
-        String name1 = TrailGUI.getPlugin().getConfig().getString("RemoveTrails-itemName");
+        String name1 = TrailGUI.getPlugin().getConfig().getString("RemoveTrails.itemName");
         String name2 = name1.replaceAll("&", "\u00A7");
-        if (TrailGUI.getPlugin().getConfig().getBoolean("RemoveTrails-loreEnabled"))
+        if (TrailGUI.getPlugin().getConfig().getBoolean("RemoveTrails.loreEnabled"))
         {
-            List<String> loreRemoveTrail = new ArrayList<String>();
+            List<String> loreRemoveTrail = new ArrayList<>();
 
-            String loreLine1 = TrailGUI.getPlugin().getConfig().getString("RemoveTrails-loreLineOne").replaceAll("&", "\u00A7");
-            String loreLine2 = TrailGUI.getPlugin().getConfig().getString("RemoveTrails-loreLineTwo").replaceAll("&", "\u00A7");
-            String loreLine3 = TrailGUI.getPlugin().getConfig().getString("RemoveTrails-loreLineThree").replaceAll("&", "\u00A7");
-
-            loreRemoveTrail.add(loreLine1);
-            loreRemoveTrail.add(loreLine2);
-            loreRemoveTrail.add(loreLine3);
+            for(String s : TrailGUI.getPlugin().getConfig().getStringList("RemoveTrails.lore"))
+            {
+                loreRemoveTrail.add(ChatColor.translateAlternateColorCodes('&', s));
+            }
 
             metaRemoveTrails.setLore(loreRemoveTrail);
         }
@@ -289,7 +282,7 @@ public class Util
     static List<Trail> getSubList(int currentPage)
     {
         int pageSize = 27;
-        List<Trail> sortedList = new ArrayList<Trail>(TrailGUI.trailTypes.values());
+        List<Trail> sortedList = new ArrayList<>(TrailGUI.trailTypes.values());
         Collections.sort(sortedList, new orderComparator());
         int maxPages = (int) Math.ceil((double) sortedList.size() / pageSize);
         currentPage = currentPage > maxPages ? 1 : currentPage;

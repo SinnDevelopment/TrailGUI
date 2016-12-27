@@ -3,10 +3,14 @@
 # |          Configuration: TrailGUI                | #
 # +------------------------------------------------------+ #
 ############################################################
+# Don't touch this.
+configVersion: 3
 
 #The name of the GUI on page one. Do not use colour codes as it will break the inventory system
 inventoryName: "TrailGUI"
-
+#Show how many pages there are, Do not set to false unless there is only 1 page of trails, it will cause
+# errors otherwise.
+showPages: true
 #The prefix in game. Make sure to edit the messages too
 prefix: "&8[&cTrailGUI&8] "
 
@@ -16,7 +20,7 @@ metrics: true
 #Use Updater for checking latest build.
 updater: true
 
-#Use MySQL for a common databse instead of a local userdata. Primarily used for networks.
+#Use MySQL for a common database instead of a local userdata. Primarily used for networks.
 mysql: false
 
 # Connection details to database if above is true
@@ -55,20 +59,17 @@ maxActiveTrails: 0
 # +------------------------------------------------------+ #
 ############################################################
 
-#Whether or not the inventory will close after a trail has been selected.
-closeInventoryAferSelect: false
-
-#The message sent if the player does not have permission.
-GUI-denyPermissionMessage: "&4You do not have permission to do this."
-
-#The message sent when selecting a trail.
-GUI-selectTrailMessage: "&8[&CTrailGUI&8] &ASelected the &L%TrailName% &Atrail."
-
-#The message sent when removing your own trail.
-GUI-removeTrailMessage: "&8[&CTrailGUI&8] &ARemoved the &L%TrailName% &Atrail."
-
-#The item display name for no permissions.
-GUI-noPermMessage: "&4No Permissions"
+GUI:
+  #Whether or not the inventory will close after a trail has been selected.
+  closeInventoryAferSelect: false
+  #The message sent if the player does not have permission.
+  denyPermissionMessage: "&4You do not have permission to do this."
+  #The message sent when selecting a trail.
+  selectTrailMessage: "&8[&CTrailGUI&8] &ASelected the &L%TrailName% &Atrail."
+  #The message sent when removing your own trail.
+  removeTrailMessage: "&8[&CTrailGUI&8] &ARemoved the &L%TrailName% &Atrail."
+  #The item display name for no permissions.
+  noPermMessage: "&4No Permissions"
 
 ############################################################
 # +------------------------------------------------------+ #
@@ -76,35 +77,26 @@ GUI-noPermMessage: "&4No Permissions"
 # +------------------------------------------------------+ #
 ############################################################
 
-#The message sent if the player does not have permission.
-Commands-denyPermissionMessage: "&4You do not have permission to use this command."
+Commands:
+  #The message sent if the player does not have permission.
+  denyPermissionMessage: "&4You do not have permission to use this command."
+  #The message sent when selecting a trail.
+  selectTrailMessage: "&8[&CTrailGUI&8] &ASelected the &L%TrailName% &Atrail."
+  #The message sent when removing your own trail.
+  removeTrailMessage: "&8[&CTrailGUI&8] &ARemoved the &L%TrailName% &Atrail."
+  #The message sent when the target is offline. (Use %Target% to specify the target player)
+  noTargetMessage: "&8[&CTrailGUI&8] &AThe player &L%Target% &Acould not be found."
+  #The message sent when the target is the player himself.
+  targetSelfMessage: "&8[&CTrailGUI&8] &APlease use /Trail %TrailName% instead."
+  #The message sent to the sender when giving another player a trail. (Use %Target% to specify the target player)
+  selectTrailSenderMessage: "&8[&CTrailGUI&8] &A&L%Target% &Anow has the %TrailName% trail."
+  #The message sent to the target when receiving a trail. (Use %Sender% to specify the sender)
+  selectTrailTargetMessage: "&8[&CTrailGUI&8] &AYou now have the &L%TrailName% &Atrail."
+  #The message sent to the sender when getting their trail removed. (Use %Target% to specify the target player)
+  removeTrailSenderMessage: "&8[&CTrailGUI&8] &A&L%Target% &Ano longer has the %TrailName% trail."
+  #The message sent to the target when removing a players trail. (Use %Target% to specify the target player)
+  tooManyTrailsMessage: "&8[&CTrailGUI&8] Too many trails active. Cannot activate trail."
 
-#The message sent when selecting a trail.
-Commands-selectTrailMessage: "&8[&CTrailGUI&8] &ASelected the &L%TrailName% &Atrail."
-
-#The message sent when removing your own trail.
-Commands-removeTrailMessage: "&8[&CTrailGUI&8] &ARemoved the &L%TrailName% &Atrail."
-
-#The message sent when the target is offline. (Use %Target% to specify the target player)
-noTargetMessage: "&8[&CTrailGUI&8] &AThe player &L%Target% &Acould not be found."
-
-#The message sent when the target is the player himself.
-targetSelfMessage: "&8[&CTrailGUI&8] &APlease use /Trail %TrailName% instead."
-
-#The message sent to the sender when giving another player a trail. (Use %Target% to specify the target player)
-Commands-selectTrailSenderMessage: "&8[&CTrailGUI&8] &A&L%Target% &Anow has the %TrailName% trail."
-
-#The message sent to the target when receiving a trail. (Use %Sender% to specify the sender)
-Commands-selectTrailTargetMessage: "&8[&CTrailGUI&8] &AYou now have the &L%TrailName% &Atrail."
-
-#The mesage sent to the sender when getting their trail removed. (Use %Target% to specify the target player)
-Commands-removeTrailSenderMessage: "&8[&CTrailGUI&8] &A&L%Target% &Ano longer has the %TrailName% trail."
-
-#The mesage sent to the target when removing a players trail. (Use %Target% to specify the target player)
-Commands-removeTrailTargetMessage: "&8[&CTrailGUI&8] &AYou no longer have the %TrailName% trail."
-
-#The message sent to the sender when they try to equip too many trails
-Commands-tooManyTrailsMessage: "&8[&CTrailGUI&8] Too many trails active. Cannot activate trail."
 
 ############################################################
 # +------------------------------------------------------+ #
@@ -132,12 +124,10 @@ trails:
     itemName: "&6AngryVillager"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   Cloud:
     type: CLOUD
     #The location the particle effect is displayed.
@@ -154,12 +144,10 @@ trails:
     itemName: "&6Cloud"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   Criticals:
     type: CRIT
     #The location the particle effect is displayed.
@@ -178,12 +166,10 @@ trails:
     itemName: "&6Criticals"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   DripLava:
     type: DRIP_LAVA
     #The location the particle effect is displayed.
@@ -202,12 +188,10 @@ trails:
     itemName: "&6DripLava"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   DripWater:
     type: DRIP_WATER
     #The location the particle effect is displayed.
@@ -226,12 +210,10 @@ trails:
     itemName: "&6DripWater"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   Enchantment:
     type: ENCHANTMENT_TABLE
     #The location the particle effect is displayed.
@@ -250,12 +232,10 @@ trails:
     itemName: "&6Enchantment"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   Spark:
     type: FIREWORKS_SPARK
     #The location the particle effect is displayed.
@@ -274,12 +254,10 @@ trails:
     itemName: "&6Spark"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   Flame:
     type: FLAME
     #The location the particle effect is displayed.
@@ -298,12 +276,10 @@ trails:
     itemName: "&6Flame"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   HappyVillager:
     type: VILLAGER_HAPPY
     #The location the particle effect is displayed.
@@ -322,12 +298,10 @@ trails:
     itemName: "&6HappyVillager"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   InstantSpell:
     type: SPELL_INSTANT
     #The location the particle effect is displayed.
@@ -346,12 +320,10 @@ trails:
     itemName: "&6InstantSpell"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   LargeSmoke:
     type: SMOKE_LARGE
     #The location the particle effect is displayed.
@@ -370,12 +342,10 @@ trails:
     itemName: "&6LargeSmoke"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   Lava:
     type: LAVA
     #The location the particle effect is displayed.
@@ -394,12 +364,10 @@ trails:
     itemName: "&6Lava"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   MagicCrit:
     type: CRIT_MAGIC
     #The location the particle effect is displayed.
@@ -418,12 +386,10 @@ trails:
     itemName: "&6MagicCrit"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   MobSpell:
     type: SPELL_MOB
     #The location the particle effect is displayed.
@@ -442,12 +408,10 @@ trails:
     itemName: "&6MobSpell"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   MobSpellAmbient:
     type: SPELL_MOB_AMBIENT
     #The location the particle effect is displayed.
@@ -466,12 +430,10 @@ trails:
     itemName: "&6MobSpellAmbient"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   Note:
     type: NOTE
     #The location the particle effect is displayed.
@@ -492,12 +454,10 @@ trails:
     itemName: "&6Note"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   Portal:
     type: PORTAL
     #The location the particle effect is displayed.
@@ -516,12 +476,10 @@ trails:
     itemName: "&6Portal"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   RedDust:
     type: REDSTONE
     #The location the particle effect is displayed.
@@ -540,12 +498,10 @@ trails:
     itemName: "&6RedDust"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   ColoredRedDust:
     type: REDSTONE
     #The location the particle effect is displayed.
@@ -564,12 +520,10 @@ trails:
     itemName: "&6ColoredRedDust"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   Slime:
     type: SLIME
     #The location the particle effect is displayed.
@@ -588,12 +542,10 @@ trails:
     itemName: "&6Slime"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   SnowShovel:
     type: SNOW_SHOVEL
     #The location the particle effect is displayed.
@@ -612,12 +564,10 @@ trails:
     itemName: "&6SnowShovel"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   SnowballPoof:
     type: SNOWBALL
     #The location the particle effect is displayed.
@@ -636,12 +586,10 @@ trails:
     itemName: "&6SnowballPoof"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   Spell:
     type: SPELL
     #The location the particle effect is displayed.
@@ -660,12 +608,10 @@ trails:
     itemName: "&6Spell"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   Splash:
     type: WATER_SPLASH
     #The location the particle effect is displayed.
@@ -684,12 +630,10 @@ trails:
     itemName: "&6Splash"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   TownAura:
     type: TOWN_AURA
     #The location the particle effect is displayed.
@@ -708,12 +652,10 @@ trails:
     itemName: "&6TownAura"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   Wake:
     type: WATER_WAKE
     #The location the particle effect is displayed.
@@ -732,12 +674,10 @@ trails:
     itemName: "&6Wake"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   WitchMagic:
     type: SPELL_WITCH
     #The location the particle effect is displayed.
@@ -756,12 +696,10 @@ trails:
     itemName: "&6WitchMagic"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   Hearts:
     type: HEART
     #The location the particle effect is displayed.
@@ -782,12 +720,10 @@ trails:
     itemName: "&6Hearts"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   EnderSignal:
     is_effect: true
     type: ENDER_SIGNAL
@@ -807,12 +743,10 @@ trails:
     itemName: "&6EnderSignal"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   IconCrack:
     type: ITEM_CRACK
     #The location the particle effect is displayed.
@@ -863,12 +797,10 @@ trails:
     itemName: "&6BlackDust"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   Footstep:
     type: FOOTSTEP
     #The location the particle effect is displayed.
@@ -887,12 +819,10 @@ trails:
     itemName: "&6Footsteps"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   BlackPotion:
     type: SPELL_MOB
     #The location the particle effect is displayed.
@@ -911,12 +841,10 @@ trails:
     itemName: "&6BlackPotion"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   Dragonbreath:
     type: DRAGON_BREATH
     #The location the particle effect is displayed.
@@ -935,12 +863,10 @@ trails:
     itemName: "&6DragonBreath"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   EndRod:
     type: END_ROD
     #The location the particle effect is displayed.
@@ -959,12 +885,10 @@ trails:
     itemName: "&6EndRod"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   DamageIndicator:
     type: DAMAGE_INDICATOR
     #The location the particle effect is displayed.
@@ -983,12 +907,10 @@ trails:
     itemName: "&6DamageIndicator"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   SweepAttack:
     type: SWEEP_ATTACK
     #The location the particle effect is displayed.
@@ -1007,12 +929,10 @@ trails:
     itemName: "&6SweepAttack"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   FallingDust:
     type: FALLING_DUST
     #The location the particle effect is displayed.
@@ -1031,12 +951,10 @@ trails:
     itemName: "&6FallingDust"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   Spit:
     type: SPIT
     #The location the particle effect is displayed.
@@ -1055,12 +973,10 @@ trails:
     itemName: "&6Spit"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   Totem:
     type: TOTEM
     #The location the particle effect is displayed.
@@ -1074,78 +990,71 @@ trails:
     #The inventory slot the item is put in.
     order: 40
     #The items type.
-    itemType: GHAST_TEAR
+    itemType: STICK
     #The items name.
     itemName: "&6Totem"
     #Whether or not the lore is enabled.
     loreEnabled: false
-    #The text written on lore line one.
-    loreLineOne: "Example"
-    #The text written on lore line two.
-    loreLineTwo: "Example"
-    #The text written on lore line three.
-    loreLineThree: "Example"
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
 
-
+############################################################
+# +------------------------------------------------------+ #
+# |          Configuration: Inventory Pagination   | #
+# +------------------------------------------------------+ #
+############################################################
 #### @ClearAll
-
-#The message sent when you clear all of your own trails. (When typing /Trail ClearAll)
-ClearAll-message: "&8[&CTrailGUI&8] &AYou cleared all your current trails."
-#The message sent to the target player getting their trails removed.
-ClearAll-targetMessage: "&8[&CTrailGUI&8] &A&L%Sender% &Ahas removed your trails."
-#The message sent to the sender.
-ClearAll-senderMessage: "&8[&CTrailGUI&8] &A&L%Target% &Ano longer has any trail."
+ClearAll:
+  #The message sent when you clear all of your own trails. (When typing /Trail ClearAll)
+  message: "&8[&CTrailGUI&8] &AYou cleared all your current trails."
+  #The message sent to the target player getting their trails removed.
+  targetMessage: "&8[&CTrailGUI&8] &A&L%Sender% &Ahas removed your trails."
+  #The message sent to the sender.
+  senderMessage: "&8[&CTrailGUI&8] &A&L%Target% &Ano longer has any trail."
 
 #### @RemoveTrails
 
-#The message sent when you clear all of your own trails. (Inside the GUI)
-RemoveTrails-message: "&8[&CTrailGUI&8] &AYou cleared all your current trails."
-
-#The inventory slot the item is put in.
-RemoveTrails-inventorySlot: 40
-#The items type.
-RemoveTrails-itemType: redstone_block
-#The items name.
-RemoveTrails-itemName: "&6Remove Trails"
-#Whether or not the lore is enabled.
-RemoveTrails-loreEnabled: false
-#The text written on lore line one.
-RemoveTrails-loreLineOne: "Example"
-#The text written on lore line two.
-RemoveTrails-loreLineTwo: "Example"
-#The text written on lore line three.
-RemoveTrails-loreLineThree: "Example"
+RemoveTrails:
+  #The message sent when you clear all of your own trails. (Inside the GUI)
+  message: "&8[&CTrailGUI&8] &AYou cleared all your current trails."
+  #The inventory slot the item is put in.
+  inventorySlot: 40
+  #The items type.
+  itemType: redstone_block
+  #The items name.
+  itemName: "&6Remove Trails"
+  #Whether or not the lore is enabled.
+  loreEnabled: false
+  #Lore
+  lore:
+    - "Line1"
 
 #### @NextPage
-
-#The inventory slot the item is put in.
-NextPage-inventorySlot: 41
-#The items type.
-NextPage-itemType: arrow
-#The items name.
-NextPage-itemName: "&6Next Page"
-#Whether or not the lore is enabled.
-NextPage-loreEnabled: false
-#The text written on lore line one.
-NextPage-loreLineOne: "Example"
-#The text written on lore line two.
-NextPage-loreLineTwo: "Example"
-#The text written on lore line three.
-NextPage-loreLineThree: "Example"
+NextPage:
+  #The inventory slot the item is put in.
+  inventorySlot: 41
+  #The items type.
+  itemType: arrow
+  #The items name.
+  itemName: "&6Next Page"
+  #Whether or not the lore is enabled.
+  loreEnabled: false
+  #Lore
+  lore:
+    - "Line1"
 
 #### @PreviousPage
-
-#The inventory slot the item is put in.
-PreviousPage-inventorySlot: 39
-#The items type.
-PreviousPage-itemType: arrow
-#The items name.
-PreviousPage-itemName: "&6Previous Page"
-#Whether or not the lore is enabled.
-PreviousPage-loreEnabled: false
-#The text written on lore line one.
-PreviousPage-loreLineOne: "Example"
-#The text written on lore line two.
-PreviousPage-loreLineTwo: "Example"
-#The text written on lore line three.
-PreviousPage-loreLineThree: "Example"
+PreviousPage:
+  #The inventory slot the item is put in.
+  inventorySlot: 39
+  #The items type.
+  itemType: arrow
+  #The items name.
+  itemName: "&6Previous Page"
+  #Whether or not the lore is enabled.
+  loreEnabled: false
+  #Lore
+  lore:
+  - "Line1"
