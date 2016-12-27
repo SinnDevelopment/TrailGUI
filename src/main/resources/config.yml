@@ -70,6 +70,8 @@ GUI:
   removeTrailMessage: "&8[&CTrailGUI&8] &ARemoved the &L%TrailName% &Atrail."
   #The item display name for no permissions.
   noPermMessage: "&4No Permissions"
+  #Hide trails if no perms
+  hideNoPerms: false
 
 ############################################################
 # +------------------------------------------------------+ #

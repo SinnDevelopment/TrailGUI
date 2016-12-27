@@ -49,8 +49,6 @@
             <groupId>com.darkblade12</groupId>
             <artifactId>particleeffect</artifactId>
             <version>1.7.0-SNAPSHOT</version>
-            <systemPath>${project.basedir}/lib/particleeffect-1.7.0-SNAPSHOT.jar</systemPath>
-            <scope>system</scope>
         </dependency>
     </dependencies>
     <distributionManagement>
@@ -93,10 +91,6 @@
                         <relocation>
                             <pattern>org.mcstats</pattern>
                             <shadedPattern>ca.jamiesinn.trailgui.metrics</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>com.darkblade12</pattern>
-                            <shadedPattern>ca.jamiesinn.trailgui.particleeffect</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>

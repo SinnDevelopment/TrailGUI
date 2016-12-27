@@ -155,7 +155,10 @@ public class Util
             }
             else
             {
-                inv.setItem(i, itemNoPerms());
+                if(TrailGUI.getPlugin().getConfig().getBoolean("GUI.hideNoPerms"))
+                    inv.setItem(i, itemNoPerms());
+                else
+                    inv.setItem(i , trail.getItem());
             }
             i++;
         }
