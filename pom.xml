@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>ca.jamiesinn</groupId>
     <artifactId>TrailGUI</artifactId>
-    <version>${primaryVersion}-b${BUILD_NUMBER}-${releaseType}</version>
+    <version>${primaryVersion}-bSkyBlockCustom-${releaseType}</version>
     <properties>
         <primaryVersion>5.2</primaryVersion>
         <releaseType>SNAPSHOT</releaseType>

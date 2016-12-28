@@ -130,7 +130,7 @@ public class Util
     static void openGUI(Player player, int currentPage)
     {
 
-        int pageSize = 27;
+        int pageSize = TrailGUI.getPlugin().getConfig().getInt("GUI.perPage");
         List<Trail> sortedList = new ArrayList<>(TrailGUI.trailTypes.values());
         Collections.sort(sortedList, new orderComparator());
         int maxPages = (int) Math.ceil((double) sortedList.size() / pageSize);
@@ -143,24 +143,26 @@ public class Util
         }
         List<Trail> subList = sortedList.subList(begin, end);
         String page = " " + currentPage + " / " + maxPages;
-        Inventory inv = Bukkit.createInventory(null, 45,
+        Inventory inv = Bukkit.createInventory(null, pageSize,
                 TrailGUI.getPlugin().getConfig().getString("inventoryName").replaceAll("&", "\u00A7")
         + (TrailGUI.getPlugin().getConfig().getBoolean("showPages") ? page : ""));
-        int i = 0;
         for (Trail trail : subList)
         {
             if (trail.canUseInventory(player))
             {
-                inv.setItem(i, trail.getItem());
+                List<Trail> trails = TrailGUI.enabledTrails.get(player.getUniqueId());
+                if(trails != null && TrailGUI.getPlugin().getConfig().getBoolean("GUI.showActiveIcon") && trails.contains(trail))
+                    inv.setItem(trail.getOrder(), getEnabledItem(trail));
+                else
+                    inv.setItem(trail.getOrder(), trail.getItem());
             }
             else
             {
                 if(TrailGUI.getPlugin().getConfig().getBoolean("GUI.hideNoPerms"))
-                    inv.setItem(i, itemNoPerms());
+                    inv.setItem(trail.getOrder(), itemNoPerms());
                 else
-                    inv.setItem(i , trail.getItem());
+                    inv.setItem(trail.getOrder() , trail.getItem());
             }
-            i++;
         }
 
         if (currentPage > 1)
@@ -284,7 +286,7 @@ public class Util
 
     static List<Trail> getSubList(int currentPage)
     {
-        int pageSize = 27;
+        int pageSize = TrailGUI.getPlugin().getConfig().getInt("GUI.perPage");;
         List<Trail> sortedList = new ArrayList<>(TrailGUI.trailTypes.values());
         Collections.sort(sortedList, new orderComparator());
         int maxPages = (int) Math.ceil((double) sortedList.size() / pageSize);
@@ -306,6 +308,40 @@ public class Util
         {
             return o1.getOrder() - o2.getOrder();
         }
+    }
+
+    private static ItemStack getEnabledItem(Trail trail)
+    {
+        int metaData;
+
+        try
+        {
+            metaData = Integer.parseInt(TrailGUI.getPlugin().getConfig().getString("TrailActive.itemMeta"));
+        }
+        catch (NumberFormatException e)
+        {
+            metaData = 0;
+        }
+        ItemStack is = new ItemStack(Material.valueOf(TrailGUI.getPlugin().getConfig().getString("TrailActive.itemType").toUpperCase()),
+                1, (byte)metaData);
+        ItemMeta meta = is.getItemMeta();
+        meta.setDisplayName(
+                ChatColor.translateAlternateColorCodes('&',
+                        TrailGUI.getPlugin().getConfig().getString("TrailActive.itemName")).replaceAll("%NAME%", trail.getName()));
+        boolean loreEnabled = TrailGUI.getPlugin().getConfig().getBoolean("TrailActive.loreEnabled");
+
+        if(loreEnabled)
+        {
+            List<String> lore = new ArrayList<>();
+            for(String s : TrailGUI.getPlugin().getConfig().getStringList("TrailActive.lore"))
+            {
+                lore.add(ChatColor.translateAlternateColorCodes('&', s));
+            }
+            meta.setLore(lore);
+        }
+        is.setItemMeta(meta);
+
+        return is;
     }
 
 }

@@ -72,6 +72,10 @@ GUI:
   noPermMessage: "&4No Permissions"
   #Hide trails if no perms
   hideNoPerms: false
+  #Show active trail in place of trail icon when active
+  showActiveIcon: false
+  #Page Size - must be a multiple of 9
+  perPage: 27
 
 ############################################################
 # +------------------------------------------------------+ #
@@ -1059,4 +1063,15 @@ PreviousPage:
   loreEnabled: false
   #Lore
   lore:
-  - "Line1"
+    - "Line1"
+
+TrailActive:
+  #The items type.
+  itemType: arrow
+  #The items name.
+  itemName: "&6Previous Page"
+  #Whether or not the lore is enabled.
+  loreEnabled: false
+  #Lore
+  lore:
+    - "Line1"

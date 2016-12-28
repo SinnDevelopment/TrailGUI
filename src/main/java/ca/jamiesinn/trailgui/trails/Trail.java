@@ -29,6 +29,7 @@ public abstract class Trail
     Material itemType;
     private String itemName;
     private boolean loreEnabled;
+    private int metaData;
     private List<String> lore;
     ParticleEffect type;
     private Map<UUID, Long> cooldownMap = new HashMap<>();
@@ -45,6 +46,15 @@ public abstract class Trail
         this.itemType = Material.valueOf(config.getString("itemType").toUpperCase());
         this.itemName = config.getString("itemName", "").replace("&", "\u00a7");
         this.loreEnabled = config.getBoolean("loreEnabled", false);
+        try
+        {
+            this.metaData = Integer.parseInt(config.getString("itemMeta"));
+        }
+        catch(NumberFormatException e)
+        {
+            this.metaData = 0;
+        }
+
         this.lore = new ArrayList<>();
 
         if (isLoreEnabled())
@@ -106,6 +116,10 @@ public abstract class Trail
         return name;
     }
 
+    public int getMetaData()
+    {
+        return metaData;
+    }
     public boolean canUse(Player player)
     {
         return player.hasPermission("trailgui.trails." + getName()) || player.hasPermission("trailgui.trail." + getName())
@@ -148,6 +162,10 @@ public abstract class Trail
     public ItemStack getItem()
     {
         ItemStack item = new ItemStack(itemType, 1);
+        if(metaData != 0)
+        {
+            item = new ItemStack(itemType, 1, (byte)metaData);
+        }
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(itemName);
         if (loreEnabled)
@@ -187,9 +205,9 @@ public abstract class Trail
 
     public boolean onInventoryClick(Player player, ItemStack currentItem)
     {
-        if (currentItem.equals(this.getItem()))
+        if (currentItem.equals(this.getItem()) || ChatColor.stripColor(currentItem.getItemMeta().getDisplayName()).contains(this.getName()))
         {
-            List<Trail> currentTrails = new ArrayList<Trail>();
+            List<Trail> currentTrails = new ArrayList<>();
 
             if (TrailGUI.enabledTrails.containsKey(player.getUniqueId()))
             {
