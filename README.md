@@ -3,11 +3,11 @@ The TrailGUI Spigot Plugin!
 
 The most comprehensive trails plugin available! 
 
-## [Spigot MC Page](https://www.spigotmc.org/resources/1091/)
+For downloads, please consider supporting the plugin by purchasing it via the Premium Resources on the Spigot MC Page
+
+## [Spigot MC Page](https://www.spigotmc.org/resources/trailgui.34302/)
 
 ## [Jenkins](http://ci.ecocitycraft.com/job/TrailGUI/)
-
-## [Sonatype Nexus](http://repo.sinndev.com/content/repositories/snapshots/ca/jamiesinn/TrailGUI/)
 
 Please report all bugs as issues.
 
