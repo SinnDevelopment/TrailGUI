@@ -41,7 +41,10 @@ public class Util
             SQLManager sql = TrailGUI.getSqlManager();
 
             List<String> trailNames = new ArrayList<>();
-            for (Trail t : TrailGUI.enabledTrails.get(user))
+            List<Trail> trails = TrailGUI.enabledTrails.get(user);
+            if(trails == null)
+                return;
+            for (Trail t : trails)
                 trailNames.add(t.getName());
             try
             {
@@ -63,7 +66,10 @@ public class Util
 
 
             List<String> trailNames = new ArrayList<>();
-            for (Trail trail : TrailGUI.enabledTrails.get(user))
+            List<Trail> trails = TrailGUI.enabledTrails.get(user);
+            if(trails == null)
+                return;
+            for (Trail trail : trails)
             {
                 trailNames.add(trail.getName());
             }
@@ -83,17 +89,17 @@ public class Util
 
     static void restoreTrails()
     {
-        if(TrailGUI.getPlugin().getConfig().getBoolean("mysql"))
+        if (TrailGUI.getPlugin().getConfig().getBoolean("mysql"))
         {
             try
             {
                 HashMap<UUID, List<Trail>> trails = TrailGUI.getSqlManager().getTrails();
-                if(trails == null ) return;
-                for(UUID uuid : trails.keySet())
+                if (trails == null) return;
+                for (UUID uuid : trails.keySet())
                 {
-                    if(trails.get(uuid) == null) return;
+                    if (trails.get(uuid) == null) return;
                     List<Trail> trailTypes = new ArrayList<>();
-                    for (Trail t: trails.get(uuid))
+                    for (Trail t : trails.get(uuid))
                     {
                         trailTypes.add(t);
                     }
@@ -150,7 +156,7 @@ public class Util
         String page = " " + currentPage + " / " + maxPages;
         Inventory inv = Bukkit.createInventory(null, 45,
                 TrailGUI.getPlugin().getConfig().getString("inventoryName").replaceAll("&", "\u00A7")
-        + (TrailGUI.getPlugin().getConfig().getBoolean("showPages") ? page : ""));
+                        + (TrailGUI.getPlugin().getConfig().getBoolean("showPages") ? page : ""));
         int i = 0;
         for (Trail trail : subList)
         {
@@ -209,7 +215,7 @@ public class Util
         {
             List<String> loreNextPage = new ArrayList<>();
 
-            for(String s : TrailGUI.getPlugin().getConfig().getStringList("NextPage.lore"))
+            for (String s : TrailGUI.getPlugin().getConfig().getStringList("NextPage.lore"))
             {
                 loreNextPage.add(ChatColor.translateAlternateColorCodes('&', s));
             }
@@ -240,7 +246,7 @@ public class Util
         {
             List<String> lorePreviousPage = new ArrayList<>();
 
-            for(String s : TrailGUI.getPlugin().getConfig().getStringList("PreviousPage.lore"))
+            for (String s : TrailGUI.getPlugin().getConfig().getStringList("PreviousPage.lore"))
             {
                 lorePreviousPage.add(ChatColor.translateAlternateColorCodes('&', s));
             }
@@ -272,7 +278,7 @@ public class Util
         {
             List<String> loreRemoveTrail = new ArrayList<>();
 
-            for(String s : TrailGUI.getPlugin().getConfig().getStringList("RemoveTrails.lore"))
+            for (String s : TrailGUI.getPlugin().getConfig().getStringList("RemoveTrails.lore"))
             {
                 loreRemoveTrail.add(ChatColor.translateAlternateColorCodes('&', s));
             }
