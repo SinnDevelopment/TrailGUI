@@ -158,6 +158,8 @@ public class Listeners implements Listener
     {
         if(TrailGUI.getPlugin().getConfig().getBoolean("clearTrailsOnDisconnect"))
             Util.clearTrails(e.getPlayer());
+        else
+            Util.saveTrails(e.getPlayer().getUniqueId());
     }
 }
 

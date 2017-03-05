@@ -34,25 +34,24 @@ public class Util
         }
     }
 
-    static void saveTrails()
+    static void saveTrails(UUID user)
     {
-        if(TrailGUI.getPlugin().getConfig().getBoolean("mysql"))
+        if (TrailGUI.getPlugin().getConfig().getBoolean("mysql"))
         {
             SQLManager sql = TrailGUI.getSqlManager();
-            for(UUID player : TrailGUI.enabledTrails.keySet())
+
+            List<String> trailNames = new ArrayList<>();
+            for (Trail t : TrailGUI.enabledTrails.get(user))
+                trailNames.add(t.getName());
+            try
             {
-                List<String> trailNames = new ArrayList<>();
-                for(Trail t : TrailGUI.enabledTrails.get(player))
-                    trailNames.add(t.getName());
-                try
-                {
-                    sql.insertUser(player, trailNames);
-                }
-                catch (SQLException e)
-                {
-                    e.printStackTrace();
-                }
+                sql.insertUser(user, trailNames);
             }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+
         }
         else
         {
@@ -63,16 +62,22 @@ public class Util
             }
 
 
-            for (UUID key : TrailGUI.enabledTrails.keySet())
+            List<String> trailNames = new ArrayList<>();
+            for (Trail trail : TrailGUI.enabledTrails.get(user))
             {
-                List<String> trailNames = new ArrayList<String>();
-                for (Trail trail : TrailGUI.enabledTrails.get(key))
-                {
-                    trailNames.add(trail.getName());
-                }
-                config.set(key.toString(), trailNames);
+                trailNames.add(trail.getName());
             }
+            config.set(user.toString(), trailNames);
+
             Userdata.getInstance().saveConfig();
+        }
+    }
+
+    static void saveTrails()
+    {
+        for (UUID player : TrailGUI.enabledTrails.keySet())
+        {
+            saveTrails(player);
         }
     }
 
