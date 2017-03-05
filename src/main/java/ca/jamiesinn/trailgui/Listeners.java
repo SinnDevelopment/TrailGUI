@@ -156,8 +156,12 @@ public class Listeners implements Listener
     @EventHandler
     public void onLogout(PlayerQuitEvent e)
     {
+
+
         if(TrailGUI.getPlugin().getConfig().getBoolean("clearTrailsOnDisconnect"))
             Util.clearTrails(e.getPlayer());
+        else
+            Util.saveTrails(e.getPlayer().getUniqueId());
     }
 }
 
