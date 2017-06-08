@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>ca.jamiesinn</groupId>
     <artifactId>TrailGUI</artifactId>
-    <version>${primaryVersion}-b68-${releaseType}</version>
+    <version>${primaryVersion}-b70-${releaseType}</version>
     <properties>
         <primaryVersion>5.15</primaryVersion>
         <releaseType>SNAPSHOT</releaseType>
