@@ -32,7 +32,7 @@
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>1.11-R0.1-SNAPSHOT</version>
+            <version>1.12-R0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>net.ess3</groupId>
@@ -46,18 +46,6 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
-    <distributionManagement>
-        <repository>
-            <id>sinndev-repo</id>
-            <name>Releases</name>
-            <url>https://repo.sinndev.com/content/repositories/releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>sinndev-repo</id>
-            <name>Snapshots</name>
-            <url>https://repo.sinndev.com/content/repositories/snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
 
     <build>
         <defaultGoal>clean install package</defaultGoal>
