@@ -9,6 +9,12 @@ import java.util.*;
 public class SQLManager
 {
     private Connection connection;
+    private String host;
+    private int port;
+    private String database;
+    private String user;
+    private String pass;
+
 
     private TrailGUI pl = TrailGUI.getPlugin();
 
@@ -22,8 +28,14 @@ public class SQLManager
      */
     public SQLManager(String host, int port, String database, String user, String pass) throws SQLException
     {
-        connectToDatabase(host, port, database, user, pass);
-        if (connection != null)
+        this.host = host;
+        this.port = port;
+        this.database = database;
+        this.user = user;
+        this.pass = pass;
+
+        boolean res = connectToDatabase(host, port, database, user, pass);
+        if (connection != null || !res)
         {
             createTables(connection);
         }
@@ -75,6 +87,7 @@ public class SQLManager
 
     public void insertUser(UUID player, List<String> active) throws SQLException
     {
+        if (!isConnAlive()) return;
         PreparedStatement statement;
         String insertRowSQL =
                 "INSERT INTO userdata" +
@@ -91,7 +104,9 @@ public class SQLManager
 
     public HashMap<UUID, List<Trail>> getTrails() throws SQLException
     {
+
         HashMap<UUID, List<Trail>> result = new HashMap<>();
+        if (!isConnAlive()) return result;
         PreparedStatement uuidSt;
         PreparedStatement trailSt;
         String uuidSQL = "SELECT uuid FROM userdata WHERE trails IS NOT NULL";
@@ -146,5 +161,25 @@ public class SQLManager
             e.printStackTrace();
         }
         return true;
+    }
+
+    private boolean isConnAlive() throws SQLException
+    {
+        if (this.connection.isValid(500))
+            return true;
+        else
+        {
+            connectToDatabase(this.host, this.port, this.database, this.user, this.pass);
+            if (this.connection != null)
+            {
+                createTables(this.connection);
+                return true;
+            }
+            else
+            {
+                this.pl.getLogger().severe("Database was not connected, and connection was not able to be re-established.");
+                return false;
+            }
+        }
     }
 }
