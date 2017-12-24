@@ -16,10 +16,6 @@
             <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
         </repository>
         <repository>
-            <id>sinndev-repo</id>
-            <url>http://repo.sinndev.com/content/groups/public/</url>
-        </repository>
-        <repository>
             <id>ess-repo</id>
             <url>http://repo.ess3.net/content/groups/essentials</url>
         </repository>
