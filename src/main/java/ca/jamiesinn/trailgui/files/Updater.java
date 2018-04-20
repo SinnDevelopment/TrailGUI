@@ -60,14 +60,7 @@ public class Updater
 
 
     public void check() throws IOException
-    {
-        int latestBuildNumber = getLatestBuildNumber();
-        if (isItUpToDate()) return;
-        if (latestBuildNumber == -1)
-            trailGUI.getLogger().info("You are running a local build of TrailGUI. Updater not run.");
-        else if (latestBuildNumber != -2)
-            trailGUI.getLogger().info("You are not running the latest build of TrailGUI. The latest build is "
-                    + latestBuildNumber
-                    + " and your build is " + getCurrentBuildNumber() + ". Please update");
+    {     
+        trailGUI.getLogger().info("Updater is disabled internally.");
     }
 }
