@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 public class CommandTrails
         implements CommandExecutor
 {
-    TrailGUI trailGUI;
+    private TrailGUI trailGUI;
 
     public CommandTrails(TrailGUI trailGUI)
     {

@@ -27,8 +27,7 @@ public class CommandTrail implements CommandExecutor, TabCompleter
 
     public List<String> onTabComplete(CommandSender sender, Command cmd, String commandLabel, String[] args)
     {
-        List<String> trailList = new ArrayList<String>();
-        trailList.addAll(TrailGUI.trailTypes.keySet());
+        List<String> trailList = new ArrayList<>(TrailGUI.trailTypes.keySet());
         trailList.add("ClearAll");
         if (args.length == 1)
         {
@@ -41,16 +40,16 @@ public class CommandTrail implements CommandExecutor, TabCompleter
     private void showList(Player player)
     {
         player.sendMessage(TrailGUI.prefix + ChatColor.GREEN + "Available trails:");
-        String list = ChatColor.RED + "Trails: " + ChatColor.GREEN;
+        StringBuilder list = new StringBuilder(ChatColor.RED + "Trails: " + ChatColor.GREEN);
         for (Trail type : TrailGUI.trailTypes.values())
         {
             if (type.canUse(player))
             {
-                list += type.getName() + ", ";
+                list.append(type.getName()).append(", ");
             }
         }
-        list = list.substring(0, list.length() - 2);
-        player.sendMessage(list);
+        list = new StringBuilder(list.substring(0, list.length() - 2));
+        player.sendMessage(list.toString());
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)

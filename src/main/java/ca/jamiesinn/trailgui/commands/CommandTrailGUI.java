@@ -8,10 +8,9 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class CommandTrailGUI
-        implements CommandExecutor
+public class CommandTrailGUI implements CommandExecutor
 {
-    TrailGUI trailGUI;
+    private TrailGUI trailGUI;
 
     public CommandTrailGUI(TrailGUI trailGUI)
     {

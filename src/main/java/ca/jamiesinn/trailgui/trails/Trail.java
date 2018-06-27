@@ -29,6 +29,7 @@ public abstract class Trail
     Material itemType;
     private String itemName;
     private boolean loreEnabled;
+    private boolean glowEnabled;
     private List<String> lore;
     Particle type;
     private Map<UUID, Long> cooldownMap = new HashMap<>();
@@ -45,6 +46,7 @@ public abstract class Trail
         this.itemType = Material.valueOf(config.getString("itemType").toUpperCase());
         this.itemName = config.getString("itemName", "").replace("&", "\u00a7");
         this.loreEnabled = config.getBoolean("loreEnabled", false);
+        this.glowEnabled = config.getBoolean("glowEnabled", true);
         this.lore = new ArrayList<>();
 
         if (isLoreEnabled())
@@ -385,5 +387,10 @@ public abstract class Trail
     {
         TrailDisableEvent event = new TrailDisableEvent(player, trails);
         TrailGUI.getPlugin().getServer().getPluginManager().callEvent(event);
+    }
+
+    public boolean isGlowEnabled()
+    {
+        return glowEnabled;
     }
 }

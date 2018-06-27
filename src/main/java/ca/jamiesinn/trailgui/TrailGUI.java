@@ -3,19 +3,20 @@ package ca.jamiesinn.trailgui;
 import ca.jamiesinn.trailgui.commands.CommandTrail;
 import ca.jamiesinn.trailgui.commands.CommandTrailGUI;
 import ca.jamiesinn.trailgui.commands.CommandTrails;
-import ca.jamiesinn.trailgui.files.Updater;
 import ca.jamiesinn.trailgui.files.Userdata;
 import ca.jamiesinn.trailgui.sql.SQLManager;
 import ca.jamiesinn.trailgui.trails.*;
 import com.earth2me.essentials.IEssentials;
+import org.apache.commons.io.FileUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.mcstats.Metrics;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
@@ -35,7 +36,7 @@ public class TrailGUI
     public static Map<String, Trail> trailTypes = new HashMap<String, Trail>();
     public static IEssentials ess;
     private static SQLManager sqlManager;
-    private static int configRevision = 3;
+    private static int configRevision = 4;
 
     public static TrailGUI getPlugin()
     {
@@ -51,32 +52,6 @@ public class TrailGUI
         getCommand("trails").setExecutor(new CommandTrails(this));
         getCommand("trailgui").setExecutor(new CommandTrailGUI(this));
         plugin = this;
-
-
-        if (getConfig().getBoolean("metrics"))
-        {
-            try
-            {
-                Metrics metrics = new Metrics(this);
-                metrics.start();
-            }
-            catch (IOException ignored)
-            {
-            }
-        }
-
-        if (getConfig().getBoolean("updater"))
-        {
-            try
-            {
-                Updater updater = new Updater(plugin);
-                updater.check();
-            }
-            catch (Exception e)
-            {
-                getLogger().info("Couldn't connect to the update server. Not checking for updates.");
-            }
-        }
         if (getConfig().getBoolean("mysql"))
         {
             try
@@ -119,6 +94,17 @@ public class TrailGUI
         if(getConfig().getInt("configVersion") != configRevision)
         {
             getLogger().severe("Your config is out of date with the current one. Plugin will be disabled until it is corrected.");
+            getLogger().severe("Copied the latest default config to the plugin directory for reference.");
+            URL inputUrl = getClass().getResource("config.yml");
+            File dest = new File(getDataFolder(), "config.new.yml");
+            try
+            {
+                FileUtils.copyURLToFile(inputUrl, dest);
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
             this.setEnabled(false);
         }
         if (prefix == null)

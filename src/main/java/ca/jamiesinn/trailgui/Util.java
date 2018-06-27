@@ -8,8 +8,10 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -42,7 +44,7 @@ public class Util
 
             List<String> trailNames = new ArrayList<>();
             List<Trail> trails = TrailGUI.enabledTrails.get(user);
-            if(trails == null)
+            if (trails == null)
                 return;
             for (Trail t : trails)
                 trailNames.add(t.getName());
@@ -67,7 +69,7 @@ public class Util
 
             List<String> trailNames = new ArrayList<>();
             List<Trail> trails = TrailGUI.enabledTrails.get(user);
-            if(trails == null)
+            if (trails == null)
                 return;
             for (Trail trail : trails)
             {
@@ -98,11 +100,7 @@ public class Util
                 for (UUID uuid : trails.keySet())
                 {
                     if (trails.get(uuid) == null) return;
-                    List<Trail> trailTypes = new ArrayList<>();
-                    for (Trail t : trails.get(uuid))
-                    {
-                        trailTypes.add(t);
-                    }
+                    List<Trail> trailTypes = new ArrayList<>(trails.get(uuid));
                     Trail.enableEvent(Bukkit.getPlayer(uuid), trailTypes);
                     TrailGUI.enabledTrails.put(uuid, trailTypes);
                 }
@@ -143,7 +141,7 @@ public class Util
 
         int pageSize = 27;
         List<Trail> sortedList = new ArrayList<>(TrailGUI.trailTypes.values());
-        Collections.sort(sortedList, new orderComparator());
+        sortedList.sort(new orderComparator());
         int maxPages = (int) Math.ceil((double) sortedList.size() / pageSize);
         currentPage = currentPage > maxPages ? 1 : currentPage;
         int begin = (pageSize * currentPage) - pageSize;
@@ -162,7 +160,16 @@ public class Util
         {
             if (trail.canUseInventory(player))
             {
-                inv.setItem(i, trail.getItem());
+                ItemStack is = trail.getItem();
+                List<Trail> enabled = TrailGUI.enabledTrails.get(player.getUniqueId());
+                if (trail.isGlowEnabled() && enabled != null && enabled.contains(trail))
+                {
+                    ItemMeta meta = is.getItemMeta();
+                    meta.addEnchant(Enchantment.LURE, 1, false);
+                    meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+                    is.setItemMeta(meta);
+                }
+                inv.setItem(i, is);
             }
             else
             {
@@ -294,7 +301,7 @@ public class Util
     {
         int pageSize = 27;
         List<Trail> sortedList = new ArrayList<>(TrailGUI.trailTypes.values());
-        Collections.sort(sortedList, new orderComparator());
+        sortedList.sort(new orderComparator());
         int maxPages = (int) Math.ceil((double) sortedList.size() / pageSize);
         currentPage = currentPage > maxPages ? 1 : currentPage;
         int begin = (pageSize * currentPage) - pageSize;

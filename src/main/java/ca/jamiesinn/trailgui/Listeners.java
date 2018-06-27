@@ -15,7 +15,7 @@ import java.util.List;
 
 public class Listeners implements Listener
 {
-    TrailGUI trailGUI;
+    private TrailGUI trailGUI;
 
     public Listeners(TrailGUI trailGUI)
     {
