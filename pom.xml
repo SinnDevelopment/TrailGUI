@@ -15,12 +15,16 @@
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
         </repository>
+        <repository>
+            <id>ecocitycraft-repo</id>
+            <url> https://repo.ecocitycraft.com/repository/ecocitycraft</url>
+        </repository>
     </repositories>
     <dependencies>
         <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>bukkit</artifactId>
-            <version>1.12.2-R0.1-SNAPSHOT</version>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot</artifactId>
+            <version>1.13-pre7-R0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
@@ -33,10 +37,16 @@
             <version>2.14-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
-        <defaultGoal>clean install package</defaultGoal>
+        <defaultGoal>clean install package test</defaultGoal>
         <finalName>${project.artifactId}-${primaryVersion}-${releaseType}</finalName>
         <plugins>
             <plugin>
@@ -47,6 +57,11 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+            </plugin>
         </plugins>
         <resources>
             <resource>
@@ -54,5 +69,10 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
+        <testResources>
+            <testResource>
+                <directory>${project.basedir}/src/test/resources</directory>
+            </testResource>
+        </testResources>
     </build>
 </project>

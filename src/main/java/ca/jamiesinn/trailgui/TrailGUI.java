@@ -36,7 +36,7 @@ public class TrailGUI
     public static Map<String, Trail> trailTypes = new HashMap<String, Trail>();
     public static IEssentials ess;
     private static SQLManager sqlManager;
-    private static int configRevision = 4;
+    private static int configRevision = 5;
 
     public static TrailGUI getPlugin()
     {

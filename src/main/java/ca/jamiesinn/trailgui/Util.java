@@ -194,7 +194,7 @@ public class Util
     //region Items for Inventory Slots
     static ItemStack itemNoPerms()
     {
-        ItemStack i = new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 14);
+        ItemStack i = new ItemStack(Material.RED_STAINED_GLASS_PANE, 1);
         ItemMeta meta = i.getItemMeta();
         meta.setDisplayName(TrailGUI.getPlugin().getConfig().getString("GUI.noPermMessage").replaceAll("&", "\u00A7"));
         i.setItemMeta(meta);

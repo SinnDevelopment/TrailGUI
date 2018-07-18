@@ -25,7 +25,7 @@ public class TrailDisplayEvent extends Event implements Cancellable
         this.cooldown = cooldown;
         this.speed = speed;
         this.range = range;
-
+        this.type = type;
     }
 
     @Override

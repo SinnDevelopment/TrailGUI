@@ -393,4 +393,9 @@ public abstract class Trail
     {
         return glowEnabled;
     }
+
+    public Particle getType()
+    {
+        return type;
+    }
 }
