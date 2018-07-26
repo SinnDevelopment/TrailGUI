@@ -1,5 +1,6 @@
 package ca.jamiesinn.trailgui;
 
+import ca.jamiesinn.trailgui.api.TrailGUIAPI;
 import ca.jamiesinn.trailgui.commands.CommandTrail;
 import ca.jamiesinn.trailgui.commands.CommandTrailGUI;
 import ca.jamiesinn.trailgui.commands.CommandTrails;
@@ -37,6 +38,7 @@ public class TrailGUI
     public static IEssentials ess;
     private static SQLManager sqlManager;
     private static int configRevision = 5;
+    private TrailGUIAPI api = new TrailGUIAPI(this);
 
     public static TrailGUI getPlugin()
     {
@@ -177,5 +179,10 @@ public class TrailGUI
     public static SQLManager getSqlManager()
     {
         return sqlManager;
+    }
+
+    public TrailGUIAPI getApi()
+    {
+        return api;
     }
 }
