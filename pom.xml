@@ -5,19 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>ca.jamiesinn</groupId>
     <artifactId>TrailGUI</artifactId>
-    <version>${primaryVersion}-b72-${releaseType}</version>
-    <properties>
-        <primaryVersion>5.2</primaryVersion>
-        <releaseType>SNAPSHOT</releaseType>
-    </properties>
+    <version>6.0</version>
+
     <repositories>
         <repository>
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
-        </repository>
-        <repository>
-            <id>ecocitycraft-repo</id>
-            <url> https://repo.ecocitycraft.com/repository/ecocitycraft</url>
         </repository>
     </repositories>
     <dependencies>
@@ -31,12 +24,7 @@
             <artifactId>commons-io</artifactId>
             <version>2.6</version>
         </dependency>
-        <dependency>
-            <groupId>net.ess3</groupId>
-            <artifactId>Essentials</artifactId>
-            <version>2.14-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -47,7 +35,7 @@
 
     <build>
         <defaultGoal>clean install package test</defaultGoal>
-        <finalName>${project.artifactId}-${primaryVersion}-${releaseType}</finalName>
+        <finalName>${project.artifactId}-${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

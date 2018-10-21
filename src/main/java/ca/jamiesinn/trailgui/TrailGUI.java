@@ -7,7 +7,6 @@ import ca.jamiesinn.trailgui.commands.CommandTrails;
 import ca.jamiesinn.trailgui.files.Userdata;
 import ca.jamiesinn.trailgui.sql.SQLManager;
 import ca.jamiesinn.trailgui.trails.*;
-import com.earth2me.essentials.IEssentials;
 import org.apache.commons.io.FileUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
@@ -35,7 +34,6 @@ public class TrailGUI
     public static List<String> disabledWorlds;
     public static Map<UUID, List<Trail>> enabledTrails = new HashMap<UUID, List<Trail>>();
     public static Map<String, Trail> trailTypes = new HashMap<String, Trail>();
-    public static IEssentials ess;
     private static SQLManager sqlManager;
     private static int configRevision = 5;
     private TrailGUIAPI api = new TrailGUIAPI(this);
@@ -73,18 +71,7 @@ public class TrailGUI
         load();
     }
 
-    private void hookEss()
-    {
-        final PluginManager pm = this.getServer().getPluginManager();
-        final Plugin pl = pm.getPlugin("Essentials");
-        if (plugin == null || !plugin.isEnabled())
-        {
-            getLogger().warning("Couldn't hook Essentials - Not using vanish hooks");
-            return;
-        }
-        ess = (IEssentials) pl;
-        getLogger().info("Hooked Essentials Successfully");
-    }
+
 
     private void load()
     {
@@ -119,7 +106,6 @@ public class TrailGUI
         new Userdata().loadConfig();
         loadTrails();
         Util.restoreTrails();
-        hookEss();
     }
 
     public void reload()

@@ -162,8 +162,7 @@ public abstract class Trail
 
     public void display(Player player)
     {
-        if ((TrailGUI.ess != null && TrailGUI.ess.getUser(player).isVanished())
-                || player.hasPotionEffect(PotionEffectType.INVISIBILITY))
+        if (player.hasPotionEffect(PotionEffectType.INVISIBILITY))
             return;
 
         if (cooldown <= 0)
