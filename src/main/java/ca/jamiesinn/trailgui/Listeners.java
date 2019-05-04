@@ -40,7 +40,7 @@ public class Listeners implements Listener
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event)
     {
-        if (event.getInventory().getTitle().contains(TrailGUI.getPlugin().getConfig().getString("inventoryName")))
+        if (event.getView().getTitle().contains(TrailGUI.getPlugin().getConfig().getString("inventoryName")))
         {
             event.setCancelled(true);
 
@@ -49,7 +49,7 @@ public class Listeners implements Listener
             {
                 return;
             }
-            int currentPage = Integer.parseInt(event.getInventory().getTitle().replaceFirst(".+? ([0-9]+) / [0-9]+", "$1"));
+            int currentPage = Integer.parseInt(event.getView().getTitle().replaceFirst(".+? ([0-9]+) / [0-9]+", "$1"));
             List<Trail> trails = Util.getSubList(currentPage);
 
             for (Trail trail : trails)
