@@ -7,12 +7,9 @@ import org.bukkit.entity.Player;
 
 public class BlockTrail extends Trail
 {
-    private BlockData blockData;
-
     public BlockTrail(ConfigurationSection config)
     {
         super(config);
-        blockData = itemType.createBlockData();
         loadType(config.getString("type"));
     }
 
@@ -26,7 +23,9 @@ public class BlockTrail extends Trail
     public void justDisplay(Player player)
     {
         if(!displayEvent(getName(), getDisplayLocation(), getAmount(), cooldown, getSpeed(), getRange(), type).isCancelled())
+        {
+            BlockData blockData = itemType.createBlockData();
             player.getWorld().spawnParticle(type, player.getLocation().add(0.0D, displayLocation, 0.0D), amount, 0,0,0, speed, blockData);
-
+        }
     }
 }
