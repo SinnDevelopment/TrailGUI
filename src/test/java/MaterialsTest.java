@@ -55,9 +55,15 @@ public class MaterialsTest
                         {
                             trail = new ItemTrail(trailTypeSection);
                         }
-                        else if (trailTypeSection.getString("type").equalsIgnoreCase("BLOCK_CRACK"))
+                        else if (trailTypeSection.getString("type").equalsIgnoreCase("BLOCK_CRACK")
+                                || trailTypeSection.getString("type").equalsIgnoreCase("BLOCK_DUST")
+                                || trailTypeSection.getString("type").equalsIgnoreCase("FALLING_DUST"))
                         {
                             trail = new BlockTrail(trailTypeSection);
+                        }
+                        else if (trailTypeSection.getString("type").equalsIgnoreCase("REDSTONE"))
+                        {
+                            trail = new RedstoneTrail(trailTypeSection);
                         }
                         else if (trailTypeSection.getBoolean("is_effect", false))
                         {
