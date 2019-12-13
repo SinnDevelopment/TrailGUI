@@ -1,18 +1,20 @@
 package ca.jamiesinn.trailgui.trails;
 
 import org.bukkit.Particle;
-import org.bukkit.block.data.BlockData;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
+import org.bukkit.material.MaterialData;
 
 public class BlockTrail extends Trail
 {
-    private BlockData blockData;
+    private MaterialData blockData;
+    private byte itemData;
 
     public BlockTrail(ConfigurationSection config)
     {
         super(config);
-        blockData = itemType.createBlockData();
+        itemData = (byte)config.getInt("data", 0);
+        blockData = new MaterialData(itemType, itemData);
         loadType(config.getString("type"));
     }
 
