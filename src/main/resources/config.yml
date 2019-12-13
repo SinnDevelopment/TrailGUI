@@ -505,14 +505,6 @@ trails:
     order: 17
     #The items type.
     itemType: redstone
-    #Color of the dust.
-    dustColor:
-      ==: Color
-      RED: 0xFF
-      GREEN: 0x00
-      BLUE: 0x00
-    #Size of the dust.
-    dustSize: 1
     #The items name.
     itemName: "&6RedDust"
     #Whether or not the lore is enabled.
@@ -536,14 +528,6 @@ trails:
     order: 18
     #The items type.
     itemType: glowstone_dust
-    #Color of the dust.
-    dustColor:
-      ==: Color
-      RED: 0xFF
-      GREEN: 0xA5
-      BLUE: 0x00
-    #Size of the dust.
-    dustSize: 1
     #The items name.
     itemName: "&6ColoredRedDust"
     #Whether or not the lore is enabled.
@@ -808,14 +792,6 @@ trails:
     order: 31
     #The items type.
     itemType: coal
-    #Color of the dust.
-    dustColor:
-      ==: Color
-      RED: 0x00
-      GREEN: 0x00
-      BLUE: 0x00
-    #Size of the dust.
-    dustSize: 3
     #The items name.
     itemName: "&6BlackDust"
     #Whether or not the lore is enabled.
@@ -953,7 +929,7 @@ trails:
     #The inventory slot the item is put in.
     order: 38
     #The items type.
-    itemType: gravel
+    itemType: gunpowder
     #The items name.
     itemName: "&6FallingDust"
     #Whether or not the lore is enabled.

@@ -8,11 +8,13 @@ import org.bukkit.inventory.ItemStack;
 public class ItemTrail extends Trail
 {
     private ItemStack data;
+    private byte itemData;
 
     public ItemTrail(ConfigurationSection config)
     {
         super(config);
-        data = new ItemStack(itemType, 1);
+        itemData = (byte)config.getInt("data", 0);
+        data = new ItemStack(itemType, 1, itemData);
         loadType(config.getString("type"));
     }
 

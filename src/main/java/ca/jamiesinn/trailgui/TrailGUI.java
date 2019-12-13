@@ -131,15 +131,9 @@ public class TrailGUI
                         {
                             trailTypes.put(trailTypeSection.getName(), new ItemTrail(trailTypeSection));
                         }
-                        else if (trailTypeSection.getString("type").equalsIgnoreCase("BLOCK_CRACK")
-                                || trailTypeSection.getString("type").equalsIgnoreCase("BLOCK_DUST")
-                                || trailTypeSection.getString("type").equalsIgnoreCase("FALLING_DUST"))
+                        else if (trailTypeSection.getString("type").equalsIgnoreCase("BLOCK_CRACK"))
                         {
                             trailTypes.put(trailTypeSection.getName(), new BlockTrail(trailTypeSection));
-                        }
-                        else if (trailTypeSection.getString("type").equalsIgnoreCase("REDSTONE"))
-                        {
-                            trailTypes.put(trailTypeSection.getName(), new RedstoneTrail(trailTypeSection));
                         }
                         else if (trailTypeSection.getBoolean("is_effect", false))
                         {
