@@ -63,11 +63,12 @@
             </testResource>
         </testResources>
     </build>
+         <!--
     <distributionManagement>
         <repository>
             <id>github</id>
             <name>GitHub SinnDevelopment Apache Maven Packages</name>
             <url>https://maven.pkg.github.com/SinnDevelopment/TrailGUI</url>
         </repository>
-    </distributionManagement>
+    </distributionManagement>-->
 </project>
