@@ -177,4 +177,18 @@ public class TrailGUI
     {
         return api;
     }
+
+    public boolean isWorldDisabled(String worldName)
+    {
+        for (String string : TrailGUI.disabledWorlds)
+        {
+            string = string.replace("[", "");
+            string = string.replace("]", "");
+            if (string.equals(worldName))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
