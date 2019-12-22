@@ -130,14 +130,9 @@ public class Listeners implements Listener
             return;
         }
 
-        for (String string : TrailGUI.disabledWorlds)
+        if (trailGUI.isWorldDisabled(player.getWorld().getName()))
         {
-            string = string.replace("[", "");
-            string = string.replace("]", "");
-            if (string.equals(player.getWorld().getName()))
-            {
-                return;
-            }
+            return;
         }
         List<Trail> trails = TrailGUI.enabledTrails.get(player.getUniqueId());
         try

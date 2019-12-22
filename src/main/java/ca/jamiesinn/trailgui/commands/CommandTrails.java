@@ -27,26 +27,22 @@ public class CommandTrails
             return true;
         }
         Player player = (Player) sender;
-        for (String string : TrailGUI.disabledWorlds)
+
+        if (trailGUI.isWorldDisabled(player.getWorld().getName()))
         {
-            string = string.replace("[", "");
-            string = string.replace("]", "");
-            if (string.equals(player.getWorld().getName()))
-            {
-                player.sendMessage(TrailGUI.prefix + ChatColor.GREEN + "You cannot use this command in this world.");
-                return true;
-            }
-            if (!player.hasPermission("trailgui.commands.trails") && !player.hasPermission("trailgui.*"))
-            {
-                player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands.denyPermissionMessage").replaceAll("&", "\u00A7"));
-                if (TrailGUI.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
-                {
-                    player.closeInventory();
-                }
-                return true;
-            }
-            Util.openGUI(player);
+            player.sendMessage(TrailGUI.prefix + ChatColor.GREEN + "You cannot use this command in this world.");
+            return true;
         }
+        if (!player.hasPermission("trailgui.commands.trails") && !player.hasPermission("trailgui.*"))
+        {
+            player.sendMessage(TrailGUI.getPlugin().getConfig().getString("Commands.denyPermissionMessage").replaceAll("&", "\u00A7"));
+            if (TrailGUI.getPlugin().getConfig().getBoolean("closeInventoryOnDenyPermission"))
+            {
+                player.closeInventory();
+            }
+            return true;
+        }
+        Util.openGUI(player);
         return false;
     }
 }

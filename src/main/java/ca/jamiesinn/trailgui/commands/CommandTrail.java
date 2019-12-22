@@ -67,15 +67,10 @@ public class CommandTrail implements CommandExecutor, TabCompleter
             return true;
         }
         Player player = (Player) sender;
-        for (String string : TrailGUI.disabledWorlds)
+        if (trailGUI.isWorldDisabled(player.getWorld().getName()))
         {
-            string = string.replace("[", "");
-            string = string.replace("]", "");
-            if (string.equals(player.getWorld().getName()))
-            {
-                player.sendMessage(TrailGUI.prefix + ChatColor.GREEN + "You cannot use this command in this world.");
-                return true;
-            }
+            player.sendMessage(TrailGUI.prefix + ChatColor.GREEN + "You cannot use this command in this world.");
+            return true;
         }
 
         if (args.length == 0)
