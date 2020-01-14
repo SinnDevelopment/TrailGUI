@@ -16,5 +16,5 @@ jobs:
     - name: Build with Maven
       run: mvn package --file pom.xml
     - name: Deploy package to GH Packages
-      run: mvn deploy -Dregistry=https://maven.pkg.github.com/SinnDevelopment -Dtoken=GH_TOKEN
+      run: mvn deploy -Dregistry=https://maven.pkg.github.com/SinnDevelopment -Dtoken=${{ secrets.GITHUB_TOKEN }}
     
