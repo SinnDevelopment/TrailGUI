@@ -33,7 +33,7 @@ clearTrailsOnDisconnect: false
 
 #The worlds this plugin is disabled in. (You can add as many worlds as you want)
 disabledWorlds:
-- ExampleWorld
+  - ExampleWorld
 
 #Whether or not the trail of the player hit will get removed. (Only when getting attacked by another player)
 removeTrailOnPlayerHit: false
@@ -141,9 +141,9 @@ trails:
     loreEnabled: false
     glowEnabled: true
     lore:
-     - "Example"
-     - "Line2"
-     - "Line3"
+      - "Example"
+      - "Line2"
+      - "Line3"
   Criticals:
     type: CRIT
     #The location the particle effect is displayed.
@@ -164,9 +164,9 @@ trails:
     loreEnabled: false
     glowEnabled: true
     lore:
-     - "Example"
-     - "Line2"
-     - "Line3"
+      - "Example"
+      - "Line2"
+      - "Line3"
   DripLava:
     type: DRIP_LAVA
     #The location the particle effect is displayed.
@@ -1009,7 +1009,144 @@ trails:
       - "Example"
       - "Line2"
       - "Line3"
-
+  DrippingObsidian:
+    type: DRIPPING_OBSIDIAN_TEAR
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 50
+    #The speed the particles are displayed.
+    speed: 0.1
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 41
+    #The items type.
+    itemType: CRYING_OBSIDIAN
+    #The items name.
+    itemName: "&6Dripping Obsidian Tear"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
+  Ash:
+    type: ASH
+    #The location the particle effect is displayed.
+    displayLocation: 0.4
+    #The amount of particles displayed.
+    amount: 50
+    #The speed the particles are displayed.
+    speed: 0.1
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 42
+    #The items type.
+    itemType: BASALT
+    #The items name.
+    itemName: "&6Ash"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
+  CrimsonSpore:
+    type: CRIMSON_SPORE
+    #The location the particle effect is displayed.
+    displayLocation: 0.4
+    #The amount of particles displayed.
+    amount: 25
+    #The speed the particles are displayed.
+    speed: 0.2
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 43
+    #The items type.
+    itemType: CRIMSON_FUNGUS
+    #The items name.
+    itemName: "&6Crimson Spore"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
+  WarpedSpore:
+    type: WARPED_SPORE
+    #The location the particle effect is displayed.
+    displayLocation: 0.4
+    #The amount of particles displayed.
+    amount: 25
+    #The speed the particles are displayed.
+    speed: 0.2
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 44
+    #The items type.
+    itemType: WARPED_FUNGUS
+    #The items name.
+    itemName: "&6Warped Spore"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
+  SoulFireFlame:
+    type: SOUL_FIRE_FLAME
+    #The location the particle effect is displayed.
+    displayLocation: 0.4
+    #The amount of particles displayed.
+    amount: 0
+    #The speed the particles are displayed.
+    speed: 0.2
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 45
+    #The items type.
+    itemType: SOUL_CAMPFIRE
+    #The items name.
+    itemName: "&6Soul Fire Flame"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
+  Soul:
+    type: SOUL
+    #The location the particle effect is displayed.
+    displayLocation: 0.4
+    #The amount of particles displayed.
+    amount: 3
+    #The speed the particles are displayed.
+    speed: 0.5
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 46
+    #The items type.
+    itemType: SOUL_SOIL
+    #The items name.
+    itemName: "&Soul"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
 ############################################################
 # +------------------------------------------------------+ #
 # |          Configuration: Inventory Pagination   | #
@@ -1038,7 +1175,7 @@ RemoveTrails:
   #Whether or not the lore is enabled.
   loreEnabled: false
   glowEnabled: true
-   #Lore
+  #Lore
   lore:
     - "Line1"
 
@@ -1053,7 +1190,7 @@ NextPage:
   #Whether or not the lore is enabled.
   loreEnabled: false
   glowEnabled: true
-   #Lore
+  #Lore
   lore:
     - "Line1"
 
@@ -1068,6 +1205,6 @@ PreviousPage:
   #Whether or not the lore is enabled.
   loreEnabled: false
   glowEnabled: true
-   #Lore
+  #Lore
   lore:
-  - "Line1"
+    - "Line1"
