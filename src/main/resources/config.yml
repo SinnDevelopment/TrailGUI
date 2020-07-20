@@ -1009,6 +1009,213 @@ trails:
       - "Example"
       - "Line2"
       - "Line3"
+  BubbleColumnUp:
+    type: BUBBLE_COLUMN_UP
+    #The location the particle effect is displayed.
+    displayLocation: 0.3
+    #The amount of particles displayed.
+    amount: 3
+    #The speed the particles are displayed.
+    speed: 1
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 41
+    #The items type.
+    itemType: HEART_OF_THE_SEA
+    #The items name.
+    itemName: "&6Bubble Column Up"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
+  BubblePop:
+    type: BUBBLE_POP
+    #The location the particle effect is displayed.
+    displayLocation: 0.3
+    #The amount of particles displayed.
+    amount: 0
+    #The speed the particles are displayed.
+    speed: 0.5
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 42
+    #The items type.
+    itemType: TRIDENT
+    #The items name.
+    itemName: "&6Bubble Pop"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
+  CurrentDown:
+    type: CURRENT_DOWN
+    #The location the particle effect is displayed.
+    displayLocation: 0.3
+    #The amount of particles displayed.
+    amount: 3
+    #The speed the particles are displayed.
+    speed: 1
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 43
+    #The items type.
+    itemType: KELP
+    #The items name.
+    itemName: "&6Current Down"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
+  SquidInk:
+    type: SQUID_INK
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 0
+    #The speed the particles are displayed.
+    speed: 0.5
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 44
+    #The items type.
+    itemType: INK_SAC
+    #The items name.
+    itemName: "&6Squid Ink"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
+  Sneeze:
+    type: SNEEZE
+    #The location the particle effect is displayed.
+    displayLocation: 2
+    #The amount of particles displayed.
+    amount: 3
+    #The speed the particles are displayed.
+    speed: 0.5
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 45
+    #The items type.
+    itemType: SLIME_BALL
+    #The items name.
+    itemName: "&6Sneeze"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
+  CosyCampfire:
+    type: CAMPFIRE_COSY_SMOKE
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 3
+    #The speed the particles are displayed.
+    speed: 0.1
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 46
+    #The items type.
+    itemType: CAMPFIRE
+    #The items name.
+    itemName: "&6Cosy Campfire"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
+  SignalCampfire:
+    type: CAMPFIRE_SIGNAL_SMOKE
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 3
+    #The speed the particles are displayed.
+    speed: 0.1
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 47
+    #The items type.
+    itemType: CAMPFIRE
+    #The items name.
+    itemName: "&6Signal Campfire"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
+  FallingNectar:
+    type: FALLING_NECTAR
+    #The location the particle effect is displayed.
+    displayLocation: 2
+    #The amount of particles displayed.
+    amount: 3
+    #The speed the particles are displayed.
+    speed: 0.1
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 48
+    #The items type.
+    itemType: CORNFLOWER
+    #The items name.
+    itemName: "&6Falling Nectar"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
+  DrippingHoney:
+    type: DRIPPING_HONEY
+    #The location the particle effect is displayed.
+    displayLocation: 0.1
+    #The amount of particles displayed.
+    amount: 3
+    #The speed the particles are displayed.
+    speed: 0.1
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 49
+    #The items type.
+    itemType: HONEY_BOTTLE
+    #The items name.
+    itemName: "&6Dripping Honey"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
   DrippingObsidian:
     type: DRIPPING_OBSIDIAN_TEAR
     #The location the particle effect is displayed.
@@ -1020,7 +1227,7 @@ trails:
     #The distance before unrendering the particle effect.
     range: 20
     #The inventory slot the item is put in.
-    order: 41
+    order: 50
     #The items type.
     itemType: CRYING_OBSIDIAN
     #The items name.
@@ -1043,7 +1250,7 @@ trails:
     #The distance before unrendering the particle effect.
     range: 20
     #The inventory slot the item is put in.
-    order: 42
+    order: 51
     #The items type.
     itemType: BASALT
     #The items name.
@@ -1066,7 +1273,7 @@ trails:
     #The distance before unrendering the particle effect.
     range: 20
     #The inventory slot the item is put in.
-    order: 43
+    order: 52
     #The items type.
     itemType: CRIMSON_FUNGUS
     #The items name.
@@ -1089,7 +1296,7 @@ trails:
     #The distance before unrendering the particle effect.
     range: 20
     #The inventory slot the item is put in.
-    order: 44
+    order: 53
     #The items type.
     itemType: WARPED_FUNGUS
     #The items name.
@@ -1112,7 +1319,7 @@ trails:
     #The distance before unrendering the particle effect.
     range: 20
     #The inventory slot the item is put in.
-    order: 45
+    order: 54
     #The items type.
     itemType: SOUL_CAMPFIRE
     #The items name.
@@ -1135,7 +1342,7 @@ trails:
     #The distance before unrendering the particle effect.
     range: 20
     #The inventory slot the item is put in.
-    order: 46
+    order: 55
     #The items type.
     itemType: SOUL_SOIL
     #The items name.
