@@ -1012,7 +1012,7 @@ trails:
   DrippingObsidian:
     type: DRIPPING_OBSIDIAN_TEAR
     #The location the particle effect is displayed.
-    displayLocation: 0.2
+    displayLocation: 0.1
     #The amount of particles displayed.
     amount: 50
     #The speed the particles are displayed.
