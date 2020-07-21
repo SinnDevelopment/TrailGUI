@@ -3,7 +3,7 @@ main: ca.jamiesinn.trailgui.TrailGUI
 version: ${project.version}
 author: JamieSinn
 softdepend: [Essentials]
-api-version: 1.13
+api-version: 1.16
 
 commands:
    trail:
