@@ -12,7 +12,7 @@ commands:
       description: Opens the TrailGUI.
    trailgui:
       description: Basic information about the plugin.
-      
+
 permissions:
    trailgui.inventory.angryvillager:
       description: Allows the player to select the angryvillager trail in the GUI.
@@ -498,6 +498,21 @@ permissions:
                trailgui.trails.footstep: true
                trailgui.trails.bubbles: true
                trailgui.trails.blackpotion: true
+               trailgui.trails.bubblecolumnup: true
+               trailgui.trails.bubblepop: true
+               trailgui.trails.currentdown: true
+               trailgui.trails.squidink: true
+               trailgui.trails.sneeze: true
+               trailgui.trails.cosycampfire: true
+               trailgui.trails.signalcampfire: true
+               trailgui.trails.fallingnectar: true
+               trailgui.trails.drippinghoney: true
+               trailgui.trails.drippingobsidian: true
+               trailgui.trails.ash: true
+               trailgui.trails.crimsonspore: true
+               trailgui.trails.warpedspore: true
+               trailgui.trails.soulfire: true
+               trailgui.trails.soul: true
                trailgui.trails.clearall: true
    trailgui.inventory.*:
       description: Allows the player to select all the trails in the GUI.
@@ -538,6 +553,21 @@ permissions:
             trailgui.inventory.footstep: true
             trailgui.inventory.bubbles: true
             trailgui.inventory.blackpotion: true
+            trailgui.trails.bubblecolumnup: true
+            trailgui.trails.bubblepop: true
+            trailgui.trails.currentdown: true
+            trailgui.trails.squidink: true
+            trailgui.trails.sneeze: true
+            trailgui.trails.cosycampfire: true
+            trailgui.trails.signalcampfire: true
+            trailgui.trails.fallingnectar: true
+            trailgui.trails.drippinghoney: true
+            trailgui.trails.drippingobsidian: true
+            trailgui.trails.ash: true
+            trailgui.trails.crimsonspore: true
+            trailgui.trails.warpedspore: true
+            trailgui.trails.soulfire: true
+            trailgui.trails.soul: true
             trailgui.inventory.clearall: true
             trailgui.inventory.nextpage: true
             trailgui.inventory.previouspage: true
