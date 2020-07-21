@@ -12,7 +12,7 @@ commands:
       description: Opens the TrailGUI.
    trailgui:
       description: Basic information about the plugin.
-      
+
 permissions:
    trailgui.inventory.angryvillager:
       description: Allows the player to select the angryvillager trail in the GUI.
@@ -230,6 +230,51 @@ permissions:
    trailgui.trails.bubbles:
       description: Allows the player to select the specified trail.
       default: op
+   trailgui.trails.bubblecolumnup:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.bubblepop:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.currentdown:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.squidink:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.sneeze:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.cosycampfire:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.signalcampfire:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.fallingnectar:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.drippinghoney:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.drippingobsidian:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.ash:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.crimsonspore:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.warpedspore:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.soulfire:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.soul:
+      description: Allows the player to select the specified trail.
+      default: op
 
    trailgui.commands.clearall:
       description: Allows the player to use the clearall trails command.
@@ -352,6 +397,52 @@ permissions:
    trailgui.trails.bubbles.other:
       description: Allows the player to select the specified trail.
       default: op
+   trailgui.trails.bubblecolumnup.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.bubblepop.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.currentdown.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.squidink.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.sneeze.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.cosycampfire.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.signalcampfire.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.fallingnectar.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.drippinghoney.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.drippingobsidian.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.ash.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.crimsonspore.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.warpedspore.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.soulfire.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.soul.other:
+      description: Allows the player to select the specified trail.
+      default: op
+
    trailgui.commands.clearall.other:
       description: Allows the player to clear all of the specified players trails.
       default: op
@@ -407,6 +498,21 @@ permissions:
                trailgui.trails.footstep: true
                trailgui.trails.bubbles: true
                trailgui.trails.blackpotion: true
+               trailgui.trails.bubblecolumnup: true
+               trailgui.trails.bubblepop: true
+               trailgui.trails.currentdown: true
+               trailgui.trails.squidink: true
+               trailgui.trails.sneeze: true
+               trailgui.trails.cosycampfire: true
+               trailgui.trails.signalcampfire: true
+               trailgui.trails.fallingnectar: true
+               trailgui.trails.drippinghoney: true
+               trailgui.trails.drippingobsidian: true
+               trailgui.trails.ash: true
+               trailgui.trails.crimsonspore: true
+               trailgui.trails.warpedspore: true
+               trailgui.trails.soulfire: true
+               trailgui.trails.soul: true
                trailgui.trails.clearall: true
    trailgui.inventory.*:
       description: Allows the player to select all the trails in the GUI.
@@ -447,6 +553,21 @@ permissions:
             trailgui.inventory.footstep: true
             trailgui.inventory.bubbles: true
             trailgui.inventory.blackpotion: true
+            trailgui.trails.bubblecolumnup: true
+            trailgui.trails.bubblepop: true
+            trailgui.trails.currentdown: true
+            trailgui.trails.squidink: true
+            trailgui.trails.sneeze: true
+            trailgui.trails.cosycampfire: true
+            trailgui.trails.signalcampfire: true
+            trailgui.trails.fallingnectar: true
+            trailgui.trails.drippinghoney: true
+            trailgui.trails.drippingobsidian: true
+            trailgui.trails.ash: true
+            trailgui.trails.crimsonspore: true
+            trailgui.trails.warpedspore: true
+            trailgui.trails.soulfire: true
+            trailgui.trails.soul: true
             trailgui.inventory.clearall: true
             trailgui.inventory.nextpage: true
             trailgui.inventory.previouspage: true
