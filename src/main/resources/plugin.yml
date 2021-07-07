@@ -3,7 +3,7 @@ main: ca.jamiesinn.trailgui.TrailGUI
 version: ${project.version}
 author: JamieSinn
 softdepend: [Essentials]
-api-version: 1.16
+api-version: 1.17
 
 commands:
    trail:
@@ -275,6 +275,51 @@ permissions:
    trailgui.trails.soul:
       description: Allows the player to select the specified trail.
       default: op
+   trailgui.trails.drippingdripstonelava:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.drippingdripstonewater:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.electricspark:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.fallingdripstonelava:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.drippingdripstonewater:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.fallingsporeblossom:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.glow:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.glowsquidink:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.light:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.scrape:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.smallflame:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.snowflake:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.sporeblossomair:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.waxoff:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.waxon:
+      description: Allows the player to select the specified trail.
+      default: op
 
    trailgui.commands.clearall:
       description: Allows the player to use the clearall trails command.
@@ -442,6 +487,51 @@ permissions:
    trailgui.trails.soul.other:
       description: Allows the player to select the specified trail.
       default: op
+   trailgui.trails.droppingdripstonelava.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.drippingdripstonewater.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.electricspark.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.fallingdripstonelava.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.fallingdripstonewater.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.fallingsporeblossom.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.glow.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.glowsquidink.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.light.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.scrape.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.smallflame.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.snowflake.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.sporeblossomair.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.waxoff.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.waxon.other:
+      description: Allows the player to select the specified trail.
+      default: op
 
    trailgui.commands.clearall.other:
       description: Allows the player to clear all of the specified players trails.
@@ -513,6 +603,22 @@ permissions:
                trailgui.trails.warpedspore: true
                trailgui.trails.soulfire: true
                trailgui.trails.soul: true
+               trailgui.trails.drippingdripstonelava: true
+               trailgui.trails.drippingdripstonewater: true
+               trailgui.trails.electricspark: true
+               trailgui.trails.fallingdripstonelava: true
+               trailgui.trails.fallingdripstonewater: true
+               trailgui.trails.fallingsporeblossom: true
+               trailgui.trails.glow: true
+               trailgui.trails.glowsquidink: true
+               trailgui.trails.light: true
+               trailgui.trails.scrape: true
+               trailgui.trails.smallflame: true
+               trailgui.trails.snowflake: true
+               trailgui.trails.sporeblossomair: true
+               trailgui.trails.waxoff: true
+               trailgui.trails.waxon: true
+               
                trailgui.trails.clearall: true
    trailgui.inventory.*:
       description: Allows the player to select all the trails in the GUI.
@@ -568,6 +674,22 @@ permissions:
             trailgui.trails.warpedspore: true
             trailgui.trails.soulfire: true
             trailgui.trails.soul: true
+            trailgui.trails.drippingdripstonelava: true
+            trailgui.trails.drippingdripstonewater: true
+            trailgui.trails.electricspark: true
+            trailgui.trails.fallingdripstonelava: true
+            trailgui.trails.fallingdripstonewater: true
+            trailgui.trails.fallingsporeblossom: true
+            trailgui.trails.glow: true
+            trailgui.trails.glowsquidink: true
+            trailgui.trails.light: true
+            trailgui.trails.scrape: true
+            trailgui.trails.smallflame: true
+            trailgui.trails.snowflake: true
+            trailgui.trails.sporeblossomair: true
+            trailgui.trails.waxoff: true
+            trailgui.trails.waxon: true
+            
             trailgui.inventory.clearall: true
             trailgui.inventory.nextpage: true
             trailgui.inventory.previouspage: true
