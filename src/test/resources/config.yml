@@ -1346,7 +1346,7 @@ trails:
     #The items type.
     itemType: SOUL_SOIL
     #The items name.
-    itemName: "&Soul"
+    itemName: "&6Soul"
     #Whether or not the lore is enabled.
     loreEnabled: false
     glowEnabled: true
@@ -1354,6 +1354,351 @@ trails:
       - "Example"
       - "Line2"
       - "Line3"
+  DrippingDripstoneLava:
+    type: DRIPPING_DRIPSTONE_LAVA
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 5
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 56
+    #The items type.
+    itemType: lava_bucket
+    #The items name.
+    itemName: "&6DrippingDripstoneLava"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
+  DrippingDripstoneWater:
+    type: DRIPPING_DRIPSTONE_WATER
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 5
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 57
+    #The items type.
+    itemType: water_bucket
+    #The items name.
+    itemName: "&6DrippingDripstoneWater"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
+  ElectricSpark:
+    type: ELECTRIC_SPARK
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 10
+    #The speed the particles are displayed.
+    speed: 0.5
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 58
+    #The items type.
+    itemType: lightning_rod
+    #The items name.
+    itemName: "&6ElectricSpark"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
+  FallingDripstoneLava:
+    type: FALLING_DRIPSTONE_LAVA
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 5
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 59
+    #The items type.
+    itemType: lava_bucket
+    #The items name.
+    itemName: "&6FallingDripstoneLava"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
+  FallingDripstoneWater:
+    type: FALLING_DRIPSTONE_WATER
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 5
+    #The speed the particles are displayed.
+    speed: 0
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 60
+    #The items type.
+    itemType: water_bucket
+    #The items name.
+    itemName: "&6FallingDripstoneWater"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
+  FallingSporeBlossom:
+    type: FALLING_SPORE_BLOSSOM
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 10
+    #The speed the particles are displayed.
+    speed: 0.5
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 61
+    #The items type.
+    itemType: spore_blossom
+    #The items name.
+    itemName: "&6FallingSporeBlossom"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"   
+  Glow:
+    type: GLOW
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 10
+    #The speed the particles are displayed.
+    speed: 0.5
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 62
+    #The items type.
+    itemType: glow_ink_sac
+    #The items name.
+    itemName: "&6Glow"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"   
+  GlowSquidInk:
+    type: GLOW_SQUID_INK
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 0
+    #The speed the particles are displayed.
+    speed: 0.5
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 63
+    #The items type.
+    itemType: glow_ink_sac
+    #The items name.
+    itemName: "&6GlowSquidInk"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3" 
+  Light:
+    type: LIGHT
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 10
+    #The speed the particles are displayed.
+    speed: 0.5
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 64
+    #The items type.
+    itemType: glowstone
+    #The items name.
+    itemName: "&6Light"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"  
+  Scrape:
+    type: SCRAPE
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 10
+    #The speed the particles are displayed.
+    speed: 0.5
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 65
+    #The items type.
+    itemType: iron_axe
+    #The items name.
+    itemName: "&6Scrape"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"    
+  SmallFlame:
+    type: SMALL_FLAME
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 10
+    #The speed the particles are displayed.
+    speed: 0.5
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 66
+    #The items type.
+    itemType: candle
+    #The items name.
+    itemName: "&6SmallFlame"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"  
+  Snowflake:
+    type: SNOWFLAKE
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 10
+    #The speed the particles are displayed.
+    speed: 0.5
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 67
+    #The items type.
+    itemType: snow
+    #The items name.
+    itemName: "&6Snowflake"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"
+  SporeBlossomAir:
+    type: SPORE_BLOSSOM_AIR
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 10
+    #The speed the particles are displayed.
+    speed: 0.5
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 68
+    #The items type.
+    itemType: spore_blossom
+    #The items name.
+    itemName: "&6SporeBlossomAir"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"   
+  WaxOff:
+    type: WAX_OFF
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 10
+    #The speed the particles are displayed.
+    speed: 0.5
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 69
+    #The items type.
+    itemType: oxidized_copper
+    #The items name.
+    itemName: "&6WaxOff"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"   
+  WaxOn:
+    type: WAX_ON
+    #The location the particle effect is displayed.
+    displayLocation: 0.2
+    #The amount of particles displayed.
+    amount: 10
+    #The speed the particles are displayed.
+    speed: 0.5
+    #The distance before unrendering the particle effect.
+    range: 20
+    #The inventory slot the item is put in.
+    order: 70
+    #The items type.
+    itemType: copper_block
+    #The items name.
+    itemName: "&6WaxOn"
+    #Whether or not the lore is enabled.
+    loreEnabled: false
+    glowEnabled: true
+    lore:
+      - "Example"
+      - "Line2"
+      - "Line3"         
 ############################################################
 # +------------------------------------------------------+ #
 # |          Configuration: Inventory Pagination   | #
