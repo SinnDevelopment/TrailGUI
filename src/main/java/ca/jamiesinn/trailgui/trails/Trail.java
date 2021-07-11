@@ -10,7 +10,9 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffectType;
@@ -188,6 +190,13 @@ public abstract class Trail
 
     public boolean onInventoryClick(Player player, ItemStack currentItem)
     {
+    	if(currentItem.containsEnchantment(Enchantment.LURE)) {
+    		ItemMeta meta = currentItem.getItemMeta();
+    		meta.removeEnchant(Enchantment.LURE);
+    		meta.removeItemFlags(ItemFlag.HIDE_ENCHANTS);
+    		currentItem.setItemMeta(meta);
+    	}
+    	
         if (currentItem.equals(this.getItem()))
         {
             List<Trail> currentTrails = new ArrayList<Trail>();
@@ -196,7 +205,7 @@ public abstract class Trail
             {
                 currentTrails = TrailGUI.enabledTrails.get(player.getUniqueId());
             }
-
+            
             if (!canUseInventory(player))
             {
                 player.sendMessage(TrailGUI.getPlugin().getConfig().getString("GUI.denyPermissionMessage").replaceAll("&", "\u00A7"));
