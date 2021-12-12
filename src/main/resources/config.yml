@@ -1537,30 +1537,7 @@ trails:
     lore:
       - "Example"
       - "Line2"
-      - "Line3" 
-  Light:
-    type: LIGHT
-    #The location the particle effect is displayed.
-    displayLocation: 0.2
-    #The amount of particles displayed.
-    amount: 10
-    #The speed the particles are displayed.
-    speed: 0.5
-    #The distance before unrendering the particle effect.
-    range: 20
-    #The inventory slot the item is put in.
-    order: 64
-    #The items type.
-    itemType: glowstone
-    #The items name.
-    itemName: "&6Light"
-    #Whether or not the lore is enabled.
-    loreEnabled: false
-    glowEnabled: true
-    lore:
-      - "Example"
-      - "Line2"
-      - "Line3"  
+      - "Line3"
   Scrape:
     type: SCRAPE
     #The location the particle effect is displayed.
@@ -1572,7 +1549,7 @@ trails:
     #The distance before unrendering the particle effect.
     range: 20
     #The inventory slot the item is put in.
-    order: 65
+    order: 64
     #The items type.
     itemType: iron_axe
     #The items name.
@@ -1595,7 +1572,7 @@ trails:
     #The distance before unrendering the particle effect.
     range: 20
     #The inventory slot the item is put in.
-    order: 66
+    order: 65
     #The items type.
     itemType: candle
     #The items name.
@@ -1618,7 +1595,7 @@ trails:
     #The distance before unrendering the particle effect.
     range: 20
     #The inventory slot the item is put in.
-    order: 67
+    order: 66
     #The items type.
     itemType: snow
     #The items name.
@@ -1641,7 +1618,7 @@ trails:
     #The distance before unrendering the particle effect.
     range: 20
     #The inventory slot the item is put in.
-    order: 68
+    order: 67
     #The items type.
     itemType: spore_blossom
     #The items name.
@@ -1664,7 +1641,7 @@ trails:
     #The distance before unrendering the particle effect.
     range: 20
     #The inventory slot the item is put in.
-    order: 69
+    order: 68
     #The items type.
     itemType: oxidized_copper
     #The items name.
@@ -1687,7 +1664,7 @@ trails:
     #The distance before unrendering the particle effect.
     range: 20
     #The inventory slot the item is put in.
-    order: 70
+    order: 69
     #The items type.
     itemType: copper_block
     #The items name.
