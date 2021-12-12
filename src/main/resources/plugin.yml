@@ -3,7 +3,7 @@ main: ca.jamiesinn.trailgui.TrailGUI
 version: ${project.version}
 author: JamieSinn
 softdepend: [Essentials]
-api-version: 1.17
+api-version: 1.18
 
 commands:
    trail:
@@ -287,9 +287,6 @@ permissions:
    trailgui.trails.fallingdripstonelava:
       description: Allows the player to select the specified trail.
       default: op
-   trailgui.trails.drippingdripstonewater:
-      description: Allows the player to select the specified trail.
-      default: op
    trailgui.trails.fallingsporeblossom:
       description: Allows the player to select the specified trail.
       default: op
@@ -297,9 +294,6 @@ permissions:
       description: Allows the player to select the specified trail.
       default: op
    trailgui.trails.glowsquidink:
-      description: Allows the player to select the specified trail.
-      default: op
-   trailgui.trails.light:
       description: Allows the player to select the specified trail.
       default: op
    trailgui.trails.scrape:
@@ -511,9 +505,6 @@ permissions:
    trailgui.trails.glowsquidink.other:
       description: Allows the player to select the specified trail.
       default: op
-   trailgui.trails.light.other:
-      description: Allows the player to select the specified trail.
-      default: op
    trailgui.trails.scrape.other:
       description: Allows the player to select the specified trail.
       default: op
@@ -611,7 +602,6 @@ permissions:
                trailgui.trails.fallingsporeblossom: true
                trailgui.trails.glow: true
                trailgui.trails.glowsquidink: true
-               trailgui.trails.light: true
                trailgui.trails.scrape: true
                trailgui.trails.smallflame: true
                trailgui.trails.snowflake: true
@@ -682,7 +672,6 @@ permissions:
             trailgui.trails.fallingsporeblossom: true
             trailgui.trails.glow: true
             trailgui.trails.glowsquidink: true
-            trailgui.trails.light: true
             trailgui.trails.scrape: true
             trailgui.trails.smallflame: true
             trailgui.trails.snowflake: true
