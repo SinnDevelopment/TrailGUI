@@ -69,6 +69,14 @@ public class MaterialsTest
                         {
                             trail = new EffectTrail(trailTypeSection);
                         }
+                        else if (trailTypeSection.getString("type").equalsIgnoreCase("SCULK_CHARGE"))
+                        {
+                            trail = new SculkChargeTrail(trailTypeSection);
+                        }
+                        else if (trailTypeSection.getString("type").equalsIgnoreCase("SHRIEK"))
+                        {
+                            trail = new ShriekTrail(trailTypeSection);
+                        }
                         else
                         {
                             trail = new NormalTrail(trailTypeSection);

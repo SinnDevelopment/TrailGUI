@@ -143,6 +143,14 @@ public class TrailGUI
                         {
                             trailTypes.put(trailTypeSection.getName(), new EffectTrail(trailTypeSection));
                         }
+                        else if (trailTypeSection.getString("type").equalsIgnoreCase("SCULK_CHARGE"))
+                        {
+                            trailTypes.put(trailTypeSection.getName(), new SculkChargeTrail(trailTypeSection));
+                        }
+                        else if (trailTypeSection.getString("type").equalsIgnoreCase("SHRIEK"))
+                        {
+                            trailTypes.put(trailTypeSection.getName(), new ShriekTrail(trailTypeSection));
+                        }
                         else
                         {
                             trailTypes.put(trailTypeSection.getName(), new NormalTrail(trailTypeSection));
