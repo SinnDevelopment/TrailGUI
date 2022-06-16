@@ -7,14 +7,14 @@ import ca.jamiesinn.trailgui.commands.CommandTrails;
 import ca.jamiesinn.trailgui.files.Userdata;
 import ca.jamiesinn.trailgui.sql.SQLManager;
 import ca.jamiesinn.trailgui.trails.*;
-import org.apache.commons.io.FileUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
+import java.io.InputStream;
+import java.nio.file.Files;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
@@ -82,11 +82,11 @@ public class TrailGUI
         {
             getLogger().severe("Your config is out of date with the current one. Plugin will be disabled until it is corrected.");
             getLogger().severe("Copied the latest default config to the plugin directory for reference.");
-            URL inputUrl = getClass().getResource("config.yml");
             File dest = new File(getDataFolder(), "config.new.yml");
-            try
+            try (InputStream inputStream = getResource("config.yml"))
             {
-                FileUtils.copyURLToFile(inputUrl, dest);
+                dest.getParentFile().mkdirs();
+                Files.copy(inputStream, dest.toPath());
             }
             catch (IOException e)
             {
