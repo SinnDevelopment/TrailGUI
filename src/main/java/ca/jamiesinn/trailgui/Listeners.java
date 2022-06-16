@@ -56,6 +56,10 @@ public class Listeners implements Listener
             {
                 if (trail.onInventoryClick(player, event.getCurrentItem()))
                 {
+                    if (event.getView().getTopInventory().equals(player.getOpenInventory().getTopInventory()))
+                    {
+                        Util.openGUI(player, currentPage);
+                    }
                     return;
                 }
             }
@@ -97,6 +101,10 @@ public class Listeners implements Listener
                 if (TrailGUI.getPlugin().getConfig().getBoolean("GUI.closeInventoryAferSelect"))
                 {
                     player.closeInventory();
+                }
+                else
+                {
+                    Util.openGUI(player, currentPage);
                 }
             }
             else if (event.getCurrentItem().equals(Util.getItemNextPage()))
