@@ -3,7 +3,7 @@ main: ca.jamiesinn.trailgui.TrailGUI
 version: ${project.version}
 author: JamieSinn
 softdepend: [Essentials]
-api-version: 1.18
+api-version: 1.19
 
 commands:
    trail:
@@ -314,6 +314,18 @@ permissions:
    trailgui.trails.waxon:
       description: Allows the player to select the specified trail.
       default: op
+   trailgui.trails.sculksoul:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.sculkcharge:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.sculkchargepop:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.shriek:
+      description: Allows the player to select the specified trail.
+      default: op
 
    trailgui.commands.clearall:
       description: Allows the player to use the clearall trails command.
@@ -523,6 +535,19 @@ permissions:
    trailgui.trails.waxon.other:
       description: Allows the player to select the specified trail.
       default: op
+   trailgui.trails.sculksoul.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.sculkcharge.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.sculkchargepop.other:
+      description: Allows the player to select the specified trail.
+      default: op
+   trailgui.trails.shriek.other:
+      description: Allows the player to select the specified trail.
+      default: op
+
 
    trailgui.commands.clearall.other:
       description: Allows the player to clear all of the specified players trails.
@@ -608,7 +633,11 @@ permissions:
                trailgui.trails.sporeblossomair: true
                trailgui.trails.waxoff: true
                trailgui.trails.waxon: true
-               
+               trailgui.trails.sculksoul: true
+               trailgui.trails.sculkcharge: true
+               trailgui.trails.sculkchargepop: true
+               trailgui.trails.shriek: true
+
                trailgui.trails.clearall: true
    trailgui.inventory.*:
       description: Allows the player to select all the trails in the GUI.
@@ -678,7 +707,11 @@ permissions:
             trailgui.trails.sporeblossomair: true
             trailgui.trails.waxoff: true
             trailgui.trails.waxon: true
-            
+            trailgui.inventory.sculksoul: true
+            trailgui.inventory.sculkcharge: true
+            trailgui.inventory.sculkchargepop: true
+            trailgui.inventory.shriek: true
+
             trailgui.inventory.clearall: true
             trailgui.inventory.nextpage: true
             trailgui.inventory.previouspage: true
