@@ -158,6 +158,7 @@ public abstract class Trail
         {
             meta.setLore(lore);
         }
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         item.setItemMeta(meta);
         return item;
     }
@@ -196,7 +197,7 @@ public abstract class Trail
     		meta.removeItemFlags(ItemFlag.HIDE_ENCHANTS);
     		currentItem.setItemMeta(meta);
     	}
-    	
+
         if (currentItem.equals(this.getItem()))
         {
             List<Trail> currentTrails = new ArrayList<Trail>();
@@ -205,7 +206,7 @@ public abstract class Trail
             {
                 currentTrails = TrailGUI.enabledTrails.get(player.getUniqueId());
             }
-            
+
             if (!canUseInventory(player))
             {
                 player.sendMessage(TrailGUI.getPlugin().getConfig().getString("GUI.denyPermissionMessage").replaceAll("&", "\u00A7"));
@@ -251,6 +252,7 @@ public abstract class Trail
                 {
                     player.closeInventory();
                 }
+                return true;
             }
 
         }
